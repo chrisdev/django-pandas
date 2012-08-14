@@ -1,8 +1,8 @@
-=============
+===============================
 Django Pandas
-==============
+===============================
 
-Tools for using `pandas <http://pandas.pydata.org>`_ project
+Tools for working `pandas <http://pandas.pydata.org>`_ in your Django project
 
 Contributors
 ============
@@ -16,7 +16,6 @@ Our Plans
 * Custom Manager and Queryset which return pandas DataFrames etc.
 * Timeseries Support
 * Convenient access of pandas statistical aggregate and operations such as forward filling etc.
-
 
 
 
