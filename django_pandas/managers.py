@@ -6,6 +6,22 @@ from model_utils.managers import PassThroughManager
 
 class DataFrameQuerySet(QuerySet):
     def to_dataframe(self, *fields, **kwargs):
+        """
+        Returns a DataFrame from the quer
+        We currnetly support the following arguments which are based on an
+        internally released product so these will have to change:
+
+            fields: restrict the queryset to these fields
+
+            index_field: specify the field to use  for the index. If the index
+                         field is not in the field list it will be appended
+
+            freq: assumes that the index is a date_time stamp and converts it
+                  to the specified frequency
+
+            fill_method: specify a fill_method for your missing observations
+        """
+
         coerce_float = kwargs.pop('coerce_float', True)
         index_field = kwargs.pop('index_field', None)
         freq = kwargs.pop('freq', None)
