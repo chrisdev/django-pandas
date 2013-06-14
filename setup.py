@@ -20,7 +20,6 @@ setup(
     install_requires=[
         'django>=1.4.5',
         'django-model-utils>=1.4.0',
-        'pandas>=0.11.0',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
