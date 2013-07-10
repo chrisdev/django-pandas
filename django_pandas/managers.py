@@ -26,6 +26,7 @@ class DataFrameQuerySet(QuerySet):
         index_field = kwargs.pop('index_field', None)
         freq = kwargs.pop('freq', None)
         fill_method = kwargs.pop('fill_method', None)
+        properties = kwargs.pop('properties', [])
         if index_field is not None:
             # add it to the fields if not already there
             if index_field not in fields:
@@ -45,6 +46,9 @@ class DataFrameQuerySet(QuerySet):
                 df = df.asfreq(freq, method=fill_method)
             else:
                 df = df.asfreq(freq)
+
+        for property in properties:
+          df[property] = [getattr(x, property) for x in self]
 
         return df
 
