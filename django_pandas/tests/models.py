@@ -22,7 +22,20 @@ class DataFrame(models.Model):
         )
 
 
-class FlatTimeSeries(models.Model):
+class LongTimeSeries(models.Model):
+    date_ix = models.DateTimeField()
+    series_name = models.CharField(max_length=100)
+    value = models.FloatField()
+
+    objects = DataFrameManager()
+
+    def __unicode__(self):
+        return "{} {} {}".format(self.date_ix,
+                                 self.series_name,
+                                 self.value)
+
+
+class WideTimeSeries(models.Model):
     date_ix = models.DateTimeField()
     col1 = models.FloatField()
     col2 = models.FloatField()
