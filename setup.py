@@ -10,7 +10,7 @@ long_description = (
 
 setup(
     name='django-pandas',
-    version='0.0.1',
+    version='0.0.2',
     description='Tools for working with pandas in your Django projects',
     long_description=long_description,
     author='Christopher Clarke',
@@ -33,4 +33,10 @@ setup(
         'Framework :: Django',
     ],
     zip_safe=False,
+    tests_require=["Django>=1.5",
+                   "django-model-utils>-1.4.0",
+                   "pandas>=0.12.0",
+                   ],
+    test_suite="runtests.runtests"
+
 )

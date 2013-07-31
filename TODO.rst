@@ -2,6 +2,16 @@
 TODO
 ====
 
+- Add coverage and tox and integrate with travis-CL
+- Add to pivot_table method
+2013-07-24
+-----------
+- We need to implement the pivot table method
+
+- Can we bypass the ValuesListQuerySet and numpy_fromrecords and just use the
+  DatatFrame.from_records with the tuple of sql records
+
+
 2013-07-19
 -----------
 We thinking of implenenting the following API
@@ -33,7 +43,7 @@ We thinking of implenenting the following API
 
    **wide format**
 
-   ::
+   :::
 
            date           gdp     inflation     wages
 

@@ -4,3 +4,12 @@ include LICENSE.txt
 include MANIFEST.in
 include README.rst
 include TODO.rst
+
+# added by check_manifest.py
+include *.py
+include *.rst
+include tox.ini
+recursive-include docs *.bat
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile

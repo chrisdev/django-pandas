@@ -7,3 +7,6 @@ dist*
 *.wpr
 *.wpu
 *.sw*
+.ropeproject*
+htmlcov*
+.tox*
