@@ -1,5 +1,5 @@
 *.pyc
-*.egg-info
+*.egg*
 .DS_Store*
 _build*
 build*
