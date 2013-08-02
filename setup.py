@@ -36,6 +36,7 @@ setup(
     tests_require=["Django>=1.5",
                    "django-model-utils>-1.4.0",
                    "pandas>=0.12.0",
+                   "numpy",
                    ],
     test_suite="runtests.runtests"
 

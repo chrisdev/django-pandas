@@ -1,15 +1,57 @@
 from django.db.models.query import QuerySet
 import numpy as np
-from pandas import DataFrame
+import pandas as pd
 from model_utils.managers import PassThroughManager
 
 
 class DataFrameQuerySet(QuerySet):
 
+    def to_pivot_table(self, *fields, **kwargs):
+        """
+        A convenience method for creating a time series i.e the
+        DataFrame index is instance of a DateTime or PeriodIndex
+
+        Parameters
+        ----------
+        fields:  The model fields to utilise in creating the frame.
+            to span a relationship, just use the field name of related
+            fields across models, separated by double underscores,
+        values : column to aggregate, optional
+        rows : list of column names or arrays to group on
+            Keys to group on the x-axis of the pivot table
+        cols : list of column names or arrays to group on
+            Keys to group on the y-axis of the pivot table
+        aggfunc : function, default numpy.mean, or list of functions
+            If list of functions passed, the resulting pivot table will have
+            hierarchical columns whose top level are the function names
+            (inferred from the function objects themselves)
+        fill_value : scalar, default None
+            Value to replace missing values with
+        margins : boolean, default False
+            Add all row / columns (e.g. for subtotal / grand totals)
+        dropna : boolean, default True
+        Do not include columns whose entries are all NaN
+        """
+        df = self.to_dataframe(*fields)
+        values = kwargs.pop('values')
+        rows = kwargs.pop('rows')
+        cols = kwargs.pop('cols')
+        aggfunc = kwargs.pop('aggfunc', np.mean)
+        fill_value = kwargs.pop('fill_value', None)
+        margins = kwargs.pop('margins', False)
+        dropna = kwargs.pop('dropna', False)
+
+        return pd.pivot_table(df, values=values,
+                              fill_value=fill_value,
+                              rows=rows, cols=cols,
+                              aggfunc=aggfunc,
+                              margins=margins,
+                              dropna=dropna)
+
     def to_timeseries(self, *fields, **kwargs):
         """
-        A convenience method for creating  a time series i.e the
-        dataframe index is instance of a DateTime or PeriodIndex
+        A convenience method for creating a time series i.e the
+        DataFrame index is instance of a DateTime or PeriodIndex
 
         Parameters
         ----------
@@ -29,7 +71,7 @@ class DataFrameQuerySet(QuerySet):
             storage. This could either be a list or string identifying
             the field name or combination of field. If the pivot_column
             is a single column then the unique values in this column become
-            a new columns in the dataframe
+            a new columns in the DataFrame
             If the pivot column is a list the values in these columns are
             concatenated (using the '-' as a separator)
             and these values are used for the new timeseries columns
@@ -124,7 +166,7 @@ class DataFrameQuerySet(QuerySet):
         qs = self.values_list(*fields)
         recs = np.core.records.fromrecords(qs, names=qs.field_names)
 
-        df = DataFrame.from_records(recs, coerce_float=coerce_float)
+        df = pd.DataFrame.from_records(recs, coerce_float=coerce_float)
         if index is not None:
             df = df.set_index(index)
 

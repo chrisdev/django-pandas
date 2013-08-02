@@ -1,7 +1,7 @@
 from django.test import TestCase
 import pandas as pd
 import numpy as np
-from .models import DataFrame, WideTimeSeries, LongTimeSeries
+from .models import DataFrame, WideTimeSeries, LongTimeSeries, PivotData
 import pandas.util.testing as tm
 
 
@@ -112,3 +112,39 @@ class TimeSeriesTest(TestCase):
                          df1.index.month.tolist())
 
         self.assertIsInstance(df1.index, pd.tseries.period.PeriodIndex)
+
+
+class PivotTableTest(TestCase):
+
+    def setUp(self):
+        self.data = pd.DataFrame({'row_col_a': ['foo', 'foo', 'foo', 'foo',
+                                                'bar', 'bar', 'bar', 'bar',
+                                                'foo', 'foo', 'foo'],
+                                  'row_col_b': ['one', 'one', 'one', 'two',
+                                                'one', 'one', 'one', 'two',
+                                                'two', 'two', 'one'],
+                                  'row_col_c': ['dull', 'dull',
+                                                'shiny', 'dull',
+                                                'dull', 'shiny',
+                                                'shiny', 'dull',
+                                                'shiny', 'shiny', 'shiny'],
+                                  'value_col_d': np.random.randn(11),
+                                  'value_col_e': np.random.randn(11),
+                                  'value_col_f': np.random.randn(11)})
+
+        create_list = [PivotData(row_col_a=r[1][0], row_col_b=r[1][1],
+                                 row_col_c=r[1][2], value_col_d=r[1][3],
+                                 value_col_e=r[1][4], value_col_f=r[1][5])
+                       for r in self.data.iterrows()]
+
+        PivotData.objects.bulk_create(create_list)
+
+    def test_pivot(self):
+        qs = PivotData.objects.all()
+        rows = ['row_col_a', 'row_col_b']
+        cols = ['row_col_c']
+
+        pt = qs.to_pivot_table(values='value_col_d', rows=rows, cols=cols)
+        self.assertEqual(pt.index.names, rows)
+        self.assertEqual(pt.columns.names, cols)
+
