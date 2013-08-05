@@ -38,8 +38,8 @@ Contributing
 Please file bugs and send pull requests to the `GitHub repository`_ and `issue
 tracker`_.
 
-.. _GitHub repository: https://github.com/carljm/django-pandas/
-.. _issue tracker: https://github.com/carljm/django-pandas/issues
+.. _GitHub repository: https://github.com/chrisdev/django-pandas/
+.. _issue tracker: https://github.com/chrisdev/django-pandas/issues
 
 
 Installation
