@@ -15,15 +15,22 @@ Contributors
 
 Dependencies
 =============
-``django-pandas`` supports `Django`_ 1.4.5 or later and 
-requires `django-model-utils`_.  You will also have to 
-install ``Pandas`` and its dependencies such as ``Numpy`` and optionally the 
-other parts of the Scipy stack. You may wish to consult 
-http://www.scipy.org/install.html for more information on installing the 
-``Scipy`` stack. 
+``django-pandas`` supports `Django`_ (>=1.4.5) or later  
+and requires `django-model-utils`_ (>= 1.4.0) and `Pandas`_ (0.12.0). 
+**Note** because of problems with the ``requires`` directive of setup tools
+you probably need to install ``numpy`` in your virtualenv  especially 
+if you want to run the test suite ::
+
+    pip install numpy
+    python setup.py test
+
+Some ``pandas`` functionality requires parts of the Scipy stack.
+You may wish to consult http://www.scipy.org/install.html 
+for more information on installing the ``Scipy`` stack. 
 
 .. _Django: http://djangoproject.com/
 .. _django-model-utils: http://pypi.python.org/pypi/django-model-utils
+.. _Pandas: http://pandas.pydata.org
 
 Contributing
 ============
@@ -251,7 +258,7 @@ A convenience method for creating a pivot table from a QuerySet
 
 **Parameters**
 
-    - fields:  The model fields to utilise in creating the frame.
+   - fields:  The model fields to utilise in creating the frame.
         to span a relationship, just use the field name of related
         fields across models, separated by double underscores,
    -  values : column to aggregate, optional
