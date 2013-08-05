@@ -1,8 +1,7 @@
 ==============
 Django Pandas
 ==============
-
-Tools for working `pandas <http://pandas.pydata.org>`_ in your Django project
+Tools for working with `pandas <http://pandas.pydata.org>`_ in your Django project
 
 Contributors
 ============
