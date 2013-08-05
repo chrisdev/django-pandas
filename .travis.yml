@@ -19,4 +19,9 @@ script:
   - coverage run -a setup.py test
   - coverage report
 
+matrix:
+  exclude:
+   - python: 3.3
+     env: DJANGO=Django==1.4.5
+
 after_success: coveralls
