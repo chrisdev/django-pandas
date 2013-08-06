@@ -17,9 +17,9 @@ Dependencies
 =============
 ``django-pandas`` supports `Django`_ (>=1.4.5) or later  
 and requires `django-model-utils`_ (>= 1.4.0) and `Pandas`_ (0.12.0). 
-**Note** because of problems with the ``requires`` directive of setup tools
-you probably need to install ``numpy`` in your virtualenv  especially 
-if you want to run the test suite ::
+**Note** because of problems with the ``requires`` directive of setuptools
+you probably need to install ``numpy`` in your virtualenv  before you install
+this package or if you want to run the test suite ::
 
     pip install numpy
     python setup.py test
