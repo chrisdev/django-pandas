@@ -3,15 +3,14 @@ from setuptools import setup, find_packages
 
 long_description = (
     open('README.rst').read() + '\n\n' +
-    open('CHANGES.rst').read() +
-    open('TODO.rst').read()
+    open('CHANGES.rst').read()
 )
 
-
+VERSION = __import__('django_pandas').__version__
 setup(
     name='django-pandas',
-    version='0.0.2',
-    description='Tools for working with pandas in your Django projects',
+    version=VERSION,
+    description='Tools for working with pydata.pandas in your Django projects',
     long_description=long_description,
     author='Christopher Clarke',
     author_email='cclarke@chrisdev.com',
@@ -31,6 +30,7 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
         'Framework :: Django',
     ],
     zip_safe=False,

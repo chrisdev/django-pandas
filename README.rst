@@ -274,10 +274,9 @@ A convenience method for creating a pivot table from a QuerySet
         Value to replace missing values with
    - margins : boolean, default False
         Add all row / columns (e.g. for subtotal / grand totals)
-   -  dropna : boolean, default True  
+   -  dropna : boolean, default True
 
 **Example**
-
 ::
 
     # models.py
