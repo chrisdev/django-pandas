@@ -68,6 +68,34 @@ Usage
 To use ``django-pandas`` in your Django project, modify the ``INSTALLED_APPS``
 in your settings module to include ``django_pandas``. 
 
+IO Module
+==========
+The ``django-pandas.io`` provides some convenience methods to facilitate the
+creation of DataFrames from Django QuerySets and saving data to the underlying
+models.
+
+read_frame
+-----------
+
+**Parameters**
+
+    - qs: The Django QuerySet.
+    - fields: The model field names to use in creating the frame.
+              You can span a relationship in the usual Django way
+              by using  double underscores to specify a related field
+              in another model
+              You can span a relationship in the usual Django way
+              by using  double underscores to specify a related field
+              in another model
+
+    - index_col: specify the field to use  for the index. If the index
+                field is not in the field list it will be appended
+
+    - coerce_float : boolean, default True
+                     Attempt to convert values to non-string, 
+                     non-numeric objects (like decimal.Decimal) 
+                     to floating point, useful for SQL result sets
+
 DataFrameManager
 =================
 ``django-pandas`` provides a custom manager to use with models that
@@ -290,7 +318,7 @@ A convenience method for creating a pivot table from a QuerySet
 
         objects = DataFrameManager()
 
-Api ::
+Usage ::
 
         rows = ['row_col_a', 'row_col_b']
         cols = ['row_col_c']

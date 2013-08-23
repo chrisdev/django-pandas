@@ -2,6 +2,23 @@ from django.db import models
 from django_pandas.managers import DataFrameManager
 
 
+class MyModel(models.Model):
+    index_col = models.CharField(max_length=1)
+    col1 = models.IntegerField()
+    col2 = models.FloatField(null=True)
+    col3 = models.FloatField(null=True)
+    col4 = models.IntegerField()
+
+    def __unicode__(self):
+        return "{} {} {} {}".format(
+            self.index,
+            self.col1,
+            self.col2,
+            self.col3,
+            self.col4
+        )
+
+
 class DataFrame(models.Model):
 
     index = models.CharField(max_length=1)
