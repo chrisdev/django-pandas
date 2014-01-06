@@ -14,7 +14,7 @@ setup(
     long_description=long_description,
     author='Christopher Clarke',
     author_email='cclarke@chrisdev.com',
-    url='https://github.com/chrisdev/django-pands/',
+    url='https://github.com/chrisdev/django-pandas/',
     packages=find_packages(),
     install_requires=[
         'Django>=1.4.5',
