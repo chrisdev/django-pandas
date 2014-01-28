@@ -80,7 +80,7 @@ read_frame
 **Parameters**
 
     - qs: The Django QuerySet.
-    - fields: The model field names to use in creating the frame.
+    - fieldnames: The model field names to use in creating the frame.
               You can span a relationship in the usual Django way
               by using  double underscores to specify a related field
               in another model
@@ -132,7 +132,7 @@ Returns a DataFrame from the QuerySet
 
 **Parameters**
 
-    - fields:  The model fields to utilise in creating the frame.
+    - fieldnames:  The model field names to utilise in creating the frame.
                 to span a relationship, just use the field name of related
                 fields across models, separated by double underscores,
 
@@ -144,7 +144,7 @@ Returns a DataFrame from the QuerySet
                     this is a string  specifying a pandas fill method
                     ('backfill, 'bill', 'pad', 'ffill') or a scalar value
 
-    - coerce_float: Attempt to convert the numeric non-string fields
+    - coerce_float: Attempt to convert the numeric non-string data
                     like object, decimal etc. to float if possible
 
 
@@ -156,7 +156,7 @@ Create a dataframe using all the fields  in your model as follows ::
     df = MyModel.to_dataframe()
 
 This will include you primary key create a DataFrame only from specified
-fields::
+field names::
     
      df = MyData.to_dataframe(['age', 'department', 'wage'])
 
@@ -176,7 +176,7 @@ DataFrame index is instance of a DateTime or PeriodIndex
 
 **Parameters**
 
-    - fields:  The model fields to utilise in creating the frame.
+    - fieldnames:  The model field names to utilise in creating the frame.
         to span a relationship, just use the field name of related
         fields across models, separated by double underscores,
 
@@ -286,7 +286,7 @@ A convenience method for creating a pivot table from a QuerySet
 
 **Parameters**
 
-   - fields:  The model fields to utilise in creating the frame.
+   - fieldnames:  The model field names to utilise in creating the frame.
         to span a relationship, just use the field name of related
         fields across models, separated by double underscores,
    - values : column to aggregate, optional

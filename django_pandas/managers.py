@@ -5,7 +5,7 @@ from .io import read_frame
 
 class DataFrameQuerySet(QuerySet):
 
-    def to_pivot_table(self, fields=(), values=None, rows=None, cols=None,
+    def to_pivot_table(self, fieldnames=(), values=None, rows=None, cols=None,
                        aggfunc='mean', fill_value=None, margins=False,
                        dropna=True):
         """
@@ -14,7 +14,7 @@ class DataFrameQuerySet(QuerySet):
 
         Parameters
         ----------
-        fields:  The model fields to utilise in creating the frame.
+        fieldnames:  The model field names to utilise in creating the frame.
             to span a relationship, just use the field name of related
             fields across models, separated by double underscores,
         values : column to aggregate, optional
@@ -33,13 +33,13 @@ class DataFrameQuerySet(QuerySet):
         dropna : boolean, default True
         Do not include columns whose entries are all NaN
         """
-        df = self.to_dataframe(fields)
+        df = self.to_dataframe(fieldnames)
 
         return df.pivot_table(values=values, fill_value=fill_value, rows=rows,
                               cols=cols, aggfunc=aggfunc, margins=margins,
                               dropna=dropna)
 
-    def to_timeseries(self, fields=(), index=None, storage='wide', values=None,
+    def to_timeseries(self, fieldnames=(), index=None, storage='wide', values=None,
                       pivot_columns=None, freq=None, rs_kwargs=None):
         """
         A convenience method for creating a time series i.e the
@@ -48,7 +48,7 @@ class DataFrameQuerySet(QuerySet):
         Parameters
         ----------
 
-        fields:  The model fields to utilise in creating the frame.
+        fieldnames:  The model field names to utilise in creating the frame.
             to span a relationship, just use the field name of related
             fields across models, separated by double underscores,
 
@@ -83,9 +83,9 @@ class DataFrameQuerySet(QuerySet):
             rs_kwargs = {}
 
         if storage == 'wide':
-            df = self.to_dataframe(fields, index=index)
+            df = self.to_dataframe(fieldnames, index=index)
         else:
-            df = self.to_dataframe(fields)
+            df = self.to_dataframe(fieldnames)
             if values is None:
                 raise AssertionError('You must specify a values field')
 
@@ -112,7 +112,7 @@ class DataFrameQuerySet(QuerySet):
 
         return df
 
-    def to_dataframe(self, fields=(), index=None, fill_na=None,
+    def to_dataframe(self, fieldnames=(), index=None, fill_na=None,
                      coerce_float=False):
         """
         Returns a DataFrame from the queryset
@@ -120,7 +120,7 @@ class DataFrameQuerySet(QuerySet):
         Paramaters
         -----------
 
-        fields:  The model fields to utilise in creating the frame.
+        fieldnames:  The model fields to utilise in creating the frame.
             to span a relationship, just use the field name of related
             fields across models, separated by double underscores,
 
@@ -132,11 +132,11 @@ class DataFrameQuerySet(QuerySet):
                  this is a string  specifying a pandas fill method
                  {'backfill, 'bill', 'pad', 'ffill'} or a scalar value
 
-        coerce_float: Attempt to convert the numeric non-string fields
+        coerce_float: Attempt to convert the numeric non-string data
                 like object, decimal etc. to float if possible
         """
 
-        df = read_frame(self, fields=fields, index_col=index,
+        df = read_frame(self, fieldnames=fieldnames, index_col=index,
                         coerce_float=coerce_float)
 
         if fill_na is not None:
