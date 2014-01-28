@@ -1,7 +1,6 @@
 from django.db.models.query import QuerySet
-import numpy as np
-import pandas as pd
 from model_utils.managers import PassThroughManager
+from .io import read_frame
 
 
 class DataFrameQuerySet(QuerySet):
@@ -136,22 +135,9 @@ class DataFrameQuerySet(QuerySet):
         coerce_float: Attempt to convert the numeric non-string fields
                 like object, decimal etc. to float if possible
         """
-        if not fields:
-            fields = self.model._meta.get_all_field_names()
 
-        fields = tuple(fields)
-
-        if index is not None:
-            # add it to the fields if not already there
-            if index not in fields:
-                fields = fields + (index,)
-
-        qs = self.values_list(*fields)
-        recs = np.core.records.fromrecords(qs, names=qs.field_names)
-
-        df = pd.DataFrame.from_records(recs, coerce_float=coerce_float)
-        if index is not None:
-            df = df.set_index(index)
+        df = read_frame(self, fields=fields, index_col=index,
+                        coerce_float=coerce_float)
 
         if fill_na is not None:
             if fill_na not in ('backfill', 'bfill', 'pad', 'ffill'):
