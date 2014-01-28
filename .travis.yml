@@ -26,5 +26,7 @@ matrix:
   exclude:
    - python: 3.3
      env: DJANGO=Django==1.4.5
+   - python: 3.3
+     env: DJANGO=Django==1.4.10
 
 after_success: coveralls
