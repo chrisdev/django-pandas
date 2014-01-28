@@ -1,19 +1,20 @@
 from django.db.models.query import QuerySet
-import numpy as np
-import pandas as pd
 from model_utils.managers import PassThroughManager
+from .io import read_frame
 
 
 class DataFrameQuerySet(QuerySet):
 
-    def to_pivot_table(self, *fields, **kwargs):
+    def to_pivot_table(self, fieldnames=(), values=None, rows=None, cols=None,
+                       aggfunc='mean', fill_value=None, margins=False,
+                       dropna=True):
         """
         A convenience method for creating a time series i.e the
         DataFrame index is instance of a DateTime or PeriodIndex
 
         Parameters
         ----------
-        fields:  The model fields to utilise in creating the frame.
+        fieldnames:  The model field names to utilise in creating the frame.
             to span a relationship, just use the field name of related
             fields across models, separated by double underscores,
         values : column to aggregate, optional
@@ -32,23 +33,14 @@ class DataFrameQuerySet(QuerySet):
         dropna : boolean, default True
         Do not include columns whose entries are all NaN
         """
-        df = self.to_dataframe(*fields)
-        values = kwargs.pop('values')
-        rows = kwargs.pop('rows')
-        cols = kwargs.pop('cols')
-        aggfunc = kwargs.pop('aggfunc', np.mean)
-        fill_value = kwargs.pop('fill_value', None)
-        margins = kwargs.pop('margins', False)
-        dropna = kwargs.pop('dropna', False)
+        df = self.to_dataframe(fieldnames)
 
-        return pd.pivot_table(df, values=values,
-                              fill_value=fill_value,
-                              rows=rows, cols=cols,
-                              aggfunc=aggfunc,
-                              margins=margins,
+        return df.pivot_table(values=values, fill_value=fill_value, rows=rows,
+                              cols=cols, aggfunc=aggfunc, margins=margins,
                               dropna=dropna)
 
-    def to_timeseries(self, *fields, **kwargs):
+    def to_timeseries(self, fieldnames=(), index=None, storage='wide', values=None,
+                      pivot_columns=None, freq=None, rs_kwargs=None):
         """
         A convenience method for creating a time series i.e the
         DataFrame index is instance of a DateTime or PeriodIndex
@@ -56,11 +48,11 @@ class DataFrameQuerySet(QuerySet):
         Parameters
         ----------
 
-        fields:  The model fields to utilise in creating the frame.
+        fieldnames:  The model field names to utilise in creating the frame.
             to span a relationship, just use the field name of related
             fields across models, separated by double underscores,
 
-       index: specify the field to use  for the index. If the index
+        index: specify the field to use  for the index. If the index
             field is not in the field list it will be appended. This
             is mandatory.
 
@@ -83,29 +75,24 @@ class DataFrameQuerySet(QuerySet):
 
         rs_kwargs: Arguments based on pandas.DataFrame.resample
         """
-        index = kwargs.pop('index', None)
-
-        if not index:
+        if index is None:
             raise AssertionError('You must supply an index field')
-
-        storage = kwargs.get('storage', 'wide')
-
-        if storage not in ['wide', 'long']:
+        if storage not in ('wide', 'long'):
             raise AssertionError('storage must be wide or long')
+        if rs_kwargs is None:
+            rs_kwargs = {}
 
         if storage == 'wide':
-            df = self.to_dataframe(*fields, index=index)
+            df = self.to_dataframe(fieldnames, index=index)
         else:
-            df = self.to_dataframe(*fields)
-            values = kwargs.get('values', None)
+            df = self.to_dataframe(fieldnames)
             if values is None:
                 raise AssertionError('You must specify a values field')
 
-            pivot_columns = kwargs.get('pivot_columns', None)
             if pivot_columns is None:
                 raise AssertionError('You must specify pivot_columns')
 
-            if isinstance(pivot_columns, list):
+            if isinstance(pivot_columns, (tuple, list)):
                 df['combined_keys'] = ''
                 for c in pivot_columns:
                     df['combined_keys'] += df[c].str.upper() + '.'
@@ -119,25 +106,21 @@ class DataFrameQuerySet(QuerySet):
                 df = df.pivot(index=index,
                               columns=pivot_columns,
                               values=values)
-        rule = kwargs.get('freq', None)
 
-        if rule:
-            rs_kwargs = kwargs.get('rs_kwargs', None)
-            if rs_kwargs:
-                df = df.resample(rule, **rs_kwargs)
-            else:
-                df = df.resample(rule)
+        if freq is not None:
+            df = df.resample(freq, **rs_kwargs)
 
         return df
 
-    def to_dataframe(self, *fields, **kwargs):
+    def to_dataframe(self, fieldnames=(), index=None, fill_na=None,
+                     coerce_float=False):
         """
         Returns a DataFrame from the queryset
 
         Paramaters
         -----------
 
-        fields:  The model fields to utilise in creating the frame.
+        fieldnames:  The model fields to utilise in creating the frame.
             to span a relationship, just use the field name of related
             fields across models, separated by double underscores,
 
@@ -149,29 +132,15 @@ class DataFrameQuerySet(QuerySet):
                  this is a string  specifying a pandas fill method
                  {'backfill, 'bill', 'pad', 'ffill'} or a scalar value
 
-        coerce_float: Attempt to convert the numeric non-string fields
+        coerce_float: Attempt to convert the numeric non-string data
                 like object, decimal etc. to float if possible
         """
-        index = kwargs.pop('index', None)
-        fill_na = kwargs.pop('fill_na', None)
-        coerce_float = kwargs.pop('coerce_float', False)
-        if not fields:
-            fields = tuple(self.model._meta.get_all_field_names())
 
-        if index is not None:
-            # add it to the fields if not already there
-            if index not in fields:
-                fields = fields + (index,)
-
-        qs = self.values_list(*fields)
-        recs = np.core.records.fromrecords(qs, names=qs.field_names)
-
-        df = pd.DataFrame.from_records(recs, coerce_float=coerce_float)
-        if index is not None:
-            df = df.set_index(index)
+        df = read_frame(self, fieldnames=fieldnames, index_col=index,
+                        coerce_float=coerce_float)
 
         if fill_na is not None:
-            if fill_na not in ['backfill', 'bfill', 'pad', 'ffill']:
+            if fill_na not in ('backfill', 'bfill', 'pad', 'ffill'):
                 df = df.fillna(value=fill_na)
             else:
                 df = df.fillna(method=fill_na)

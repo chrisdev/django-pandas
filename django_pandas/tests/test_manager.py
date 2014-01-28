@@ -27,7 +27,7 @@ class DataFrameTest(TestCase):
                 col4=cols['col4']
             )
 
-    def test_dataframae(self):
+    def test_dataframe(self):
         qs = DataFrame.objects.all()
         df = qs.to_dataframe()
 
@@ -36,7 +36,7 @@ class DataFrameTest(TestCase):
         flds = DataFrame._meta.get_all_field_names()
         self.assertEqual(c, len(flds))
         qs2 = DataFrame.objects.filter(index__in=['a', 'b', 'c'])
-        df2 = qs2.to_dataframe('col1', 'col2', 'col3', index_field='index')
+        df2 = qs2.to_dataframe(['col1', 'col2', 'col3'], index='index')
         n, c = df2.shape
         self.assertEqual((n, c), (3, 3))
 

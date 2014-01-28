@@ -1,18 +1,19 @@
+from django.utils.encoding import force_text
 import pandas as pd
 
 
-def read_frame(qs, *fields, **kwargs):
+def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False):
     """
-    Returns a dataframe form a QuerySet
+    Returns a dataframe from a QuerySet
 
-    Optionally specify the fields/columns to utilize and
-    specify a fields as the index
+    Optionally specify the field names/columns to utilize and
+    a field as the index
 
     Parameters
     ----------
 
     qs: The Django QuerySet.
-    fields: The model field names to use in creating the frame.
+    fieldnames: The model field names to use in creating the frame.
          You can span a relationship in the usual Django way
          by using  double underscores to specify a related field
          in another model
@@ -23,24 +24,23 @@ def read_frame(qs, *fields, **kwargs):
     index_col: specify the field to use  for the index. If the index
                field is not in the field list it will be appended
 
-    coerce_float : boolean, default True
-        Attempt to convert values to non-string, non-numeric objects (like
+    coerce_float : boolean, default False
+        Attempt to convert values to non-string, non-numeric data (like
         decimal.Decimal) to floating point, useful for SQL result sets
    """
 
-    index_col = kwargs.pop('index_col', None)
-    coerce_float = kwargs.pop('coerce_float', False)
-    if not fields:
-        fields = tuple([f.name for f in qs.model._meta.fields])
+    if fieldnames:
+        if index_col is not None and index_col not in fieldnames:
+            # Add it to the field names if not already there
+            fieldnames = tuple(fieldnames) + (index_col,)
 
-    if index_col is not None:
-        # add it to the fields if not already there
-        if index_col not in fields:
-            fields = fields + (index_col,)
+    else:
+        fields = qs.model._meta.fields
+        fieldnames = [f.name for f in fields]
 
-    recs = list(qs.values_list(*fields))
+    recs = list(qs.values_list(*fieldnames))
 
-    df = pd.DataFrame.from_records(recs, columns=fields,
+    df = pd.DataFrame.from_records(recs, columns=fieldnames,
                                    coerce_float=coerce_float)
     if index_col is not None:
         df = df.set_index(index_col)
