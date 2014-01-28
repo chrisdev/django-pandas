@@ -83,9 +83,9 @@ class DataFrameQuerySet(QuerySet):
             rs_kwargs = {}
 
         if storage == 'wide':
-            df = self.to_dataframe(*fields, index=index)
+            df = self.to_dataframe(fields, index=index)
         else:
-            df = self.to_dataframe(*fields)
+            df = self.to_dataframe(fields)
             if values is None:
                 raise AssertionError('You must specify a values field')
 
