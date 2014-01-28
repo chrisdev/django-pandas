@@ -39,8 +39,9 @@ class DataFrameQuerySet(QuerySet):
                               cols=cols, aggfunc=aggfunc, margins=margins,
                               dropna=dropna)
 
-    def to_timeseries(self, fieldnames=(), index=None, storage='wide', values=None,
-                      pivot_columns=None, freq=None, rs_kwargs=None):
+    def to_timeseries(self, fieldnames=(), index=None, storage='wide',
+                      values=None, pivot_columns=None, freq=None,
+                      rs_kwargs=None):
         """
         A convenience method for creating a time series i.e the
         DataFrame index is instance of a DateTime or PeriodIndex
