@@ -12,7 +12,7 @@ class IOTest(TestCase):
             'col1': np.array([1, 2, 3, 5, 6, 5, 5]),
             'col2': np.array([10.0, 2.4, 3.0, 5, 6, np.nan, 5]),
             'col3': np.array([9.5, 2.4, 3.0, 5, 6, 7.5, 2.5]),
-            'col4':  np.array([9, 2, 3, 5, 6, 7, 2]),
+            'col4': np.array([9, 2, 3, 5, 6, 7, 2]),
         }
         index = pd.Index(['a', 'b', 'c', 'd', 'e', 'f', 'h'])
 
