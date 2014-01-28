@@ -32,14 +32,14 @@ class IOTest(TestCase):
         df = read_frame(qs)
         n, c = df.shape
         self.assertEqual(n, qs.count())
-        flds = MyModel._meta.get_all_field_names()
-        self.assertEqual(c, len(flds))
-        df1 = read_frame(qs, 'col1', 'col2')
+        fields = MyModel._meta.get_all_field_names()
+        self.assertEqual(c, len(fields))
+        df1 = read_frame(qs, ['col1', 'col2'])
         self.assertEqual(df1.shape, (qs.count(), 2))
 
     def test_index(self):
         qs = MyModel.objects.all()
-        df = read_frame(qs, 'col1', 'col2', 'col3', 'col4',
+        df = read_frame(qs, ['col1', 'col2', 'col3', 'col4'],
                         index_col='index_col')
         self.assertEqual(df.shape, (qs.count(), 4))
         self.assertEqual(set(df.index.tolist()),

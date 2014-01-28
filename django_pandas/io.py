@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def read_frame(qs, *fields, **kwargs):
+def read_frame(qs, fields=(), index_col=None, coerce_float=False):
     """
     Returns a dataframe form a QuerySet
 
@@ -23,15 +23,15 @@ def read_frame(qs, *fields, **kwargs):
     index_col: specify the field to use  for the index. If the index
                field is not in the field list it will be appended
 
-    coerce_float : boolean, default True
+    coerce_float : boolean, default False
         Attempt to convert values to non-string, non-numeric objects (like
         decimal.Decimal) to floating point, useful for SQL result sets
    """
 
-    index_col = kwargs.pop('index_col', None)
-    coerce_float = kwargs.pop('coerce_float', False)
     if not fields:
-        fields = tuple([f.name for f in qs.model._meta.fields])
+        fields = [f.name for f in qs.model._meta.fields]
+
+    fields = tuple(fields)
 
     if index_col is not None:
         # add it to the fields if not already there

@@ -119,7 +119,7 @@ as shown in the example below ::
         objects = DataFrameManager()
 
 
-This will qive you access to the following QuerySet methods:
+This will give you access to the following QuerySet methods:
 
     - ``to_datafame``
     - ``to_timeseries``
@@ -142,7 +142,7 @@ Returns a DataFrame from the QuerySet
 
     - fill_na: fill in missing observations using one of the following
                     this is a string  specifying a pandas fill method
-                    {'backfill, 'bill', 'pad', 'ffill'} or a scalar value
+                    ('backfill, 'bill', 'pad', 'ffill') or a scalar value
 
     - coerce_float: Attempt to convert the numeric non-string fields
                     like object, decimal etc. to float if possible
@@ -155,14 +155,14 @@ Create a dataframe using all the fields  in your model as follows ::
 
     df = MyModel.to_dataframe()
 
-This will include you primary key create a DataFrame only from secified 
+This will include you primary key create a DataFrame only from specified
 fields::
     
-     df = MyData.to_dataframe('age', 'department', 'wage')
+     df = MyData.to_dataframe(['age', 'department', 'wage'])
 
 To set ``full_name`` as the index ::
 
-    MyData.to_dataframe('age', 'department', 'wage', index='full_name')
+    MyData.to_dataframe(['age', 'department', 'wage', index='full_name'])
 
 You can use filters and excludes ::
 
@@ -278,7 +278,7 @@ Using a *wide* storage format ::
     rs_kwargs = {'how': 'sum', 'kind': 'period'}
     df = qs.to_timeseries(index='date_ix', pivot_columns='series_name',
                           values='value', storage='long',
-                        freq='M', rs_kwargs=rs_kwargs)
+                          freq='M', rs_kwargs=rs_kwargs)
 
 to_pivot_table
 --------------
@@ -289,7 +289,7 @@ A convenience method for creating a pivot table from a QuerySet
    - fields:  The model fields to utilise in creating the frame.
         to span a relationship, just use the field name of related
         fields across models, separated by double underscores,
-   -  values : column to aggregate, optional
+   - values : column to aggregate, optional
    - rows : list of column names or arrays to group on
         Keys to group on the x-axis of the pivot table
    - cols : list of column names or arrays to group on
@@ -302,7 +302,7 @@ A convenience method for creating a pivot table from a QuerySet
         Value to replace missing values with
    - margins : boolean, default False
         Add all row / columns (e.g. for subtotal / grand totals)
-   -  dropna : boolean, default True
+   - dropna : boolean, default True
 
 **Example**
 ::

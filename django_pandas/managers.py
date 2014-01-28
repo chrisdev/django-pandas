@@ -6,7 +6,9 @@ from model_utils.managers import PassThroughManager
 
 class DataFrameQuerySet(QuerySet):
 
-    def to_pivot_table(self, *fields, **kwargs):
+    def to_pivot_table(self, fields=(), values=None, rows=None, cols=None,
+                       aggfunc='mean', fill_value=None, margins=False,
+                       dropna=True):
         """
         A convenience method for creating a time series i.e the
         DataFrame index is instance of a DateTime or PeriodIndex
@@ -32,23 +34,14 @@ class DataFrameQuerySet(QuerySet):
         dropna : boolean, default True
         Do not include columns whose entries are all NaN
         """
-        df = self.to_dataframe(*fields)
-        values = kwargs.pop('values')
-        rows = kwargs.pop('rows')
-        cols = kwargs.pop('cols')
-        aggfunc = kwargs.pop('aggfunc', np.mean)
-        fill_value = kwargs.pop('fill_value', None)
-        margins = kwargs.pop('margins', False)
-        dropna = kwargs.pop('dropna', False)
+        df = self.to_dataframe(fields)
 
-        return pd.pivot_table(df, values=values,
-                              fill_value=fill_value,
-                              rows=rows, cols=cols,
-                              aggfunc=aggfunc,
-                              margins=margins,
+        return df.pivot_table(values=values, fill_value=fill_value, rows=rows,
+                              cols=cols, aggfunc=aggfunc, margins=margins,
                               dropna=dropna)
 
-    def to_timeseries(self, *fields, **kwargs):
+    def to_timeseries(self, fields=(), index=None, storage='wide', values=None,
+                      pivot_columns=None, freq=None, rs_kwargs=None):
         """
         A convenience method for creating a time series i.e the
         DataFrame index is instance of a DateTime or PeriodIndex
@@ -60,7 +53,7 @@ class DataFrameQuerySet(QuerySet):
             to span a relationship, just use the field name of related
             fields across models, separated by double underscores,
 
-       index: specify the field to use  for the index. If the index
+        index: specify the field to use  for the index. If the index
             field is not in the field list it will be appended. This
             is mandatory.
 
@@ -83,29 +76,24 @@ class DataFrameQuerySet(QuerySet):
 
         rs_kwargs: Arguments based on pandas.DataFrame.resample
         """
-        index = kwargs.pop('index', None)
-
-        if not index:
+        if index is None:
             raise AssertionError('You must supply an index field')
-
-        storage = kwargs.get('storage', 'wide')
-
-        if storage not in ['wide', 'long']:
+        if storage not in ('wide', 'long'):
             raise AssertionError('storage must be wide or long')
+        if rs_kwargs is None:
+            rs_kwargs = {}
 
         if storage == 'wide':
             df = self.to_dataframe(*fields, index=index)
         else:
             df = self.to_dataframe(*fields)
-            values = kwargs.get('values', None)
             if values is None:
                 raise AssertionError('You must specify a values field')
 
-            pivot_columns = kwargs.get('pivot_columns', None)
             if pivot_columns is None:
                 raise AssertionError('You must specify pivot_columns')
 
-            if isinstance(pivot_columns, list):
+            if isinstance(pivot_columns, (tuple, list)):
                 df['combined_keys'] = ''
                 for c in pivot_columns:
                     df['combined_keys'] += df[c].str.upper() + '.'
@@ -119,18 +107,14 @@ class DataFrameQuerySet(QuerySet):
                 df = df.pivot(index=index,
                               columns=pivot_columns,
                               values=values)
-        rule = kwargs.get('freq', None)
 
-        if rule:
-            rs_kwargs = kwargs.get('rs_kwargs', None)
-            if rs_kwargs:
-                df = df.resample(rule, **rs_kwargs)
-            else:
-                df = df.resample(rule)
+        if freq is not None:
+            df = df.resample(freq, **rs_kwargs)
 
         return df
 
-    def to_dataframe(self, *fields, **kwargs):
+    def to_dataframe(self, fields=(), index=None, fill_na=None,
+                     coerce_float=False):
         """
         Returns a DataFrame from the queryset
 
@@ -152,11 +136,10 @@ class DataFrameQuerySet(QuerySet):
         coerce_float: Attempt to convert the numeric non-string fields
                 like object, decimal etc. to float if possible
         """
-        index = kwargs.pop('index', None)
-        fill_na = kwargs.pop('fill_na', None)
-        coerce_float = kwargs.pop('coerce_float', False)
         if not fields:
-            fields = tuple(self.model._meta.get_all_field_names())
+            fields = self.model._meta.get_all_field_names()
+
+        fields = tuple(fields)
 
         if index is not None:
             # add it to the fields if not already there
@@ -171,7 +154,7 @@ class DataFrameQuerySet(QuerySet):
             df = df.set_index(index)
 
         if fill_na is not None:
-            if fill_na not in ['backfill', 'bfill', 'pad', 'ffill']:
+            if fill_na not in ('backfill', 'bfill', 'pad', 'ffill'):
                 df = df.fillna(value=fill_na)
             else:
                 df = df.fillna(method=fill_na)
