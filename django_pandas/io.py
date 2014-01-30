@@ -1,5 +1,5 @@
-from django.utils.encoding import force_text
 import pandas as pd
+from .utils import update_with_verbose
 
 
 def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False):
@@ -34,11 +34,15 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False):
             # Add it to the field names if not already there
             fieldnames = tuple(fieldnames) + (index_col,)
 
+        get_field = qs.model._meta.get_field
+        fields = [get_field(fieldname) for fieldname in fieldnames]
     else:
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
 
     recs = list(qs.values_list(*fieldnames))
+
+    update_with_verbose(recs, fields)
 
     df = pd.DataFrame.from_records(recs, columns=fieldnames,
                                    coerce_float=coerce_float)
