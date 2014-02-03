@@ -27,7 +27,7 @@ We thinking of implenenting the following API
 
    *index*: the model field name to use for the index
 
-   *coerce\_float*: The retuned columns (except the index) will be
+   *coerce\_float*: The returned columns (except the index) will be
    floats. This may be required if the queryset returns lots of null
    values
 
