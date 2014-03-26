@@ -31,6 +31,8 @@ def replace_pk(model):
     base_cache_key = get_base_cache_key(model)
 
     def inner(pk):
+        if pk is None:
+            return
         cache_key = base_cache_key % pk
         out = cache.get(cache_key, None)
         if out is None:
