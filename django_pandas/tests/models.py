@@ -19,6 +19,16 @@ class MyModel(models.Model):
         )
 
 
+class MyModelChoice(models.Model):
+    CHOICES = [
+        (1, 'First'),
+        (2, 'Second'),
+        (3, 'Third'),
+    ]
+    col1 = models.IntegerField(choices=CHOICES)
+    col2 = models.FloatField(null=True)
+
+
 class DataFrame(models.Model):
 
     index = models.CharField(max_length=1)
@@ -82,9 +92,41 @@ class PivotData(models.Model):
     objects = DataFrameManager()
 
     def __unicode__(self):
-        return "{} {} {} {} {} {}".format(self.row_col_a,
-                                          self.row_col_b,
-                                          self.row_col_c,
-                                          self.value_col_d,
-                                          self.value_col_e,
-                                          self.value_col_f)
+        return "{0} {1} {2} {3} {4} {5}".format(
+            self.row_col_a, self.row_col_b, self.row_col_c,
+            self.value_col_d, self.value_col_e, self.value_col_f
+        )
+
+
+class Trader(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Security(models.Model):
+    symbol = models.CharField(max_length=20)
+    isin = models.CharField(max_length=20)
+
+    def __unicode__(self):
+        return "{0}-{1}".format(self.isin, self.symbol)
+
+
+class TradeLog(models.Model):
+    trader = models.ForeignKey(Trader)
+    symbol = models.ForeignKey(Security)
+    log_datetime = models.DateTimeField()
+    price = models.FloatField()
+    volume = models.IntegerField()
+
+    objects = DataFrameManager()
+
+    def __unicode__(self):
+        return "{0}-{1}-{2}-{3}-{4}".format(
+            self.trader,
+            self.symbol,
+            self.log_datetime,
+            self.price,
+            self.volume
+        )

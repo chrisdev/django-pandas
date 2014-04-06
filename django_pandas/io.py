@@ -14,7 +14,8 @@ def to_fields(qs, fieldnames):
     return fields
 
 
-def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False):
+def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
+               verbose=True):
     """
     Returns a dataframe from a QuerySet
 
@@ -40,7 +41,6 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False):
         Attempt to convert values to non-string, non-numeric data (like
         decimal.Decimal) to floating point, useful for SQL result sets
    """
-
     if fieldnames:
         if index_col is not None and index_col not in fieldnames:
             # Add it to the field names if not already there
@@ -53,7 +53,8 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False):
 
     recs = list(qs.values_list(*fieldnames))
 
-    update_with_verbose(recs, fields)
+    if verbose:
+        update_with_verbose(recs, fields)
 
     df = pd.DataFrame.from_records(recs, columns=fieldnames,
                                    coerce_float=coerce_float)

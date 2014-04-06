@@ -12,6 +12,7 @@ projects
 Contributors
 ============
 * `Christopher Clarke <https://github.com/chrisdev>`_
+* `Bertrand Bordage <https://github.com/BertrandBordage`_
 
 Dependencies
 =============
@@ -70,7 +71,7 @@ in your settings module to include ``django_pandas``.
 
 IO Module
 ==========
-The ``django-pandas.io`` provides some convenience methods to facilitate the
+The ``django-pandas.io`` module provides some convenience methods to facilitate the
 creation of DataFrames from Django QuerySets and saving data to the underlying
 models.
 
@@ -153,20 +154,22 @@ Returns a DataFrame from the QuerySet
 
 Create a dataframe using all the fields  in your model as follows ::
 
-    df = MyModel.to_dataframe()
+    qs = MyModel.objects.all()
+
+    df = qs.to_dataframe()
 
 This will include you primary key create a DataFrame only from specified
 field names::
     
-     df = MyData.to_dataframe(['age', 'department', 'wage'])
+     df = qs.to_dataframe(['age', 'department', 'wage'])
 
 To set ``full_name`` as the index ::
 
-    MyData.to_dataframe(['age', 'department', 'wage', index='full_name'])
+    qs.to_dataframe(['age', 'department', 'wage', index='full_name'])
 
 You can use filters and excludes ::
 
-    MyData.filter(age__gt=20, department='IT').to_dataframe(index='full_name')
+    qs.filter(age__gt=20, department='IT').to_dataframe(index='full_name')
 
 to_timeseries
 --------------

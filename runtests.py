@@ -22,8 +22,8 @@ if not settings.configured:
                 "HOST": "",
                 "PORT": "",
             }
-       },
-   )
+        },
+    )
 
     settings.configure(**settings_dict)
 
