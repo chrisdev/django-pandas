@@ -2,6 +2,18 @@ import pandas as pd
 from .utils import update_with_verbose
 
 
+def to_fields(qs, fieldnames):
+    fields = []
+    for fieldname in fieldnames:
+        model = qs.model
+        for fieldname_part in fieldname.split('__'):
+            field = model._meta.get_field(fieldname_part)
+            if field.get_internal_type() == 'ForeignKey':
+                model = field.rel.to
+        fields.append(field)
+    return fields
+
+
 def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False):
     """
     Returns a dataframe from a QuerySet
@@ -34,8 +46,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False):
             # Add it to the field names if not already there
             fieldnames = tuple(fieldnames) + (index_col,)
 
-        get_field = qs.model._meta.get_field
-        fields = [get_field(fieldname) for fieldname in fieldnames]
+        fields = to_fields(qs, fieldnames)
     else:
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
