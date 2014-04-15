@@ -21,7 +21,8 @@ if not settings.configured:
                 "PASSWORD": "",
                 "HOST": "",
                 "PORT": "",
-            }},
+            }
+        },
     )
 
     settings.configure(**settings_dict)
@@ -41,5 +42,4 @@ def runtests(*test_args):
 
 
 if __name__ == '__main__':
-    #runtests('tests.RelatedFieldsTest')
     runtests()

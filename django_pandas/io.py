@@ -2,11 +2,16 @@ import pandas as pd
 from .utils import update_with_verbose
 
 
-def check_can_do_verbose(fieldnames):
+def to_fields(qs, fieldnames):
+    fields = []
     for fieldname in fieldnames:
-        if '__' in fieldname:
-            return False
-    return True
+        model = qs.model
+        for fieldname_part in fieldname.split('__'):
+            field = model._meta.get_field(fieldname_part)
+            if field.get_internal_type() == 'ForeignKey':
+                model = field.rel.to
+        fields.append(field)
+    return fields
 
 
 def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
@@ -37,16 +42,11 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         decimal.Decimal) to floating point, useful for SQL result sets
    """
     if fieldnames:
-        verbose = check_can_do_verbose(fieldnames)
-
         if index_col is not None and index_col not in fieldnames:
             # Add it to the field names if not already there
             fieldnames = tuple(fieldnames) + (index_col,)
 
-        if verbose:
-            get_field = qs.model._meta.get_field
-
-            fields = [get_field(fieldname) for fieldname in fieldnames]
+        fields = to_fields(qs, fieldnames)
     else:
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
