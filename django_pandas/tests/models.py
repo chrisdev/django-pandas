@@ -27,6 +27,7 @@ class MyModelChoice(models.Model):
     ]
     col1 = models.IntegerField(choices=CHOICES)
     col2 = models.FloatField(null=True)
+    objects = DataFrameManager()
 
 
 class DataFrame(models.Model):

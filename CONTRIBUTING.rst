@@ -12,7 +12,7 @@ Please:
 - Write `good commit messages`_.
 - Ideally, squash_ your commits, i.e. make your pull requests just one commit.
 
-Thank you for considering to contribute to “pem”!
+Thank you for considering to contribute to ``django-pandas``.
 
 
 .. _`squash`: http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html

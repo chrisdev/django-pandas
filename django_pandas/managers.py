@@ -14,24 +14,40 @@ class DataFrameQuerySet(QuerySet):
         as a DataFrame
         Parameters
         ----------
-        fieldnames:  The model field names to utilise in creating the frame.
-            to span a relationship, just use the field name of related
-            fields across models, separated by double underscores,
-        values : column to aggregate, optional
-        rows : list of column names or arrays to group on
-            Keys to group on the x-axis of the pivot table
-        cols : list of column names or arrays to group on
-            Keys to group on the y-axis of the pivot table
-        aggfunc : function, default numpy.mean, or list of functions
-            If list of functions passed, the resulting pivot table will have
-            hierarchical columns whose top level are the function names
-            (inferred from the function objects themselves)
-        fill_value : scalar, default None
-            Value to replace missing values with
-        margins : boolean, default False
-            Add all row / columns (e.g. for subtotal / grand totals)
-        dropna : boolean, default True
-        Do not include columns whose entries are all NaN
+        fieldnames:  The model field names(columns) to utilise in creating
+                     the DataFrame. You can span a relationships in the usual
+                     Django ORM way by using the foreign key field name
+                     separated by double underscores and refer to a field
+                     in a related model.
+
+        values:  The field to use to calculate the values to aggregate.
+
+        rows:  The list of field names to group on
+               Keys to group on the x-axis of the pivot table
+
+        cols:  The list of column names or arrays to group on
+               Keys to group on the y-axis of the pivot table
+
+        aggfunc:  How to arregate the values. By default this would be
+                  ``numpy.mean``. A list of aggregates functions can be passed
+                  In this case the resulting pivot table will have
+                  hierarchical columns whose top level are the function names
+                 (inferred from the function objects themselves)
+
+        fill_value:  A scalar value to replace the missing values with
+
+        margins:  Boolean, default False Add all row / columns
+                  (e.g. for subtotal / grand totals)
+
+        dropna:  Boolean, default True.
+                 Do not include columns whose entries are all NaN
+
+        verbose: If  this is ``True`` then populate the DataFrame with the
+                 human readable versions for foreign key fields else
+                 the primary keys values will be used for foreign key fields.
+                 The human readable version of the foreign key field is
+                 defined in the ``__unicode__`` or ``__str__``
+                 methods of the related class definition
         """
         df = self.to_dataframe(fieldnames, verbose=verbose)
 
@@ -44,38 +60,70 @@ class DataFrameQuerySet(QuerySet):
                       values=None, pivot_columns=None, freq=None,
                       rs_kwargs=None):
         """
-        A convenience method for creating a time series i.e the
-        DataFrame index is instance of a DateTime or PeriodIndex
+        A convenience method for creating a time series DataFrame i.e the
+        DataFrame index will be an instance of  DateTime or PeriodIndex
 
         Parameters
         ----------
 
-        fieldnames:  The model field names to utilise in creating the frame.
-            to span a relationship, just use the field name of related
-            fields across models, separated by double underscores,
+        fieldnames:  The model field names(columns) to utilise in creating
+                     the DataFrame. You can span a relationships in the usual
+                     Django ORM way by using the foreign key field name
+                     separated by double underscores and refer to a field
+                     in a related model.
 
-        index: specify the field to use  for the index. If the index
-            field is not in the field list it will be appended. This
-            is mandatory.
+        index:  specify the field to use  for the index. If the index
+                field is not in fieldnames it will be appended. This
+                is mandatory for timeseries.
 
-        storage:  Specify if the queryset uses the `wide` or `long` format
-            for data.
+        storage:  Specify if the queryset uses the
+                  ``wide`` format
 
-        pivot_column: Required once the you specify `long` format
-            storage. This could either be a list or string identifying
-            the field name or combination of field. If the pivot_column
-            is a single column then the unique values in this column become
-            a new columns in the DataFrame
-            If the pivot column is a list the values in these columns are
-            concatenated (using the '-' as a separator)
-            and these values are used for the new timeseries columns
+                  date       |  col1| col2| col3|
+                  -----------|------|-----|-----|
+                  2001-01-01-| 100.5| 23.3|  2.2|
+                  2001-02-01-| 106.3| 17.0|  4.6|
+                  2001-03-01-| 111.7| 11.1|  0.7|
 
-        values: Also required if you utilize the `long` storage the
-            values column name is use for populating new frame values
+                  or the `long` format.
 
-        freq: the offset string or object representing a target conversion
+                  date       |values| names|
+                  -----------|------|------|
+                  2001-01-01-| 100.5|  col1|
+                  2001-02-01-| 106.3|  col1|
+                  2001-03-01-| 111.7|  col1|
+                  2001-01-01-|  23.3|  col2|
+                  2001-02-01-|  17.0|  col2|
+                  2001-01-01-|  23.3|  col2|
+                  2001-02-01-|   2.2|  col3|
+                  2001-03-01-|   4.6|  col3|
+                  2001-03-01-|   0.7|  col3|
 
-        rs_kwargs: Arguments based on pandas.DataFrame.resample
+
+        pivot_column:  Required once the you specify `long` format
+                       storage. This could either be a list or string
+                       identifying the field name or combination of field.
+                       If the pivot_column is a single column then the
+                       unique values in this column become a new columns in
+                       the DataFrame If the pivot column is a list the values
+                       in these columns are concatenated (using the '-'
+                       as a separator) and these values are used for the new
+                       timeseries columns
+
+        values:  Also required if you utilize the `long` storage the
+                 values column name is use for populating new frame values
+
+        freq:  The offset string or object representing a target conversion
+
+        rs_kwargs:  A dictonary of keyword arguments based on the
+                    ``pandas.DataFrame.resample`` method
+
+        verbose:  If  this is ``True`` then populate the DataFrame with the
+                  human readable versions of any foreign key fields else use
+                  the primary keys values.
+                  The human readable version of the foreign key field is
+                  defined in the ``__unicode__`` or ``__str__``
+                  methods of the related class definition
         """
         if index is None:
             raise AssertionError('You must supply an index field')
@@ -114,7 +162,7 @@ class DataFrameQuerySet(QuerySet):
 
         return df
 
-    def to_dataframe(self, fieldnames=(), verbose=True, index=None, fill_na=None,
+    def to_dataframe(self, fieldnames=(), verbose=True, index=None,
                      coerce_float=False):
         """
         Returns a DataFrame from the queryset
@@ -122,31 +170,29 @@ class DataFrameQuerySet(QuerySet):
         Paramaters
         -----------
 
-        fieldnames:  The model fields to utilise in creating the frame.
-            to span a relationship, just use the field name of related
-            fields across models, separated by double underscores,
+        fieldnames:  The model field names(columns) to utilise in creating
+                     the DataFrame. You can span a relationships in the usual
+                     Django ORM way by using the foreign key field name
+                     separated by double underscores and refer to a field
+                     in a related model.
 
 
-        index: specify the field to use  for the index. If the index
-               field is not in the field list it will be appended
+        index:  specify the field to use  for the index. If the index
+                field is not in fieldnames it will be appended. This
+                is mandatory for timeseries.
 
-        fill_na: fill in missing observations using one of the following
-                 this is a string  specifying a pandas fill method
-                 {'backfill, 'bill', 'pad', 'ffill'} or a scalar value
+        verbose: If  this is ``True`` then populate the DataFrame with the
+                 human readable versions for foreign key fields else
+                 the primary keys values will be used for foreign key fields.
+                 The human readable version of the foreign key field is
+                 defined in the ``__unicode__`` or ``__str__``
+                 methods of the related class definition
 
-        coerce_float: Attempt to convert the numeric non-string data
-                like object, decimal etc. to float if possible
         """
 
         df = read_frame(self, fieldnames=fieldnames, verbose=verbose,
                         index_col=index,
                         coerce_float=coerce_float)
-
-        if fill_na is not None:
-            if fill_na not in ('backfill', 'bfill', 'pad', 'ffill'):
-                df = df.fillna(value=fill_na)
-            else:
-                df = df.fillna(method=fill_na)
 
         return df
 
