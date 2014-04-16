@@ -1,7 +1,10 @@
 from django.test import TestCase
 import pandas as pd
 import numpy as np
-from .models import DataFrame, WideTimeSeries, LongTimeSeries, PivotData
+from .models import (
+    DataFrame, WideTimeSeries,
+    LongTimeSeries, PivotData, MyModelChoice
+)
 import pandas.util.testing as tm
 
 
@@ -112,6 +115,38 @@ class TimeSeriesTest(TestCase):
                          df1.index.month.tolist())
 
         self.assertIsInstance(df1.index, pd.tseries.period.PeriodIndex)
+
+    def test_bad_args_wide_ts(self):
+        qs = WideTimeSeries.objects.all()
+        rs_kwargs = {'how': 'sum', 'kind': 'period'}
+        kwargs = {
+            'fieldnames': ['col1', 'col2'],
+            'freq': 'M', 'rs_kwargs': rs_kwargs
+        }
+        self.assertRaises(AssertionError, qs.to_timeseries, **kwargs)
+        kwargs2 = {
+            'index': 'date_ix',
+            'fieldnames': ['col1', 'col2'],
+            'storage': 'big',
+            'freq': 'M', 'rs_kwargs': rs_kwargs
+        }
+        self.assertRaises(AssertionError, qs.to_timeseries, **kwargs2)
+
+    def test_bad_args_long_ts(self):
+        qs = LongTimeSeries.objects.all()
+        kwargs = {
+            'index': 'date_ix',
+            'pivot_columns': 'series_name',
+            'values' : 'value',
+            'storage' : 'long'}
+        kwargs.pop('values')
+        self.assertRaises(AssertionError, qs.to_timeseries, **kwargs)
+        kwargs['values'] = 'value'
+        kwargs.pop('pivot_columns')
+        self.assertRaises(AssertionError, qs.to_timeseries, **kwargs)
+        ##df = qs.to_timeseries(index='date_ix', pivot_columns='series_name',
+                                ##values='value',
+                                ##storage='long')
 
 
 class PivotTableTest(TestCase):

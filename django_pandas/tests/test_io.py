@@ -4,7 +4,6 @@ import numpy as np
 from .models import MyModel, Trader, Security, TradeLog, MyModelChoice
 from django_pandas.io import read_frame
 
-
 class IOTest(TestCase):
 
     def setUp(self):
@@ -70,7 +69,7 @@ class RelatedFieldsTest(TestCase):
         bob = Trader.objects.create(name="Jim Brown")
         fish = Trader.objects.create(name="Fred Fish")
         abc = Security.objects.create(symbol='ABC', isin='999901')
-        zyz = Security.objects.create(symbol='ZYZ', isin='999901')
+        zyz = Security.objects.create(symbol='ZYZ', isin='999907')
         TradeLog.objects.create(trader=bob, symbol=abc,
                                 log_datetime='2013-01-01T09:30:00',
                                 price=30, volume=300)
@@ -96,10 +95,33 @@ class RelatedFieldsTest(TestCase):
                                 log_datetime='2013-01-01T11:00:00',
                                 price=30, volume=300)
 
-    def test_related(self):
+    def test_verbose(self):
+        #import ipdb; ipdb.set_trace() ###BREAK-POINT
+        qs = TradeLog.objects.all()
+        df = read_frame(qs, verbose=True)
+        self.assertListEqual(
+            list(qs.values_list('trader__name', flat=True)),
+            df.trader.tolist()
+        )
+        df1 = read_frame(qs, verbose=False)
+        self.assertListEqual(
+            list(qs.values_list('trader__pk', flat=True)),
+            df1.trader.tolist()
+        )
+    def test_related_cols(self):
         qs = TradeLog.objects.all()
         cols = ['log_datetime', 'symbol', 'symbol__isin', 'trader__name',
                 'price', 'volume']
-        df = read_frame(qs, cols)
+        df = read_frame(qs, cols, verbose=False)
 
         self.assertEqual(df.shape, (qs.count(), len(cols)))
+        self.assertListEqual(
+            list(qs.values_list('symbol__isin', flat=True)),
+            df.symbol__isin.tolist()
+        )
+        self.assertListEqual(
+            list(qs.values_list('trader__name', flat=True)),
+            df.trader__name.tolist()
+        )
+
+
