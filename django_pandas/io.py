@@ -53,11 +53,12 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
 
     recs = list(qs.values_list(*fieldnames))
 
-    if verbose:
-        update_with_verbose(recs, fields)
-
     df = pd.DataFrame.from_records(recs, columns=fieldnames,
                                    coerce_float=coerce_float)
+
+    if verbose:
+        update_with_verbose(df, fieldnames, fields)
+
     if index_col is not None:
         df.set_index(index_col, inplace=True)
 

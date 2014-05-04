@@ -1,5 +1,6 @@
 # coding: utf-8
 
+from math import isnan
 from django.core.cache import cache
 from django.utils.encoding import force_text
 
@@ -31,7 +32,7 @@ def replace_pk(model):
     base_cache_key = get_base_cache_key(model)
 
     def inner(pk_list):
-        cache_keys = [None if pk is None else base_cache_key % pk
+        cache_keys = [None if isnan(pk) else base_cache_key % pk
                       for pk in pk_list]
         out_dict = cache.get_many(frozenset(cache_keys))
         try:
@@ -40,7 +41,8 @@ def replace_pk(model):
         except KeyError:
             out_dict = {
                 base_cache_key % obj.pk: force_text(obj)
-                for obj in model.objects.filter(pk__in=frozenset(pk_list))}
+                for obj in model.objects.filter(pk__in={pk for pk in pk_list
+                                                        if not isnan(pk)})}
             cache.set_many(out_dict)
             out_list = map(out_dict.get, cache_keys)
         return out_list
@@ -48,32 +50,27 @@ def replace_pk(model):
     return inner
 
 
-def build_update_functions(fields):
+def build_update_functions(fieldnames, fields):
     update_functions = []
 
-    for field_index, field in enumerate(fields):
+    for fieldname, field in zip(fieldnames, fields):
         if field.choices:
             choices = {k: force_text(v)
                        for k, v in field.flatchoices}
-            update_functions.append((field_index,
+            update_functions.append((fieldname,
                                      replace_from_choices(choices)))
 
         elif field.get_internal_type() == 'ForeignKey':
-            update_functions.append((field_index, replace_pk(field.rel.to)))
+            update_functions.append((fieldname, replace_pk(field.rel.to)))
 
     return update_functions
 
 
-def update_with_verbose(values_list, fields):
-    update_functions = build_update_functions(fields)
+def update_with_verbose(df, fieldnames, fields):
+    update_functions = build_update_functions(fieldnames, fields)
 
     if not update_functions:
         return
 
-    for i, line in enumerate(values_list):
-        values_list[i] = list(line)
-
-    for field_index, function in update_functions:
-        values = function([l[field_index] for l in values_list])
-        for line, value in zip(values_list, values):
-            line[field_index] = value
+    for fieldname, function in update_functions:
+        df[fieldname] = function(df[fieldname])
