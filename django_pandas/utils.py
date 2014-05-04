@@ -5,8 +5,8 @@ from django.utils.encoding import force_text
 
 
 def replace_from_choices(choices):
-    def inner(value):
-        return force_text(choices.get(value, value), strings_only=True)
+    def inner(values):
+        return [choices.get(v, v) for v in values]
     return inner
 
 
@@ -30,15 +30,20 @@ def invalidate_signal_handler(sender, **kwargs):
 def replace_pk(model):
     base_cache_key = get_base_cache_key(model)
 
-    def inner(pk):
-        if pk is None:
-            return
-        cache_key = base_cache_key % pk
-        out = cache.get(cache_key, None)
-        if out is None:
-            out = force_text(model.objects.get(pk=pk))
-            cache.set(cache_key, out)
-        return out
+    def inner(pk_list):
+        cache_keys = [None if pk is None else base_cache_key % pk
+                      for pk in pk_list]
+        out_dict = cache.get_many(frozenset(cache_keys))
+        try:
+            out_list = [None if k is None else out_dict[k]
+                        for k in cache_keys]
+        except KeyError:
+            out_dict = {
+                base_cache_key % obj.pk: force_text(obj)
+                for obj in model.objects.filter(pk__in=frozenset(pk_list))}
+            cache.set_many(out_dict)
+            out_list = map(out_dict.get, cache_keys)
+        return out_list
 
     return inner
 
@@ -48,11 +53,12 @@ def build_update_functions(fields):
 
     for field_index, field in enumerate(fields):
         if field.choices:
-            choices = dict(field.flatchoices)
+            choices = {k: force_text(v)
+                       for k, v in field.flatchoices}
             update_functions.append((field_index,
                                      replace_from_choices(choices)))
 
-        if field.get_internal_type() == 'ForeignKey':
+        elif field.get_internal_type() == 'ForeignKey':
             update_functions.append((field_index, replace_pk(field.rel.to)))
 
     return update_functions
@@ -64,8 +70,10 @@ def update_with_verbose(values_list, fields):
     if not update_functions:
         return
 
-    for line_index, line in enumerate(values_list):
-        line = list(line)
-        values_list[line_index] = line
-        for field_index, function in update_functions:
-            line[field_index] = function(line[field_index])
+    for i, line in enumerate(values_list):
+        values_list[i] = list(line)
+
+    for field_index, function in update_functions:
+        values = function([l[field_index] for l in values_list])
+        for line, value in zip(values_list, values):
+            line[field_index] = value
