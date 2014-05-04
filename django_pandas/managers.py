@@ -143,10 +143,10 @@ class DataFrameQuerySet(QuerySet):
                         coerce_float=coerce_float)
 
         if fill_na is not None:
-            if fill_na not in ('backfill', 'bfill', 'pad', 'ffill'):
-                df.fillna(value=fill_na, inplace=True)
-            else:
+            if fill_na in ('backfill', 'bfill', 'pad', 'ffill'):
                 df.fillna(method=fill_na, inplace=True)
+            else:
+                df.fillna(value=fill_na, inplace=True)
 
         return df
 
