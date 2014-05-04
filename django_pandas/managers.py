@@ -144,9 +144,9 @@ class DataFrameQuerySet(QuerySet):
 
         if fill_na is not None:
             if fill_na not in ('backfill', 'bfill', 'pad', 'ffill'):
-                df = df.fillna(value=fill_na)
+                df.fillna(value=fill_na, inplace=True)
             else:
-                df = df.fillna(method=fill_na)
+                df.fillna(method=fill_na, inplace=True)
 
         return df
 

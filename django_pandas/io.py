@@ -59,6 +59,6 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     df = pd.DataFrame.from_records(recs, columns=fieldnames,
                                    coerce_float=coerce_float)
     if index_col is not None:
-        df = df.set_index(index_col)
+        df.set_index(index_col, inplace=True)
 
     return df
