@@ -12,7 +12,7 @@ projects
 Contributors
 ============
 * `Christopher Clarke <https://github.com/chrisdev>`_
-* `Bertrand Bordage <https://github.com/BertrandBordage`_
+* `Bertrand Bordage <https://github.com/BertrandBordage>`_
 
 Dependencies
 =============
