@@ -96,7 +96,6 @@ class RelatedFieldsTest(TestCase):
                                 price=30, volume=300)
 
     def test_verbose(self):
-        #import ipdb; ipdb.set_trace() ###BREAK-POINT
         qs = TradeLog.objects.all()
         df = read_frame(qs, verbose=True)
         self.assertListEqual(

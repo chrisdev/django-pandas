@@ -43,7 +43,7 @@ def replace_pk(model):
                 for obj in model.objects.filter(pk__in={pk for pk in pk_list
                                                         if pk is not None})}
             cache.set_many(out_dict)
-            out_list = map(out_dict.get, cache_keys)
+            out_list = list(map(out_dict.get, cache_keys))
         return out_list
 
     return inner

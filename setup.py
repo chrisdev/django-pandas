@@ -5,8 +5,12 @@ long_description = (
     open('README.rst').read() + '\n\n' +
     open('CHANGES.rst').read()
 )
+MAJOR = 0
+MINOR = 2
+MICRO = 0
 
-VERSION = __import__('django_pandas').__version__
+VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
+
 setup(
     name='django-pandas',
     version=VERSION,
@@ -17,7 +21,7 @@ setup(
     url='https://github.com/chrisdev/django-pandas/',
     packages=find_packages(),
     install_requires=[
-        'Django>=1.4.5',
+        'Django>=1.4.2',
         'django-model-utils>=1.4.0',
         'pandas>=0.12.0',
     ],
@@ -28,15 +32,14 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
         'Framework :: Django',
     ],
     zip_safe=False,
-    tests_require=["Django>=1.4.5",
-                   "numpy>=1.6.1",
-                   "django-model-utils>-1.4.0",
+    tests_require=["Django>=1.4.2",
+                   "django-model-utils>=1.4.0",
                    "pandas>=0.12.0",
                    ],
     test_suite="runtests.runtests"
