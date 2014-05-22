@@ -1,4 +1,6 @@
 import pandas as pd
+from django.db import connections
+from pandas.io.sql import read_frame
 from .utils import update_with_verbose
 
 
@@ -51,10 +53,11 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
 
-    recs = list(qs.values_list(*fieldnames))
-
-    df = pd.DataFrame.from_records(recs, columns=fieldnames,
-                                   coerce_float=coerce_float)
+    compiler = qs.query.get_compiler(using=qs.db)
+    connection = connections[qs.db]
+    sql, args = compiler.as_sql()
+    df = read_frame(sql, connection, coerce_float=coerce_float, params=args)
+    df.columns = qs.field_names
 
     if verbose:
         update_with_verbose(df, fieldnames, fields)
