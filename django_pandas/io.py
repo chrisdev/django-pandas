@@ -57,7 +57,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     connection = connections[qs.db]
     query, args = compiler.as_sql()
     df = sql.read_frame(query, connection, coerce_float=coerce_float, params=args)
-    df.columns = qs.field_names
+    df.columns = fieldnames
 
     if verbose:
         update_with_verbose(df, fieldnames, fields)
