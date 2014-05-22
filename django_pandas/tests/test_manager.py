@@ -43,6 +43,16 @@ class DataFrameTest(TestCase):
         n, c = df2.shape
         self.assertEqual((n, c), (3, 3))
 
+    def test_values_list_qs(self):
+        qs = DataFrame.objects.values_list('col1', 'col2')
+        df = qs.to_dataframe()
+        self.assertNotIn('id', df.columns.values.tolist())
+
+    def test_values_qs(self):
+        qs = DataFrame.objects.values('col1', 'col2')
+        df = qs.to_dataframe()
+        self.assertNotIn('id', df.columns.values.tolist())
+
 
 class TimeSeriesTest(TestCase):
     def unpivot(self, frame):
