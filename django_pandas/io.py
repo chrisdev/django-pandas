@@ -55,8 +55,8 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
 
     compiler = qs.query.get_compiler(using=qs.db)
     connection = connections[qs.db]
-    sql, args = compiler.as_sql()
-    df = sql.read_frame(sql, connection, coerce_float=coerce_float, params=args)
+    query, args = compiler.as_sql()
+    df = sql.read_frame(query, connection, coerce_float=coerce_float, params=args)
     df.columns = qs.field_names
 
     if verbose:
