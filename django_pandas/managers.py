@@ -1,9 +1,9 @@
-from django.db.models.query import QuerySet
+from django.db.models.query import QuerySet, ValuesListQuerySet, ValuesQuerySet
 from model_utils.managers import PassThroughManager
 from .io import read_frame
 
 
-class DataFrameQuerySet(QuerySet):
+class DataFrameMixin(object):
 
     def to_pivot_table(self, fieldnames=(), verbose=True,
                        values=None, rows=None, cols=None,
@@ -189,6 +189,55 @@ class DataFrameQuerySet(QuerySet):
                           index_col=index, coerce_float=coerce_float)
 
 
+class ValuesMixin(object):
+    """
+    Mixin for overriding return type for values() and values_list().
+    """
+
+    def values(self, *fields):
+        return self._clone(klass=DataFrameValuesQuerySet, setup=True, _fields=fields)
+
+    def values_list(self, *fields, **kwargs):
+        flat = kwargs.pop('flat', False)
+        if kwargs:
+            raise TypeError('Unexpected keyword arguments to values_list: %s'
+                    % (list(kwargs),))
+        if flat and len(fields) > 1:
+            raise TypeError("'flat' is not valid when values_list is called with more than one field.")
+        return self._clone(klass=DataFrameValuesListQuerySet, setup=True, flat=flat,
+                _fields=fields)
+
+
+class ConstraintValuesMixin(object):
+    """
+    Limits field list for values() and values_list() with original
+    field list.
+    """
+
+    def values(self, *fields):
+        fields = filter(lambda f: f in self._fields, fields)
+        return super(ConstraintValuesMixin, self).values(*fields)
+
+    def values_list(self, *fields, **kwargs):
+        fields = filter(lambda f: f in self._fields, fields)
+        return super(ConstraintValuesMixin, self).values_list(*fields, **kwargs)
+
+
+class DataFrameValuesQuerySet(DataFrameMixin, ConstraintValuesMixin,
+                              ValuesMixin, ValuesQuerySet):
+    pass
+
+
+class DataFrameValuesListQuerySet(DataFrameMixin, ConstraintValuesMixin,
+                                  ValuesMixin, ValuesListQuerySet):
+    pass
+
+
+class DataFrameQuerySet(DataFrameMixin, ValuesMixin, QuerySet):
+    pass
+
+
 class DataFrameManager(PassThroughManager):
+
     def get_query_set(self):
         return DataFrameQuerySet(self.model)

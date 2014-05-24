@@ -1,4 +1,6 @@
 import pandas as pd
+from django.db import connections
+from pandas.io.sql import execute, _safe_fetch
 from .utils import update_with_verbose
 
 
@@ -47,17 +49,25 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         fields = to_fields(qs, fieldnames)
     else:
         fields = qs.model._meta.fields
-        fieldnames = [f.name for f in fields]
+        fieldnames = getattr(qs, '_fields', None) or [f.name for f in fields]
 
-    recs = list(qs.values_list(*fieldnames))
+    qs = qs.values_list(*fieldnames)
+    compiler = qs.query.get_compiler(using=qs.db)
+    connection = connections[qs.db]
+    query, args = compiler.as_sql()
 
-    df = pd.DataFrame.from_records(recs, columns=fieldnames,
-                                   coerce_float=coerce_float)
+    # because pandas.io.sql.read_frame always runs con.commit(),
+    # some code extracted from there.
+    cur = execute(query, connection, params=args)
+    rows = _safe_fetch(cur)
+    cur.close()
 
-    if verbose:
-        update_with_verbose(df, fieldnames, fields)
+    df = pd.DataFrame.from_records(rows, columns=fieldnames, coerce_float=coerce_float)
 
     if index_col is not None:
         df.set_index(index_col, inplace=True)
+
+    if verbose:
+        update_with_verbose(df, fieldnames, fields)
 
     return df
