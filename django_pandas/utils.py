@@ -1,5 +1,6 @@
 # coding: utf-8
 
+from math import isnan
 from django.core.cache import cache
 from django.utils.encoding import force_text
 
@@ -31,7 +32,7 @@ def replace_pk(model):
     base_cache_key = get_base_cache_key(model)
 
     def inner(pk_list):
-        cache_keys = [None if pk is None else base_cache_key % pk
+        cache_keys = [None if isnan(pk) else base_cache_key % pk
                       for pk in pk_list]
         out_dict = cache.get_many(frozenset(cache_keys))
         try:
@@ -41,7 +42,7 @@ def replace_pk(model):
             out_dict = {
                 base_cache_key % obj.pk: force_text(obj)
                 for obj in model.objects.filter(pk__in={pk for pk in pk_list
-                                                        if pk is not None})}
+                                                        if not isnan(pk)})}
             cache.set_many(out_dict)
             out_list = list(map(out_dict.get, cache_keys))
         return out_list
