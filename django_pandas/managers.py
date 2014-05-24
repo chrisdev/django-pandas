@@ -125,10 +125,8 @@ class DataFrameQuerySet(QuerySet):
                   defined in the ``__unicode__`` or ``__str__``
                   methods of the related class definition
         """
-        if index is None:
-            raise AssertionError('You must supply an index field')
-        if storage not in ('wide', 'long'):
-            raise AssertionError('storage must be wide or long')
+        assert index is not None, 'You must supply an index field'
+        assert storage in ('wide', 'long'), 'storage must be wide or long'
         if rs_kwargs is None:
             rs_kwargs = {}
 
@@ -136,11 +134,9 @@ class DataFrameQuerySet(QuerySet):
             df = self.to_dataframe(fieldnames, verbose=verbose, index=index)
         else:
             df = self.to_dataframe(fieldnames, verbose=verbose)
-            if values is None:
-                raise AssertionError('You must specify a values field')
+            assert values is not None, 'You must specify a values field'
 
-            if pivot_columns is None:
-                raise AssertionError('You must specify pivot_columns')
+            assert pivot_columns is not None, 'You must specify pivot_columns'
 
             if isinstance(pivot_columns, (tuple, list)):
                 df['combined_keys'] = ''
