@@ -135,7 +135,6 @@ class DataFrameQuerySet(QuerySet):
         else:
             df = self.to_dataframe(fieldnames, verbose=verbose)
             assert values is not None, 'You must specify a values field'
-
             assert pivot_columns is not None, 'You must specify pivot_columns'
 
             if isinstance(pivot_columns, (tuple, list)):
@@ -186,11 +185,8 @@ class DataFrameQuerySet(QuerySet):
 
         """
 
-        df = read_frame(self, fieldnames=fieldnames, verbose=verbose,
-                        index_col=index,
-                        coerce_float=coerce_float)
-
-        return df
+        return read_frame(self, fieldnames=fieldnames, verbose=verbose,
+                          index_col=index, coerce_float=coerce_float)
 
 
 class DataFrameManager(PassThroughManager):

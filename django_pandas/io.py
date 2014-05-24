@@ -3,15 +3,13 @@ from .utils import update_with_verbose
 
 
 def to_fields(qs, fieldnames):
-    fields = []
     for fieldname in fieldnames:
         model = qs.model
         for fieldname_part in fieldname.split('__'):
             field = model._meta.get_field(fieldname_part)
             if field.get_internal_type() == 'ForeignKey':
                 model = field.rel.to
-        fields.append(field)
-    return fields
+        yield field
 
 
 def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
