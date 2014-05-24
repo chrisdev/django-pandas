@@ -70,10 +70,10 @@ class RelatedFieldsTest(TestCase):
         fish = Trader.objects.create(name="Fred Fish")
         abc = Security.objects.create(symbol='ABC', isin='999901')
         zyz = Security.objects.create(symbol='ZYZ', isin='999907')
-        TradeLog.objects.create(trader=bob, symbol=abc,
+        TradeLog.objects.create(trader=bob, symbol=None,
                                 log_datetime='2013-01-01T09:30:00',
                                 price=30, volume=300)
-        TradeLog.objects.create(trader=bob, symbol=abc,
+        TradeLog.objects.create(trader=bob, symbol=None,
                                 log_datetime='2013-01-01T10:00:00',
                                 price=30, volume=300)
         TradeLog.objects.create(trader=bob, symbol=abc,

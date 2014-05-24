@@ -116,7 +116,7 @@ class Security(models.Model):
 
 class TradeLog(models.Model):
     trader = models.ForeignKey(Trader)
-    symbol = models.ForeignKey(Security)
+    symbol = models.ForeignKey(Security, null=True)
     log_datetime = models.DateTimeField()
     price = models.FloatField()
     volume = models.IntegerField()
