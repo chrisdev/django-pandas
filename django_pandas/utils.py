@@ -1,7 +1,5 @@
 # coding: utf-8
 
-from itertools import izip
-
 from django.core.cache import cache
 from django.utils.encoding import force_text
 
@@ -58,7 +56,7 @@ def replace_pk(model):
 
 
 def build_update_functions(fieldnames, fields):
-    for fieldname, field in izip(fieldnames, fields):
+    for fieldname, field in zip(fieldnames, fields):
         if field.choices:
             choices = {k: force_text(v)
                        for k, v in field.flatchoices}
