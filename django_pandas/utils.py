@@ -37,7 +37,7 @@ def replace_pk(model):
         pk_series = pk_series.where(pk_series.notnull(), None)
         cache_keys = pk_series.apply(
             get_cache_key_from_pk, convert_dtype=False)
-        unique_cache_keys = filter(None, cache_keys.unique())
+        unique_cache_keys = list(filter(None, cache_keys.unique()))
 
         if not unique_cache_keys:
             return pk_series
@@ -47,7 +47,7 @@ def replace_pk(model):
         if len(out_dict) < len(unique_cache_keys):
             out_dict = {base_cache_key % obj.pk: force_text(obj)
                         for obj in model.objects.filter(
-                            pk__in=filter(None, pk_series.unique()))}
+                            pk__in=list(filter(None, pk_series.unique())))}
             cache.set_many(out_dict)
 
         return list(map(out_dict.get, cache_keys))
