@@ -1,8 +1,8 @@
 CHANGES
-=======
------------------
+========
+
 0.2.0 (2014-06-15)
-------------------
+--------------------
 
 - Added the ``io`` module so that DataFrames can be created from any 
   queryset so you don't need to to add a ``DataFrame manager`` to your
