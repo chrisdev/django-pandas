@@ -38,6 +38,13 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     coerce_float : boolean, default False
         Attempt to convert values to non-string, non-numeric data (like
         decimal.Decimal) to floating point, useful for SQL result sets
+
+    verbose:  boolean If  this is ``True`` then populate the DataFrame with the
+                human readable versions of any foreign key fields else use
+                the primary keys values.
+                The human readable version of the foreign key field is
+                defined in the ``__unicode__`` or ``__str__``
+                methods of the related class definition
    """
     if fieldnames:
         if index_col is not None and index_col not in fieldnames:

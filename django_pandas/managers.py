@@ -43,11 +43,8 @@ class DataFrameQuerySet(QuerySet):
                  Do not include columns whose entries are all NaN
 
         verbose: If  this is ``True`` then populate the DataFrame with the
-                 human readable versions for foreign key fields else
-                 the primary keys values will be used for foreign key fields.
-                 The human readable version of the foreign key field is
-                 defined in the ``__unicode__`` or ``__str__``
-                 methods of the related class definition
+                 human readable versions for foreign key fields else use the
+                 actual values set in the model
         """
         df = self.to_dataframe(fieldnames, verbose=verbose)
 
@@ -120,10 +117,8 @@ class DataFrameQuerySet(QuerySet):
 
         verbose:  If  this is ``True`` then populate the DataFrame with the
                   human readable versions of any foreign key fields else use
-                  the primary keys values.
-                  The human readable version of the foreign key field is
-                  defined in the ``__unicode__`` or ``__str__``
-                  methods of the related class definition
+                  the primary keys values else use the actual values set
+                  in the model.
         """
         assert index is not None, 'You must supply an index field'
         assert storage in ('wide', 'long'), 'storage must be wide or long'
@@ -178,11 +173,7 @@ class DataFrameQuerySet(QuerySet):
 
         verbose: If  this is ``True`` then populate the DataFrame with the
                  human readable versions for foreign key fields else
-                 the primary keys values will be used for foreign key fields.
-                 The human readable version of the foreign key field is
-                 defined in the ``__unicode__`` or ``__str__``
-                 methods of the related class definition
-
+                 use the actual values set in the model
         """
 
         return read_frame(self, fieldnames=fieldnames, verbose=verbose,

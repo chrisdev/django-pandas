@@ -17,7 +17,7 @@ Contributors
 Dependencies
 =============
 ``django-pandas`` supports `Django`_ (>=1.4.5) or later  
-and requires `django-model-utils`_ (>= 1.4.0) and `Pandas`_ (0.12.0). 
+and requires `django-model-utils`_ (>= 1.4.0) and `Pandas`_ (>= 0.12.0). 
 **Note** because of problems with the ``requires`` directive of setuptools
 you probably need to install ``numpy`` in your virtualenv  before you install
 this package or if you want to run the test suite ::
@@ -49,7 +49,7 @@ Start by creating a new ``virtualenv`` for your project ::
 
     mkvirtualenv myproject
 
-Next install ``numpy`` and optionally ``pandas`` ::
+Next install ``numpy`` and ``pandas`` and optionally ``scipy`` ::
 
     pip install numpy
     pip install pandas
@@ -59,51 +59,92 @@ on installing the ``Scipy`` stack.
 
 .. _scipy documentation: http://www.scipy.org/install.html
 
-Finally, install the development version of ``django-pandas``  
-from the github repository using ``pip``::
+Finally, install ``django-pandas`` using ``pip``::
+
+    pip install django-pandas
+
+or install the development version from ``github`` ::
     
     pip install https://github.com/chrisdev/django-pandas/tarball/master
 
 Usage
 ======
-To use ``django-pandas`` in your Django project, modify the ``INSTALLED_APPS``
-in your settings module to include ``django_pandas``. 
+
 
 IO Module
-==========
-The ``django-pandas.io`` module provides some convenience methods to facilitate the
-creation of DataFrames from Django QuerySets and saving data to the underlying
-models.
+----------
+The ``django-pandas.io`` module provides some convenience methods to 
+facilitate the creation of DataFrames from Django QuerySets.
 
 read_frame
------------
+^^^^^^^^^^^
 
 **Parameters**
 
-    - qs: The Django QuerySet.
-    - fieldnames: The model field names to use in creating the frame.
-              You can span a relationship in the usual Django way
-              by using  double underscores to specify a related field
-              in another model
-              You can span a relationship in the usual Django way
-              by using  double underscores to specify a related field
-              in another model
+    - qs: A Django QuerySet.
 
-    - index_col: specify the field to use  for the index. If the index
-                field is not in the field list it will be appended
+    - fieldnames: A list of model field names to use in creating the ``DataFrame``.
+                  You can span a relationship in the usual Django way
+                  by using  double underscores to specify a related field
+                  in another model
 
-    - coerce_float : boolean, default True
+    - index_col: Use specify the field name to use  for the ``DataFrame`` index. 
+                 If the index
+                 field is not in the field list it will be appended
+
+    - coerce_float : Boolean, defaults to True
                      Attempt to convert values to non-string, 
                      non-numeric objects (like decimal.Decimal) 
-                     to floating point, useful for SQL result sets
+                     to floating point.
+
+    - verbose:  If  this is ``True`` then populate the DataFrame with the
+                human readable versions of any foreign key or choice fields 
+                else use the actual values set in the model.
+
+
+Examples
+^^^^^^^^^
+Assume that this is your model::
+
+    class MyModel(models.Model):
+
+        full_name = models.CharField(max_length=25)
+        age = models.IntegerField()
+        department = models.CharField(max_length=3)
+        wage = models.FloatField()
+
+First create a query set::
+
+    from dango_pandas.io import read_frame
+    qs = MyModel.objects.all()
+
+To create a dataframe using all the fields in the underlying model ::
+
+    df = read_frame(qs)
+
+The `df` will contain human readable column values for foreign key and choice 
+fields. The `DataFrame` will include all the fields in the underlying 
+model including the primary key. 
+To create a DataFrame using specified field names::
+
+     df = read_frame(qs, fieldnames=['age', 'wage', 'full_name'])
+
+To set ``full_name`` as the ``DataFrame`` index ::
+
+    qs.to_dataframe(['age', 'wage', index='full_name'])
+
+You can use filters and excludes ::
+
+    qs.filter(age__gt=20, department='IT').to_dataframe(index='full_name')
+
 
 DataFrameManager
-=================
+-----------------
 ``django-pandas`` provides a custom manager to use with models that
 you want to render as Pandas Dataframes. The ``DataFrameManager``
 manager provides the ``to_dataframe`` method that returns 
 your models queryset as a Pandas DataFrame. To use the DataFrameManager, first
-override the default manager in your model's definition 
+override the default manager (`objects`) in your model's definition 
 as shown in the example below ::
     
     #models.py
@@ -124,33 +165,32 @@ This will give you access to the following QuerySet methods:
 
     - ``to_datafame``
     - ``to_timeseries``
-    - ``to_pivot table``
+    - ``to_pivot_table``
 
 to_dataframe
---------------
+^^^^^^^^^^^^^
 
 Returns a DataFrame from the QuerySet
 
 **Parameters**
 
     - fieldnames:  The model field names to utilise in creating the frame.
-                to span a relationship, just use the field name of related
+                to span a relationship, use the field name of related
                 fields across models, separated by double underscores,
 
 
     - index: specify the field to use  for the index. If the index
                 field is not in the field list it will be appended
 
-    - fill_na: fill in missing observations using one of the following
-                    this is a string  specifying a pandas fill method
-                    ('backfill, 'bill', 'pad', 'ffill') or a scalar value
-
     - coerce_float: Attempt to convert the numeric non-string data
                     like object, decimal etc. to float if possible
 
+    - verbose:  If  this is ``True`` then populate the DataFrame with the
+                human readable versions of any foreign key or choice fields 
+                else use the actual value set in the model.
 
-
-**Examples**
+Examples
+^^^^^^^^^
 
 Create a dataframe using all the fields  in your model as follows ::
 
@@ -158,10 +198,10 @@ Create a dataframe using all the fields  in your model as follows ::
 
     df = qs.to_dataframe()
 
-This will include you primary key create a DataFrame only from specified
-field names::
+This will include your primary key. To create a DataFrame using specified
+specified field names::
     
-     df = qs.to_dataframe(['age', 'department', 'wage'])
+     df = qs.to_dataframe(fieldnames=['age', 'department', 'wage'])
 
 To set ``full_name`` as the index ::
 
@@ -206,7 +246,12 @@ DataFrame index is instance of a DateTime or PeriodIndex
 
     - rs_kwargs: Arguments based on pandas.DataFrame.resample
 
-**Examples**
+    - verbose:  If  this is ``True`` then populate the DataFrame with the
+                human readable versions of any foreign key or choice fields 
+                else use the actual value set in the model.
+
+Examples
+^^^^^^^^^
 
 Using a *long* storage format ::
 
