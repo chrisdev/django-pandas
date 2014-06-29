@@ -163,7 +163,7 @@ as shown in the example below ::
 
 This will give you access to the following QuerySet methods:
 
-    - ``to_datafame``
+    - ``to_dataframe``
     - ``to_timeseries``
     - ``to_pivot_table``
 
