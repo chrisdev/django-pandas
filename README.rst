@@ -199,7 +199,7 @@ Create a dataframe using all the fields  in your model as follows ::
     df = qs.to_dataframe()
 
 This will include your primary key. To create a DataFrame using specified
-specified field names::
+field names::
     
      df = qs.to_dataframe(fieldnames=['age', 'department', 'wage'])
 
@@ -267,7 +267,7 @@ Using a *long* storage format ::
 Some sample data:::
 
     ========   =====       =====
-    date       mame        value
+    date_ix    series_name value
     ========   =====       ======
     2010-01-01  gdp        204699
 
@@ -301,7 +301,7 @@ Create a timeseries dataframe ::
                           storage='long')
     df.head()
 
-    date         gdp     inflation     wages
+    date_ix      gdp     inflation     wages
 
     2010-01-01   204966     2.0       100.7
 
