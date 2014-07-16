@@ -205,7 +205,7 @@ field names::
 
 To set ``full_name`` as the index ::
 
-    qs.to_dataframe(['age', 'department', 'wage', index='full_name'])
+    qs.to_dataframe(['age', 'department', 'wage'], index='full_name'])
 
 You can use filters and excludes ::
 
