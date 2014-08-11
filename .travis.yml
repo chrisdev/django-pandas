@@ -4,28 +4,27 @@ python:
   - 2.7
   - 3.3
   - 3.4
+  - "pypy"
 
 env:
-  - DJANGO=Django==1.4.12
-  - DJANGO=Django==1.5.7
-  - DJANGO=Django==1.6.4
+  - DJANGO=Django>=1.4.0,<1.5.0
+  - DJANGO=Django>=1.5.0,<1.6.0
+  - DJANGO=Django>=1.6.0,<1.7.0
 
 install:
-  - pip install $DJANGO
-  - pip install coverage coveralls
-  - pip install numpy>=1.6.1
-  - pip install django-model-utils >=1.4.0
-  - pip install pandas>=0.12.0
+  - travis_retry pip install $DJANGO
+  - travis_retry pip install coverage coveralls
+  - travis_retry pip install numpy>=1.6.1
+  - travis_retry pip install django-model-utils>=1.4.0
+  - travis_retry pip install pandas>=0.12.0
 
 script:
   - coverage run -a setup.py test
   - coverage report
 matrix:
   exclude:
-   - python: 3.2
-     env: DJANGO=Django==1.4.12
    - python: 3.3
-     env: DJANGO=Django==1.4.12
+     DJANGO=Django>=1.4.0,<1.5.0
    - python: 3.4
-     env: DJANGO=Django==1.4.12
+     DJANGO=Django>=1.4.0,<1.5.0
 after_success: coveralls
