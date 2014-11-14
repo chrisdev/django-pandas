@@ -45,9 +45,9 @@ def replace_pk(model):
         out_dict = cache.get_many(unique_cache_keys)
 
         if len(out_dict) < len(unique_cache_keys):
-            out_dict = {base_cache_key % obj.pk: force_text(obj)
+            out_dict = dict([(base_cache_key % obj.pk, force_text(obj))
                         for obj in model.objects.filter(
-                            pk__in=list(filter(None, pk_series.unique())))}
+                            pk__in=list(filter(None, pk_series.unique())))])
             cache.set_many(out_dict)
 
         return list(map(out_dict.get, cache_keys))
@@ -58,8 +58,8 @@ def replace_pk(model):
 def build_update_functions(fieldnames, fields):
     for fieldname, field in zip(fieldnames, fields):
         if field.choices:
-            choices = {k: force_text(v)
-                       for k, v in field.flatchoices}
+            choices = dict([(k, force_text(v))
+                       for k, v in field.flatchoices])
             yield fieldname, replace_from_choices(choices)
 
         elif field.get_internal_type() == 'ForeignKey':
