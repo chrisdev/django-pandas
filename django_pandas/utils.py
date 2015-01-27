@@ -57,12 +57,12 @@ def replace_pk(model):
 
 def build_update_functions(fieldnames, fields):
     for fieldname, field in zip(fieldnames, fields):
-        if field.choices:
+        if field and field.choices:
             choices = dict([(k, force_text(v))
                        for k, v in field.flatchoices])
             yield fieldname, replace_from_choices(choices)
 
-        elif field.get_internal_type() == 'ForeignKey':
+        elif field and field.get_internal_type() == 'ForeignKey':
             yield fieldname, replace_pk(field.rel.to)
 
 

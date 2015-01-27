@@ -1,5 +1,6 @@
 import pandas as pd
 from .utils import update_with_verbose
+import django
 
 
 def to_fields(qs, fieldnames):
@@ -52,11 +53,18 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
             fieldnames = tuple(fieldnames) + (index_col,)
 
         fields = to_fields(qs, fieldnames)
+    elif isinstance(qs, django.db.models.query.ValuesQuerySet):
+        fieldnames = qs.field_names + qs.aggregate_names + qs.extra_names
+        fields = [qs.model._meta.get_field(f) for f in qs.field_names] + \
+                 [None] * (len(qs.aggregate_names) + len(qs.extra_names))
     else:
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
 
-    recs = list(qs.values_list(*fieldnames))
+    if isinstance(qs, django.db.models.query.ValuesQuerySet):
+        recs = list(qs)
+    else:
+        recs = list(qs.values_list(*fieldnames))
 
     df = pd.DataFrame.from_records(recs, columns=fieldnames,
                                    coerce_float=coerce_float)

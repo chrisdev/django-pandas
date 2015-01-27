@@ -115,7 +115,7 @@ Assume that this is your model::
 
 First create a query set::
 
-    from dango_pandas.io import read_frame
+    from django_pandas.io import read_frame
     qs = MyModel.objects.all()
 
 To create a dataframe using all the fields in the underlying model ::
