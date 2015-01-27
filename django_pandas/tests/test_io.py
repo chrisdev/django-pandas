@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.db.models import Sum
 import pandas as pd
 import numpy as np
 from .models import MyModel, Trader, Security, TradeLog, MyModelChoice
@@ -35,6 +36,15 @@ class IOTest(TestCase):
         self.assertEqual(c, len(fields))
         df1 = read_frame(qs, ['col1', 'col2'])
         self.assertEqual(df1.shape, (qs.count(), 2))
+
+    def test_values(self):
+        qs = MyModel.objects.all()
+        qs = qs.extra(select={"ecol1": "col1+1"})
+        qs = qs.values("index_col", "ecol1", "col1")
+        qs = qs.annotate(scol1 = Sum("col1"))
+        df = read_frame(qs)
+        self.assertEqual(list(df.columns), [u'index_col', u'col1', u'scol1', u'ecol1'])
+        self.assertEqual(list(df["col1"]), list(df["scol1"]))
 
     def test_choices(self):
 
