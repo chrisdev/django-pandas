@@ -1,5 +1,11 @@
 CHANGES
 ========
+0.2.1 (2015-01-28)
+---------------------
+- Added Support for Values QuerySets 
+- Support for Python 2.6
+- Note we still have limited support for Django 1.7 but this will be coming in
+  the next release
 
 0.2.0 (2014-06-15)
 --------------------

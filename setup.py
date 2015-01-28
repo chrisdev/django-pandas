@@ -7,7 +7,7 @@ long_description = (
 )
 MAJOR = 0
 MINOR = 2
-MICRO = 0
+MICRO = 1
 
 VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
@@ -21,7 +21,7 @@ setup(
     url='https://github.com/chrisdev/django-pandas/',
     packages=find_packages(),
     install_requires=[
-        'Django>=1.4.2',
+        'Django>=1.4.2,<1.7',
         'django-model-utils>=1.4.0',
         'pandas>=0.12.0',
     ],
@@ -38,9 +38,10 @@ setup(
         'Framework :: Django',
     ],
     zip_safe=False,
-    tests_require=["Django>=1.4.2",
-                   "django-model-utils>=1.4.0",
-                   "pandas>=0.12.0",
+    tests_require=[
+        "Django>=1.4.2,<1.7",
+        "django-model-utils>=1.4.0",
+        "pandas>=0.12.0",
                    ],
     test_suite="runtests.runtests"
 
