@@ -28,6 +28,8 @@ if not settings.configured:
     )
 
     settings.configure(**settings_dict)
+    if django.VERSION >= (1, 7):
+        django.setup()
 
 
 def runtests(*test_args):
@@ -44,6 +46,4 @@ def runtests(*test_args):
 
 
 if __name__ == '__main__':
-    if django.VERSION >= (1, 7):
-        django.setup()
     runtests()
