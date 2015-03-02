@@ -24,6 +24,8 @@ script:
   - coverage report
 matrix:
   exclude:
+   - python: 2.6
+     env: DJANGO=Django==1.7.5
    - python: 3.2
      env: DJANGO=Django==1.4.12
    - python: 3.3
