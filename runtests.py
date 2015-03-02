@@ -2,6 +2,7 @@
 
 import os
 import sys
+import django
 
 from django.conf import settings
 
@@ -23,6 +24,7 @@ if not settings.configured:
                 "PORT": "",
             }
         },
+        MIDDLEWARE_CLASSES = ()
     )
 
     settings.configure(**settings_dict)
@@ -42,4 +44,6 @@ def runtests(*test_args):
 
 
 if __name__ == '__main__':
+    if django.VERSION >= (1, 7):
+        django.setup()
     runtests()
