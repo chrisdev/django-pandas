@@ -1,7 +1,9 @@
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django_pandas.managers import DataFrameManager
 
 
+@python_2_unicode_compatible
 class MyModel(models.Model):
     index_col = models.CharField(max_length=1)
     col1 = models.IntegerField()
@@ -9,7 +11,7 @@ class MyModel(models.Model):
     col3 = models.FloatField(null=True)
     col4 = models.IntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return "{} {} {} {}".format(
             self.index,
             self.col1,
@@ -30,6 +32,7 @@ class MyModelChoice(models.Model):
     objects = DataFrameManager()
 
 
+@python_2_unicode_compatible
 class DataFrame(models.Model):
 
     index = models.CharField(max_length=1)
@@ -40,7 +43,7 @@ class DataFrame(models.Model):
 
     objects = DataFrameManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return "{} {} {} {}".format(
             self.index,
             self.col1,
@@ -50,6 +53,7 @@ class DataFrame(models.Model):
         )
 
 
+@python_2_unicode_compatible
 class LongTimeSeries(models.Model):
     date_ix = models.DateTimeField()
     series_name = models.CharField(max_length=100)
@@ -57,12 +61,13 @@ class LongTimeSeries(models.Model):
 
     objects = DataFrameManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return "{} {} {}".format(self.date_ix,
                                  self.series_name,
                                  self.value)
 
 
+@python_2_unicode_compatible
 class WideTimeSeries(models.Model):
     date_ix = models.DateTimeField()
     col1 = models.FloatField()
@@ -72,7 +77,7 @@ class WideTimeSeries(models.Model):
 
     objects = DataFrameManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return "{} {} {} {}".format(
             self.date_ix,
             self.col1,
@@ -82,6 +87,7 @@ class WideTimeSeries(models.Model):
         )
 
 
+@python_2_unicode_compatible
 class PivotData(models.Model):
     row_col_a = models.CharField(max_length=15)
     row_col_b = models.CharField(max_length=15)
@@ -92,28 +98,31 @@ class PivotData(models.Model):
 
     objects = DataFrameManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return "{0} {1} {2} {3} {4} {5}".format(
             self.row_col_a, self.row_col_b, self.row_col_c,
             self.value_col_d, self.value_col_e, self.value_col_f
         )
 
 
+@python_2_unicode_compatible
 class Trader(models.Model):
     name = models.CharField(max_length=20)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
+@python_2_unicode_compatible
 class Security(models.Model):
     symbol = models.CharField(max_length=20)
     isin = models.CharField(max_length=20)
 
-    def __unicode__(self):
+    def __str__(self):
         return "{0}-{1}".format(self.isin, self.symbol)
 
 
+@python_2_unicode_compatible
 class TradeLog(models.Model):
     trader = models.ForeignKey(Trader)
     symbol = models.ForeignKey(Security, null=True)
@@ -123,7 +132,7 @@ class TradeLog(models.Model):
 
     objects = DataFrameManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return "{0}-{1}-{2}-{3}-{4}".format(
             self.trader,
             self.symbol,

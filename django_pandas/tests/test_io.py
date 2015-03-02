@@ -43,7 +43,7 @@ class IOTest(TestCase):
         qs = qs.values("index_col", "ecol1", "col1")
         qs = qs.annotate(scol1 = Sum("col1"))
         df = read_frame(qs)
-        self.assertEqual(list(df.columns), [u'index_col', u'col1', u'scol1', u'ecol1'])
+        self.assertEqual(list(df.columns), ['index_col', 'col1', 'scol1', 'ecol1'])
         self.assertEqual(list(df["col1"]), list(df["scol1"]))
 
     def test_choices(self):
