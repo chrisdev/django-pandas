@@ -140,3 +140,28 @@ class TradeLog(models.Model):
             self.price,
             self.volume
         )
+
+
+@python_2_unicode_compatible
+class Tag(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
+@python_2_unicode_compatible
+class MetaInfo(models.Model):
+    tags = models.ManyToManyField(Tag, blank=True )
+
+    def __str__(self):
+        return self.tags
+
+
+@python_2_unicode_compatible
+class Article(models.Model):
+    text = models.CharField(max_length=20)
+    metainfo = models.ForeignKey(MetaInfo, null=True)
+
+    def __str__(self):
+        return self.text
