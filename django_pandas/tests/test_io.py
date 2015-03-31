@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.db.models import Sum
 import pandas as pd
 import numpy as np
-from .models import MyModel, Trader, Security, TradeLog, MyModelChoice
+from .models import MyModel, Trader, Security, TradeLog, MyModelChoice, Tag, MetaInfo, Article
 from django_pandas.io import read_frame
 
 class IOTest(TestCase):
@@ -132,5 +132,25 @@ class RelatedFieldsTest(TestCase):
             list(qs.values_list('trader__name', flat=True)),
             df.trader__name.tolist()
         )
+
+
+class ManyToManyRelatedFieldsTest(TestCase):
+    TAG1_NAME = "IT"
+    TAG2_NAME = "Python"
+    TAG3_NAME = "Django"
+
+    def setUp(self):
+        tag1 = Tag.objects.create(name=ManyToManyRelatedFieldsTest.TAG1_NAME)
+        tag2 = Tag.objects.create(name=ManyToManyRelatedFieldsTest.TAG2_NAME)
+        tag3 = Tag.objects.create(name=ManyToManyRelatedFieldsTest.TAG3_NAME)
+        metainfo = MetaInfo.objects.create()
+        metainfo.tags.add(tag1, tag2, tag3)
+        Article.objects.create(text="", metainfo=metainfo)
+
+    def test_manytomany_related_cols(self):
+        qs = Article.objects.all()
+        cols = ['text', 'metainfo__tags__name']
+        df = read_frame(qs,cols)
+        self.assertListEqual(df.metainfo__tags__name.tolist(), [ManyToManyRelatedFieldsTest.TAG1_NAME, ManyToManyRelatedFieldsTest.TAG2_NAME, ManyToManyRelatedFieldsTest.TAG3_NAME])
 
 
