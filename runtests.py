@@ -34,15 +34,22 @@ if not settings.configured:
 
 def runtests(*test_args):
     if not test_args:
-        test_args = ['tests']
+        test_args = ['django_pandas']
 
     parent = os.path.dirname(os.path.abspath(__file__))
     sys.path.insert(0, parent)
 
-    from django.test.simple import DjangoTestSuiteRunner
-    failures = DjangoTestSuiteRunner(
-        verbosity=1, interactive=True, failfast=False).run_tests(test_args)
-    sys.exit(failures)
+    if django.VERSION < (1, 8):
+        from django.test.simple import DjangoTestSuiteRunner
+        failures = DjangoTestSuiteRunner(
+            verbosity=1, interactive=True, failfast=False).run_tests(['tests'])
+        sys.exit(failures)
+
+    else:
+        from django.test.runner import DiscoverRunner
+        failures = DiscoverRunner(
+            verbosity=1, interactive=True, failfast=False).run_tests(test_args)
+        sys.exit(failures)
 
 
 if __name__ == '__main__':
