@@ -2,7 +2,17 @@
 
 from django.core.cache import cache
 from django.utils.encoding import force_text
+import django
 
+def get_model_name(model):
+    """
+    Returns the name of the model
+    """
+    # model._meta.module_name is deprecated in django version 1.7 and removed in django version 1.8.
+    # It is replaced by model._meta.model_name
+    if django.VERSION < (1, 7):
+        return model._meta.module_name
+    return model._meta.model_name
 
 def replace_from_choices(choices):
     def inner(values):
@@ -12,7 +22,7 @@ def replace_from_choices(choices):
 
 def get_base_cache_key(model):
     return 'pandas_%s_%s_%%s_rendering' % (
-        model._meta.app_label, model._meta.module_name)
+        model._meta.app_label, get_model_name(model))
 
 
 def get_cache_key(obj):
