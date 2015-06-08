@@ -2,6 +2,7 @@
 
 from django.core.cache import cache
 from django.utils.encoding import force_text
+import django
 
 
 def replace_from_choices(choices):
@@ -11,8 +12,12 @@ def replace_from_choices(choices):
 
 
 def get_base_cache_key(model):
-    return 'pandas_%s_%s_%%s_rendering' % (
-        model._meta.app_label, model._meta.model_name)
+    if django.VERSION >= (1, 8):
+        model_name = model._meta.model_name
+    else:
+         model_name = model._meta.module_name
+
+    return 'pandas_%s_%s_%%s_rendering' % (model._meta.app_label, model_name)
 
 
 def get_cache_key(obj):
