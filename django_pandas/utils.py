@@ -12,7 +12,7 @@ def replace_from_choices(choices):
 
 def get_base_cache_key(model):
     return 'pandas_%s_%s_%%s_rendering' % (
-        model._meta.app_label, model._meta.module_name)
+        model._meta.app_label, model._meta.model_name)
 
 
 def get_cache_key(obj):
