@@ -5,6 +5,7 @@ import numpy as np
 from .models import MyModel, Trader, Security, TradeLog, MyModelChoice
 from django_pandas.io import read_frame
 
+
 class IOTest(TestCase):
 
     def setUp(self):
@@ -38,12 +39,14 @@ class IOTest(TestCase):
         self.assertEqual(df1.shape, (qs.count(), 2))
 
     def test_values(self):
+
         qs = MyModel.objects.all()
         qs = qs.extra(select={"ecol1": "col1+1"})
         qs = qs.values("index_col", "ecol1", "col1")
-        qs = qs.annotate(scol1 = Sum("col1"))
+        qs = qs.annotate(scol1=Sum("col1"))
         df = read_frame(qs)
-        self.assertEqual(list(df.columns), ['index_col', 'col1', 'scol1', 'ecol1'])
+        self.assertEqual(list(df.columns),
+                         ['index_col', 'col1', 'scol1', 'ecol1'])
         self.assertEqual(list(df["col1"]), list(df["scol1"]))
 
     def test_choices(self):
@@ -117,6 +120,7 @@ class RelatedFieldsTest(TestCase):
             list(qs.values_list('trader__pk', flat=True)),
             df1.trader.tolist()
         )
+
     def test_related_cols(self):
         qs = TradeLog.objects.all()
         cols = ['log_datetime', 'symbol', 'symbol__isin', 'trader__name',
@@ -132,5 +136,3 @@ class RelatedFieldsTest(TestCase):
             list(qs.values_list('trader__name', flat=True)),
             df.trader__name.tolist()
         )
-
-

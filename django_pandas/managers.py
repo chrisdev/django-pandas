@@ -1,6 +1,7 @@
 from django.db.models.query import QuerySet
 from model_utils.managers import PassThroughManager
 from .io import read_frame
+import django
 
 
 class DataFrameQuerySet(QuerySet):
@@ -48,8 +49,8 @@ class DataFrameQuerySet(QuerySet):
         """
         df = self.to_dataframe(fieldnames, verbose=verbose)
 
-        return df.pivot_table(values=values, fill_value=fill_value, rows=rows,
-                              cols=cols, aggfunc=aggfunc, margins=margins,
+        return df.pivot_table(values=values, fill_value=fill_value, index=rows,
+                              columns=cols, aggfunc=aggfunc, margins=margins,
                               dropna=dropna)
 
     def to_timeseries(self, fieldnames=(), verbose=True,
@@ -181,5 +182,10 @@ class DataFrameQuerySet(QuerySet):
 
 
 class DataFrameManager(PassThroughManager):
-    def get_query_set(self):
-        return DataFrameQuerySet(self.model)
+    if django.VERSION < (1, 7):
+        def get_query_set(self):
+            return DataFrameQuerySet(self.model)
+
+    else:
+        def get_queryset(self):
+            return DataFrameQuerySet(self.model)
