@@ -13,7 +13,7 @@ class MyModel(models.Model):
 
     def __str__(self):
         return "{} {} {} {}".format(
-            self.index,
+            self.index_col,
             self.col1,
             self.col2,
             self.col3,

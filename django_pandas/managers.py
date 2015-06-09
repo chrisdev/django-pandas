@@ -49,8 +49,8 @@ class DataFrameQuerySet(QuerySet):
         """
         df = self.to_dataframe(fieldnames, verbose=verbose)
 
-        return df.pivot_table(values=values, fill_value=fill_value, rows=rows,
-                              cols=cols, aggfunc=aggfunc, margins=margins,
+        return df.pivot_table(values=values, fill_value=fill_value, index=rows,
+                              columns=cols, aggfunc=aggfunc, margins=margins,
                               dropna=dropna)
 
     def to_timeseries(self, fieldnames=(), verbose=True,
