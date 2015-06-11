@@ -1,32 +1,36 @@
 language: python
 
-python: 2.7
+python:
+  - 2.6
+  - 2.7
+  - 3.3
+  - 3.4
 
 env:
-  - TOXENV=py26-django14
-  - TOXENV=py26-django15
-  - TOXENV=py26-django16
-  - TOXENV=py27-django14
-  - TOXENV=py27-django15
-  - TOXENV=py27-django15_nosouth
-  - TOXENV=py27-django16
-  - TOXENV=py27-django17
-  - TOXENV=py27-django18
-  - TOXENV=py32-django15
-  - TOXENV=py32-django16
-  - TOXENV=py32-django17
-  - TOXENV=py32-django18
-  - TOXENV=py33-django15
-  - TOXENV=py33-django16
-  - TOXENV=py33-django17
-  - TOXENV=py33-django18
-  - TOXENV=py34-django17
-  - TOXENV=py34-django18
+  - DJANGO=Django==1.4.18
+  - DJANGO=Django==1.5.12
+  - DJANGO=Django==1.6.10
+  - DJANGO=Django==1.7.3
+  - DJANGO=Django==1.8.2
 
 install:
-  - pip install --upgrade pip setuptools tox virtualenv coveralls
+  - pip install $DJANGO
+  - pip install coverage coveralls
+  - pip install numpy>=1.6.1
+  - pip install django-model-utils >=1.4.0
+  - pip install pandas>=0.12.0
 
 script:
-  - tox
-
+  - coverage run -a setup.py test
+  - coverage report
+matrix:
+  exclude:
+   - python: 2.6
+     env: DJANGO=Django==1.7.3
+   - python: 3.2
+     env: DJANGO=Django==1.4.18
+   - python: 3.3
+     env: DJANGO=Django==1.4.18
+   - python: 3.4
+     env: DJANGO=Django==1.4.18
 after_success: coveralls
