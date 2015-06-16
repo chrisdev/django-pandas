@@ -1,6 +1,11 @@
 CHANGES
 ========
 
+0.3.0 (2015-06-16)
+---------------------
+- This version supports Django 1.8
+- Support for Pandas 0.16
+
 0.2.2 (2015-03-02)
 ---------------------
 - Added Support for Django 1.7

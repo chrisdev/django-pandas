@@ -14,6 +14,8 @@ Contributors
 * `Christopher Clarke <https://github.com/chrisdev>`_
 * `Bertrand Bordage <https://github.com/BertrandBordage>`_
 * `Guillaume Thomas <https://github.com/gtnx>`_
+* `Parbhat Puri  <https://parbhatpuri.com/>`_
+* `Fredrik Burman (coachHIPPO) <https://www.coachhippo.com>`_
 
 Dependencies
 =============
