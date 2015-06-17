@@ -17,6 +17,10 @@ Contributors
 * `Parbhat Puri  <https://parbhatpuri.com/>`_
 * `Fredrik Burman (coachHIPPO) <https://www.coachhippo.com>`_
 
+What's New
+===========
+Support for Django 1.8 and pandas 0.16.2
+
 Dependencies
 =============
 ``django-pandas`` supports `Django`_ (>=1.4.5) or later  
