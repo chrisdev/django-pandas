@@ -123,20 +123,30 @@ class Security(models.Model):
 
 
 @python_2_unicode_compatible
+class TradeLogNote(models.Model):
+    note = models.TextField()
+
+    def __str__(self):
+        return self.note
+
+
+@python_2_unicode_compatible
 class TradeLog(models.Model):
     trader = models.ForeignKey(Trader)
     symbol = models.ForeignKey(Security, null=True)
     log_datetime = models.DateTimeField()
     price = models.FloatField()
     volume = models.IntegerField()
+    note = models.OneToOneField(TradeLogNote)
 
     objects = DataFrameManager()
 
     def __str__(self):
-        return "{0}-{1}-{2}-{3}-{4}".format(
+        return "{0}-{1}-{2}-{3}-{4}-{5}".format(
             self.trader,
             self.symbol,
             self.log_datetime,
             self.price,
-            self.volume
+            self.volume,
+            self.note
         )
