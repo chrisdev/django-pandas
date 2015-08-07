@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.db.models import Sum
 import pandas as pd
 import numpy as np
-from .models import MyModel, Trader, Security, TradeLog, MyModelChoice
+from .models import MyModel, Trader, Security, TradeLog, TradeLogNote, MyModelChoice
 from django_pandas.io import read_frame
 
 
@@ -85,28 +85,36 @@ class RelatedFieldsTest(TestCase):
         zyz = Security.objects.create(symbol='ZYZ', isin='999907')
         TradeLog.objects.create(trader=bob, symbol=None,
                                 log_datetime='2013-01-01T09:30:00',
-                                price=30, volume=300)
+                                price=30, volume=300,
+                                note=TradeLogNote.objects.create(note='aaa'))
         TradeLog.objects.create(trader=bob, symbol=None,
                                 log_datetime='2013-01-01T10:00:00',
-                                price=30, volume=300)
+                                price=30, volume=300,
+                                note=TradeLogNote.objects.create(note='aab'))
         TradeLog.objects.create(trader=bob, symbol=abc,
                                 log_datetime='2013-01-01T10:30:00',
-                                price=30, volume=300)
+                                price=30, volume=300,
+                                note=TradeLogNote.objects.create(note='aac'))
         TradeLog.objects.create(trader=bob, symbol=abc,
                                 log_datetime='2013-01-01T11:00:00',
-                                price=30, volume=300)
+                                price=30, volume=300,
+                                note=TradeLogNote.objects.create(note='aad'))
         TradeLog.objects.create(trader=fish, symbol=zyz,
                                 log_datetime='2013-01-01T09:30:00',
-                                price=30, volume=300)
+                                price=30, volume=300,
+                                note=TradeLogNote.objects.create(note='aae'))
         TradeLog.objects.create(trader=fish, symbol=zyz,
                                 log_datetime='2013-01-01T10:00:00',
-                                price=30, volume=300)
+                                price=30, volume=300,
+                                note=TradeLogNote.objects.create(note='aaf'))
         TradeLog.objects.create(trader=fish, symbol=zyz,
                                 log_datetime='2013-01-01T10:30:00',
-                                price=30, volume=300)
+                                price=30, volume=300,
+                                note=TradeLogNote.objects.create(note='aag'))
         TradeLog.objects.create(trader=fish, symbol=zyz,
                                 log_datetime='2013-01-01T11:00:00',
-                                price=30, volume=300)
+                                price=30, volume=300,
+                                note=TradeLogNote.objects.create(note='aah'))
 
     def test_verbose(self):
         qs = TradeLog.objects.all()
@@ -124,7 +132,7 @@ class RelatedFieldsTest(TestCase):
     def test_related_cols(self):
         qs = TradeLog.objects.all()
         cols = ['log_datetime', 'symbol', 'symbol__isin', 'trader__name',
-                'price', 'volume']
+                'price', 'volume', 'note__note']
         df = read_frame(qs, cols, verbose=False)
 
         self.assertEqual(df.shape, (qs.count(), len(cols)))
