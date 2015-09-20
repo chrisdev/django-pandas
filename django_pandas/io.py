@@ -8,7 +8,9 @@ def to_fields(qs, fieldnames):
         model = qs.model
         for fieldname_part in fieldname.split('__'):
             field = model._meta.get_field(fieldname_part)
-            if field.get_internal_type() in ('ForeignKey', 'OneToOneField'):
+            if field.one_to_many:
+                model = field.related_model
+            elif field.get_internal_type() in ('ForeignKey', 'OneToOneField', 'ManyToManyField'):
                 model = field.rel.to
         yield field
 

@@ -150,3 +150,11 @@ class TradeLog(models.Model):
             self.volume,
             self.note
         )
+
+@python_2_unicode_compatible
+class Portfolio(models.Model):
+    name = models.CharField(max_length=20)
+    securities = models.ManyToManyField(Security)
+
+    def __str__(self):
+        return self.name
