@@ -153,7 +153,7 @@ class RelatedFieldsTest(TestCase):
     def test_many_to_many(self):
         qs = Portfolio.objects.all()
         cols = ['name', 'securities__symbol', 'securities__tradelog__log_datetime']
-        df = read_frame(qs, cols, verbose=False)
+        df = read_frame(qs, cols, verbose=True)
 
         denormalized = Portfolio.objects.all().values_list(*cols)
         self.assertEqual(df.shape, (len(denormalized), len(cols)))
