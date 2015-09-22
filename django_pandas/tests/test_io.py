@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.db.models import Sum
 import pandas as pd
 import numpy as np
-from .models import MyModel, Trader, Security, TradeLog, TradeLogNote, MyModelChoice
+from .models import MyModel, Trader, Security, TradeLog, TradeLogNote, MyModelChoice, Portfolio
 from django_pandas.io import read_frame
 
 
@@ -115,6 +115,11 @@ class RelatedFieldsTest(TestCase):
                                 log_datetime='2013-01-01T11:00:00',
                                 price=30, volume=300,
                                 note=TradeLogNote.objects.create(note='aah'))
+        value = Portfolio.objects.create(name="Fund 1")
+        value.securities.add(abc)
+        value.securities.add(zyz)
+        growth = Portfolio.objects.create(name="Fund 2")
+        growth.securities.add(abc)
 
     def test_verbose(self):
         qs = TradeLog.objects.all()
@@ -144,3 +149,16 @@ class RelatedFieldsTest(TestCase):
             list(qs.values_list('trader__name', flat=True)),
             df.trader__name.tolist()
         )
+
+    def test_many_to_many(self):
+        qs = Portfolio.objects.all()
+        cols = ['name', 'securities__symbol', 'securities__tradelog__log_datetime']
+        df = read_frame(qs, cols, verbose=True)
+
+        denormalized = Portfolio.objects.all().values_list(*cols)
+        self.assertEqual(df.shape, (len(denormalized), len(cols)))
+        for idx, row in enumerate(denormalized):
+            self.assertListEqual(
+                df.iloc[idx].tolist(),
+                list(row)
+            )

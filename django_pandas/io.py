@@ -7,9 +7,20 @@ def to_fields(qs, fieldnames):
     for fieldname in fieldnames:
         model = qs.model
         for fieldname_part in fieldname.split('__'):
-            field = model._meta.get_field(fieldname_part)
-            if field.get_internal_type() in ('ForeignKey', 'OneToOneField'):
-                model = field.rel.to
+            try:
+                field = model._meta.get_field(fieldname_part)
+            except django.db.models.fields.FieldDoesNotExist:
+                rels = model._meta.get_all_related_objects_with_model()
+                for relobj, _ in rels:
+                    if relobj.get_accessor_name() == fieldname_part:
+                        field = relobj.field
+                        model = field.model
+                        break
+            else:
+                if hasattr(field, "one_to_many") and field.one_to_many:
+                    model = field.related_model
+                elif field.get_internal_type() in ('ForeignKey', 'OneToOneField', 'ManyToManyField'):
+                    model = field.rel.to
         yield field
 
 
