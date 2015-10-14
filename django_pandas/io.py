@@ -17,7 +17,7 @@ def to_fields(qs, fieldnames):
                         model = field.model
                         break
             else:
-                if hasattr(field, "one_to_many") and field.one_to_many:
+                if (hasattr(field, "one_to_many") and field.one_to_many) or (hasattr(field, "one_to_one") and field.one_to_one):
                     model = field.related_model
                 elif field.get_internal_type() in ('ForeignKey', 'OneToOneField', 'ManyToManyField'):
                     model = field.rel.to
