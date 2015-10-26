@@ -8,9 +8,11 @@ Development Lead
 
 Contributions
 ``````````````
-- Bertrand Bordage <bordage.bertrand@gmail.com>
-- Yuval Langer <http://yuvallanger.github.io>
-- Guillaume Thomas <guillaume.thomas642@gmail.com>
-- Victor Novais <victorh.novaisr@gmail.com>
-- Parbhat Puri  <https://parbhatpuri.com/>
-- Fredrik Burman (coachHIPPO) <https://www.coachhippo.com>
+- `Christopher Clarke <https://github.com/chrisdev>`_
+- `Bertrand Bordage <https://github.com/BertrandBordage>`_
+- `Guillaume Thomas <https://github.com/gtnx>`_
+- `Parbhat Puri  <https://parbhatpuri.com/>`_
+- `Fredrik Burman (coachHIPPO) <https://www.coachhippo.com>`_
+- `Safe Hammad <http://safehammad.com>`_
+- `Jeff Sternber <https://www.linkedin.com/in/jeffsternberg>`_
+- `@MiddleFork <https://github.com/MiddleFork>`_

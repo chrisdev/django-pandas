@@ -16,6 +16,9 @@ Contributors
 * `Guillaume Thomas <https://github.com/gtnx>`_
 * `Parbhat Puri  <https://parbhatpuri.com/>`_
 * `Fredrik Burman (coachHIPPO) <https://www.coachhippo.com>`_
+* `Safe Hammad <http://safehammad.com>`_
+* `Jeff Sternber <https://www.linkedin.com/in/jeffsternberg>`_
+* `@MiddleFork <https://github.com/MiddleFork>`_
 
 What's New
 ===========

@@ -1,5 +1,11 @@
 CHANGES
 ========
+0.3.1 (2015-10-25)
+-------------------
+- Extends the ability to span a ForeignKey relationship with double underscores
+  to OneToOneField too thanks to Safe Hammad
+- Provide better support for  ManyToMany and OneToMany relations thanks to 
+  Jeff Sternberg and @MiddleFork
 
 0.3.0 (2015-06-16)
 ---------------------
