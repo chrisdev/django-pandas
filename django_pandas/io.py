@@ -57,14 +57,19 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
                 The human readable version of the foreign key field is
                 defined in the ``__unicode__`` or ``__str__``
                 methods of the related class definition
-   """
+    """
+    if django.VERSION < (1, 9):
+        _ValuesList = django.db.models.query.ValuesQuerySet
+    else:
+        _ValuesList = django.db.models.query.ValuesIterable
+
     if fieldnames:
         if index_col is not None and index_col not in fieldnames:
             # Add it to the field names if not already there
             fieldnames = tuple(fieldnames) + (index_col,)
 
         fields = to_fields(qs, fieldnames)
-    elif isinstance(qs, django.db.models.query.ValuesQuerySet):
+    elif isinstance(qs, _ValuesList):
         if django.VERSION < (1, 8):
             annotation_field_names = qs.aggregate_names
         else:
@@ -78,7 +83,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
 
-    if isinstance(qs, django.db.models.query.ValuesQuerySet):
+    if isinstance(qs, _ValuesList):
         recs = list(qs)
     else:
         recs = list(qs.values_list(*fieldnames))
