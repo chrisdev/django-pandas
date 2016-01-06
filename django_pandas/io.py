@@ -64,7 +64,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
             fieldnames = tuple(fieldnames) + (index_col,)
 
         fields = to_fields(qs, fieldnames)
-    elif isinstance(qs, django.db.models.query.ValuesQuerySet):
+    elif isinstance(qs, django.db.models.query.ValuesIterable):
         if django.VERSION < (1, 8):
             annotation_field_names = qs.aggregate_names
         else:
@@ -78,7 +78,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
 
-    if isinstance(qs, django.db.models.query.ValuesQuerySet):
+    if isinstance(qs, django.db.models.query.ValuesIterable):
         recs = list(qs)
     else:
         recs = list(qs.values_list(*fieldnames))
