@@ -22,7 +22,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'Django>=1.4.2',
-        'django-model-utils>=1.4.0',
+        'django-model-utils==2.3.1',
         'pandas>=0.12.0',
     ],
     classifiers=[
@@ -40,7 +40,7 @@ setup(
     zip_safe=False,
     tests_require=[
         "Django>=1.4.2",
-        "django-model-utils>=1.4.0",
+        "django-model-utils==2.3.1",
         "pandas>=0.12.0",
                    ],
     test_suite="runtests.runtests"
