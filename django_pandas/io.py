@@ -3,7 +3,6 @@ from .utils import update_with_verbose
 import django
 
 
-
 def to_fields(qs, fieldnames):
     for fieldname in fieldnames:
         model = qs.model
