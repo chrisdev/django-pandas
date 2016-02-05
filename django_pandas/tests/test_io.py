@@ -39,7 +39,6 @@ class IOTest(TestCase):
         self.assertEqual(df1.shape, (qs.count(), 2))
 
     def test_values(self):
-
         qs = MyModel.objects.all()
         qs = qs.extra(select={"ecol1": "col1+1"})
         qs = qs.values("index_col", "ecol1", "col1")

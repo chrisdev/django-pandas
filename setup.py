@@ -6,8 +6,8 @@ long_description = (
     open('CHANGES.rst').read()
 )
 MAJOR = 0
-MINOR = 3
-MICRO = 1
+MINOR = 4
+MICRO = 0
 
 VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
@@ -22,7 +22,6 @@ setup(
     packages=find_packages(),
     install_requires=[
         'Django>=1.4.2',
-        'django-model-utils>=1.4.0',
         'pandas>=0.12.0',
     ],
     classifiers=[
@@ -40,8 +39,8 @@ setup(
     zip_safe=False,
     tests_require=[
         "Django>=1.4.2",
-        "django-model-utils>=1.4.0",
         "pandas>=0.12.0",
+        "coverage>=4.0",
                    ],
     test_suite="runtests.runtests"
 

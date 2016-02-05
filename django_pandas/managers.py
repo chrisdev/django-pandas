@@ -1,7 +1,84 @@
 from django.db.models.query import QuerySet
-from model_utils.managers import PassThroughManager
 from .io import read_frame
 import django
+from django.db import models
+
+
+class PassThroughManagerMixin(object):
+    """
+    A mixin that enables you to call custom QuerySet methods from your manager.
+    """
+    _deny_methods = ['__getstate__', '__setstate__', '__getinitargs__',
+                     '__getnewargs__', '__copy__', '__deepcopy__', '_db',
+                     '__slots__']
+
+    def __init__(self, queryset_cls=None):
+        self._queryset_cls = queryset_cls
+        super(PassThroughManagerMixin, self).__init__()
+
+    def __getattr__(self, name):
+        if name in self._deny_methods:
+            raise AttributeError(name)
+        if django.VERSION < (1, 6, 0):
+            return getattr(self.get_query_set(), name)
+        return getattr(self.get_queryset(), name)
+
+    def __dir__(self):
+        my_values = frozenset(dir(type(self)))
+        my_values |= frozenset(dir(self.get_query_set()))
+        return list(my_values)
+
+    def get_queryset(self):
+        try:
+            qs = super(PassThroughManagerMixin, self).get_queryset()
+        except AttributeError:
+            qs = super(PassThroughManagerMixin, self).get_query_set()
+        if self._queryset_cls is not None:
+            qs = qs._clone(klass=self._queryset_cls)
+        return qs
+
+    get_query_set = get_queryset
+
+    @classmethod
+    def for_queryset_class(cls, queryset_cls):
+        return create_pass_through_manager_for_queryset_class(
+            cls, queryset_cls)
+
+
+class PassThroughManager(PassThroughManagerMixin, models.Manager):
+    """
+    Inherit from this Manager to enable you to call any methods from your
+    custom QuerySet class from your manager. Simply define your QuerySet
+    class, and return an instance of it from your manager's `get_queryset`
+    method.
+
+    Alternately, if you don't need any extra methods on your manager that
+    aren't on your QuerySet, then just pass your QuerySet class to the
+    ``for_queryset_class`` class method.
+
+    class PostQuerySet(QuerySet):
+        def enabled(self):
+            return self.filter(disabled=False)
+
+    class Post(models.Model):
+        objects = PassThroughManager.for_queryset_class(PostQuerySet)()
+
+    """
+    pass
+
+
+def create_pass_through_manager_for_queryset_class(base, queryset_cls):
+    class _PassThroughManager(base):
+        def __init__(self, *args, **kwargs):
+            return super(_PassThroughManager, self).__init__(*args, **kwargs)
+
+        def get_queryset(self):
+            qs = super(_PassThroughManager, self).get_queryset()
+            return qs._clone(klass=queryset_cls)
+
+        get_query_set = get_queryset
+
+    return _PassThroughManager
 
 
 class DataFrameQuerySet(QuerySet):
@@ -181,11 +258,10 @@ class DataFrameQuerySet(QuerySet):
                           index_col=index, coerce_float=coerce_float)
 
 
-class DataFrameManager(PassThroughManager):
-    if django.VERSION < (1, 7):
+if django.VERSION < (1, 7):
+    class DataFrameManager(PassThroughManager):
         def get_query_set(self):
             return DataFrameQuerySet(self.model)
 
-    else:
-        def get_queryset(self):
-            return DataFrameQuerySet(self.model)
+else:
+    DataFrameManager = models.Manager.from_queryset(DataFrameQuerySet)
