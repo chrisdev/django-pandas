@@ -22,7 +22,13 @@ Contributors
 
 What's New
 ===========
-Support for Django 1.8 and pandas 0.16.2
+Support for Django 1.9 and removed dependency on `django-models-utils
+<https://github.com/carljm/django-model-utils>`_ even for previous versions of
+Django.
+
+The fall in Coverage in this release largely reflects the integration of
+the PassThroughManager into the code base. We'll add the required test 
+coverage for the PassThroughManager in subsequent releases.
 
 Dependencies
 =============

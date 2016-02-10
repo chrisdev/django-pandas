@@ -2,6 +2,7 @@
 include *.py
 include *.rst
 include tox.ini
+include MANIFEST.in
 recursive-include docs *.bat
 recursive-include docs *.py
 recursive-include docs *.rst

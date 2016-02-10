@@ -1,17 +1,21 @@
 CHANGES
 ========
-0.4.0 (2016-02-05)
+0.4.1 (2016-02-05)
 -------------------
-- Address the incompatablity with Django 1.9 due to the removal of 
+- Address the incompatibility with Django 1.9 due to the removal of 
   specialized query sets like the 
   `ValuesQuerySet <https://code.djangoproject.com/ticket/24211>`_
 - Address the removal of the ``PassThrougManager`` from  ``django-model-utils``
   version ``2.4``.  We've removed the dependency on django-model-utils and 
   included the PassThroughManger (which was always a standalone tool 
-  distributed a part of django-model-utils) for compatability with 
+  distributed a part of django-model-utils) for compatibility with 
   earlier versions of Django (<= 1.8). For more recent versions of 
   Django we're using Django's built in ``QuerySet.as_manager()``. 
-  
+- Now supports Pandas 0.14.1 and above
+- The fall in Coverage in this release largely reflects the integration of
+  the PassThroughManager into the code base. We'll add the required test 
+  coverage for the PassThroughManager in subsequent releases.
+
 0.3.1 (2015-10-25)
 -------------------
 - Extends the ability to span a ForeignKey relationship with double underscores
