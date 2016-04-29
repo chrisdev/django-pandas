@@ -16,6 +16,9 @@ def to_fields(qs, fieldnames):
                         field = relobj.field
                         model = field.model
                         break
+                else:
+                    field = None
+                    model = None
             else:
                 if (hasattr(field, "one_to_many") and field.one_to_many) or \
                    (hasattr(field, "one_to_one") and field.one_to_one):
