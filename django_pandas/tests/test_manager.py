@@ -38,7 +38,10 @@ class DataFrameTest(TestCase):
 
         n, c = df.shape
         self.assertEqual(n, qs.count())
-        flds = DataFrame._meta.get_all_field_names()
+        if django.VERSION < (1, 10):
+            flds = DataFrame._meta.get_all_field_names()
+        else:
+            flds = [f.name for f in DataFrame._meta.get_fields()]
         self.assertEqual(c, len(flds))
         qs2 = DataFrame.objects.filter(index__in=['a', 'b', 'c'])
         df2 = qs2.to_dataframe(['col1', 'col2', 'col3'], index='index')

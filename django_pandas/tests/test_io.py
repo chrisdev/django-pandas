@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.db.models import Sum
+import django
 import pandas as pd
 import numpy as np
 from .models import MyModel, Trader, Security, TradeLog, TradeLogNote, MyModelChoice, Portfolio
@@ -33,7 +34,10 @@ class IOTest(TestCase):
         df = read_frame(qs)
         n, c = df.shape
         self.assertEqual(n, qs.count())
-        fields = MyModel._meta.get_all_field_names()
+        if django.VERSION < (1, 10):
+            fields = MyModel._meta.get_all_field_names()
+        else:
+            fields = [f.name for f in MyModel._meta.get_fields()]
         self.assertEqual(c, len(fields))
         df1 = read_frame(qs, ['col1', 'col2'])
         self.assertEqual(df1.shape, (qs.count(), 2))
