@@ -1,5 +1,5 @@
 import pandas as pd
-from .utils import update_with_verbose
+from .utils import update_with_verbose, remote_model
 import django
 
 
@@ -22,7 +22,7 @@ def to_fields(qs, fieldnames):
                     model = field.related_model
                 elif field.get_internal_type() in (
                         'ForeignKey', 'OneToOneField', 'ManyToManyField'):
-                    model = field.rel.to
+                    model = remote_model(field)
         yield field
 
 
