@@ -1,11 +1,5 @@
 language: python
 
-python:
-  - 2.6
-  - 2.7
-  - 3.3
-  - 3.4
-
 install:
   - pip install --upgrade pip
   - pip install --upgrade setuptools tox virtualenv
@@ -84,7 +78,7 @@ matrix:
       env: TOXENV=py35-django10
     - python: 3.5
       env: TOXENV=py35-django11
-   allow_failures:
+  allow_failures:
     - python: 3.5
       env: TOXENV=py35-django14
     - python: 3.5
