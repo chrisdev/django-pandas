@@ -38,7 +38,11 @@ class DataFrameTest(TestCase):
 
         n, c = df.shape
         self.assertEqual(n, qs.count())
-        flds = DataFrame._meta.get_all_field_names()
+        from itertools import chain
+        flds = list(set(chain.from_iterable((field.name, field.attname) if hasattr(field,'attname') else (field.name,)
+            for field in DataFrame._meta.get_fields()
+            if not (field.many_to_one and field.related_model is None)
+        )))
         self.assertEqual(c, len(flds))
         qs2 = DataFrame.objects.filter(index__in=['a', 'b', 'c'])
         df2 = qs2.to_dataframe(['col1', 'col2', 'col3'], index='index')
