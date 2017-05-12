@@ -17,4 +17,4 @@ Contributions
 - `Safe Hammad <http://safehammad.com>`_
 - `Jeff Sternber <https://www.linkedin.com/in/jeffsternberg>`_
 - `@MiddleFork <https://github.com/MiddleFork>`_
-- `Daniel Andrlik <https://github.com/andrlik>`
+- `Daniel Andrlik <https://github.com/andrlik>`_
