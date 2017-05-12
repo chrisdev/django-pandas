@@ -84,7 +84,7 @@ class TimeSeriesTest(TestCase):
         df = qs.to_timeseries(index='date_ix', storage='wide')
 
         self.assertEqual(df.shape, (qs.count(), 5))
-        self.assertIsInstance(df.index, pd.tseries.index.DatetimeIndex)
+        self.assertIsInstance(df.index, pd.DatetimeIndex)
         self.assertIsNone(df.index.freq)
 
     def test_longstorage(self):
@@ -96,7 +96,7 @@ class TimeSeriesTest(TestCase):
                          set(df.columns.tolist()))
 
         self.assertEqual(qs.filter(series_name='A').count(), len(df['A']))
-        self.assertIsInstance(df.index, pd.tseries.index.DatetimeIndex)
+        self.assertIsInstance(df.index, pd.DatetimeIndex)
         self.assertIsNone(df.index.freq)
 
     def test_resampling(self):
@@ -109,7 +109,7 @@ class TimeSeriesTest(TestCase):
         self.assertEqual([d.month for d in qs.dates('date_ix', 'month')],
                          df.index.month.tolist())
 
-        self.assertIsInstance(df.index, pd.tseries.period.PeriodIndex)
+        self.assertIsInstance(df.index, pd.PeriodIndex)
         #try on a  wide time seriesd
 
         qs2 = WideTimeSeries.objects.all()
@@ -120,7 +120,7 @@ class TimeSeriesTest(TestCase):
         self.assertEqual([d.month for d in qs.dates('date_ix', 'month')],
                          df1.index.month.tolist())
 
-        self.assertIsInstance(df1.index, pd.tseries.period.PeriodIndex)
+        self.assertIsInstance(df1.index, pd.PeriodIndex)
 
     def test_bad_args_wide_ts(self):
         qs = WideTimeSeries.objects.all()
