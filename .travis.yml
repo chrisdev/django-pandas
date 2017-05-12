@@ -18,81 +18,81 @@ script:
 
 matrix:
   include:
-   - python: 2.7
-     env: TOXENV=py27-django14
-   - python: 2.7
-     env: TOXENV=py27-django15_nosouth
-   - python: 2.7
-     env: TOXENV=py27-django15
-   - python: 2.7
-     env: TOXENV=py27-django16
-   - python: 2.7
-     env: TOXENV=py27-django17
-   - python: 2.7
-     env: TOXENV=py27-django18
-   - python: 2.7
-     env: TOXENV=py27-django19
-   - python: 2.7
-     env: TOXENV=py27-django10
-   - python: 2.7
-     env: TOXENV=py27-django11  
-   - python: 3.3
-     env: TOXENV=py33-django14
-   - python: 3.3
-     env: TOXENV=py33-django15_nosouth
-   - python: 3.3
-     env: TOXENV=py33-django15
-   - python: 3.3
-     env: TOXENV=py33-django16
-   - python: 3.3
-     env: TOXENV=py33-django17
-   - python: 3.3
-     env: TOXENV=py33-django18 
-   - python: 3.4
-     env: TOXENV=py34-django14
-   - python: 3.4
-     env: TOXENV=py34-django15_nosouth
-   - python: 3.4
-     env: TOXENV=py34-django15
-   - python: 3.4
-     env: TOXENV=py34-django16
-   - python: 3.4
-     env: TOXENV=py34-django17
-   - python: 3.4
-     env: TOXENV=py34-django18
-   - python: 3.4
-     env: TOXENV=py34-django19
-   - python: 3.4
-     env: TOXENV=py34-django10
-   - python: 3.4
-     env: TOXENV=py34-django11
-   - python: 3.5
-     env: TOXENV=py35-django14
-   - python: 3.5
-     env: TOXENV=py35-django15_nosouth
-   - python: 3.5
-     env: TOXENV=py35-django15
-   - python: 3.5
-     env: TOXENV=py35-django16
-   - python: 3.5
-     env: TOXENV=py35-django17
-   - python: 3.5
-     env: TOXENV=py35-django18
-   - python: 3.5
-     env: TOXENV=py35-django19
-   - python: 3.5
-     env: TOXENV=py35-django10
-   - python: 3.5
-     env: TOXENV=py35-django11
+    - python: 2.7
+      env: TOXENV=py27-django14
+    - python: 2.7
+      env: TOXENV=py27-django15_nosouth
+    - python: 2.7
+      env: TOXENV=py27-django15
+    - python: 2.7
+      env: TOXENV=py27-django16
+    - python: 2.7
+      env: TOXENV=py27-django17
+    - python: 2.7
+      env: TOXENV=py27-django18
+    - python: 2.7
+      env: TOXENV=py27-django19
+    - python: 2.7
+      env: TOXENV=py27-django10
+    - python: 2.7
+      env: TOXENV=py27-django11  
+    - python: 3.3
+      env: TOXENV=py33-django14
+    - python: 3.3
+      env: TOXENV=py33-django15_nosouth
+    - python: 3.3
+      env: TOXENV=py33-django15
+    - python: 3.3
+      env: TOXENV=py33-django16
+    - python: 3.3
+      env: TOXENV=py33-django17
+    - python: 3.3
+      env: TOXENV=py33-django18 
+    - python: 3.4
+      env: TOXENV=py34-django14
+    - python: 3.4
+      env: TOXENV=py34-django15_nosouth
+    - python: 3.4
+      env: TOXENV=py34-django15
+    - python: 3.4
+      env: TOXENV=py34-django16
+    - python: 3.4
+      env: TOXENV=py34-django17
+    - python: 3.4
+      env: TOXENV=py34-django18
+    - python: 3.4
+      env: TOXENV=py34-django19
+    - python: 3.4
+      env: TOXENV=py34-django10
+    - python: 3.4
+      env: TOXENV=py34-django11
+    - python: 3.5
+      env: TOXENV=py35-django14
+    - python: 3.5
+      env: TOXENV=py35-django15_nosouth
+    - python: 3.5
+      env: TOXENV=py35-django15
+    - python: 3.5
+      env: TOXENV=py35-django16
+    - python: 3.5
+      env: TOXENV=py35-django17
+    - python: 3.5
+      env: TOXENV=py35-django18
+    - python: 3.5
+      env: TOXENV=py35-django19
+    - python: 3.5
+      env: TOXENV=py35-django10
+    - python: 3.5
+      env: TOXENV=py35-django11
    allow_failures:
-   - python: 3.5
-     env: TOXENV=py35-django14
-   - python: 3.5
-     env: TOXENV=py35-django15_nosouth
-   - python: 3.5
-     env: TOXENV=py35-django16
-   - python: 3.5
-     env: TOXENV=py35-django17
+    - python: 3.5
+      env: TOXENV=py35-django14
+    - python: 3.5
+      env: TOXENV=py35-django15_nosouth
+    - python: 3.5
+      env: TOXENV=py35-django16
+    - python: 3.5
+      env: TOXENV=py35-django17
 
 
 after_success: coveralls
