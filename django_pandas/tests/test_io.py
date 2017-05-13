@@ -1,4 +1,5 @@
 from django.test import TestCase
+import django
 from django.db.models import Sum
 import pandas as pd
 import numpy as np
@@ -33,7 +34,14 @@ class IOTest(TestCase):
         df = read_frame(qs)
         n, c = df.shape
         self.assertEqual(n, qs.count())
-        fields = MyModel._meta.get_all_field_names()
+        from itertools import chain
+        if django.VERSION < (1,10):
+            fields = MyModel._meta.get_all_field_names()
+        else:
+            fields = list(set(chain.from_iterable((field.name, field.attname) if hasattr(field,'attname') else (field.name,)
+                for field in MyModel._meta.get_fields()
+                if not (field.many_to_one and field.related_model is None)
+            )))
         self.assertEqual(c, len(fields))
         df1 = read_frame(qs, ['col1', 'col2'])
         self.assertEqual(df1.shape, (qs.count(), 2))

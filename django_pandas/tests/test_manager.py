@@ -38,7 +38,14 @@ class DataFrameTest(TestCase):
 
         n, c = df.shape
         self.assertEqual(n, qs.count())
-        flds = DataFrame._meta.get_all_field_names()
+        from itertools import chain
+        if django.VERSION < (1,10):
+            flds = DataFrame._meta.get_all_field_names()
+        else:
+            flds = list(set(chain.from_iterable((field.name, field.attname) if hasattr(field,'attname') else (field.name,)
+                for field in DataFrame._meta.get_fields()
+                if not (field.many_to_one and field.related_model is None)
+            )))
         self.assertEqual(c, len(flds))
         qs2 = DataFrame.objects.filter(index__in=['a', 'b', 'c'])
         df2 = qs2.to_dataframe(['col1', 'col2', 'col3'], index='index')
@@ -80,7 +87,7 @@ class TimeSeriesTest(TestCase):
         df = qs.to_timeseries(index='date_ix', storage='wide')
 
         self.assertEqual(df.shape, (qs.count(), 5))
-        self.assertIsInstance(df.index, pd.tseries.index.DatetimeIndex)
+        self.assertIsInstance(df.index, pd.DatetimeIndex)
         self.assertIsNone(df.index.freq)
 
     def test_longstorage(self):
@@ -92,7 +99,7 @@ class TimeSeriesTest(TestCase):
                          set(df.columns.tolist()))
 
         self.assertEqual(qs.filter(series_name='A').count(), len(df['A']))
-        self.assertIsInstance(df.index, pd.tseries.index.DatetimeIndex)
+        self.assertIsInstance(df.index, pd.DatetimeIndex)
         self.assertIsNone(df.index.freq)
 
     def test_resampling(self):
@@ -105,7 +112,7 @@ class TimeSeriesTest(TestCase):
         self.assertEqual([d.month for d in qs.dates('date_ix', 'month')],
                          df.index.month.tolist())
 
-        self.assertIsInstance(df.index, pd.tseries.period.PeriodIndex)
+        self.assertIsInstance(df.index, pd.PeriodIndex)
         #try on a  wide time seriesd
 
         qs2 = WideTimeSeries.objects.all()
@@ -116,7 +123,7 @@ class TimeSeriesTest(TestCase):
         self.assertEqual([d.month for d in qs.dates('date_ix', 'month')],
                          df1.index.month.tolist())
 
-        self.assertIsInstance(df1.index, pd.tseries.period.PeriodIndex)
+        self.assertIsInstance(df1.index, pd.PeriodIndex)
 
     def test_bad_args_wide_ts(self):
         qs = WideTimeSeries.objects.all()

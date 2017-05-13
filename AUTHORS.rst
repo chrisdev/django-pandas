@@ -8,6 +8,7 @@ Development Lead
 
 Contributions
 ``````````````
+
 - `Christopher Clarke <https://github.com/chrisdev>`_
 - `Bertrand Bordage <https://github.com/BertrandBordage>`_
 - `Guillaume Thomas <https://github.com/gtnx>`_
@@ -16,3 +17,4 @@ Contributions
 - `Safe Hammad <http://safehammad.com>`_
 - `Jeff Sternber <https://www.linkedin.com/in/jeffsternberg>`_
 - `@MiddleFork <https://github.com/MiddleFork>`_
+- `Daniel Andrlik <https://github.com/andrlik>`_

@@ -1,42 +1,55 @@
 language: python
 
-python:
-  - 2.6
-  - 2.7
-  - 3.3
-  - 3.4
-
-env:
-  - DJANGO=Django==1.4.22
-  - DJANGO=Django==1.5.12
-  - DJANGO=Django==1.6.11
-  - DJANGO=Django==1.7.11
-  - DJANGO=Django==1.8.9
-  - DJANGO=Django==1.9.2
-
 install:
-  - pip install $DJANGO
+  - pip install --upgrade pip
+  - pip install --upgrade setuptools tox virtualenv
   - pip install coverage coveralls
   - pip install numpy>=1.6.1
-  - pip install pandas>=0.12.0
+  - pip install pandas>=0.20.1
 
 script:
-  - coverage run -a setup.py test
-  - coverage report
+  - tox
+
 matrix:
-  exclude:
-   - python: 2.6
-     env: DJANGO=Django==1.7.11
-   - python: 2.6
-     env: DJANGO=Django==1.8.9
-   - python: 2.6
-     env: DJANGO=Django==1.9.2
-   - python: 3.2
-     env: DJANGO=Django==1.4.22
-   - python: 3.3
-     env: DJANGO=Django==1.4.22
-   - python: 3.3
-     env: DJANGO=Django==1.9.2
-   - python: 3.4
-     env: DJANGO=Django==1.4.22
+  include:
+    - python: 2.7
+      env: TOXENV=py27-django14
+    - python: 2.7
+      env: TOXENV=py27-django15_nosouth
+    - python: 2.7
+      env: TOXENV=py27-django15
+    - python: 2.7
+      env: TOXENV=py27-django16
+    - python: 2.7
+      env: TOXENV=py27-django17
+    - python: 2.7
+      env: TOXENV=py27-django18
+    - python: 2.7
+      env: TOXENV=py27-django19
+    - python: 2.7
+      env: TOXENV=py27-django10
+    - python: 2.7
+      env: TOXENV=py27-django11 
+    - python: 3.4
+      env: TOXENV=py34-django17 
+    - python: 3.4
+      env: TOXENV=py34-django18
+    - python: 3.4
+      env: TOXENV=py34-django19
+    - python: 3.4
+      env: TOXENV=py34-django10
+    - python: 3.4
+      env: TOXENV=py34-django11
+    - python: 3.5
+      env: TOXENV=py35-django18
+    - python: 3.5
+      env: TOXENV=py35-django19
+    - python: 3.5
+      env: TOXENV=py35-django10
+    - python: 3.5
+      env: TOXENV=py35-django11
+    - python: 3.6
+      env: TOXENV=py36-django11
+
+
 after_success: coveralls
