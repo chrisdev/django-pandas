@@ -19,16 +19,15 @@ Contributors
 * `Safe Hammad <http://safehammad.com>`_
 * `Jeff Sternber <https://www.linkedin.com/in/jeffsternberg>`_
 * `@MiddleFork <https://github.com/MiddleFork>`_
+- `Daniel Andrlik <https://github.com/andrlik>`_
 
 What's New
 ===========
-Support for Django 1.9 and removed dependency on `django-models-utils
-<https://github.com/carljm/django-model-utils>`_ even for previous versions of
-Django.
 
-The fall in Coverage in this release largely reflects the integration of
-the PassThroughManager into the code base. We'll add the required test 
-coverage for the PassThroughManager in subsequent releases.
+- Compatibility with `pandas 0.20.1`
+- Support for Python 2.7 and 3.5 with Django versions 1.8+
+- Suport for Python 3.6 and Django 1.11
+- We still support legacy versions (Python 2.7 and Django 1.4)
 
 Dependencies
 =============

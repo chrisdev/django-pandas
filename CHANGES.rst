@@ -1,5 +1,13 @@
 CHANGES
 ========
+
+0.4.2 (2017-05-22)
+--------------------
+- Compatibility with `pandas 0.20.1`
+- Support for Python 2.7 and 3.5 with Django versions 1.8+
+- Suport for Python 3.6 and Django 1.11
+- We still support legacy versions (Python 2.7 and Django 1.4)
+
 0.4.1 (2016-02-05)
 -------------------
 - Address the incompatibility with Django 1.9 due to the removal of 
