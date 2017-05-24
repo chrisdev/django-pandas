@@ -1,6 +1,6 @@
 from django.test import TestCase
 import django
-from django.db.models import Sum, F
+from django.db.models import Sum
 import pandas as pd
 import numpy as np
 from .models import MyModel, Trader, Security, TradeLog, TradeLogNote, MyModelChoice, Portfolio
@@ -59,7 +59,7 @@ class IOTest(TestCase):
     def test_duplicate_annotation(self):
         qs = MyModel.objects.all()
         qs = qs.values('index_col')
-        qs = qs.annotate(col1=F('col1'))
+        qs = qs.annotate(col1=Sum('col1'))
         qs = qs.values()
         df = read_frame(qs)
         self.assertEqual(list(df.columns),
