@@ -16,6 +16,18 @@ def get_model_name(model):
         return model._meta.module_name
     return model._meta.model_name
 
+def remote_model(field):
+    """ Returns the remote model of relation
+    """
+    # model.rel.to is deprecated in django version 2.0
+    if django.VERSION < (1, 9):
+        return field.rel.to
+    else:
+        # remote_field is new in Django 1.9
+        if hasattr(field, 'remote_field'):
+            return field.remote_field.model
+        else:
+            return field.rel.to
 
 def replace_from_choices(choices):
     def inner(values):
@@ -76,7 +88,7 @@ def build_update_functions(fieldnames, fields):
             yield fieldname, replace_from_choices(choices)
 
         elif field and field.get_internal_type() == 'ForeignKey':
-            yield fieldname, replace_pk(field.rel.to)
+            yield fieldname, replace_pk(remote_model(field))
 
 
 def update_with_verbose(df, fieldnames, fields):
