@@ -56,6 +56,15 @@ class IOTest(TestCase):
                          ['index_col', 'col1', 'scol1', 'ecol1'])
         self.assertEqual(list(df["col1"]), list(df["scol1"]))
 
+    def test_duplicate_annotation(self):
+        qs = MyModel.objects.all()
+        qs = qs.values('index_col')
+        qs = qs.annotate(col1=Sum('col1'))
+        qs = qs.values()
+        df = read_frame(qs)
+        self.assertEqual(list(df.columns),
+                         ['id', 'index_col', 'col1', 'col2', 'col3', 'col4'])
+
     def test_choices(self):
 
         MyModelChoice.objects.create(col1=1, col2=9999.99)
