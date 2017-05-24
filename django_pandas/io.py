@@ -101,6 +101,8 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
 
+    fieldnames = pd.unique(fieldnames)
+
     if is_values_queryset(qs):
         recs = list(qs)
     else:
