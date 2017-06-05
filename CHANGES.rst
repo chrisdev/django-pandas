@@ -1,6 +1,11 @@
 CHANGES
 ========
 
+0.4.3 (2017-06-02)
+--------------------
+- Fix doc typos and formatting 
+- Prevent column duplication in read_frame (Thanks Kevin Abott) 
+
 0.4.2 (2017-05-22)
 --------------------
 - Compatibility with `pandas 0.20.1`

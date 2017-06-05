@@ -19,11 +19,13 @@ Contributors
 * `Safe Hammad <http://safehammad.com>`_
 * `Jeff Sternber <https://www.linkedin.com/in/jeffsternberg>`_
 * `@MiddleFork <https://github.com/MiddleFork>`_
-- `Daniel Andrlik <https://github.com/andrlik>`_
+* `Daniel Andrlik <https://github.com/andrlik>`_
+* `Kevin Abbot <https://github.com/kgabbott>`_
+
 
 What's New
 ===========
-
+- Prevent column duplicaton in read_frame method
 - Compatibility with `pandas 0.20.1`
 - Support for Python 2.7 and 3.5 with Django versions 1.8+
 - Suport for Python 3.6 and Django 1.11
@@ -146,7 +148,7 @@ To create a DataFrame using specified field names::
 
 To set ``full_name`` as the ``DataFrame`` index ::
 
-    qs.to_dataframe(['age', 'wage', index='full_name'])
+    qs.to_dataframe(['age', 'wage'], index='full_name'])
 
 You can use filters and excludes ::
 
@@ -245,7 +247,7 @@ DataFrame index is instance of a DateTime or PeriodIndex
     - storage:  Specify if the queryset uses the `wide` or `long` format
         for data.
 
-    -  pivot_column: Required once the you specify `long` format
+    -  pivot_columns: Required once the you specify `long` format
         storage. This could either be a list or string identifying
         the field name or combination of field. If the pivot_column
         is a single column then the unique values in this column become

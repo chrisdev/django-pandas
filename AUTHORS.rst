@@ -18,3 +18,5 @@ Contributions
 - `Jeff Sternber <https://www.linkedin.com/in/jeffsternberg>`_
 - `@MiddleFork <https://github.com/MiddleFork>`_
 - `Daniel Andrlik <https://github.com/andrlik>`_
+- `Kevin Abbot <https://github.com/kgabbott>`_
+

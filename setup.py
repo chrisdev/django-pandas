@@ -7,7 +7,7 @@ long_description = (
 )
 MAJOR = 0
 MINOR = 4
-MICRO = 2
+MICRO = 3
 
 VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 

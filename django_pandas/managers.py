@@ -175,7 +175,7 @@ class DataFrameQuerySet(QuerySet):
                   2001-03-01-|   0.7|  col3|
 
 
-        pivot_column:  Required once the you specify `long` format
+        pivot_columns:  Required once the you specify `long` format
                        storage. This could either be a list or string
                        identifying the field name or combination of field.
                        If the pivot_column is a single column then the
