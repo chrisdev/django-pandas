@@ -133,7 +133,7 @@ class DataFrameQuerySet(QuerySet):
     def to_timeseries(self, fieldnames=(), verbose=True,
                       index=None, storage='wide',
                       values=None, pivot_columns=None, freq=None,
-                      rs_kwargs=None):
+                      coerce_float=False, rs_kwargs=None):
         """
         A convenience method for creating a time series DataFrame i.e the
         DataFrame index will be an instance of  DateTime or PeriodIndex
@@ -197,6 +197,9 @@ class DataFrameQuerySet(QuerySet):
                   human readable versions of any foreign key fields else use
                   the primary keys values else use the actual values set
                   in the model.
+                  
+        coerce_float:   Attempt to convert values to non-string, non-numeric
+                        objects (like decimal.Decimal) to floating point.
         """
         assert index is not None, 'You must supply an index field'
         assert storage in ('wide', 'long'), 'storage must be wide or long'
@@ -204,9 +207,11 @@ class DataFrameQuerySet(QuerySet):
             rs_kwargs = {}
 
         if storage == 'wide':
-            df = self.to_dataframe(fieldnames, verbose=verbose, index=index)
+            df = self.to_dataframe(fieldnames, verbose=verbose, index=index,
+                                   coerce_float=True)
         else:
-            df = self.to_dataframe(fieldnames, verbose=verbose)
+            df = self.to_dataframe(fieldnames, verbose=verbose,
+                                   coerce_float=True)
             assert values is not None, 'You must specify a values field'
             assert pivot_columns is not None, 'You must specify pivot_columns'
 
@@ -252,6 +257,9 @@ class DataFrameQuerySet(QuerySet):
         verbose: If  this is ``True`` then populate the DataFrame with the
                  human readable versions for foreign key fields else
                  use the actual values set in the model
+        
+        coerce_float:   Attempt to convert values to non-string, non-numeric 
+                        objects (like decimal.Decimal) to floating point.
         """
 
         return read_frame(self, fieldnames=fieldnames, verbose=verbose,
