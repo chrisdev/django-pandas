@@ -5,21 +5,23 @@ import django
 
 def to_fields(qs, fieldnames):
     for fieldname in fieldnames:
+        field = fieldname
         model = qs.model
         for fieldname_part in fieldname.split('__'):
             try:
                 field = model._meta.get_field(fieldname_part)
             except django.db.models.fields.FieldDoesNotExist:
-                try:
-                    rels = model._meta.get_all_related_objects_with_model()
-                except AttributeError:
-                    field = fieldname
-                else:
-                    for relobj, _ in rels:
-                        if relobj.get_accessor_name() == fieldname_part:
-                            field = relobj.field
-                            model = field.model
-                            break
+                rels = [
+                    (f, f.model if f.model != model else None)
+                    for f in model._meta.get_fields()
+                    if (f.one_to_many or f.one_to_one)
+                    and f.auto_created and not f.concrete
+                ]
+                for relobj, _ in rels:
+                    if relobj.get_accessor_name() == fieldname_part:
+                        field = relobj.field
+                        model = field.model
+                        break
             else:
                 if (hasattr(field, "one_to_many") and field.one_to_many) or \
                    (hasattr(field, "one_to_one") and field.one_to_one):
