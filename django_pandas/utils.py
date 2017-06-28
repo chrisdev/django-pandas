@@ -2,6 +2,7 @@
 
 from django.core.cache import cache
 from django.utils.encoding import force_text
+from django.db.models import Field
 import django
 
 
@@ -70,15 +71,19 @@ def replace_pk(model):
 
 def build_update_functions(fieldnames, fields):
     for fieldname, field in zip(fieldnames, fields):
-        if field and field.choices:
-            choices = dict([(k, force_text(v))
+        if not isinstance(field, Field):
+            yield fieldname, None
+        else:
+            if field and field.choices:
+                choices = dict([(k, force_text(v))
                             for k, v in field.flatchoices])
-            yield fieldname, replace_from_choices(choices)
+                yield fieldname, replace_from_choices(choices)
 
-        elif field and field.get_internal_type() == 'ForeignKey':
-            yield fieldname, replace_pk(field.rel.to)
+            elif field and field.get_internal_type() == 'ForeignKey':
+                yield fieldname, replace_pk(field.rel.to)
 
 
 def update_with_verbose(df, fieldnames, fields):
     for fieldname, function in build_update_functions(fieldnames, fields):
-        df[fieldname] = function(df[fieldname])
+        if function is not None:
+            df[fieldname] = function(df[fieldname])
