@@ -1,7 +1,6 @@
 from django.test import TestCase
 import django
-from django.db.models import Sum, F, FloatField
-from django.db.models.functions import Cast
+from django.db.models import Sum
 import pandas as pd
 import numpy as np
 from .models import MyModel, Trader, Security, TradeLog, TradeLogNote, MyModelChoice, Portfolio
@@ -150,21 +149,24 @@ class RelatedFieldsTest(TestCase):
             list(qs.values_list('trader__pk', flat=True)),
             df1.trader.tolist()
         )
-        
+
         # Testing verbose with annotated column:
-        qs1 = TradeLog.objects.all().annotate(
-            total_sum=Cast(F('price') * F('volume'), FloatField()),
-        )
-        df2 = read_frame(
-            qs1, fieldnames=['trader', 'total_sum'])
-        self.assertListEqual(
-            list(qs1.values_list('total_sum', flat=True)),
-            df2.total_sum.tolist()
-        )
-        self.assertListEqual(
-            list(qs1.values_list('trader__name', flat=True)),
-            df2.trader.tolist()
-        )
+        if django.VERSION >= (1, 10):
+            from django.db.models import F, FloatField
+            from django.db.models.functions import Cast
+            qs1 = TradeLog.objects.all().annotate(
+                total_sum=Cast(F('price') * F('volume'), FloatField()),
+            )
+            df2 = read_frame(
+                qs1, fieldnames=['trader', 'total_sum'])
+            self.assertListEqual(
+                list(qs1.values_list('total_sum', flat=True)),
+                df2.total_sum.tolist()
+            )
+            self.assertListEqual(
+                list(qs1.values_list('trader__name', flat=True)),
+                df2.trader.tolist()
+            )
 
     def test_related_cols(self):
         qs = TradeLog.objects.all()
