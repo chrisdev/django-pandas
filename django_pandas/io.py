@@ -10,12 +10,16 @@ def to_fields(qs, fieldnames):
             try:
                 field = model._meta.get_field(fieldname_part)
             except django.db.models.fields.FieldDoesNotExist:
-                rels = model._meta.get_all_related_objects_with_model()
-                for relobj, _ in rels:
-                    if relobj.get_accessor_name() == fieldname_part:
-                        field = relobj.field
-                        model = field.model
-                        break
+                try:
+                    rels = model._meta.get_all_related_objects_with_model()
+                except AttributeError:
+                    field = fieldname
+                else:
+                    for relobj, _ in rels:
+                        if relobj.get_accessor_name() == fieldname_part:
+                            field = relobj.field
+                            model = field.model
+                            break
             else:
                 if (hasattr(field, "one_to_many") and field.one_to_many) or \
                    (hasattr(field, "one_to_one") and field.one_to_one):

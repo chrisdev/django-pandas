@@ -150,6 +150,24 @@ class RelatedFieldsTest(TestCase):
             df1.trader.tolist()
         )
 
+        # Testing verbose with annotated column:
+        if django.VERSION >= (1, 10):
+            from django.db.models import F, FloatField
+            from django.db.models.functions import Cast
+            qs1 = TradeLog.objects.all().annotate(
+                total_sum=Cast(F('price') * F('volume'), FloatField()),
+            )
+            df2 = read_frame(
+                qs1, fieldnames=['trader', 'total_sum'])
+            self.assertListEqual(
+                list(qs1.values_list('total_sum', flat=True)),
+                df2.total_sum.tolist()
+            )
+            self.assertListEqual(
+                list(qs1.values_list('trader__name', flat=True)),
+                df2.trader.tolist()
+            )
+
     def test_related_cols(self):
         qs = TradeLog.objects.all()
         cols = ['log_datetime', 'symbol', 'symbol__isin', 'trader__name',
