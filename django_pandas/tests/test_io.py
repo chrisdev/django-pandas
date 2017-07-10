@@ -168,6 +168,11 @@ class RelatedFieldsTest(TestCase):
                 df2.trader.tolist()
             )
 
+    def test_related_selected_field(self):
+        qs = TradeLog.objects.all().values('trader__name')
+        df = read_frame(qs)
+        self.assertEqual(list(df.columns), ['trader__name'])
+
     def test_related_cols(self):
         qs = TradeLog.objects.all()
         cols = ['log_datetime', 'symbol', 'symbol__isin', 'trader__name',

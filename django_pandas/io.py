@@ -93,7 +93,8 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
 
             fieldnames = qs.field_names + annotation_field_names + extra_names
 
-            fields = [qs.model._meta.get_field(f) for f in qs.field_names] + \
+            fields = [None if '__' in f else qs.model._meta.get_field(f)
+                      for f in qs.field_names] + \
                 [None] * (len(annotation_field_names) + len(extra_names))
 
         else:
@@ -105,8 +106,8 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
             fieldnames = select_field_names + annotation_field_names \
                 + extra_field_names
 
-            fields = [qs.model._meta.get_field(f) for
-                      f in select_field_names] + \
+            fields = [None if '__' in f else qs.model._meta.get_field(f)
+                      for f in select_field_names] + \
                 [None] * (len(annotation_field_names) + len(extra_field_names))
     else:
         fields = qs.model._meta.fields
