@@ -156,7 +156,20 @@ class TimeSeriesTest(TestCase):
         ##df = qs.to_timeseries(index='date_ix', pivot_columns='series_name',
                                 ##values='value',
                                 ##storage='long')
+    
+    def test_coerce_float(self):
+        qs = LongTimeSeries.objects.all()
+        ts = qs.to_timeseries(index='date_ix', coerce_float=True).resample('D').sum()
+        self.assertEqual(ts['value'].dtype, np.float64)
 
+        # Testing on Wide Series
+
+        qs = WideTimeSeries.objects.all()
+        ts = qs.to_timeseries(index='date_ix', coerce_float=True).resample('D').sum()
+        self.assertEqual(ts['col1'].dtype, np.float64)
+        self.assertEqual(ts['col2'].dtype, np.float64)
+        self.assertEqual(ts['col3'].dtype, np.float64)
+        self.assertEqual(ts['col4'].dtype, np.float64)
 
 class PivotTableTest(TestCase):
 
