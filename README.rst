@@ -21,10 +21,13 @@ Contributors
 * `@MiddleFork <https://github.com/MiddleFork>`_
 * `Daniel Andrlik <https://github.com/andrlik>`_
 * `Kevin Abbot <https://github.com/kgabbott>`_
-
+* `Yousuf Jawwad <https://github.com/ysfjwd>`_
+* `@henhuy <https://github.com/henhuy>`_
 
 What's New
 ===========
+- The `verbose` argument now handles more use cases
+- Corece float argument added to `to_timeseries()` method
 - Prevent column duplicaton in read_frame method
 - Compatibility with `pandas 0.20.1`
 - Support for Python 2.7 and 3.5 with Django versions 1.8+
