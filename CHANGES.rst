@@ -1,10 +1,15 @@
 CHANGES
 ========
+0.4.4 (2017-07-16)
+-------------------
+- The `verbose` argument now handles more use cases (Thanks to @henhuy and
+  Kevin Abbott)
+- Corece float argument add to ```to_timeseries()``` method (Thanks Yousuf Jawwad)
 
 0.4.3 (2017-06-02)
 --------------------
 - Fix doc typos and formatting 
-- Prevent column duplication in read_frame (Thanks Kevin Abott) 
+- Prevent column duplication in read_frame (Thanks Kevin Abbott) 
 
 0.4.2 (2017-05-22)
 --------------------

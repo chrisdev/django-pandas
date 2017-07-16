@@ -19,4 +19,6 @@ Contributions
 - `@MiddleFork <https://github.com/MiddleFork>`_
 - `Daniel Andrlik <https://github.com/andrlik>`_
 - `Kevin Abbot <https://github.com/kgabbott>`_
+- `Yousuf Jawwad <https://github.com/ysfjwd>`_
+- `@henhuy <https://github.com/henhuy>`_
 
