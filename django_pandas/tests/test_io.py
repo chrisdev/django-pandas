@@ -168,6 +168,23 @@ class RelatedFieldsTest(TestCase):
                 df2.trader.tolist()
             )
 
+    def test_verbose_duplicates_fieldnames(self):
+        qs = TradeLog.objects.all()
+        df = read_frame(qs, fieldnames=['trader', 'trader', 'price'])
+        self.assertListEqual(
+            list(qs.values_list('price', flat=True)),
+            df.price.tolist()
+        )
+
+    def test_verbose_duplicate_values(self):
+        qs = TradeLog.objects.all()
+        qs = qs.values('trader', 'trader', 'price')
+        df = read_frame(qs)
+        self.assertListEqual(
+            list(qs.values_list('price', flat=True)),
+            df.price.tolist()
+        )
+
     def test_related_selected_field(self):
         qs = TradeLog.objects.all().values('trader__name')
         df = read_frame(qs)

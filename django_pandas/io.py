@@ -73,6 +73,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
    """
 
     if fieldnames:
+        fieldnames = pd.unique(fieldnames)
         if index_col is not None and index_col not in fieldnames:
             # Add it to the field names if not already there
             fieldnames = tuple(fieldnames) + (index_col,)
@@ -87,33 +88,30 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
             if annotation_field_names is None:
                 annotation_field_names = []
 
-            extra_names = qs.extra_names
-            if extra_names is None:
-                extra_names = []
+            extra_field_names = qs.extra_names
+            if extra_field_names is None:
+                extra_field_names = []
 
-            fieldnames = qs.field_names + annotation_field_names + extra_names
-
-            fields = [None if '__' in f else qs.model._meta.get_field(f)
-                      for f in qs.field_names] + \
-                [None] * (len(annotation_field_names) + len(extra_names))
+            select_field_names = qs.field_names
 
         else:
             annotation_field_names = list(qs.query.annotation_select)
-
-            select_field_names = list(qs.query.values_select)
             extra_field_names = list(qs.query.extra_select)
+            select_field_names = list(qs.query.values_select)
 
-            fieldnames = select_field_names + annotation_field_names \
-                + extra_field_names
+        fieldnames = select_field_names + annotation_field_names + \
+            extra_field_names
+        fields = [None if '__' in f else qs.model._meta.get_field(f)
+                  for f in select_field_names] + \
+            [None] * (len(annotation_field_names) + len(extra_field_names))
 
-            fields = [None if '__' in f else qs.model._meta.get_field(f)
-                      for f in select_field_names] + \
-                [None] * (len(annotation_field_names) + len(extra_field_names))
+        uniq_fields = set()
+        fieldnames, fields = zip(
+            *(f for f in zip(fieldnames, fields)
+              if f[0] not in uniq_fields and not uniq_fields.add(f[0])))
     else:
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
-
-    fieldnames = pd.unique(fieldnames)
 
     if is_values_queryset(qs):
         recs = list(qs)
