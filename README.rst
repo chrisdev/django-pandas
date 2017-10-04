@@ -27,11 +27,11 @@ Contributors
 What's New
 ===========
 - The `verbose` argument now handles more use cases
-- Corece float argument added to `to_timeseries()` method
-- Prevent column duplicaton in read_frame method
+- Coerce float argument added to `to_timeseries()` method
+- Prevent column duplication in read_frame method
 - Compatibility with `pandas 0.20.1`
 - Support for Python 2.7 and 3.5 with Django versions 1.8+
-- Suport for Python 3.6 and Django 1.11
+- Support for Python 3.6 and Django 1.11
 - We still support legacy versions (Python 2.7 and Django 1.4)
 
 Dependencies

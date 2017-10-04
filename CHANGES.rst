@@ -1,5 +1,10 @@
 CHANGES
 ========
+
+0.4.5 (2017-10-4)
+-----------------
+- A Fix for fieldname deduplication bug thanks to @kgabbott
+
 0.4.4 (2017-07-16)
 -------------------
 - The `verbose` argument now handles more use cases (Thanks to @henhuy and
