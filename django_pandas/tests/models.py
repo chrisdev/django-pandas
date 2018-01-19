@@ -132,12 +132,12 @@ class TradeLogNote(models.Model):
 
 @python_2_unicode_compatible
 class TradeLog(models.Model):
-    trader = models.ForeignKey(Trader)
-    symbol = models.ForeignKey(Security, null=True)
+    trader = models.ForeignKey(Trader, on_delete=models.CASCADE)
+    symbol = models.ForeignKey(Security, null=True, on_delete=models.CASCADE)
     log_datetime = models.DateTimeField()
     price = models.FloatField()
     volume = models.IntegerField()
-    note = models.OneToOneField(TradeLogNote)
+    note = models.OneToOneField(TradeLogNote, on_delete=models.CASCADE)
 
     objects = DataFrameManager()
 
@@ -198,7 +198,7 @@ class Dude(models.Model):
 
 class Car(models.Model):
     name = models.CharField(max_length=20)
-    owner = models.ForeignKey(Dude, related_name='cars_owned')
+    owner = models.ForeignKey(Dude, related_name='cars_owned', on_delete=models.CASCADE)
 
     objects = PassThroughManager(DudeQuerySet)
 
@@ -223,6 +223,6 @@ class Spot(models.Model):
     secure = models.BooleanField(default=True)
     closed = models.BooleanField(default=False)
     secret = models.BooleanField(default=False)
-    owner = models.ForeignKey(Dude, related_name='spots_owned')
+    owner = models.ForeignKey(Dude, related_name='spots_owned', on_delete=models.CASCADE)
 
     objects = SpotManager.for_queryset_class(SpotQuerySet)()

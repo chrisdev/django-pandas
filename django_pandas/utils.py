@@ -80,10 +80,24 @@ def build_update_functions(fieldnames, fields):
                 yield fieldname, replace_from_choices(choices)
 
             elif field and field.get_internal_type() == 'ForeignKey':
-                yield fieldname, replace_pk(field.rel.to)
+                yield fieldname, replace_pk(get_related_model(field))
 
 
 def update_with_verbose(df, fieldnames, fields):
     for fieldname, function in build_update_functions(fieldnames, fields):
         if function is not None:
             df[fieldname] = function(df[fieldname])
+
+
+def get_related_model(field):
+    """Gets the related model from a related field"""
+    model = None
+
+    if hasattr(field, 'related_model') and field.related_model:
+        model = field.related_model
+    # Django<1.8 doesn't have the related_model API, so we need to use rel,
+    # which was removed in Django 2.0
+    elif hasattr(field, 'rel') and field.rel:
+        model = field.rel.to
+
+    return model
