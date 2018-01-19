@@ -12,6 +12,7 @@ Contributions
 - `Christopher Clarke <https://github.com/chrisdev>`_
 - `Bertrand Bordage <https://github.com/BertrandBordage>`_
 - `Guillaume Thomas <https://github.com/gtnx>`_
+- `Hélio Meira Lins <https://github.com/meiralins>`_
 - `Parbhat Puri  <https://parbhatpuri.com/>`_
 - `Fredrik Burman (coachHIPPO) <https://www.coachhippo.com>`_
 - `Safe Hammad <http://safehammad.com>`_
