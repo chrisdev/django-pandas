@@ -6,8 +6,8 @@ long_description = (
     open('CHANGES.rst').read()
 )
 MAJOR = 0
-MINOR = 4
-MICRO = 5
+MINOR = 5
+MICRO = 0
 
 VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
