@@ -1,9 +1,10 @@
+import codecs
 from setuptools import setup, find_packages
 
 
 long_description = (
-    open('README.rst').read() + '\n\n' +
-    open('CHANGES.rst').read()
+    codecs.open('README.rst', 'r', 'utf-8').read() + '\n\n' +
+    codecs.open('CHANGES.rst', 'r', 'utf-8').read()
 )
 MAJOR = 0
 MINOR = 5
