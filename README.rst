@@ -30,7 +30,8 @@ What's New
 ===========
 - Support for Django 2.0
 - We still support legacy versions (Python 2.7 and Django 1.4)
-- Address Unicode decode error  
+- Address Unicode decode error when installing on docker 
+
 Dependencies
 =============
 ``django-pandas`` supports `Django`_ (>=1.4.5) or later  
