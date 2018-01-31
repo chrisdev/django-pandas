@@ -1,5 +1,12 @@
 CHANGES
 ========
+0.5.1 (2018-01-)
+-----------------
+- Address Unicode decode error when installing with pip3 on docker (Thanks @utapyngo)
+
+0.5.0 (2018-01-20)
+------------------
+- Django 2.0 compatibility (Thanks @meirains)
 
 0.4.5 (2017-10-4)
 -----------------

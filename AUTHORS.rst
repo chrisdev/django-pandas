@@ -22,4 +22,6 @@ Contributions
 - `Kevin Abbot <https://github.com/kgabbott>`_
 - `Yousuf Jawwad <https://github.com/ysfjwd>`_
 - `@henhuy <https://github.com/henhuy>`_
+- `Hélio Meira Lins <https://github.com/meiralins>`_
+- `@utpyngo <https://github.com/utpyngo>`_
 
