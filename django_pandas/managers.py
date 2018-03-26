@@ -3,6 +3,8 @@ from .io import read_frame
 import django
 from django.db import models
 
+import pandas as pd
+
 
 class PassThroughManagerMixin(object):
     """
@@ -197,7 +199,7 @@ class DataFrameQuerySet(QuerySet):
                   human readable versions of any foreign key fields else use
                   the primary keys values else use the actual values set
                   in the model.
-                  
+
         coerce_float:   Attempt to convert values to non-string, non-numeric
                         objects (like decimal.Decimal) to floating point.
         """
@@ -233,6 +235,7 @@ class DataFrameQuerySet(QuerySet):
         if freq is not None:
             df = df.resample(freq, **rs_kwargs)
 
+        df.index = pd.to_datetime(df.index)
         return df
 
     def to_dataframe(self, fieldnames=(), verbose=True, index=None,
@@ -257,8 +260,8 @@ class DataFrameQuerySet(QuerySet):
         verbose: If  this is ``True`` then populate the DataFrame with the
                  human readable versions for foreign key fields else
                  use the actual values set in the model
-        
-        coerce_float:   Attempt to convert values to non-string, non-numeric 
+
+        coerce_float:   Attempt to convert values to non-string, non-numeric
                         objects (like decimal.Decimal) to floating point.
         """
 
