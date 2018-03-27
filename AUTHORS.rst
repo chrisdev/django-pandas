@@ -23,5 +23,6 @@ Contributions
 - `Yousuf Jawwad <https://github.com/ysfjwd>`_
 - `@henhuy <https://github.com/henhuy>`_
 - `Hélio Meira Lins <https://github.com/meiralins>`_
+- `William Schwartz <https://github.com/wkschwartz>`_
 - `@utpyngo <https://github.com/utpyngo>`_
 
