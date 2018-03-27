@@ -1,8 +1,6 @@
 from collections.abc import Mapping
 
 import pandas as pd
-from pandas.core.index import _ensure_index
-from pandas.core.frame import _to_arrays, _arrays_to_mgr
 from .utils import update_with_verbose, get_related_model
 import django
 import numpy as np
@@ -201,21 +199,14 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
 
     if not is_values_queryset(qs):
         qs = qs.values_list(*fieldnames)
+    recs = qs.iterator()
 
-    # Goal is to avoid instantiating the NumPy columns with wider dtypes than
-    # compress needs. If pandas.DataFrame.from_records accepted a dtype
-    # argument, we would just call that constructor. The following several lines
-    # do the same thing.
-    columns = _ensure_index(fieldnames)
-    values = list(qs.iterator()) # Potentially the hardest step
     if compress:
         if not isinstance(compress, Mapping):
             compress = {}
-        values = np.array(values, dtype=_get_dtypes(compress, fields))
-    df = pd.DataFrame(_arrays_to_mgr(
-        arrays=_to_arrays(
-            data=values, columns=columns, coerce_float=coerce_float)[0],
-        arr_names=columns, index=None, columns=columns))
+        recs = np.array(list(recs), dtype=_get_dtypes(compress, fields))
+    df = pd.DataFrame.from_records(recs, columns=fieldnames,
+                                   coerce_float=coerce_float)
 
     if verbose:
         update_with_verbose(df, fieldnames, fields)
