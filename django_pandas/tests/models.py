@@ -9,7 +9,7 @@ class MyModel(models.Model):
     col1 = models.IntegerField()
     col2 = models.FloatField(null=True)
     col3 = models.FloatField(null=True)
-    col4 = models.IntegerField()
+    col4 = models.SmallIntegerField()
 
     def __str__(self):
         return "{} {} {} {}".format(

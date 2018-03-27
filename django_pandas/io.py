@@ -1,6 +1,11 @@
+from collections.abc import Mapping
+
 import pandas as pd
+from pandas.core.index import _ensure_index
+from pandas.core.frame import _to_arrays, _arrays_to_mgr
 from .utils import update_with_verbose, get_related_model
 import django
+import numpy as np
 
 
 def to_fields(qs, fieldnames):
@@ -32,13 +37,81 @@ def is_values_queryset(qs):
         return qs._iterable_class == django.db.models.query.ValuesIterable
 
 
+_FIELDS_TO_DTYPES = {
+    django.db.models.fields.AutoField:                  np.int32,
+    django.db.models.fields.BigAutoField:               np.int64,
+    django.db.models.fields.BigIntegerField:            np.int64,
+    django.db.models.fields.BinaryField:                np.bytes_,
+    django.db.models.fields.BooleanField:               np.bool_,
+    django.db.models.fields.CharField:                  np.unicode_,
+    django.db.models.fields.DateField:                  np.datetime64,
+    django.db.models.fields.DateTimeField:              np.datetime64,
+    django.db.models.fields.DecimalField:               object,
+    django.db.models.fields.DurationField:              np.timedelta64,
+    django.db.models.fields.EmailField:                 np.unicode_,
+    django.db.models.fields.FilePathField:              np.unicode_,
+    django.db.models.fields.FloatField:                 np.float64,
+    django.db.models.fields.GenericIPAddressField:      np.unicode_,
+    django.db.models.fields.IntegerField:               np.int32,
+    django.db.models.fields.NullBooleanField:           object, # bool(None) is False
+    django.db.models.fields.PositiveIntegerField:       np.uint32,
+    django.db.models.fields.PositiveSmallIntegerField:  np.uint16,
+    django.db.models.fields.SlugField:                  np.unicode_,
+    django.db.models.fields.TextField:                  np.unicode_,
+    django.db.models.fields.TimeField:                  np.datetime64,
+    django.db.models.fields.URLField:                   np.unicode_,
+    django.db.models.fields.UUIDField:                  object,
+    django.db.models.fields.SmallIntegerField:          np.int16,
+}
+
+
+def _get_dtypes(fields_to_dtypes, fields):
+    """Infer NumPy dtypes from field types among those named in fieldnames.
+
+    Returns a list of (fieldname, NumPy dtype) pairs. Read about NumPy dtypes
+    here [#]_ and here [#]_. The returned list can be passed to ``numpy.array``
+    in ``read_frame``.
+
+    Parameters
+    ----------
+
+    field_to_dtypes : mapping
+        A (potentially empty) mapping of Django field classes to NumPy dtypes.
+        This mapping overrides the defualts from ``_FIELDS_TO_DTYPES``. The
+        back-up default dtype is ``object`` for unfamiliar field classes.
+
+    fields : list of Django field class instances
+        They must correspond in order to the columns of the dataframe that
+        ``read_frame`` is building.
+
+    .. [#] https://docs.scipy.org/doc/numpy/user/basics.types.html
+    .. [#] https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html
+    """
+    dtypes = []
+    f2d = _FIELDS_TO_DTYPES.copy()
+    f2d.update(fields_to_dtypes)
+    for field in fields:
+        # Find the lowest subclass mong the keys of f2d
+        t, dtype = object, object
+        for k, v in f2d.items():
+            if isinstance(field, k) and issubclass(k, t):
+                t = k
+                dtype = v
+        dtypes.append((field.name, dtype))
+    return dtypes
+
+
 def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
-               verbose=True):
+               verbose=True, compress=False):
     """
     Returns a dataframe from a QuerySet
 
     Optionally specify the field names/columns to utilize and
     a field as the index
+
+    This function uses the QuerySet's ``iterator`` method, so it does not
+    populate the QuerySet's cache. This is more memory efficient in the typical
+    case where you do not use the QuerySet after ``read_frame``.
 
     Parameters
     ----------
@@ -58,6 +131,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     coerce_float : boolean, default False
         Attempt to convert values to non-string, non-numeric data (like
         decimal.Decimal) to floating point, useful for SQL result sets
+        Does not work with ``compress``.
 
     verbose:  boolean If  this is ``True`` then populate the DataFrame with the
                 human readable versions of any foreign key fields else use
@@ -65,6 +139,23 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
                 The human readable version of the foreign key field is
                 defined in the ``__unicode__`` or ``__str__``
                 methods of the related class definition
+
+    compress: boolean or a mapping, default False
+        If a true value, infer NumPy data types [#]_ for Pandas dataframe
+        columns from the corresponding Django field types. For example, Django's
+        built in ``SmallIntgerField`` is cast to NumPy's ``int16``. If
+        ``compress`` is a mapping (e.g., a ``dict``), it should be a mapping
+        with Django field subclasses as keys and  NumPy dtypes [#]_ as values.
+        This mapping overrides the defualts for the field classes appearing in
+        the mapping. However, the inference is based on the field subclass
+        lowest on a chain of subclasses, that is, in order of inheritence.
+        To override ``SmallIntegerField`` it is therefore not sufficient to
+        override ``IntegerField``. Careful of setting ``compress={}`` because
+        ``{}`` is a false value in Python, which would cause ``read_frame``
+        not to compress columns.
+
+    .. [#] https://docs.scipy.org/doc/numpy/user/basics.types.html
+    .. [#] https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html
    """
 
     if fieldnames:
@@ -108,13 +199,23 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
 
-    if is_values_queryset(qs):
-        recs = list(qs)
-    else:
-        recs = list(qs.values_list(*fieldnames))
+    if not is_values_queryset(qs):
+        qs = qs.values_list(*fieldnames)
 
-    df = pd.DataFrame.from_records(recs, columns=fieldnames,
-                                   coerce_float=coerce_float)
+    # Goal is to avoid instantiating the NumPy columns with wider dtypes than
+    # compress needs. If pandas.DataFrame.from_records accepted a dtype
+    # argument, we would just call that constructor. The following several lines
+    # do the same thing.
+    columns = _ensure_index(fieldnames)
+    values = list(qs.iterator()) # Potentially the hardest step
+    if compress:
+        if not isinstance(compress, Mapping):
+            compress = {}
+        values = np.array(values, dtype=_get_dtypes(compress, fields))
+    df = pd.DataFrame(_arrays_to_mgr(
+        arrays=_to_arrays(
+            data=values, columns=columns, coerce_float=coerce_float)[0],
+        arr_names=columns, index=None, columns=columns))
 
     if verbose:
         update_with_verbose(df, fieldnames, fields)

@@ -46,6 +46,16 @@ class IOTest(TestCase):
         df1 = read_frame(qs, ['col1', 'col2'])
         self.assertEqual(df1.shape, (qs.count(), 2))
 
+    def test_compress(self):
+        qs = MyModel.objects.all()
+        df = read_frame(qs, compress=True)
+
+        # Test automatic inference of dtypes
+        self.assertIs(df.col1.dtype, np.dtype('int32'))
+        self.assertIs(df.col2.dtype, np.dtype('float_'))
+        self.assertIs(df.col3.dtype, np.dtype('float_'))
+        self.assertIs(df.col4.dtype, np.dtype('int16'))
+
     def test_values(self):
         qs = MyModel.objects.all()
         qs = qs.extra(select={"ecol1": "col1+1"})
