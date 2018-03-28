@@ -57,6 +57,9 @@ class IOTest(TestCase):
         self.assertEqual(df.col3.dtype, np.dtype('float_'))
         self.assertEqual(df.col4.dtype, np.dtype('int16'))
 
+        # Compress should use less memory
+        self.assertLess(df.memory_usage().sum(), read_frame(qs).memory_usage().sum())
+
     def assert_default_compressable(self, df):
         for field in models.CompressableModel._meta.get_fields():
             if field.name == 'id':
@@ -81,14 +84,18 @@ class IOTest(TestCase):
         qs = models.CompressableModel.objects.all()
 
         # Specify a custom dtype for the custom field
-        df = read_frame(qs, compress={models.ByteField: np.int8})
-        self.assert_default_compressable(df)
-        self.assertEqual(df.byte.dtype, np.int8)
+        df1 = read_frame(qs, compress={models.ByteField: np.int8})
+        self.assert_default_compressable(df1)
+        self.assertEqual(df1.byte.dtype, np.int8)
 
         # Rely on finding the minimum specified parent class
-        df = read_frame(qs, compress=True)
-        self.assert_default_compressable(df)
-        self.assertEqual(df.byte.dtype, np.int16)
+        df2 = read_frame(qs, compress=True)
+        self.assert_default_compressable(df2)
+        self.assertEqual(df2.byte.dtype, np.int16)
+
+        # Memory usage is ordered as df1 < df2 < read_frame(qs, compress=False)
+        self.assertLess(df2.memory_usage().sum(), read_frame(qs).memory_usage().sum())
+        self.assertLess(df1.memory_usage().sum(), df2.memory_usage().sum())
 
     def test_values(self):
         qs = MyModel.objects.all()
