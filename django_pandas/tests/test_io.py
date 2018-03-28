@@ -4,6 +4,7 @@ from django.db.models import Sum
 import pandas as pd
 import numpy as np
 from .models import MyModel, Trader, Security, TradeLog, TradeLogNote, MyModelChoice, Portfolio
+from django_pandas.tests import models
 from django_pandas.io import read_frame
 
 
@@ -46,15 +47,48 @@ class IOTest(TestCase):
         df1 = read_frame(qs, ['col1', 'col2'])
         self.assertEqual(df1.shape, (qs.count(), 2))
 
-    def test_compress(self):
+    def test_compress_basic(self):
         qs = MyModel.objects.all()
         df = read_frame(qs, compress=True)
 
         # Test automatic inference of dtypes
-        self.assertIs(df.col1.dtype, np.dtype('int32'))
-        self.assertIs(df.col2.dtype, np.dtype('float_'))
-        self.assertIs(df.col3.dtype, np.dtype('float_'))
-        self.assertIs(df.col4.dtype, np.dtype('int16'))
+        self.assertEqual(df.col1.dtype, np.dtype('int32'))
+        self.assertEqual(df.col2.dtype, np.dtype('float_'))
+        self.assertEqual(df.col3.dtype, np.dtype('float_'))
+        self.assertEqual(df.col4.dtype, np.dtype('int16'))
+
+    def assert_default_compressable(self, df):
+        for field in models.CompressableModel._meta.get_fields():
+            if field.name == 'id':
+                self.assertEqual(df['id'][0], 1)
+                self.assertIs(df['id'].dtype, np.dtype('int32'))
+            elif field.name == 'date':
+                self.assertEqual(df['date'][0].to_pydatetime().date(), field.default)
+            elif field.name == 'datetime':
+                self.assertEqual(df['datetime'][0].to_pydatetime(), field.default)
+            elif field.name == 'duration':
+                self.assertEqual(df['duration'][0].to_pytimedelta(), field.default)
+            elif isinstance(field.default, (str, bytes)):
+                self.assertEqual(df[field.name].dtype, np.dtype(object))
+            else:
+                msg = (
+                    f'Expected {field.name} to have value {field.default!r}, but was'
+                    f' {df[field.name][0]!r}')
+                self.assertEqual(df[field.name][0], field.default, msg)
+
+    def test_compress_custom_field(self):
+        models.CompressableModel().save()
+        qs = models.CompressableModel.objects.all()
+
+        # Specify a custom dtype for the custom field
+        df = read_frame(qs, compress={models.ByteField: np.int8})
+        self.assert_default_compressable(df)
+        self.assertEqual(df.byte.dtype, np.int8)
+
+        # Rely on finding the minimum specified parent class
+        df = read_frame(qs, compress=True)
+        self.assert_default_compressable(df)
+        self.assertEqual(df.byte.dtype, np.int16)
 
     def test_values(self):
         qs = MyModel.objects.all()

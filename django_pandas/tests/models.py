@@ -1,3 +1,7 @@
+import datetime as dt
+from decimal import Decimal
+from uuid import UUID
+
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django_pandas.managers import DataFrameManager, PassThroughManager
@@ -30,6 +34,41 @@ class MyModelChoice(models.Model):
     col1 = models.IntegerField(choices=CHOICES)
     col2 = models.FloatField(null=True)
     objects = DataFrameManager()
+
+
+class ByteField(models.SmallIntegerField):
+    pass
+
+class CompressableModel(models.Model):
+    # Can only have one auto field per model and id is added automatically
+    # id        = models.AutoField(primary_key=True)
+    # bigauto   = models.BigAutoField()
+
+    bigint      = models.BigIntegerField(default=1<<63 - 1)
+    binary      = models.BinaryField(default=b'test bytes')
+    boolean     = models.BooleanField(default=True)
+    char        = models.CharField(max_length=10, default='test chars')
+    date        = models.DateField(default=dt.date(2018, 3, 27))
+    datetime    = models.DateTimeField(default=dt.datetime(2018, 3, 27, 13, 55, 56))
+    decimal     = models.DecimalField(decimal_places=1, max_digits=3, default=Decimal(1.5))
+    duration    = models.DurationField(default=dt.timedelta(minutes=1, seconds=1))
+    email       = models.EmailField(default="an+email@address.com")
+    filepath    = models.FilePathField(default="/usr/local/bin/python")
+    floating    = models.FloatField(default=1.2)
+    ip          = models.GenericIPAddressField(default="::ffff:192.0.2.1")
+    integer     = models.IntegerField(default=1<<31 - 1)
+    nullboolean = models.NullBooleanField(default=None)
+    uint        = models.PositiveIntegerField(default=1<<31 - 1)
+    ushort      = models.PositiveSmallIntegerField(default=1<<15 - 1)
+    slug        = models.SlugField(default="test_slug")
+    short       = models.SmallIntegerField(default=-(1<<15 - 1))
+    text        = models.TextField(default="test text")
+    time        = models.TimeField(default=dt.time(13, 55, 56))
+    url         = models.URLField(default="https://github.com/chrisdev/django-pandas")
+    uuid        = models.UUIDField(default=UUID(int=1234556789))
+
+    # Custom field
+    byte        = ByteField(default=127)
 
 
 @python_2_unicode_compatible
