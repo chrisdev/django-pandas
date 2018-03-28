@@ -3,6 +3,7 @@ from collections.abc import Mapping
 import pandas as pd
 from .utils import update_with_verbose, get_related_model
 import django
+from django.db.models import fields
 import numpy as np
 
 
@@ -36,30 +37,30 @@ def is_values_queryset(qs):
 
 
 _FIELDS_TO_DTYPES = {
-    django.db.models.fields.AutoField:                  np.int32,
-    django.db.models.fields.BigAutoField:               np.int64,
-    django.db.models.fields.BigIntegerField:            np.int64,
-    django.db.models.fields.BinaryField:                object, # Pandas has no bytes type
-    django.db.models.fields.BooleanField:               np.bool_,
-    django.db.models.fields.CharField:                  object, # Pandas has no str type
-    django.db.models.fields.DateField:                  np.dtype('datetime64[D]'),
-    django.db.models.fields.DateTimeField:              np.dtype('datetime64[us]'),
-    django.db.models.fields.DecimalField:               object,
-    django.db.models.fields.DurationField:              np.dtype('timedelta64[us]'),
-    django.db.models.fields.EmailField:                 object,
-    django.db.models.fields.FilePathField:              object,
-    django.db.models.fields.FloatField:                 np.float64,
-    django.db.models.fields.GenericIPAddressField:      object,
-    django.db.models.fields.IntegerField:               np.int32,
-    django.db.models.fields.NullBooleanField:           object, # bool(None) is False
-    django.db.models.fields.PositiveIntegerField:       np.uint32,
-    django.db.models.fields.PositiveSmallIntegerField:  np.uint16,
-    django.db.models.fields.SlugField:                  object,
-    django.db.models.fields.TextField:                  object,
-    django.db.models.fields.TimeField:                  object,
-    django.db.models.fields.URLField:                   object,
-    django.db.models.fields.UUIDField:                  object,
-    django.db.models.fields.SmallIntegerField:          np.int16,
+    fields.AutoField:                  np.int32,
+    fields.BigAutoField:               np.int64,
+    fields.BigIntegerField:            np.int64,
+    fields.BinaryField:                object, # Pandas has no bytes type
+    fields.BooleanField:               np.bool_,
+    fields.CharField:                  object, # Pandas has no str type
+    fields.DateField:                  np.dtype('datetime64[D]'),
+    fields.DateTimeField:              np.dtype('datetime64[us]'),
+    fields.DecimalField:               object,
+    fields.DurationField:              np.dtype('timedelta64[us]'),
+    fields.EmailField:                 object,
+    fields.FilePathField:              object,
+    fields.FloatField:                 np.float64,
+    fields.GenericIPAddressField:      object,
+    fields.IntegerField:               np.int32,
+    fields.NullBooleanField:           object, # bool(None) is False
+    fields.PositiveIntegerField:       np.uint32,
+    fields.PositiveSmallIntegerField:  np.uint16,
+    fields.SlugField:                  object,
+    fields.SmallIntegerField:          np.int16,
+    fields.TextField:                  object,
+    fields.TimeField:                  object,
+    fields.URLField:                   object,
+    fields.UUIDField:                  object,
 }
 
 
@@ -93,8 +94,7 @@ def _get_dtypes(fields_to_dtypes, fields):
         t, dtype = object, object
         for k, v in f2d.items():
             if isinstance(field, k) and issubclass(k, t):
-                t = k
-                dtype = v
+                t, dtype = k, v
         dtypes.append((field.name, dtype))
     return dtypes
 
