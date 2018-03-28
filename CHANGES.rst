@@ -3,6 +3,10 @@ CHANGES
 0.5.1 (2018-01-)
 -----------------
 - Address Unicode decode error when installing with pip3 on docker (Thanks @utapyngo)
+- Fix `#63 <https://github.com/chrisdev/django-pandas/issues/63>`_: Use memory
+  efficient iteration in ``read_frame`` (by @wkschwartz)
+- Add ``compress`` argument to ``read_frame`` to infer NumPy data types for the
+  returned data frame's columns from the Django field types (by @wkschwartz)
 
 0.5.0 (2018-01-20)
 ------------------

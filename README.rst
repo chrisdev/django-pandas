@@ -25,6 +25,7 @@ Contributors
 * `@henhuy <https://github.com/henhuy>`_
 * `Hélio Meira Lins <https://github.com/meiralins>`_
 * `@utpyngo <https://github.com/utpyngo>`_
+* `William Schwartz <https://github.com/wkschwartz>`_
 
 What's New
 ===========
@@ -119,6 +120,23 @@ read_frame
                 human readable versions of any foreign key or choice fields 
                 else use the actual values set in the model.
 
+    - compress: a false value, ``True``, or a mapping, default False
+                If a true value, infer `NumPy data types
+                <https://docs.scipy.org/doc/numpy/user/basics.types.html>`_ for
+                Pandas dataframe columns from the corresponding Django field
+                types. For example, Django's built in ``SmallIntgerField`` is
+                cast to NumPy's ``int16``. If ``compress`` is a mapping (e.g., a
+                ``dict``), it should be a mapping with Django field subclasses
+                as keys and `NumPy dtypes
+                <https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html>`_
+                as values. This mapping overrides the defualts for the field
+                classes appearing in the mapping. However, the inference is
+                based on the field subclass lowest on a chain of subclasses,
+                that is, in order of inheritence. To override
+                ``SmallIntegerField`` it is therefore not sufficient to override
+                ``IntegerField``. Careful of setting ``compress={}`` because
+                ``{}`` is a false value in Python, which would cause
+                ``read_frame`` not to compress columns.
 
 Examples
 ^^^^^^^^^
