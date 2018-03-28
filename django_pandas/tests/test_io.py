@@ -60,6 +60,13 @@ class IOTest(TestCase):
         # Compress should use less memory
         self.assertLess(df.memory_usage().sum(), read_frame(qs).memory_usage().sum())
 
+    def test_compress_bad_argument(self):
+        qs = MyModel.objects.all()
+        bads = [(models.ByteField, np.int8), range(3), type, object(), 'a', 1.,
+            {'IntegerField': int}, {int: models.ByteField}]
+        for bad in bads:
+            self.assertRaises(TypeError, read_frame, qs, compress=bad)
+
     def assert_default_compressable(self, df):
         for field in models.CompressableModel._meta.get_fields():
             if field.name == 'id':

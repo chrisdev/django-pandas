@@ -89,6 +89,9 @@ def _get_dtypes(fields_to_dtypes, fields):
     dtypes = []
     f2d = _FIELDS_TO_DTYPES.copy()
     f2d.update(fields_to_dtypes)
+    for k, v in f2d.items():
+        if not issubclass(k, django.db.models.fields.Field):
+            raise TypeError(f'Expected a type of field, not {k!r}')
     for field in fields:
         # Find the lowest subclass among the keys of f2d
         t, dtype = object, object
@@ -138,7 +141,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
                 defined in the ``__unicode__`` or ``__str__``
                 methods of the related class definition
 
-    compress: boolean or a mapping, default False
+    compress: a false value, ``True``, or a mapping, default False
         If a true value, infer NumPy data types [#]_ for Pandas dataframe
         columns from the corresponding Django field types. For example, Django's
         built in ``SmallIntgerField`` is cast to NumPy's ``int16``. If
@@ -202,6 +205,8 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     recs = qs.iterator()
 
     if compress:
+        if not isinstance(compress, (bool, Mapping)):
+            raise TypeError(f'Ambiguous compress argument: {compress!r}')
         if not isinstance(compress, Mapping):
             compress = {}
         recs = np.array(list(recs), dtype=_get_dtypes(compress, fields))
