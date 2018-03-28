@@ -200,7 +200,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
 
-    if not is_values_queryset(qs):
+    if not issubclass(qs._iterable_class, django.db.models.query.ValuesListIterable):
         qs = qs.values_list(*fieldnames)
     recs = qs.iterator()
 

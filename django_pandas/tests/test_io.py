@@ -47,8 +47,7 @@ class IOTest(TestCase):
         df1 = read_frame(qs, ['col1', 'col2'])
         self.assertEqual(df1.shape, (qs.count(), 2))
 
-    def test_compress_basic(self):
-        qs = MyModel.objects.all()
+    def assert_compress_basic(self, qs):
         df = read_frame(qs, compress=True)
 
         # Test automatic inference of dtypes
@@ -59,6 +58,14 @@ class IOTest(TestCase):
 
         # Compress should use less memory
         self.assertLess(df.memory_usage().sum(), read_frame(qs).memory_usage().sum())
+        # Uses qs.iterator() rather than for x in qs.
+        self.assertFalse(qs._result_cache)
+
+    def test_compress_basic(self):
+        qs = MyModel.objects.all()
+        self.assert_compress_basic(qs)
+        self.assert_compress_basic(qs.values())
+        self.assert_compress_basic(qs.values_list())
 
     def test_compress_bad_argument(self):
         qs = MyModel.objects.all()
@@ -103,6 +110,8 @@ class IOTest(TestCase):
         # Memory usage is ordered as df1 < df2 < read_frame(qs, compress=False)
         self.assertLess(df2.memory_usage().sum(), read_frame(qs).memory_usage().sum())
         self.assertLess(df1.memory_usage().sum(), df2.memory_usage().sum())
+        # Uses qs.iterator() rather than for x in qs.
+        self.assertFalse(qs._result_cache)
 
     def test_values(self):
         qs = MyModel.objects.all()
