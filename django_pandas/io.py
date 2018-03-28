@@ -90,7 +90,7 @@ def _get_dtypes(fields_to_dtypes, fields):
     f2d = _FIELDS_TO_DTYPES.copy()
     f2d.update(fields_to_dtypes)
     for field in fields:
-        # Find the lowest subclass mong the keys of f2d
+        # Find the lowest subclass among the keys of f2d
         t, dtype = object, object
         for k, v in f2d.items():
             if isinstance(field, k) and issubclass(k, t):
