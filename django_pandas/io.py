@@ -122,4 +122,5 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     if index_col is not None:
         df.set_index(index_col, inplace=True)
 
+    df.index = pd.to_datetime(df.index, errors="ignore")
     return df
