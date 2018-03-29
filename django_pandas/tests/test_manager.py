@@ -4,7 +4,7 @@ import numpy as np
 import pickle
 import django
 from .models import (
-    DataFrame, WideTimeSeries, WideTimeSeriesDateField
+    DataFrame, WideTimeSeries, WideTimeSeriesDateField,
     LongTimeSeries, PivotData, MyModelChoice, Dude, Car, Spot
 )
 import pandas.util.testing as tm
