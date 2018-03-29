@@ -86,6 +86,25 @@ class WideTimeSeries(models.Model):
             self.col4
         )
 
+@python_2_unicode_compatible
+class WideTimeSeriesDateField(models.Model):
+    date_ix = models.DateField()
+    col1 = models.FloatField()
+    col2 = models.FloatField()
+    col3 = models.FloatField()
+    col4 = models.FloatField()
+
+    objects = DataFrameManager()
+
+    def __str__(self):
+        return "{} {} {} {}".format(
+            self.date_ix,
+            self.col1,
+            self.col2,
+            self.col3,
+            self.col4
+        )
+
 
 @python_2_unicode_compatible
 class PivotData(models.Model):
