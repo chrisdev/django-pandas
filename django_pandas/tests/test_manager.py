@@ -4,7 +4,7 @@ import numpy as np
 import pickle
 import django
 from .models import (
-    DataFrame, WideTimeSeries,
+    DataFrame, WideTimeSeries, WideTimeSeriesDateField,
     LongTimeSeries, PivotData, MyModelChoice, Dude, Car, Spot
 )
 import pandas.util.testing as tm
@@ -71,8 +71,14 @@ class TimeSeriesTest(TestCase):
                                               col2=cols['col2'],
                                               col3=cols['col3'],
                                               col4=cols['col4']))
-
         WideTimeSeries.objects.bulk_create(create_list)
+
+        for ix, cols in self.ts.iterrows():
+            create_list.append(WideTimeSeriesDateField(date_ix=ix, col1=cols['col1'],
+                                                       col2=cols['col2'],
+                                                       col3=cols['col3'],
+                                                       col4=cols['col4']))
+        WideTimeSeriesDateField.objects.bulk_create(create_list)
 
         create_list = [LongTimeSeries(date_ix=r[0], series_name=r[1][0],
                                       value=r[1][1])
@@ -89,6 +95,14 @@ class TimeSeriesTest(TestCase):
         self.assertEqual(df.shape, (qs.count(), 5))
         self.assertIsInstance(df.index, pd.DatetimeIndex)
         self.assertIsNone(df.index.freq)
+
+    def test_widestorage_datefield(self):
+
+        qs = WideTimeSeriesDateField.objects.all()
+
+        df = qs.to_timeseries(index='date_ix', storage='wide')
+
+        self.assertIsInstance(df.index, pd.DatetimeIndex)
 
     def test_longstorage(self):
         qs = LongTimeSeries.objects.all()
@@ -156,7 +170,7 @@ class TimeSeriesTest(TestCase):
         ##df = qs.to_timeseries(index='date_ix', pivot_columns='series_name',
                                 ##values='value',
                                 ##storage='long')
-    
+
     def test_coerce_float(self):
         qs = LongTimeSeries.objects.all()
         ts = qs.to_timeseries(index='date_ix', coerce_float=True).resample('D').sum()
@@ -207,7 +221,7 @@ class PivotTableTest(TestCase):
 
 
 if django.VERSION < (1, 9):
-    
+
     class PassThroughManagerTests(TestCase):
 
         def setUp(self):
