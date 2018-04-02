@@ -4,6 +4,7 @@ import pandas as pd
 from .utils import update_with_verbose, get_related_model
 import django
 from django.db.models import fields
+from django.contrib.gis.db.models import fields as geo_fields
 import numpy as np
 
 
@@ -37,11 +38,11 @@ def is_values_queryset(qs):
 
 
 _FIELDS_TO_DTYPES = {
-    fields.AutoField:                  np.int32,
-    fields.BigAutoField:               np.int64,
-    fields.BigIntegerField:            np.int64,
+    fields.AutoField:                  np.dtype(np.int32),
+    fields.BigAutoField:               np.dtype(np.int64),
+    fields.BigIntegerField:            np.dtype(np.int64),
     fields.BinaryField:                object, # Pandas has no bytes type
-    fields.BooleanField:               np.bool_,
+    fields.BooleanField:               np.dtype(np.bool_),
     fields.CharField:                  object, # Pandas has no str type
     fields.DateField:                  np.dtype('datetime64[D]'),
     fields.DateTimeField:              np.dtype('datetime64[us]'),
@@ -49,22 +50,30 @@ _FIELDS_TO_DTYPES = {
     fields.DurationField:              np.dtype('timedelta64[us]'),
     fields.EmailField:                 object,
     fields.FilePathField:              object,
-    fields.FloatField:                 np.float64,
+    fields.FloatField:                 np.dtype(np.float64),
     fields.GenericIPAddressField:      object,
-    fields.IntegerField:               np.int32,
-    fields.NullBooleanField:           object, # bool(None) is False
-    fields.PositiveIntegerField:       np.uint32,
-    fields.PositiveSmallIntegerField:  np.uint16,
+    fields.IntegerField:               np.dtype(np.int32),
+    fields.PositiveIntegerField:       np.dtype(np.uint32),
+    fields.PositiveSmallIntegerField:  np.dtype(np.uint16),
     fields.SlugField:                  object,
-    fields.SmallIntegerField:          np.int16,
+    fields.SmallIntegerField:          np.dtype(np.int16),
     fields.TextField:                  object,
     fields.TimeField:                  object,
     fields.URLField:                   object,
     fields.UUIDField:                  object,
+
+    # https://pandas.pydata.org/pandas-docs/stable/missing_data.html#missing-data-casting-rules-and-indexing
+    # Explicitly setting NullBooleanField here can be removed when support for
+    # Django versions <= 2.0 are dropped. See
+    # https://github.com/django/django/pull/8467
+    fields.NullBooleanField:           object,
+
+    # Geometry fields
+    geo_fields.GeometryField:          object,
+    geo_fields.RasterField:            object,
 }
 
-
-def _get_dtypes(fields_to_dtypes, fields):
+def _get_dtypes(fields_to_dtypes, fields, fieldnames):
     """Infer NumPy dtypes from field types among those named in fieldnames.
 
     Returns a list of (fieldname, NumPy dtype) pairs. Read about NumPy dtypes
@@ -83,6 +92,9 @@ def _get_dtypes(fields_to_dtypes, fields):
         They must correspond in order to the columns of the dataframe that
         ``read_frame`` is building.
 
+    fieldnames : iterable of names of the fields as they will appear in the data
+        frame
+
     .. [#] https://docs.scipy.org/doc/numpy/user/basics.types.html
     .. [#] https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html
     """
@@ -92,13 +104,48 @@ def _get_dtypes(fields_to_dtypes, fields):
     for k, v in f2d.items():
         if not issubclass(k, django.db.models.fields.Field):
             raise TypeError(f'Expected a type of field, not {k!r}')
-    for field in fields:
+        if not isinstance(v, np.dtype):
+            f2d[k] = np.dtype(v)
+    for field, name in zip(fields, fieldnames):
         # Find the lowest subclass among the keys of f2d
-        t, dtype = object, object
+        t, dtype = object, np.generic
         for k, v in f2d.items():
             if isinstance(field, k) and issubclass(k, t):
                 t, dtype = k, v
-        dtypes.append((field.name, dtype))
+
+        # Handle nulls for integer and boolean types
+        if field.null and issubclass(dtype.type, (np.bool_, bool)):
+            # Pandas handles nullable booleans as objects. See
+            # https://pandas.pydata.org/pandas-docs/stable/missing_data.html#missing-data-casting-rules-and-indexing
+            # Not needed until Django 2.1. See
+            # https://github.com/django/django/pull/8467
+            dtype = np.object_
+        elif field.null and issubclass(dtype.type, (np.integer, int)):
+            # dtype.itemsize is denominated in bytes. Check it against the
+            # number of mantissa bits since the max exact integer is
+            # 2**(mantissa bits):
+            #   >>> 2**sys.float_info.mant_dig - 1 == int(float(2**sys.float_info.mant_dig - 1))
+            #   True
+            #   >>> 2**sys.float_info.mant_dig     == int(float(2**sys.float_info.mant_dig))
+            #   True
+            #   >>> 2**sys.float_info.mant_dig + 1 == int(float(2**sys.float_info.mant_dig + 1))
+            #   False
+            # Thus the integer needs to fit into ((mantissa bits) - 1) bits
+            # https://docs.scipy.org/doc/numpy-dev/user/basics.types.html
+            def fits(itype, ftype):
+                return np.iinfo(itype).bits <= (np.finfo(ftype).nmant - 1)
+            if fits(dtype, np.float16):
+                dtype = np.float16
+            elif fits(dtype, np.float32):
+                dtype = np.float32
+            elif fits(dtype, np.float64):
+                dtype = np.float64
+            elif fits(dtype, np.longdouble):
+                dtype = np.longdouble
+            else:
+                dtype = np.object_
+
+        dtypes.append((name, dtype))
     return dtypes
 
 
@@ -155,10 +202,13 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         ``{}`` is a false value in Python, which would cause ``read_frame``
         not to compress columns.
 
+        Does not work with ``coerce_float``.
+
     .. [#] https://docs.scipy.org/doc/numpy/user/basics.types.html
     .. [#] https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html
    """
-
+    if coerce_float and compress:
+        raise ValueError('Cannot use coerce_float and compress at the same time')
     if fieldnames:
         fieldnames = pd.unique(fieldnames)
         if index_col is not None and index_col not in fieldnames:
@@ -209,7 +259,8 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
             raise TypeError(f'Ambiguous compress argument: {compress!r}')
         if not isinstance(compress, Mapping):
             compress = {}
-        recs = np.array(list(recs), dtype=_get_dtypes(compress, fields))
+        dtype = _get_dtypes(compress, fields, fieldnames)
+        recs = np.array(list(recs), dtype=dtype)
     df = pd.DataFrame.from_records(recs, columns=fieldnames,
                                    coerce_float=coerce_float)
 

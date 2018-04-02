@@ -44,7 +44,7 @@ class CompressableModel(models.Model):
     # id        = models.AutoField(primary_key=True)
     # bigauto   = models.BigAutoField()
 
-    bigint      = models.BigIntegerField(default=1<<63 - 1)
+    bigint      = models.BigIntegerField(default=2**63 - 1)
     binary      = models.BinaryField(default=b'test bytes')
     boolean     = models.BooleanField(default=True)
     char        = models.CharField(max_length=10, default='test chars')
@@ -56,12 +56,12 @@ class CompressableModel(models.Model):
     filepath    = models.FilePathField(default="/usr/local/bin/python")
     floating    = models.FloatField(default=1.2)
     ip          = models.GenericIPAddressField(default="::ffff:192.0.2.1")
-    integer     = models.IntegerField(default=1<<31 - 1)
+    integer     = models.IntegerField(default=2**31 - 1)
     nullboolean = models.NullBooleanField(default=None)
-    uint        = models.PositiveIntegerField(default=1<<31 - 1)
-    ushort      = models.PositiveSmallIntegerField(default=1<<15 - 1)
+    uint        = models.PositiveIntegerField(default=2**31 - 1)
+    ushort      = models.PositiveSmallIntegerField(default=2**15 - 1)
     slug        = models.SlugField(default="test_slug")
-    short       = models.SmallIntegerField(default=-(1<<15 - 1))
+    short       = models.SmallIntegerField(default=-(2**15 - 1))
     text        = models.TextField(default="test text")
     time        = models.TimeField(default=dt.time(13, 55, 56))
     url         = models.URLField(default="https://github.com/chrisdev/django-pandas")
@@ -69,6 +69,18 @@ class CompressableModel(models.Model):
 
     # Custom field
     byte        = ByteField(default=127)
+
+
+class CompressableModelWithNulls(models.Model):
+    bigint      = models.BigIntegerField(null=True, default=None)
+    floating    = models.FloatField(null=True, default=None)
+    integer     = models.IntegerField(null=True, default=None)
+    nullboolean = models.NullBooleanField(null=True, default=None)
+    uint        = models.PositiveIntegerField(null=True, default=None)
+    ushort      = models.PositiveSmallIntegerField(null=True, default=None)
+    short       = models.SmallIntegerField(null=True, default=None)
+    # Custom field
+    byte        = ByteField(null=True, default=None)
 
 
 @python_2_unicode_compatible

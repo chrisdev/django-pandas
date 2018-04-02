@@ -1,3 +1,5 @@
+import sys
+
 from django.test import TestCase
 import django
 from django.db.models import Sum
@@ -57,7 +59,7 @@ class IOTest(TestCase):
         self.assertEqual(df.col4.dtype, np.dtype('int16'))
 
         # Compress should use less memory
-        self.assertLess(df.memory_usage().sum(), read_frame(qs).memory_usage().sum())
+        self.assertLess(df.memory_usage(deep=True).sum(), read_frame(qs).memory_usage(deep=True).sum())
         # Uses qs.iterator() rather than for x in qs.
         self.assertFalse(qs._result_cache)
 
@@ -70,9 +72,13 @@ class IOTest(TestCase):
     def test_compress_bad_argument(self):
         qs = MyModel.objects.all()
         bads = [(models.ByteField, np.int8), range(3), type, object(), 'a', 1.,
-            {'IntegerField': int}, {int: models.ByteField}]
+            {'IntegerField': int}, {int: models.ByteField},
+            {models.ByteField: 'asdf'}]
         for bad in bads:
             self.assertRaises(TypeError, read_frame, qs, compress=bad)
+
+        self.assertRaises(
+            ValueError, read_frame, qs, compress=True, coerce_float=True)
 
     def assert_default_compressable(self, df):
         for field in models.CompressableModel._meta.get_fields():
@@ -85,12 +91,14 @@ class IOTest(TestCase):
                 self.assertEqual(df['datetime'][0].to_pydatetime(), field.default)
             elif field.name == 'duration':
                 self.assertEqual(df['duration'][0].to_pytimedelta(), field.default)
+            elif field.name == 'nullboolean':
+                self.assertEqual(df['nullboolean'].dtype, np.object_)
+                self.assertIsNone(df['nullboolean'][0])
             elif isinstance(field.default, (str, bytes)):
                 self.assertEqual(df[field.name].dtype, np.dtype(object))
             else:
-                msg = (
-                    f'Expected {field.name} to have value {field.default!r}, but was'
-                    f' {df[field.name][0]!r}')
+                msg = 'Expected {} to have value {!r}, but was {!r}'.format(
+                    field.name, field.default, df[field.name][0])
                 self.assertEqual(df[field.name][0], field.default, msg)
 
     def test_compress_custom_field(self):
@@ -105,13 +113,48 @@ class IOTest(TestCase):
         # Rely on finding the minimum specified parent class
         df2 = read_frame(qs, compress=True)
         self.assert_default_compressable(df2)
+        self.assertEqual(df2.uint.dtype, np.uint32)
         self.assertEqual(df2.byte.dtype, np.int16)
 
         # Memory usage is ordered as df1 < df2 < read_frame(qs, compress=False)
-        self.assertLess(df2.memory_usage().sum(), read_frame(qs).memory_usage().sum())
-        self.assertLess(df1.memory_usage().sum(), df2.memory_usage().sum())
+        self.assertLess(df2.memory_usage(deep=True).sum(), read_frame(qs).memory_usage(deep=True).sum())
+        self.assertLess(df1.memory_usage(deep=True).sum(), df2.memory_usage(deep=True).sum())
         # Uses qs.iterator() rather than for x in qs.
         self.assertFalse(qs._result_cache)
+
+    def test_compress_nulls(self):
+        maxs = dict(bigint=np.iinfo(np.int64).max, floating=sys.float_info.max,
+            integer=np.iinfo(np.int32).max, nullboolean=True,
+            uint=np.iinfo(np.uint32).max, ushort=np.iinfo(np.uint16).max,
+            short=np.iinfo(np.int16).max, byte=np.iinfo(np.int8).max)
+        mins = dict(bigint=np.iinfo(np.int64).min, floating=sys.float_info.min,
+            integer=np.iinfo(np.int32).min, nullboolean=True,
+            uint=np.iinfo(np.uint32).min, ushort=np.iinfo(np.uint16).min,
+            short=np.iinfo(np.int16).min, byte=np.iinfo(np.int8).min)
+        dbmaxs = models.CompressableModelWithNulls(**maxs)
+        dbmaxs.save()
+        dbnulls = models.CompressableModelWithNulls()
+        dbnulls.save()
+        dbmins = models.CompressableModelWithNulls(**mins)
+        dbmins.save()
+        qs = models.CompressableModelWithNulls.objects.all()
+        df1 = read_frame(qs, compress={models.ByteField: np.int8})
+
+        self.assertEqual(df1.bigint.dtype,   np.object_)
+        self.assertEqual(df1.floating.dtype, np.float_)
+        self.assertEqual(df1.integer.dtype,  np.float64)
+        self.assertEqual(df1.nullboolean.dtype, np.object_)
+        self.assertEqual(df1.uint.dtype,     np.float64)
+        self.assertEqual(df1.ushort.dtype,   np.float32)
+        self.assertEqual(df1.short.dtype,    np.float32)
+        self.assertEqual(df1.byte.dtype,     np.float16)
+
+        for col in df1.columns:
+            if col == 'id':
+                continue
+            self.assertEqual(df1[col][0], maxs[col])
+            self.assertTrue(df1[col][1] is None or np.isnan(df1[col][1]))
+            self.assertEqual(df1[col][2], mins[col])
 
     def test_values(self):
         qs = MyModel.objects.all()
