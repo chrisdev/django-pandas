@@ -103,7 +103,7 @@ def _get_dtypes(fields_to_dtypes, fields, fieldnames):
     f2d.update(fields_to_dtypes)
     for k, v in f2d.items():
         if not issubclass(k, django.db.models.fields.Field):
-            raise TypeError(f'Expected a type of field, not {k!r}')
+            raise TypeError('Expected a type of field, not {!r}'.format(k))
         if not isinstance(v, np.dtype):
             f2d[k] = np.dtype(v)
     for field, name in zip(fields, fieldnames):
@@ -256,7 +256,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
 
     if compress:
         if not isinstance(compress, (bool, Mapping)):
-            raise TypeError(f'Ambiguous compress argument: {compress!r}')
+            raise TypeError('Ambiguous compress argument: {!r}'.format(compress))
         if not isinstance(compress, Mapping):
             compress = {}
         dtype = _get_dtypes(compress, fields, fieldnames)
