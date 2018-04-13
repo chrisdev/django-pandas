@@ -274,7 +274,7 @@ class RelatedFieldsTest(TestCase):
         self.assertEqual(df.symbol.dtype, np.dtype(float))
         self.assertEqual(df.symbol_id.dtype, np.dtype(float))
         self.assertCountEqual(
-            [None if pd.isna(x) else x for x in df.symbol],
+            [None if np.isnan(x) else x for x in df.symbol],
             qs.values_list('symbol_id', flat=True))
 
     @expectedFailure
@@ -290,7 +290,7 @@ class RelatedFieldsTest(TestCase):
         self.assertEqual(df.symbol.dtype, np.dtype(float))
         self.assertEqual(df.symbol__id.dtype, np.dtype(float))
         self.assertCountEqual(
-            [None if pd.isna(x) else x for x in df.symbol],
+            [None if np.isnan(x) else x for x in df.symbol],
             qs.values_list('symbol__id', flat=True))
 
     def test_verbose(self):
