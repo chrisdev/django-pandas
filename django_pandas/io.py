@@ -4,8 +4,11 @@ import pandas as pd
 from .utils import update_with_verbose, get_related_model
 import django
 from django.db.models import fields, ForeignKey
-from django.contrib.gis.db.models import fields as geo_fields
 import numpy as np
+try:
+    from django.contrib.gis.db.models import fields as geo_fields
+except (ImportError, django.core.exceptions.ImproperlyConfigured): # pragma: no cover
+    geo_fields = None
 
 
 def to_fields(qs, fieldnames):
@@ -67,11 +70,14 @@ _FIELDS_TO_DTYPES = {
     # Django versions <= 2.0 are dropped. See
     # https://github.com/django/django/pull/8467
     fields.NullBooleanField:           object,
-
-    # Geometry fields
-    geo_fields.GeometryField:          object,
-    geo_fields.RasterField:            object,
 }
+
+if geo_fields is not None:
+    _FIELDS_TO_DTYPES.update({
+        # Geometry fields
+        geo_fields.GeometryField:          object,
+        geo_fields.RasterField:            object,
+    })
 
 def _get_dtypes(fields_to_dtypes, fields, fieldnames):
     """Infer NumPy dtypes from field types among those named in fieldnames.
