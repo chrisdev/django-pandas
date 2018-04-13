@@ -3,7 +3,7 @@ from collections.abc import Mapping
 import pandas as pd
 from .utils import update_with_verbose, get_related_model
 import django
-from django.db.models import fields
+from django.db.models import fields, ForeignKey
 from django.contrib.gis.db.models import fields as geo_fields
 import numpy as np
 
@@ -107,6 +107,13 @@ def _get_dtypes(fields_to_dtypes, fields, fieldnames):
         if not isinstance(v, np.dtype):
             f2d[k] = np.dtype(v)
     for field, name in zip(fields, fieldnames):
+        # Get field.null before switching to target field since foreign key can
+        # be nullable even while the target isn't, and vice versa.
+        nullable = field.null
+        if isinstance(field, ForeignKey):
+            field = field.target_field
+        nullable = nullable or field.null
+
         # Find the lowest subclass among the keys of f2d
         t, dtype = object, np.generic
         for k, v in f2d.items():
@@ -114,13 +121,13 @@ def _get_dtypes(fields_to_dtypes, fields, fieldnames):
                 t, dtype = k, v
 
         # Handle nulls for integer and boolean types
-        if field.null and issubclass(dtype.type, (np.bool_, bool)):
+        if nullable and issubclass(dtype.type, (np.bool_, bool)):
             # Pandas handles nullable booleans as objects. See
             # https://pandas.pydata.org/pandas-docs/stable/missing_data.html#missing-data-casting-rules-and-indexing
             # Not needed until Django 2.1. See
             # https://github.com/django/django/pull/8467
             dtype = np.object_
-        elif field.null and issubclass(dtype.type, (np.integer, int)):
+        elif nullable and issubclass(dtype.type, (np.integer, int)):
             # dtype.itemsize is denominated in bytes. Check it against the
             # number of mantissa bits since the max exact integer is
             # 2**(mantissa bits):
@@ -203,6 +210,19 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         not to compress columns.
 
         Does not work with ``coerce_float``.
+
+    Known Issues
+    ------------
+
+    When using ``compress=True`` with a nullable foreign key field the double-
+    underscore import name may not work but the single-underscore import name
+    should. For example, suppose model ``A`` has a nullable foreign key field
+    ``b`` pointing at model ``B``, both of which models' primary key fields are
+    called ``id``. Suppose further that ``A``'s table has some entries with
+    null values of ``b`` and some with non-null values.
+    ``read_frame(A.objects.all(), ['b', 'b_id'])`` and
+    ``read_frame(A.objects.filter(b__isnull=False), ['b__id'])`` will work as
+    expected, but ``read_frame(A.objects.all(), ['b__id'])`` will not.
 
     .. [#] https://docs.scipy.org/doc/numpy/user/basics.types.html
     .. [#] https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html

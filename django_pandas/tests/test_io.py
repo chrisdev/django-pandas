@@ -1,4 +1,5 @@
 import sys
+from unittest import expectedFailure
 
 from django.test import TestCase
 import django
@@ -246,6 +247,51 @@ class RelatedFieldsTest(TestCase):
         value.securities.add(zyz)
         growth = Portfolio.objects.create(name="Fund 2")
         growth.securities.add(abc)
+
+    def test_compress_fk(self):
+        qs = TradeLog.objects.all()
+        # trader and trader_id are both the foreign key id column on TradeLog.
+        # trader__id is the id column on Trader via a JOIN.
+        cols = ['trader', 'trader_id', 'trader__id']
+        df = read_frame(qs, cols, verbose=False, compress=True)
+
+        self.assertEqual(df.shape, (qs.count(), len(cols)))
+        self.assertTrue(df.trader.equals(df.trader__id))
+        self.assertTrue(df.trader_id.equals(df.trader__id))
+        self.assertEqual(df.trader.dtype, np.dtype('int32'))
+        self.assertEqual(df.trader_id.dtype, np.dtype('int32'))
+        self.assertEqual(df.trader__id.dtype, np.dtype('int32'))
+        self.assertCountEqual(
+            df.trader_id, qs.values_list('trader_id', flat=True))
+
+    def test_compress_fk_nullable(self):
+        qs = TradeLog.objects.all()
+        cols = ['symbol', 'symbol_id']
+        df = read_frame(qs, cols, verbose=False, compress=True)
+
+        self.assertEqual(df.shape, (qs.count(), len(cols)))
+        self.assertTrue(df.symbol.equals(df.symbol_id))
+        self.assertEqual(df.symbol.dtype, np.dtype(float))
+        self.assertEqual(df.symbol_id.dtype, np.dtype(float))
+        self.assertCountEqual(
+            [None if pd.isna(x) else x for x in df.symbol],
+            qs.values_list('symbol_id', flat=True))
+
+    @expectedFailure
+    def test_compress_fk_nullable_join(self):
+        qs = TradeLog.objects.all()
+        # symbol is the foreign key id column on TradeLog. symbol__id is the id
+        # column on Security via a JOIN.
+        cols = ['symbol', 'symbol__id']
+        df = read_frame(qs, cols, verbose=False, compress=True)
+
+        self.assertEqual(df.shape, (qs.count(), len(cols)))
+        self.assertTrue(df.symbol.equals(df.symbol__id))
+        self.assertEqual(df.symbol.dtype, np.dtype(float))
+        self.assertEqual(df.symbol__id.dtype, np.dtype(float))
+        self.assertCountEqual(
+            [None if pd.isna(x) else x for x in df.symbol],
+            qs.values_list('symbol__id', flat=True))
 
     def test_verbose(self):
         qs = TradeLog.objects.all()
