@@ -201,9 +201,9 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         built in ``SmallIntgerField`` is cast to NumPy's ``int16``. If
         ``compress`` is a mapping (e.g., a ``dict``), it should be a mapping
         with Django field subclasses as keys and  NumPy dtypes [#]_ as values.
-        This mapping overrides the defualts for the field classes appearing in
+        This mapping overrides the defaults for the field classes appearing in
         the mapping. However, the inference is based on the field subclass
-        lowest on a chain of subclasses, that is, in order of inheritence.
+        lowest on a chain of subclasses, that is, in order of inheritance.
         To override ``SmallIntegerField`` it is therefore not sufficient to
         override ``IntegerField``. Careful of setting ``compress={}`` because
         ``{}`` is a false value in Python, which would cause ``read_frame``
