@@ -1,3 +1,7 @@
+import datetime as dt
+from decimal import Decimal
+from uuid import UUID
+
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django_pandas.managers import DataFrameManager, PassThroughManager
@@ -9,7 +13,7 @@ class MyModel(models.Model):
     col1 = models.IntegerField()
     col2 = models.FloatField(null=True)
     col3 = models.FloatField(null=True)
-    col4 = models.IntegerField()
+    col4 = models.SmallIntegerField()
 
     def __str__(self):
         return "{} {} {} {}".format(
@@ -30,6 +34,53 @@ class MyModelChoice(models.Model):
     col1 = models.IntegerField(choices=CHOICES)
     col2 = models.FloatField(null=True)
     objects = DataFrameManager()
+
+
+class ByteField(models.SmallIntegerField):
+    pass
+
+class CompressableModel(models.Model):
+    # Can only have one auto field per model and id is added automatically
+    # id        = models.AutoField(primary_key=True)
+    # bigauto   = models.BigAutoField()
+
+    bigint      = models.BigIntegerField(default=2**63 - 1)
+    binary      = models.BinaryField(default=b'test bytes')
+    boolean     = models.BooleanField(default=True)
+    char        = models.CharField(max_length=10, default='test chars')
+    date        = models.DateField(default=dt.date(2018, 3, 27))
+    datetime    = models.DateTimeField(default=dt.datetime(2018, 3, 27, 13, 55, 56))
+    decimal     = models.DecimalField(decimal_places=1, max_digits=3, default=Decimal(1.5))
+    duration    = models.DurationField(default=dt.timedelta(minutes=1, seconds=1))
+    email       = models.EmailField(default="an+email@address.com")
+    filepath    = models.FilePathField(default="/usr/local/bin/python")
+    floating    = models.FloatField(default=1.2)
+    ip          = models.GenericIPAddressField(default="::ffff:192.0.2.1")
+    integer     = models.IntegerField(default=2**31 - 1)
+    nullboolean = models.NullBooleanField(default=None)
+    uint        = models.PositiveIntegerField(default=2**31 - 1)
+    ushort      = models.PositiveSmallIntegerField(default=2**15 - 1)
+    slug        = models.SlugField(default="test_slug")
+    short       = models.SmallIntegerField(default=-(2**15 - 1))
+    text        = models.TextField(default="test text")
+    time        = models.TimeField(default=dt.time(13, 55, 56))
+    url         = models.URLField(default="https://github.com/chrisdev/django-pandas")
+    uuid        = models.UUIDField(default=UUID(int=1234556789))
+
+    # Custom field
+    byte        = ByteField(default=127)
+
+
+class CompressableModelWithNulls(models.Model):
+    bigint      = models.BigIntegerField(null=True, default=None)
+    floating    = models.FloatField(null=True, default=None)
+    integer     = models.IntegerField(null=True, default=None)
+    nullboolean = models.NullBooleanField(null=True, default=None)
+    uint        = models.PositiveIntegerField(null=True, default=None)
+    ushort      = models.PositiveSmallIntegerField(null=True, default=None)
+    short       = models.SmallIntegerField(null=True, default=None)
+    # Custom field
+    byte        = ByteField(null=True, default=None)
 
 
 @python_2_unicode_compatible

@@ -24,7 +24,12 @@ if not settings.configured:
                 "PORT": "",
             }
         },
-        MIDDLEWARE_CLASSES = ()
+        MIDDLEWARE_CLASSES = (),
+        # django_pandas.tests.models.CompressableModel contains datetime fields
+        # with fixed default values instead of auto-now defaults. This makes
+        # testing easier, but triggers the fields.W161 system check. The
+        # following setting ignores that system check.
+        SILENCED_SYSTEM_CHECKS=['fields.W161'],
     )
 
     settings.configure(**settings_dict)
