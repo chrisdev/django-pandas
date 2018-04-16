@@ -1,6 +1,6 @@
 try:
     from collections.abc import Mapping
-except ImportError:
+except ImportError: # pragma: no cover
     Mapping = dict
 
 import pandas as pd
