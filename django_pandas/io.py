@@ -289,7 +289,14 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         if not isinstance(compress, Mapping):
             compress = {}
         dtype = _get_dtypes(compress, fields, fieldnames)
-        recs = np.array(list(recs), dtype=dtype)
+        # As long as there are no object dtypes, we can avoid the intermediate
+        # list, but np.fromiter chokes on dtype('O').
+        if np.dtype('O') in [dt[1] for dt in dtype]: # small list, set not needed
+            recs = np.array(list(recs), dtype=dtype)
+        else:
+            # Skip the count argument because qs.count() may take more time than
+            # just reallocating memory as NumPy consumes the iterator.
+            recs = np.fromiter(recs, dtype=dtype)
     df = pd.DataFrame.from_records(recs, columns=fieldnames,
                                    coerce_float=coerce_float)
 
