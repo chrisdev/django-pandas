@@ -1,4 +1,7 @@
-from collections.abc import Mapping
+try:
+    from collections.abc import Mapping
+except ImportError:
+    Mapping = dict
 
 import pandas as pd
 from .utils import update_with_verbose, get_related_model
