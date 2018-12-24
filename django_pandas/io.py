@@ -107,6 +107,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     else:
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
+        fieldnames += list(qs.query.annotation_select.keys())
 
     if is_values_queryset(qs):
         recs = list(qs)

@@ -86,7 +86,7 @@ class DataFrameQuerySet(QuerySet):
     def to_pivot_table(self, fieldnames=(), verbose=True,
                        values=None, rows=None, cols=None,
                        aggfunc='mean', fill_value=None, margins=False,
-                       dropna=True):
+                       dropna=True, coerce_float=True):
         """
         A convenience method for creating a spread sheet style pivot table
         as a DataFrame
@@ -110,7 +110,7 @@ class DataFrameQuerySet(QuerySet):
                   ``numpy.mean``. A list of aggregates functions can be passed
                   In this case the resulting pivot table will have
                   hierarchical columns whose top level are the function names
-                 (inferred from the function objects themselves)
+                  (inferred from the function objects themselves)
 
         fill_value:  A scalar value to replace the missing values with
 
@@ -120,11 +120,14 @@ class DataFrameQuerySet(QuerySet):
         dropna:  Boolean, default True.
                  Do not include columns whose entries are all NaN
 
-        verbose: If  this is ``True`` then populate the DataFrame with the
+        verbose: If this is ``True`` then populate the DataFrame with the
                  human readable versions for foreign key fields else use the
                  actual values set in the model
+
+        coerce_float:   Attempt to convert values to non-string, non-numeric
+                        objects (like decimal.Decimal) to floating point.
         """
-        df = self.to_dataframe(fieldnames, verbose=verbose)
+        df = self.to_dataframe(fieldnames, verbose=verbose, coerce_float=coerce_float)
 
         return df.pivot_table(values=values, fill_value=fill_value, index=rows,
                               columns=cols, aggfunc=aggfunc, margins=margins,
@@ -133,7 +136,7 @@ class DataFrameQuerySet(QuerySet):
     def to_timeseries(self, fieldnames=(), verbose=True,
                       index=None, storage='wide',
                       values=None, pivot_columns=None, freq=None,
-                      coerce_float=False, rs_kwargs=None):
+                      coerce_float=True, rs_kwargs=None):
         """
         A convenience method for creating a time series DataFrame i.e the
         DataFrame index will be an instance of  DateTime or PeriodIndex
@@ -208,10 +211,10 @@ class DataFrameQuerySet(QuerySet):
 
         if storage == 'wide':
             df = self.to_dataframe(fieldnames, verbose=verbose, index=index,
-                                   coerce_float=True)
+                                   coerce_float=coerce_float)
         else:
             df = self.to_dataframe(fieldnames, verbose=verbose,
-                                   coerce_float=True)
+                                   coerce_float=coerce_float)
             assert values is not None, 'You must specify a values field'
             assert pivot_columns is not None, 'You must specify pivot_columns'
 
@@ -257,7 +260,7 @@ class DataFrameQuerySet(QuerySet):
         verbose: If  this is ``True`` then populate the DataFrame with the
                  human readable versions for foreign key fields else
                  use the actual values set in the model
-        
+
         coerce_float:   Attempt to convert values to non-string, non-numeric 
                         objects (like decimal.Decimal) to floating point.
         """
