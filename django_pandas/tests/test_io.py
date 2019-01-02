@@ -3,7 +3,8 @@ import django
 from django.db.models import Sum
 import pandas as pd
 import numpy as np
-from .models import MyModel, Trader, Security, TradeLog, TradeLogNote, MyModelChoice, Portfolio
+from .models import (MyModel, Trader, Security, TradeLog, TradeLogNote,
+                     MyModelChoice, Portfolio)
 from django_pandas.io import read_frame
 
 
@@ -35,10 +36,10 @@ class IOTest(TestCase):
         n, c = df.shape
         self.assertEqual(n, qs.count())
         from itertools import chain
-        if django.VERSION < (1,10):
+        if django.VERSION < (1, 10):
             fields = MyModel._meta.get_all_field_names()
         else:
-            fields = list(set(chain.from_iterable((field.name, field.attname) if hasattr(field,'attname') else (field.name,)
+            fields = list(set(chain.from_iterable((field.name, field.attname) if hasattr(field, 'attname') else (field.name,)
                 for field in MyModel._meta.get_fields()
                 if not (field.many_to_one and field.related_model is None)
             )))

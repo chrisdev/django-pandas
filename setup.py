@@ -40,7 +40,7 @@ setup(
     zip_safe=False,
     tests_require=[
         "Django>=1.4.2",
-        "pandas==0.20.1",
+        "pandas>=0.20.1",
         "coverage>=4.0",
                    ],
     test_suite="runtests.runtests"

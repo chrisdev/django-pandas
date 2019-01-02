@@ -13,7 +13,7 @@ def get_model_name(model):
     # model._meta.module_name is deprecated in django version
     # 1.7 and removed in django version 1.8.
     # It is replaced by model._meta.model_name
-    if django.VERSION < (1, 7):
+    if django.VERSION < (1, 7):  # pragma: no cover
         return model._meta.module_name
     return model._meta.model_name
 
@@ -76,7 +76,7 @@ def build_update_functions(fieldnames, fields):
         else:
             if field and field.choices:
                 choices = dict([(k, force_text(v))
-                            for k, v in field.flatchoices])
+                                for k, v in field.flatchoices])
                 yield fieldname, replace_from_choices(choices)
 
             elif field and field.get_internal_type() == 'ForeignKey':
@@ -93,11 +93,11 @@ def get_related_model(field):
     """Gets the related model from a related field"""
     model = None
 
-    if hasattr(field, 'related_model') and field.related_model:
+    if hasattr(field, 'related_model') and field.related_model:   #  pragma: no cover
         model = field.related_model
     # Django<1.8 doesn't have the related_model API, so we need to use rel,
     # which was removed in Django 2.0
-    elif hasattr(field, 'rel') and field.rel:
+    elif hasattr(field, 'rel') and field.rel:  # pragma: no cover
         model = field.rel.to
 
     return model
