@@ -19,7 +19,7 @@ class PassThroughManagerMixin(object):
     def __getattr__(self, name):
         if name in self._deny_methods:
             raise AttributeError(name)
-        if django.VERSION < (1, 6, 0):
+        if django.VERSION < (1, 6, 0):  # pragma: no cover
             return getattr(self.get_query_set(), name)
         return getattr(self.get_queryset(), name)
 
@@ -127,7 +127,8 @@ class DataFrameQuerySet(QuerySet):
         coerce_float:   Attempt to convert values to non-string, non-numeric
                         objects (like decimal.Decimal) to floating point.
         """
-        df = self.to_dataframe(fieldnames, verbose=verbose, coerce_float=coerce_float)
+        df = self.to_dataframe(fieldnames, verbose=verbose,
+                               coerce_float=coerce_float)
 
         return df.pivot_table(values=values, fill_value=fill_value, index=rows,
                               columns=cols, aggfunc=aggfunc, margins=margins,
@@ -200,7 +201,7 @@ class DataFrameQuerySet(QuerySet):
                   human readable versions of any foreign key fields else use
                   the primary keys values else use the actual values set
                   in the model.
-                  
+
         coerce_float:   Attempt to convert values to non-string, non-numeric
                         objects (like decimal.Decimal) to floating point.
         """
@@ -261,7 +262,7 @@ class DataFrameQuerySet(QuerySet):
                  human readable versions for foreign key fields else
                  use the actual values set in the model
 
-        coerce_float:   Attempt to convert values to non-string, non-numeric 
+        coerce_float:   Attempt to convert values to non-string, non-numeric
                         objects (like decimal.Decimal) to floating point.
         """
 
@@ -269,10 +270,10 @@ class DataFrameQuerySet(QuerySet):
                           index_col=index, coerce_float=coerce_float)
 
 
-if django.VERSION < (1, 7):
+if django.VERSION < (1, 7):  # pragma: no cover
     class DataFrameManager(PassThroughManager):
         def get_query_set(self):
             return DataFrameQuerySet(self.model)
 
-else:
+else:  # pragma: no cover
     DataFrameManager = models.Manager.from_queryset(DataFrameQuerySet)

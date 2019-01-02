@@ -5,7 +5,7 @@ import pickle
 import django
 from .models import (
     DataFrame, WideTimeSeries, WideTimeSeriesDateField,
-    LongTimeSeries, PivotData, MyModelChoice, Dude, Car, Spot
+    LongTimeSeries, PivotData, Dude, Car, Spot
 )
 import pandas.util.testing as tm
 
@@ -39,13 +39,14 @@ class DataFrameTest(TestCase):
         n, c = df.shape
         self.assertEqual(n, qs.count())
         from itertools import chain
-        if django.VERSION < (1,10):
+        if django.VERSION < (1, 10):
             flds = DataFrame._meta.get_all_field_names()
         else:
-            flds = list(set(chain.from_iterable((field.name, field.attname) if hasattr(field,'attname') else (field.name,)
-                for field in DataFrame._meta.get_fields()
-                if not (field.many_to_one and field.related_model is None)
-            )))
+            flds = list(set(chain.from_iterable((field.name, field.attname)
+                            if hasattr(field, 'attname') else (field.name,)
+                            for field in DataFrame._meta.get_fields()
+                            if not (field.many_to_one and
+                                    field.related_model is None))))
         self.assertEqual(c, len(flds))
         qs2 = DataFrame.objects.filter(index__in=['a', 'b', 'c'])
         df2 = qs2.to_dataframe(['col1', 'col2', 'col3'], index='index')
@@ -160,30 +161,33 @@ class TimeSeriesTest(TestCase):
         kwargs = {
             'index': 'date_ix',
             'pivot_columns': 'series_name',
-            'values' : 'value',
-            'storage' : 'long'}
+            'values': 'value',
+            'storage': 'long'}
         kwargs.pop('values')
         self.assertRaises(AssertionError, qs.to_timeseries, **kwargs)
         kwargs['values'] = 'value'
         kwargs.pop('pivot_columns')
         self.assertRaises(AssertionError, qs.to_timeseries, **kwargs)
-        ##df = qs.to_timeseries(index='date_ix', pivot_columns='series_name',
-                                ##values='value',
-                                ##storage='long')
+        # df = qs.to_timeseries(index='date_ix', pivot_columns='series_name',
+        # values='value',
+        # storage='long')
 
     def test_coerce_float(self):
         qs = LongTimeSeries.objects.all()
-        ts = qs.to_timeseries(index='date_ix', coerce_float=True).resample('D').sum()
+        ts = qs.to_timeseries(index='date_ix',
+                              coerce_float=True).resample('D').sum()
         self.assertEqual(ts['value'].dtype, np.float64)
 
         # Testing on Wide Series
 
         qs = WideTimeSeries.objects.all()
-        ts = qs.to_timeseries(index='date_ix', coerce_float=True).resample('D').sum()
+        ts = qs.to_timeseries(index='date_ix',
+                              coerce_float=True).resample('D').sum()
         self.assertEqual(ts['col1'].dtype, np.float64)
         self.assertEqual(ts['col2'].dtype, np.float64)
         self.assertEqual(ts['col3'].dtype, np.float64)
         self.assertEqual(ts['col4'].dtype, np.float64)
+
 
 class PivotTableTest(TestCase):
 
@@ -226,10 +230,10 @@ if django.VERSION < (1, 9):
 
         def setUp(self):
             Dude.objects.create(name='The Dude', abides=True, has_rug=False)
-            Dude.objects.create(name='His Dudeness', abides=False, has_rug=True)
+            Dude.objects.create(name='His Dudeness',
+                                abides=False, has_rug=True)
             Dude.objects.create(name='Duder', abides=False, has_rug=False)
             Dude.objects.create(name='El Duderino', abides=True, has_rug=True)
-
 
         def test_chaining(self):
             self.assertEqual(Dude.objects.by_name('Duder').count(), 1)
@@ -237,13 +241,11 @@ if django.VERSION < (1, 9):
             self.assertEqual(Dude.abiders.rug_positive().count(), 1)
             self.assertEqual(Dude.abiders.all().rug_positive().count(), 1)
 
-
         def test_manager_only_methods(self):
             stats = Dude.abiders.get_stats()
             self.assertEqual(stats['rug_count'], 1)
             with self.assertRaises(AttributeError):
                 Dude.abiders.all().get_stats()
-
 
         def test_queryset_pickling(self):
             qs = Dude.objects.all()
@@ -251,12 +253,10 @@ if django.VERSION < (1, 9):
             unqs = pickle.loads(saltyqs)
             self.assertEqual(unqs.by_name('The Dude').count(), 1)
 
-
         def test_queryset_not_available_on_related_manager(self):
             dude = Dude.objects.by_name('Duder').get()
             Car.objects.create(name='Ford', owner=dude)
             self.assertFalse(hasattr(dude.cars_owned, 'by_name'))
-
 
         def test_using_dir(self):
             # make sure introspecing via dir() doesn't actually cause queries,
@@ -284,13 +284,11 @@ if django.VERSION < (1, 9):
 
                 # manager only method.
                 self.assertTrue('get_stats' in dir(Dude.abiders))
-                # manager only method shouldn't appear on the non AbidingManager
+                # manager only method shouldn't appear on the nonAbidingManager
                 self.assertFalse('get_stats' in dir(Dude.objects))
                 # standard manager methods
                 self.assertTrue('get_query_set' in dir(Dude.abiders))
                 self.assertTrue('contribute_to_class' in dir(Dude.abiders))
-
-
 
     class CreatePassThroughManagerTests(TestCase):
 
@@ -304,7 +302,8 @@ if django.VERSION < (1, 9):
                 secret=False)
             self.assertEqual(self.dude.spots_owned.closed().count(), 1)
             Spot.objects.create(
-                name='The Crux', owner=self.other_dude, closed=True, secure=True,
+                name='The Crux', owner=self.other_dude,
+                closed=True, secure=True,
                 secret=False
             )
             self.assertEqual(self.dude.spots_owned.closed().all().count(), 1)
@@ -324,9 +323,11 @@ if django.VERSION < (1, 9):
                 name='The Crib', owner=self.dude, closed=True, secure=True,
                 secret=False)
             Spot.objects.create(
-                name='The Secret Crib', owner=self.dude, closed=False, secure=True,
+                name='The Secret Crib', owner=self.dude,
+                closed=False, secure=True,
                 secret=True)
             self.assertEqual(self.dude.spots_owned.count(), 1)
 
         def test_related_manager_create(self):
-            self.dude.spots_owned.create(name='The Crib', closed=True, secure=True)
+            self.dude.spots_owned.create(name='The Crib',
+                                         closed=True, secure=True)

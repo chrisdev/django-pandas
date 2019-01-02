@@ -26,7 +26,7 @@ def to_fields(qs, fieldnames):
 
 
 def is_values_queryset(qs):
-    if django.VERSION < (1, 9):
+    if django.VERSION < (1, 9):  # pragma: no cover
         return isinstance(qs, django.db.models.query.ValuesQuerySet)
     else:
         return qs._iterable_class == django.db.models.query.ValuesIterable
@@ -74,7 +74,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
             fieldnames = tuple(fieldnames) + (index_col,)
         fields = to_fields(qs, fieldnames)
     elif is_values_queryset(qs):
-        if django.VERSION < (1, 9):
+        if django.VERSION < (1, 9):  # pragma: no cover
             if django.VERSION < (1, 8):
                 annotation_field_names = qs.aggregate_names
             else:
@@ -89,7 +89,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
 
             select_field_names = qs.field_names
 
-        else:
+        else:  # pragma: no cover
             annotation_field_names = list(qs.query.annotation_select)
             extra_field_names = list(qs.query.extra_select)
             select_field_names = list(qs.query.values_select)
@@ -107,7 +107,10 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     else:
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
-        fieldnames += list(qs.query.annotation_select.keys())
+        if django.VERSION < (1, 8):  # pragma: no cover
+            fieldnames += list(qs.query.aggregate_select.keys())
+        else:
+            fieldnames += list(qs.query.annotation_select.keys())
 
     if is_values_queryset(qs):
         recs = list(qs)
