@@ -28,14 +28,14 @@ Contributors
 
 What's New
 ===========
-- Support for Django 2.0
-- We still support legacy versions (Python 2.7 and Django 1.4)
-- Addresses Unicode decode errors that sometimes occur when installing on docker 
+- Improved corece_float option
+- We still support legacy versions (Python 2.7 and Django < 1.8)
+- Test pass on with Django 2+ and python 3.7 
 
 Dependencies
 =============
-``django-pandas`` supports `Django`_ (>=1.4.5) or later  
-and requires `django-model-utils`_ (>= 1.4.0) and `Pandas`_ (>= 0.12.0). 
+``django-pandas`` supports `Django`_ (>=1.4.5) or later
+and requires `django-model-utils`_ (>= 1.4.0) and `Pandas`_ (>= 0.12.0).
 **Note** because of problems with the ``requires`` directive of setuptools
 you probably need to install ``numpy`` in your virtualenv  before you install
 this package or if you want to run the test suite ::
@@ -44,8 +44,8 @@ this package or if you want to run the test suite ::
     python setup.py test
 
 Some ``pandas`` functionality requires parts of the Scipy stack.
-You may wish to consult http://www.scipy.org/install.html 
-for more information on installing the ``Scipy`` stack. 
+You may wish to consult http://www.scipy.org/install.html
+for more information on installing the ``Scipy`` stack.
 
 .. _Django: http://djangoproject.com/
 .. _django-model-utils: http://pypi.python.org/pypi/django-model-utils
@@ -72,7 +72,7 @@ Next install ``numpy`` and ``pandas`` and optionally ``scipy`` ::
     pip install numpy
     pip install pandas
 
-You may want to consult  the `scipy documentation`_ for more information 
+You may want to consult  the `scipy documentation`_ for more information
 on installing the ``Scipy`` stack.
 
 .. _scipy documentation: http://www.scipy.org/install.html
@@ -82,7 +82,7 @@ Finally, install ``django-pandas`` using ``pip``::
     pip install django-pandas
 
 or install the development version from ``github`` ::
-    
+
     pip install https://github.com/chrisdev/django-pandas/tarball/master
 
 Usage
@@ -91,7 +91,7 @@ Usage
 
 IO Module
 ----------
-The ``django-pandas.io`` module provides some convenience methods to 
+The ``django-pandas.io`` module provides some convenience methods to
 facilitate the creation of DataFrames from Django QuerySets.
 
 read_frame
@@ -106,17 +106,17 @@ read_frame
                   by using  double underscores to specify a related field
                   in another model
 
-    - index_col: Use specify the field name to use  for the ``DataFrame`` index. 
+    - index_col: Use specify the field name to use  for the ``DataFrame`` index.
                  If the index
                  field is not in the field list it will be appended
 
     - coerce_float : Boolean, defaults to True
-                     Attempt to convert values to non-string, 
-                     non-numeric objects (like decimal.Decimal) 
+                     Attempt to convert values to non-string,
+                     non-numeric objects (like decimal.Decimal)
                      to floating point.
 
     - verbose:  If  this is ``True`` then populate the DataFrame with the
-                human readable versions of any foreign key or choice fields 
+                human readable versions of any foreign key or choice fields
                 else use the actual values set in the model.
 
 
@@ -140,9 +140,9 @@ To create a dataframe using all the fields in the underlying model ::
 
     df = read_frame(qs)
 
-The `df` will contain human readable column values for foreign key and choice 
-fields. The `DataFrame` will include all the fields in the underlying 
-model including the primary key. 
+The `df` will contain human readable column values for foreign key and choice
+fields. The `DataFrame` will include all the fields in the underlying
+model including the primary key.
 To create a DataFrame using specified field names::
 
      df = read_frame(qs, fieldnames=['age', 'wage', 'full_name'])
@@ -160,11 +160,11 @@ DataFrameManager
 -----------------
 ``django-pandas`` provides a custom manager to use with models that
 you want to render as Pandas Dataframes. The ``DataFrameManager``
-manager provides the ``to_dataframe`` method that returns 
+manager provides the ``to_dataframe`` method that returns
 your models queryset as a Pandas DataFrame. To use the DataFrameManager, first
-override the default manager (`objects`) in your model's definition 
+override the default manager (`objects`) in your model's definition
 as shown in the example below ::
-    
+
     #models.py
 
     from django_pandas.managers import DataFrameManager
@@ -204,7 +204,7 @@ Returns a DataFrame from the QuerySet
                     like object, decimal etc. to float if possible
 
     - verbose:  If  this is ``True`` then populate the DataFrame with the
-                human readable versions of any foreign key or choice fields 
+                human readable versions of any foreign key or choice fields
                 else use the actual value set in the model.
 
 Examples
@@ -218,7 +218,7 @@ Create a dataframe using all the fields  in your model as follows ::
 
 This will include your primary key. To create a DataFrame using specified
 field names::
-    
+
      df = qs.to_dataframe(fieldnames=['age', 'department', 'wage'])
 
 To set ``full_name`` as the index ::
@@ -265,7 +265,7 @@ DataFrame index is instance of a DateTime or PeriodIndex
     - rs_kwargs: Arguments based on pandas.DataFrame.resample
 
     - verbose:  If  this is ``True`` then populate the DataFrame with the
-                human readable versions of any foreign key or choice fields 
+                human readable versions of any foreign key or choice fields
                 else use the actual value set in the model.
 
 Examples

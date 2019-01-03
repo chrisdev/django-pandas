@@ -29,9 +29,9 @@ matrix:
     - python: 2.7
       env: TOXENV=py27-django10
     - python: 2.7
-      env: TOXENV=py27-django11 
+      env: TOXENV=py27-django11
     - python: 3.4
-      env: TOXENV=py34-django17 
+      env: TOXENV=py34-django17
     - python: 3.4
       env: TOXENV=py34-django18
     - python: 3.4
@@ -50,6 +50,7 @@ matrix:
       env: TOXENV=py35-django11
     - python: 3.6
       env: TOXENV=py36-django11
-
+    - python: 3.7-django
+      env: TOXENV=py37-django20
 
 after_success: coveralls
