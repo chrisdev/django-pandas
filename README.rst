@@ -25,12 +25,15 @@ Contributors
 * `@henhuy <https://github.com/henhuy>`_
 * `Hélio Meira Lins <https://github.com/meiralins>`_
 * `@utpyngo <https://github.com/utpyngo>`_
+* `Anthony Monthe <https://github.com/ZuluPro>`_
 
 What's New
 ===========
 - Improved corece_float option
-- We still support legacy versions (Python 2.7 and Django < 1.8)
-- Test pass on with Django 2+ and python 3.7 
+- While we still support legacy versions (Python 2.7 and Django < 1.8).
+  But you need to install your preferred version of Django.
+  Recall that Django 2 does not support Python 2.
+- Test now pass on with Django 2+ and python 3.7
 
 Dependencies
 =============
@@ -46,6 +49,10 @@ this package or if you want to run the test suite ::
 Some ``pandas`` functionality requires parts of the Scipy stack.
 You may wish to consult http://www.scipy.org/install.html
 for more information on installing the ``Scipy`` stack.
+
+You need to install your preferred version of Django.
+as that Django 2 does not support Python 2.
+
 
 .. _Django: http://djangoproject.com/
 .. _django-model-utils: http://pypi.python.org/pypi/django-model-utils
