@@ -1,5 +1,21 @@
 language: python
 
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  # - "3.6"
+  # - "3.7"
+
+env:
+  matrix:
+    - DJANGO=18
+    - DJANGO=19
+    - DJANGO=110
+    - DJANGO=111
+    - DJANGO=20
+    - DJANGO=21
+
 install:
   - pip install --upgrade pip
   - pip install --upgrade setuptools tox virtualenv
@@ -8,49 +24,35 @@ install:
   - pip install pandas>=0.20.1
 
 script:
-  - tox
+  - tox -e py${TRAVIS_PYTHON_VERSION}-django${DJANGO}
 
 matrix:
-  include:
-    - python: 2.7
-      env: TOXENV=py27-django14
-    - python: 2.7
-      env: TOXENV=py27-django15_nosouth
-    - python: 2.7
-      env: TOXENV=py27-django15
-    - python: 2.7
-      env: TOXENV=py27-django16
-    - python: 2.7
-      env: TOXENV=py27-django17
-    - python: 2.7
-      env: TOXENV=py27-django18
-    - python: 2.7
-      env: TOXENV=py27-django19
-    - python: 2.7
-      env: TOXENV=py27-django10
-    - python: 2.7
-      env: TOXENV=py27-django11
-    - python: 3.4
-      env: TOXENV=py34-django17
-    - python: 3.4
-      env: TOXENV=py34-django18
-    - python: 3.4
-      env: TOXENV=py34-django19
-    - python: 3.4
-      env: TOXENV=py34-django10
-    - python: 3.4
-      env: TOXENV=py34-django11
-    - python: 3.5
-      env: TOXENV=py35-django18
-    - python: 3.5
-      env: TOXENV=py35-django19
-    - python: 3.5
-      env: TOXENV=py35-django10
-    - python: 3.5
-      env: TOXENV=py35-django11
-    - python: 3.6
-      env: TOXENV=py36-django11
-    - python: 3.7-django
-      env: TOXENV=py37-django20
+  exclude:
+    - python: "2.7"
+      env: DJANGO=20
+    - python: "2.7"
+      env: DJANGO=21
+    - python: "3.4"
+      env: DJANGO=20
+    - python: "3.4"
+      env: DJANGO=21
+    - python: "3.6"
+      env: DJANGO=18
+    - python: "3.6"
+      env: DJANGO=19
+    - python: "3.6"
+      env: DJANGO=110
+    - python: "3.7"
+      env: DJANGO=18
+    - python: "3.7"
+      env: DJANGO=19
+    - python: "3.7"
+      env: DJANGO=110
+    - python: "3.7"
+      env: DJANGO=111
+    - python: "2.7"
+      env: DJANGO=20
+    - python: "2.7"
+      env: DJANGO=21
 
 after_success: coveralls
