@@ -75,10 +75,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         fields = to_fields(qs, fieldnames)
     elif is_values_queryset(qs):
         if django.VERSION < (1, 9):  # pragma: no cover
-            if django.VERSION < (1, 8):
-                annotation_field_names = qs.aggregate_names
-            else:
-                annotation_field_names = list(qs.query.annotation_select)
+            annotation_field_names = list(qs.query.annotation_select)
 
             if annotation_field_names is None:
                 annotation_field_names = []
@@ -107,10 +104,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     else:
         fields = qs.model._meta.fields
         fieldnames = [f.name for f in fields]
-        if django.VERSION < (1, 8):  # pragma: no cover
-            fieldnames += list(qs.query.aggregate_select.keys())
-        else:
-            fieldnames += list(qs.query.annotation_select.keys())
+        fieldnames += list(qs.query.annotation_select.keys())
 
     if is_values_queryset(qs):
         recs = list(qs)
