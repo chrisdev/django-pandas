@@ -3,18 +3,12 @@
 from django.core.cache import cache
 from django.utils.encoding import force_text
 from django.db.models import Field
-import django
 
 
 def get_model_name(model):
     """
     Returns the name of the model
     """
-    # model._meta.module_name is deprecated in django version
-    # 1.7 and removed in django version 1.8.
-    # It is replaced by model._meta.model_name
-    if django.VERSION < (1, 7):  # pragma: no cover
-        return model._meta.module_name
     return model._meta.model_name
 
 

@@ -19,8 +19,6 @@ class PassThroughManagerMixin(object):
     def __getattr__(self, name):
         if name in self._deny_methods:
             raise AttributeError(name)
-        if django.VERSION < (1, 6, 0):  # pragma: no cover
-            return getattr(self.get_query_set(), name)
         return getattr(self.get_queryset(), name)
 
     def __dir__(self):
@@ -270,10 +268,4 @@ class DataFrameQuerySet(QuerySet):
                           index_col=index, coerce_float=coerce_float)
 
 
-if django.VERSION < (1, 7):  # pragma: no cover
-    class DataFrameManager(PassThroughManager):
-        def get_query_set(self):
-            return DataFrameQuerySet(self.model)
-
-else:  # pragma: no cover
-    DataFrameManager = models.Manager.from_queryset(DataFrameQuerySet)
+DataFrameManager = models.Manager.from_queryset(DataFrameQuerySet)
