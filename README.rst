@@ -3,6 +3,7 @@ Django Pandas
 ==============
 .. image:: https://secure.travis-ci.org/chrisdev/django-pandas.png?branch=master
    :target: http://travis-ci.org/chrisdev/django-pandas
+
 .. image:: https://coveralls.io/repos/chrisdev/django-pandas/badge.png?branch=master
    :target: https://coveralls.io/r/chrisdev/django-pandas
 
@@ -29,11 +30,7 @@ Contributors
 
 What's New
 ===========
-- Improved corece_float option
-- While we still support legacy versions (Python 2.7 and Django < 1.8).
-  But you need to install your preferred version of Django.
-  Recall that Django 2 does not support Python 2.
-- Test now pass on with Django 2+ and python 3.7
+Version 0.6.0 removes compatibility with Django versions < 1.8
 
 Dependencies
 =============

@@ -1,13 +1,21 @@
 CHANGES
 ========
+
+0.6.0 (2019-01-11)
+------------------
+Removes compatibility with Django versions < 1.8
+
+
 0.5.2 (2019-01-3)
+-----------------
+**This is the last version that supports Django < 1.8**
 
 - Improved coerce_float option (thanks @ZuluPro )
 - Ensure compatibility with legacy versions of Django ( < 1.8)
 - Test pass with Django 2+ and python 3.7
 
 0.5.1 (2018-01-26)
------------------
+-------------------
 - Address Unicode decode error when installing with pip3 on docker (Thanks @utapyngo)
 
 0.5.0 (2018-01-20)
@@ -87,4 +95,4 @@ CHANGES
 - Improved the performance DataFrame creation by removing dependency on
   ``np.core.records.fromrecords``
 - Loads of bug fixes, more tests and improved coverage and better
-  documentation`
+  documentation
