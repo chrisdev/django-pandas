@@ -238,7 +238,7 @@ class DataFrameQuerySet(QuerySet):
         return df
 
     def to_dataframe(self, fieldnames=(), verbose=True, index=None,
-                     coerce_float=False, datetime_index=True):
+                     coerce_float=False, datetime_index=False):
         """
         Returns a DataFrame from the queryset
 

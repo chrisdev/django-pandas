@@ -33,7 +33,7 @@ def is_values_queryset(qs):
 
 
 def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
-               verbose=True, datetime_index=True):
+               verbose=True, datetime_index=False):
     """
     Returns a dataframe from a QuerySet
 
