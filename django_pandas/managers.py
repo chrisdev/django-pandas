@@ -210,10 +210,10 @@ class DataFrameQuerySet(QuerySet):
 
         if storage == 'wide':
             df = self.to_dataframe(fieldnames, verbose=verbose, index=index,
-                                   coerce_float=coerce_float)
+                                   coerce_float=coerce_float, datetime_index=True)
         else:
             df = self.to_dataframe(fieldnames, verbose=verbose,
-                                   coerce_float=coerce_float)
+                                   coerce_float=coerce_float, datetime_index=True)
             assert values is not None, 'You must specify a values field'
             assert pivot_columns is not None, 'You must specify pivot_columns'
 
