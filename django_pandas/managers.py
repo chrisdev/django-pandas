@@ -210,10 +210,10 @@ class DataFrameQuerySet(QuerySet):
 
         if storage == 'wide':
             df = self.to_dataframe(fieldnames, verbose=verbose, index=index,
-                                   coerce_float=coerce_float)
+                                   coerce_float=coerce_float, datetime_index=True)
         else:
             df = self.to_dataframe(fieldnames, verbose=verbose,
-                                   coerce_float=coerce_float)
+                                   coerce_float=coerce_float, datetime_index=True)
             assert values is not None, 'You must specify a values field'
             assert pivot_columns is not None, 'You must specify pivot_columns'
 
@@ -238,7 +238,7 @@ class DataFrameQuerySet(QuerySet):
         return df
 
     def to_dataframe(self, fieldnames=(), verbose=True, index=None,
-                     coerce_float=False):
+                     coerce_float=False, datetime_index=False):
         """
         Returns a DataFrame from the queryset
 
@@ -262,10 +262,14 @@ class DataFrameQuerySet(QuerySet):
 
         coerce_float:   Attempt to convert values to non-string, non-numeric
                         objects (like decimal.Decimal) to floating point.
+
+        datetime_index: specify whether index should be converted to a
+                        DateTimeIndex.
         """
 
         return read_frame(self, fieldnames=fieldnames, verbose=verbose,
-                          index_col=index, coerce_float=coerce_float)
+                          index_col=index, coerce_float=coerce_float,
+                          datetime_index=datetime_index)
 
 
 DataFrameManager = models.Manager.from_queryset(DataFrameQuerySet)

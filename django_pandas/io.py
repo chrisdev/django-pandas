@@ -33,7 +33,7 @@ def is_values_queryset(qs):
 
 
 def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
-               verbose=True):
+               verbose=True, datetime_index=False):
     """
     Returns a dataframe from a QuerySet
 
@@ -65,7 +65,10 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
                 The human readable version of the foreign key field is
                 defined in the ``__unicode__`` or ``__str__``
                 methods of the related class definition
-   """
+
+    datetime_index: specify whether index should be converted to a
+                    DateTimeIndex.
+    """
 
     if fieldnames:
         fieldnames = pd.unique(fieldnames)
@@ -120,5 +123,6 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     if index_col is not None:
         df.set_index(index_col, inplace=True)
 
-    df.index = pd.to_datetime(df.index, errors="ignore")
+    if datetime_index:
+        df.index = pd.to_datetime(df.index, errors="ignore")
     return df
