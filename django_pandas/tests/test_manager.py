@@ -189,9 +189,14 @@ class TimeSeriesTest(TestCase):
         self.assertEqual(ts['col4'].dtype, np.float64)
 
     def test_transforms_wide_ts(self):
-        ts = WideTimeSeries.objects.to_timeseries(index='date_ix',
-                                                  fieldnames=['date_ix__year'])
-        self.assertEqual(ts['date_ix__year'].dtype, np.int64)
+        if django.VERSION >= (2, 1):
+            ts = WideTimeSeries.objects.to_timeseries(index='date_ix',
+                                                      fieldnames=['date_ix__year'])
+            self.assertEqual(ts['date_ix__year'].dtype, np.int64)
+        else:
+            with self.assertRaises(django.core.exceptions.FieldError):
+                WideTimeSeries.objects.to_timeseries(index='date_ix',
+                                                     fieldnames=['date_ix__year'])
 
 
 class PivotTableTest(TestCase):

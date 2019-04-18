@@ -220,7 +220,11 @@ class RelatedFieldsTest(TestCase):
                 list(row)
             )
 
-    def  test_transforms(self):
+    def test_transforms(self):
         qs = TradeLog.objects.all()
-        df = read_frame(qs, fieldnames=['log_datetime__year'])
-        self.assertEqual(list(df.columns), ['log_datetime__year'])
+        if django.VERSION >= (2, 1):
+            df = read_frame(qs, fieldnames=['log_datetime__year'])
+            self.assertEqual(list(df.columns), ['log_datetime__year'])
+        else:
+            with self.assertRaises(django.core.exceptions.FieldError):
+                read_frame(qs, fieldnames=['log_datetime__year'])
