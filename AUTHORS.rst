@@ -9,6 +9,7 @@ Development Lead
 Contributions
 ``````````````
 
+- `Aaron O. Ellis <https://github.com/aodin>`_
 - `Christopher Clarke <https://github.com/chrisdev>`_
 - `Bertrand Bordage <https://github.com/BertrandBordage>`_
 - `Guillaume Thomas <https://github.com/gtnx>`_

@@ -219,3 +219,8 @@ class RelatedFieldsTest(TestCase):
                 df.iloc[idx].tolist(),
                 list(row)
             )
+
+    def  test_transforms(self):
+        qs = TradeLog.objects.all()
+        df = read_frame(qs, fieldnames=['log_datetime__year'])
+        self.assertEqual(list(df.columns), ['log_datetime__year'])

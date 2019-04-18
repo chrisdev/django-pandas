@@ -188,6 +188,11 @@ class TimeSeriesTest(TestCase):
         self.assertEqual(ts['col3'].dtype, np.float64)
         self.assertEqual(ts['col4'].dtype, np.float64)
 
+    def test_transforms_wide_ts(self):
+        ts = WideTimeSeries.objects.to_timeseries(index='date_ix',
+                                                  fieldnames=['date_ix__year'])
+        self.assertEqual(ts['date_ix__year'].dtype, np.int64)
+
 
 class PivotTableTest(TestCase):
 

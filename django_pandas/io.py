@@ -9,7 +9,7 @@ def to_fields(qs, fieldnames):
         for fieldname_part in fieldname.split('__'):
             try:
                 field = model._meta.get_field(fieldname_part)
-            except django.db.models.fields.FieldDoesNotExist:
+            except (django.db.models.fields.FieldDoesNotExist, AttributeError):
                 try:
                     rels = model._meta.get_all_related_objects_with_model()
                 except AttributeError:
