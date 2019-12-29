@@ -57,6 +57,16 @@ class IOTest(TestCase):
                          ['index_col', 'col1', 'scol1', 'ecol1'])
         self.assertEqual(list(df["col1"]), list(df["scol1"]))
 
+    def test_override_column_names(self):
+        qs = MyModel.objects.all()
+        df = read_frame(
+            qs,
+            index_col='id',
+            fieldnames=['col1', 'col2', 'col3', 'col4'],
+            column_names=['a', 'b', 'c', 'd']
+        )
+        self.assertEqual(list(df.columns), ['a', 'b', 'c', 'd'])
+
     def test_duplicate_annotation(self):
         qs = MyModel.objects.all()
         qs = qs.values('index_col')

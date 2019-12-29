@@ -125,6 +125,8 @@ read_frame
                 human readable versions of any foreign key or choice fields
                 else use the actual values set in the model.
 
+    - column_names: If not None, use to override the column names in the
+                    DateFrame
 
 Examples
 ^^^^^^^^^
