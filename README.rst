@@ -153,11 +153,11 @@ To create a DataFrame using specified field names::
 
 To set ``full_name`` as the ``DataFrame`` index ::
 
-    qs.to_dataframe(['age', 'wage'], index='full_name'])
+    qs.to_dataframe(['age', 'wage'], index_col='full_name'])
 
 You can use filters and excludes ::
 
-    qs.filter(age__gt=20, department='IT').to_dataframe(index='full_name')
+    qs.filter(age__gt=20, department='IT').to_dataframe(index_col='full_name')
 
 
 DataFrameManager
