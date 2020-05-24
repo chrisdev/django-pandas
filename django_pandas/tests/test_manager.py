@@ -119,10 +119,12 @@ class TimeSeriesTest(TestCase):
 
     def test_resampling(self):
         qs = LongTimeSeries.objects.all()
-        rs_kwargs = {'how': 'sum', 'kind': 'period'}
+        rs_kwargs = {'kind': 'period'}
+        agg_kwargs = {'func': 'sum'}
         df = qs.to_timeseries(index='date_ix', pivot_columns='series_name',
                               values='value', storage='long',
-                              freq='M', rs_kwargs=rs_kwargs)
+                              freq='M', rs_kwargs=rs_kwargs,
+                              agg_kwargs=agg_kwargs)
 
         self.assertEqual([d.month for d in qs.dates('date_ix', 'month')],
                          df.index.month.tolist())
