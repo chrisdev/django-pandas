@@ -241,7 +241,7 @@ class DataFrameQuerySet(QuerySet):
 
         if freq is not None:
             if agg_kwargs is None:
-                agg_kwargs=dict(func='mean')
+                agg_kwargs=dict()
             if agg_args is None:
                 agg_args=[]
             df = df.resample(freq, **rs_kwargs).agg(*agg_args, **agg_kwargs)

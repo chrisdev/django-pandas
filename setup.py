@@ -42,6 +42,7 @@ setup(
     tests_require=[
         "pandas>=0.20.1",
         "coverage>=4.0",
+        "semver==2.10.1"
                    ],
     test_suite="runtests.runtests"
 
