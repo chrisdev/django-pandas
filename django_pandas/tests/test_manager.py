@@ -8,7 +8,9 @@ from .models import (
     LongTimeSeries, PivotData, Dude, Car, Spot
 )
 import pandas.util.testing as tm
+import semver
 
+PANDAS_VERSIONINFO = semver.VersionInfo.parse(pd.__version__)
 
 class DataFrameTest(TestCase):
 
@@ -119,10 +121,18 @@ class TimeSeriesTest(TestCase):
 
     def test_resampling(self):
         qs = LongTimeSeries.objects.all()
-        rs_kwargs = {'how': 'sum', 'kind': 'period'}
+        rs_kwargs = {'kind': 'period'}
+        agg_args = None
+        agg_kwargs = None
+        if PANDAS_VERSIONINFO >= '0.25.0':
+            agg_kwargs = {'func': 'sum'}
+        else:
+            agg_args= ['sum']
         df = qs.to_timeseries(index='date_ix', pivot_columns='series_name',
                               values='value', storage='long',
-                              freq='M', rs_kwargs=rs_kwargs)
+                              freq='M', rs_kwargs=rs_kwargs,
+                              agg_args=agg_args,
+                              agg_kwargs=agg_kwargs)
 
         self.assertEqual([d.month for d in qs.dates('date_ix', 'month')],
                          df.index.month.tolist())
@@ -133,7 +143,9 @@ class TimeSeriesTest(TestCase):
         qs2 = WideTimeSeries.objects.all()
 
         df1 = qs2.to_timeseries(index='date_ix', storage='wide',
-                                freq='M', rs_kwargs=rs_kwargs)
+                                freq='M', rs_kwargs=rs_kwargs,
+                                agg_args=agg_args,
+                                agg_kwargs = agg_kwargs)
 
         self.assertEqual([d.month for d in qs.dates('date_ix', 'month')],
                          df1.index.month.tolist())

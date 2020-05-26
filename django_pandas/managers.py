@@ -135,7 +135,8 @@ class DataFrameQuerySet(QuerySet):
     def to_timeseries(self, fieldnames=(), verbose=True,
                       index=None, storage='wide',
                       values=None, pivot_columns=None, freq=None,
-                      coerce_float=True, rs_kwargs=None):
+                      coerce_float=True, rs_kwargs=None, agg_args=None,
+                      agg_kwargs=None):
         """
         A convenience method for creating a time series DataFrame i.e the
         DataFrame index will be an instance of  DateTime or PeriodIndex
@@ -195,6 +196,12 @@ class DataFrameQuerySet(QuerySet):
         rs_kwargs:  A dictonary of keyword arguments based on the
                     ``pandas.DataFrame.resample`` method
 
+        agg_kwargs:  A dictonary of keyword arguments to send to the
+                    ``pandas.DataFrame.resample().agg()`` method
+
+        agg_args:  A list of positional arguments to send to the
+                    ``pandas.DataFrame.resample().agg()`` method
+
         verbose:  If  this is ``True`` then populate the DataFrame with the
                   human readable versions of any foreign key fields else use
                   the primary keys values else use the actual values set
@@ -233,7 +240,11 @@ class DataFrameQuerySet(QuerySet):
                               values=values)
 
         if freq is not None:
-            df = df.resample(freq, **rs_kwargs)
+            if agg_kwargs is None:
+                agg_kwargs=dict()
+            if agg_args is None:
+                agg_args=[]
+            df = df.resample(freq, **rs_kwargs).agg(*agg_args, **agg_kwargs)
 
         return df
 
