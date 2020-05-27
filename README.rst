@@ -27,10 +27,12 @@ Contributors
 * `Hélio Meira Lins <https://github.com/meiralins>`_
 * `@utpyngo <https://github.com/utpyngo>`_
 * `Anthony Monthe <https://github.com/ZuluPro>`_
+* `Vincent Toupet <https://github.com/vtoupet>`_
+* `Anton Ian Sipos <https://github.com/aisipos>`_
 
 What's New
 ===========
-Version 0.6.0 removes compatibility with Django versions < 1.8
+Version 0.6.1 supports the latest release of Pandas (1.0.3)
 
 Dependencies
 =============

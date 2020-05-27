@@ -3,7 +3,7 @@ CHANGES
 
 0.6.1 (2020-05-26)
 ------------------
-Remove incompatibility with the latest release of Pandas 1.0.3  (`resample`)
+Supports the latest release of Pandas 1.0.3
 
 0.6.0 (2019-01-11)
 ------------------
