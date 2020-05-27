@@ -1,0 +1,6489 @@
+    1  vi ~/.zshrc
+    2  ll
+    3  brew install mackup
+    4  makup restore
+    5  mackup restore
+    6  vim .zshrc
+    7  git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
+    8  mackup uninstall
+    9  ll
+   10  vim ~/.zshrc
+   11  pwd
+   12  cd .vim
+   13  ll
+   14  ls bundle
+   15  cd ..
+   16  mv .vim vimold
+   17  ll
+   18  vim
+   19  ll
+   20  vim .vimrc
+   21  mkdir -p ~/.vim/autoload ~/.vim/bundle && \\ncurl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+   22  cd .vim
+   23  ll
+   24  cd ..
+   25  vim .vimrc
+   26  brew install python3
+   27  python
+   28  python3
+   29  virtualenv funky
+   30  venv test
+   31  python3 venv funky
+   32  python3 -m venv funky
+   33  cd funky
+   34  ll
+   35  cd ..
+   36  . funky/bin/activate
+   37  deactivate
+   38  rm funky
+   39  rm -rf funky
+   40  ll
+   41  brew search macvim
+   42  macvim
+   43  brew info macvim
+   44  cd ~/Dropbox/Mackup
+   45  ll
+   46  ls -l
+   47  ls -a
+   48  vi .pypirc
+   49  vim .gitconfig
+   50  vim .profile
+   51  vim .zshrc
+   52  source .zshrc
+   53  pwd
+   54  cd Dropbox/Mackup
+   55  eval "ssh-add .ssh/id_rsa\n\n"
+   56  mackup
+   57  mackup list
+   58  cd ../
+   59  cd ~
+   60  ll
+   61  la
+   62  mkdir .ssh
+   63  cd .ssh
+   64  ll
+   65  ll -a
+   66  sl
+   67  pwd
+   68  ls
+   69  pwd
+   70  ls
+   71  pws
+   72  pwd
+   73  ls
+   74  pwd
+   75  cd ~/Dropbox
+   76  cd Mackup
+   77  ll
+   78  ls -l
+   79  ls -la
+   80  cd ..
+   81  ls .ssh
+   82  cp ~/Dropbox/Mackup/.ssh/* .
+   83  ll
+   84  ll -a
+   85  pwd
+   86  mkdir .ssh
+   87  mv id_rsa* .ssh
+   88  ll
+   89  ssh django@nmncu.coop 
+   90  ll -a
+   91  ll -a .ssh
+   92  cd ..
+   93  ll
+   94  cd cclarke
+   95  ll
+   96  ll -a
+   97  ls -a
+   98  ls -al
+   99  chmod g-x o-x .ssh
+  100  chmod g -x .ssh
+  101  man chmod
+  102  chmod -gx .ssh
+  103  chmod -gw .ssh
+  104  chmod -ox .ssh
+  105  chmod -ow .ssh
+  106  ls -al
+  107  chmod u+rw .ssh
+  108  ls -al
+  109  cd .ssh
+  110  chmod u+rwx .ssh
+  111  cd .ssh
+  112  ll
+  113  cd ..
+  114  cd cclarke
+  115  ssh django@nmncu.coop 
+  116  cd .ssh
+  117  chmod 400 *
+  118  ll
+  119  cd ..
+  120  ssh django@nmncu.coop 
+  121  ll
+  122  cd ~/Dropbox/Development
+  123  ll
+  124  cd django-wagtail-feeds
+  125  git status
+  126  ll
+  127  cd ..
+  128  cd ~
+  129  ll
+  130  ls -a
+  131  mv chrisdev-ec2.pem .ssh/
+  132  my ipad_key.RSA .ssh
+  133  mv ipad_key.RSA .ssh/
+  134  ll -a
+  135  ll
+  136  pip install vitrualenvwrapper
+  137  export WORKON_HOME=~/Virtualenvs
+  138  mkdir -p $WORKON_HOME
+  139  source /usr/local/bin/virtualenvwrapper.sh
+  140  mkvirtualenv test
+  141  deactivate
+  142  virtualenv funky
+  143  virtualenv3 funky
+  144  python3 -m virtualenv
+  145  venv
+  146  python3 -m venv test
+  147  cd test
+  148  ll
+  149  cd ..
+  150  rm -rf test
+  151  rm -rf funky
+  152  pwd
+  153  ll
+  154  ssh django@nmncu.coop 
+  155  pwd
+  156  ssh django@nmncu.coop 
+  157  pwd
+  158  ll
+  159  pwd
+  160  brew upgrade python
+  161  ssh django@nmncu.coop 
+  162  ssh django@workcu.chrisdev.com
+  163  ssh django@workscu.chrisdev.com
+  164  ssh root@162.243.218.183
+  165  cd .ssh
+  166  ll
+  167  vim known_hosts
+  168  touch know_host
+  169  ll
+  170  rm know_host
+  171  touch know_hosts
+  172  ll
+  173  cd ~/Dropbox/Development/massy_credit_union
+  174  git status
+  175  brew search po
+  176  brew
+  177  path
+  178  echo $PATH
+  179  cd /usr/local/bin
+  180  ll
+  181  /usr/local/bin/brew
+  182  /usr/local/bin/brew search pop
+  183  cd ~
+  184  vim  .vimrc
+  185  vim .zshrc
+  186  brew
+  187  brew install poppler
+  188  ssh django@register.chrisdev.com
+  189  ssh django@rsna.chrisdev.com
+  190  ssh django@register.foreign.gov.tt
+  191  ssh django@birdsongtt.chrisdev.com
+  192  ssh django@register.foreign.gov.tt
+  193  cd /Users/cclarke/Dropbox/Development/rsna_site/ansible/rsna_ansible_keystore
+  194  ll
+  195  ls -a
+  196  brew search pandoc
+  197  brew info pandoc
+  198  pwd
+  199  ssh django@register.foreign.gov.tt
+  200  ssh root@register.foreign.gov.tt
+  201  ssh django@conference.forieign.gov.tt
+  202  ssh django@conference.foreign.gov.tt
+  203  ssh django@register.foreign.gov.tt
+  204  ssh -vvv django@register.foreign.gov.tt
+  205  ssh -vvv rsna@register.foreign.gov.tt
+  206  ssh -vvv cclarke@register.foreign.gov.tt
+  207  ll
+  208  cd ~/Desktop
+  209  ll
+  210  scp cclarke@register.foreign.gov.tt:rsna_site-2018-05-15.sql .
+  211  cd ~/Dropbox/Development/rsna_site
+  212  ll
+  213  mvim .
+  214  vim .
+  215  ssh -vvv cclarke@register.foreign.gov.tt
+  216  ssh django@mfa.chrisdev.com
+  217  ssh cclarke@register.foreign.gov.tt
+  218  ssh django@foreign.gov.tt
+  219  ll
+  220  ssh django@foreign.gov.tt
+  221  ssh cclarke@register.foreign.gov.tt
+  222  1
+  223  q
+  224  cd ~/Desktop
+  225  scp cclarke@register.foreign.gov.tt:rsna-letsencrypt.tar.gz .
+  226  scp cclarke@register.foreign.gov.tt:rsna-letsencypt.tar.gz .
+  227  ll
+  228  brew install macvim
+  229  cd ~/Dropbox/Development
+  230  ll
+  231  cd rsna_site
+  232  mvim .
+  233  ll
+  234  vim ansible/host_vars/rsna.chrisdev.com
+  235  ssh cclarke@179.60.214.62
+  236  mvim
+  237  ssh cclarke@179.60.214.62
+  238  ssh cclarke@register.foreign.gov.tt
+  239  ssh cclarke@179.60.214.62
+  240  cd ~/Dropbox/Mackup
+  241  ll
+  242  os -l
+  243  ls -ll
+  244  cd Library
+  245  ll
+  246  ls -ll
+  247  ll -a
+  248  cd Application\ Support
+  249  ll
+  250  cd ..
+  251  ll -a
+  252  vi .gvimrc
+  253  vim .profile
+  254  cd .vim
+  255  ll
+  256  brew search macvim
+  257  brew info macvim
+  258  ssh django@register.chridev.com
+  259  ssh django@register.chrisdev.com
+  260  cd .ssh
+  261  ll
+  262  chmod u+w known_hosts
+  263  chmod o-r chrisdev-ec2.pem
+  264  chmod w-r chrisdev-ec2.pem
+  265  chmod g-r chrisdev-ec2.pem
+  266  ll
+  267  cd ~/Dropbox/Development
+  268  cd rsna_site
+  269  ll
+  270  hg status
+  271  brew install hg
+  272  hg status
+  273  ll
+  274  scp ~/Desktop/rsna-letsencypt.tar.gz django@register.chrisdev.com:.
+  275  pwd
+  276  cd ~/Desktop
+  277  ll
+  278  scp rsna_site-2018-05-15.sql django@register.chrisdev.com:.
+  279  mvim
+  280  cd ~/.vim
+  281  ll
+  282  cd ..
+  283  pwd
+  284  vim .gvimrc
+  285  cd /Users/cclarke/Dropbox/Mackup
+  286  ll
+  287  ll -a
+  288  cd .vim
+  289  ll
+  290  cd bundle
+  291  ll
+  292  cd colorschemes
+  293  ll
+  294  vim README.md
+  295  cd ..
+  296  cd ~
+  297  cd .vim
+  298  git submodule add https://github.com/flazz/vim-colorschemes.git bundle/colorschemes
+  299  ll
+  300  cd bundle
+  301  git submodule add  https://github.com/flazz/vim-colorschemes.git
+  302  git clone https://github.com/flazz/vim-colorschemes.git
+  303  mvim .
+  304  cd ..
+  305  git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+  306  mvim .
+  307  cd ~/Dropbox
+  308  cd Mackup
+  309  ll
+  310  cd .vim
+  311  ll
+  312  cd bundle
+  313  ll
+  314  git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
+  315  mvim .
+  316  ls .vim/bundle
+  317  cd .vim/bundle
+  318  ll
+  319  git clone --recursive https://github.com/python-mode/python-mode.git
+  320  mvim 
+  321  cd ..
+  322  ll
+  323  mkdir doc
+  324  cd .oh-my-zsh
+  325  git status
+  326  git checkout custom/themes/example.zsh-theme
+  327  ll
+  328  upgrade_oh_my_zsh
+  329  cd ~/Dropbox
+  330  cd Development/mass_site
+  331  ll
+  332  cd mass_site
+  333  ll
+  334  cd apps
+  335  ll
+  336  cd markets
+  337  ll
+  338  mivm models.py
+  339  mvim models.py
+  340  cd management
+  341  ll
+  342  cd commands
+  343  ll
+  344  cd ..
+  345  ll
+  346  cd ..
+  347  ll
+  348  cd markets
+  349  ll
+  350  vim managers.py
+  351  mvim .
+  352  cd ~/Dropbox/Mackup
+  353  ll
+  354  ls -a
+  355  cd .vim
+  356  ll
+  357  cd bundle
+  358  ll
+  359  cd ~/
+  360  cd .vim/
+  361  cd bundle
+  362  ll
+  363  brew install pandoc
+  364  brew install you-get
+  365  ssh django@birdsongtt.chrisdev.com
+  366  cd .vim
+  367  ll
+  368  cd bundle
+  369  ll
+  370  cd ~/Dropbox/Mackup
+  371  cd .vim
+  372  ll
+  373  cde bundle
+  374  cd bundle
+  375  ll
+  376  cd ~/.vim
+  377  ll
+  378  cd bundle
+  379  ll
+  380  vim 
+  381  git clone https://github.com/Valloric/MatchTagAlways.git
+  382  ll
+  383  git clone https://github.com/tpope/vim-surround.git
+  384  cd ~
+  385  vim test
+  386  ll
+  387  ln -s ~/Dropbox/Development Devlopment
+  388  mv Devlopment Development
+  389  cd Development
+  390  ll
+  391  cd good_shepherd_static
+  392  mvim .
+  393  brew search node
+  394  brew install node
+  395  npm install foundation-cli --global
+  396  npm install
+  397  git pull
+  398  git status
+  399  cd ..
+  400  mv good_shepherd_static good_shepherd_static.old
+  401  git clone git clone git@bitbucket.org:ilendl2/good_shepherd_static.git
+  402  git clone git@bitbucket.org:ilendl2/good_shepherd_static.git
+  403  cd good_shepherd_static
+  404  npm install
+  405  npm start
+  406  rm package-lock.json
+  407  npm install
+  408  npm start
+  409  ll
+  410  rm -rf node_modules
+  411  rm package.json
+  412  git status
+  413  git checkout package.json
+  414  ll
+  415  rm package-lock.json
+  416  npm install
+  417  npm start
+  418  vim ~/.npm/_logs/2018-05-24T16_49_09_016Z-debug.log
+  419  ll
+  420  vim gulpfile.babel.js
+  421  gulp build
+  422  npm --help
+  423  nmp run
+  424  ll
+  425  vim config.yml
+  426  pip install sigal
+  427  npm install
+  428  npm start
+  429  vim junk
+  430  vim --version | grep clipboard
+  431  history|grep brew install
+  432  history|grep 'brew install'
+  433  brew install vim 
+  434  vim --version | grep clipboard
+  435  brew search vim
+  436  mvim -v
+  437  vim 
+  438  vim ~/.zshrc
+  439  source ~/.zshrc
+  440  vim .
+  441  vim junk
+  442  pwd
+  443  cd ~/Development/good_shepherd_static.old
+  444  cd src
+  445  mvim .
+  446  vim .
+  447  mvim .
+  448  npm start
+  449  ll
+  450  cd pages
+  451  git status
+  452  cd ..
+  453  ll
+  454  cd ..
+  455  git status
+  456  vim .
+  457  ping 192.168.0.11
+  458  ssh root@192.168.0.11
+  459  telet 193.168.0.11:5000
+  460  brew search telnet
+  461  pwd
+  462  foundation blocks list
+  463  foundation blocks install blockquote styles
+  464  foundation blocks install Blockquote Styles
+  465  foundation blocks install  neat-article-container
+  466  ll
+  467  cd src
+  468  ll
+  469  cd pages
+  470  ll
+  471  vim article_test.html
+  472  npm start
+  473  cd ..
+  474  npm start
+  475  history|grep npm
+  476  npm i npm
+  477  ll
+  478  npm start
+  479  cd src
+  480  ll
+  481  cd pages
+  482  ll
+  483  rm article_test.html
+  484  cd ..
+  485  npm start
+  486  gvim .npm/_logs/2018-05-28T18_36_22_206Z-debug.log
+  487  cd ..
+  488  gvim .npm/_logs/2018-05-28T18_36_22_206Z-debug.log
+  489  pwd
+  490  cd ~/Development/good_shepherd_static
+  491  ll
+  492  git status
+  493  npm start
+  494  gulp
+  495  ll
+  496  vim config.yml
+  497  cd ..
+  498  git clone git@bitbucket.org:ilendl2/good_shepherd_static.git static_test
+  499  cd ~/Development
+  500  ll
+  501  cd app_test
+  502  cd good_shepherd_static
+  503  ll
+  504  cd ..
+  505  ll
+  506  cd ..
+  507  ll
+  508  cd ~/Development/static_test
+  509  ll
+  510  nmp install
+  511  npm status
+  512  npm start
+  513  npm install
+  514  npm start
+  515  pip freeze
+  516  cd ..
+  517  cd good_shepherd_static
+  518  ll
+  519  rm package-lock.json
+  520  npm install
+  521  npm start
+  522  cd ..
+  523  cd good_shepherd_static
+  524  ll
+  525  git status
+  526  git checkout src/assets/scss/_building_blocks.scss
+  527  npm start
+  528  ll
+  529  cd src
+  530  cd pages
+  531  ll
+  532  git status
+  533  cd ..
+  534  git status
+  535  cd ~/Development/static_test
+  536  git status
+  537  npm start
+  538  cd ..
+  539  cd good_shepherd_static
+  540  git status
+  541  cd ..
+  542  cd static_test
+  543  git status
+  544  cd ..
+  545  rm -rf good_shepherd_static
+  546  mv static_test good_shepherd_static
+  547  cd good_shepherd_static
+  548  git status
+  549  mvim .
+  550  npm start
+  551  cd ~/Development/good_shepherd_static.old
+  552  ll
+  553  cd src
+  554  ll
+  555  cd assets
+  556  ll
+  557  cd scss
+  558  ll
+  559  vim _building_blocks.scss
+  560  npm start
+  561  git checkout src/assets/scss/_building_blocks.scss
+  562  npm start
+  563  cd ..
+  564  cd pages
+  565  cp about_us.html about_new.html
+  566  ll
+  567  pwd
+  568  mv about_new.html ../../../good_shepherd_static/src/pages/.
+  569  git status
+  570  npm start
+  571  cd ..
+  572  npm start
+  573  npm install
+  574  npm start
+  575  ll
+  576  rm -rf node_modules
+  577  rm package-lock.json
+  578  npm install
+  579  npm start
+  580  cd ..
+  581  git status
+  582  cd good_shepherd_static
+  583  ll
+  584  git status
+  585  ll
+  586  pwd
+  587  cd src/partials
+  588  ll
+  589  touch social_media_sharing.html
+  590  cd ..
+  591  ll
+  592  cd pages
+  593  ll
+  594  cp about_new.html about_us.html
+  595  git statuw
+  596  git status
+  597  ll
+  598  cp about_us.html about_us/good_shepherd.html
+  599  ssh django@esmod-forde.com
+  600  ssh django@esmond-forde.com
+  601  ssh django@workscu.chrisdev.com
+  602  cd ~/Development
+  603  cd goodridge_society_landing
+  604  ll
+  605  cd ..
+  606  ping goodridgesociety.org
+  607  ssh django@104.236.90.64
+  608  ping static-web.chrisdev.com
+  609  ssh django@104.236.90.64
+  610  ssh django@138.197.73.172
+  611  ssh django@workscu.chridev.com
+  612  ssh django@workscu.chrisdev.com
+  613  ssh django@newworkscu.chrisdev.com
+  614  ssh djnago@newworks.chrisdev.com
+  615  ssh django@138.197.73.172
+  616  ssh django@newworks.chrisdev.com
+  617  ping workscu.com
+  618  ping newworks.chrisdev.com
+  619  ssh django@newworks.chrisdev.com
+  620  git clone git@bitbucket.org:ilendl2/workscu_refreshed.git
+  621  cd workscu_refreshed
+  622  ll
+  623  make develop
+  624  make
+  625  make develop_env
+  626  psql
+  627  sudo mkdir -p /etc/paths.d &&\necho /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
+  628  echo $PATH
+  629  psql
+  630  cd /Applications/Postgres.app/Contents/MacOS/bin
+  631  cd /Applications/Postgres.app/Contents/Versions/latest/bin/
+  632  ll
+  633  pwd
+  634  cd ~
+  635  vim .zshrc
+  636  . .zshrc
+  637  source zshrc
+  638  source /zshrc
+  639  source .zshrc
+  640  psql
+  641  cd ~/Development/workscu_refreshed
+  642  make develop_env
+  643  ll
+  644  vim Makefile
+  645  python3 -m virtualenv funky
+  646  python3 -m venv funky
+  647  ll
+  648  rm -rf 
+  649  ll
+  650  rm -rf funky
+  651  rm -rf venv
+  652  ll
+  653  vim Makefile
+  654  make develop_env
+  655  cd ~/Development/workscu_refreshed
+  656  ll
+  657  mvim .
+  658  dropdb workscu_refreshed
+  659  make develop_env
+  660  bower install
+  661  npm
+  662  make
+  663  make bower
+  664  npm install -g bower
+  665  npm i npm
+  666  bower install
+  667  make runserver
+  668  mvim .
+  669  which python
+  670  brew doctor
+  671  brew
+  672  homebrew
+  673  python3
+  674  echo $PATH
+  675  /usr/local/bin/brew
+  676  vim ~/.zshrc
+  677  vi ~/.zshrc
+  678  source ~/.zshrc
+  679  brew
+  680  vim .
+  681  brew doctor
+  682  brew update
+  683  python 3
+  684  python3
+  685  pip install virtualenvwrapper
+  686  vim ~/.zshrc
+  687  mkvirtualenv py3 --python=python3
+  688  which python
+  689  python
+  690  rmvirtualenv py3
+  691  exit
+  692  mkvirtualenv py2 --python=python2
+  693  deactivate
+  694  cd ~/Development/
+  695  cd good_shepherd_static
+  696  git status
+  697  mpm start
+  698  npm start
+  699  ll
+  700  cd ~/Development
+  701  cd good_shepherd_static
+  702  git status
+  703  mvim .
+  704  rm 1
+  705  mvim .
+  706  ssh django@skhyfc.chrisdev.com
+  707  cd src
+  708  cd pages
+  709  ll
+  710  cp about_us.html about_us/vision_and_mission.html
+  711  ll
+  712  vim about_us/vision_and_mission.html
+  713  cd ..
+  714  ll
+  715  mvim .
+  716  cd src/pages
+  717  git status
+  718  cp about_us.html about_us/index.html
+  719  cd about_us
+  720  git mv our_team.html clergy_and_staff.html
+  721  ll
+  722  cp clergy_and_staff.html archdeacon_kenly_baldeo.html
+  723  git status
+  724  mv our_team.html clergy_and_staff.html
+  725  vim our_history.html
+  726  vim clergy_and_staff.html
+  727  cd ..
+  728  cd ~/Development/workscu_refreshed
+  729  git status
+  730  git diff
+  731  git pull
+  732  git add Makefile
+  733  git commit -m "Deal with Python3 dependency"
+  734  git push
+  735  ll
+  736  git status
+  737  mvim .
+  738  ssh django@newworks.chrisdev.com
+  739  ping workscu.com
+  740  ssh django@198.211.104.102
+  741  ssh root@198.211.104.102
+  742  ping newworks.chrisdev.com
+  743  ping 198.211.104.102
+  744  ssh root@newworks.chrisdev.com
+  745  ssh root@198.211.104.102
+  746  ssh root@newworks.chrisdev.com
+  747  ping newworks.chrisdev.com
+  748  cd ~/Development/good_shepherd_static
+  749  ll
+  750  git status
+  751  git add src/assets/scss/
+  752  git add src/partials/base/
+  753  git add src/pages/
+  754  git status
+  755  git add src/data/team.yml
+  756  git add src/assets/
+  757  git add src/partials/
+  758  git status
+  759  git add src/data/about_menu.yml
+  760  git status
+  761  git commit -m "Content and Styling"
+  762  git pull
+  763  git push
+  764  mvim .
+  765  ssh django@static-web.chrisdev.com
+  766  npm start
+  767  ll
+  768  ./sync.sh
+  769  git status
+  770  ssh root@newworks.chrisdev.com
+  771  vim ~/.ssh/known_hosts
+  772  ssh root@newworks.chrisdev.com
+  773  ping www.ccmf-uwi.org
+  774  ssh root@162.243.218.183
+  775  ll
+  776  pwd
+  777  ssh django@sacoda.chrisdev.com
+  778  cd ~/
+  779  cd ~/Development/workscu_refreshed
+  780  ll
+  781  ssh root@newworks.chrisdev.com
+  782  ll
+  783  cd ansible
+  784  ll
+  785  cd group_vars
+  786  ll
+  787  vim all
+  788  cd ..
+  789  mvim .
+  790  cd ~/Development/massy_credit_union
+  791  git status
+  792  ll
+  793  git status
+  794  ssh root@newworks.chrisdev.com
+  795  gits status
+  796  git status
+  797  ll
+  798  ls venv
+  799  cd ..
+  800  cd workscu_refreshed
+  801  . venv/bin/activate
+  802  ./manage.py runserver
+  803  ./manage.py shell_plus
+  804  make pretask
+  805  make pre_task
+  806  deactivate
+  807  make pre_task
+  808  brew install ansible
+  809  make pre_task
+  810  make deploy_user
+  811  cd ~/Development/workscu_refreshed
+  812  ll
+  813  cd workscu_refreshed
+  814  pwd
+  815  cd ..
+  816  cat ansible/workscu_wagtail_keystore/authorized_keys|pbcopy
+  817  cat ansible/workscu_wagtail_keystore/newworks.chrisdev.com-django-deploy_keys.pub|pbcopy
+  818  ansible-playbook -i ansible/production ansible/provision.yml --tags packages
+  819  ansible-playbook -i ansible/production ansible/provision.yml --tags secure
+  820  ansible-playbook -i ansible/production ansible/provision.yml --tags database
+  821  ansible-playbook -i ansible/production ansible/provision.yml --tags le
+  822  ansible-playbook -i ansible/production ansible/provision.yml --tags le_debug
+  823  ssh django
+  824  ssh django@massy.chrisdev.com
+  825  ssh django@nmncu.chrisdev.com
+  826  ssh django@newworks.chrisdev.com
+  827  history
+  828  ssh django@newworks.chrisdev.com
+  829  ansible-playbook -i ansible/production ansible/provision.yml --tags nginx
+  830  ll -a
+  831  cd ..
+  832  cd workscu_wagtail
+  833  ll
+  834  cd ansible
+  835  cd workscu_wagtail_keystore
+  836  ll
+  837  vim env.production
+  838  ll
+  839  cd ansible/workscu_wagtail_keystore
+  840  ll
+  841  vim env.production
+  842  ansible-playbook -i ansible/production ansible/provision.yml --tags vcs_repo
+  843  cd ..
+  844  ansible-playbook -i ansible/production ansible/provision.yml --tags vcs_repo
+  845  ansible-playbook -i ansible/production ansible/provision.yml --tags venv
+  846  ssh django@newworks.chrisdev.com
+  847  cd ~/Desktop
+  848  vim word_press_instructions.md
+  849  ssh django@skhyfc.chrisdev.com
+  850  ll
+  851  history
+  852  ssh root@159.203.191.20
+  853  history
+  854  ansible-playbook -i ansible/production ansible/provision.yml --tags venv
+  855  ansible -b
+  856  ansible -v
+  857  ansible --version
+  858  ansible-playbook -i ansible/production ansible/provision.yml --tags venv
+  859  ssh django@msjtnt.org
+  860  ssh django@nmncu.chrisdev.com
+  861  ansible-playbook -i ansible/production ansible/provision.yml --tags venv
+  862  git diff ansible/roles/web/tasks/setup_virtualenv.yml
+  863  ansible-playbook -i ansible/production ansible/provision.yml --tags venv
+  864  cd ansible/roles/web
+  865  ll
+  866  cd tasks
+  867  ll
+  868  cp setup_virtualenv.yml setup_virtualenv.yml.old
+  869  cd ../..
+  870  ll
+  871  cd ..
+  872  ll
+  873  git checkout ansible/roles/web/tasks/setup_virtualenv.yml
+  874  ansible-playbook -i ansible/production ansible/provision.yml --tags venv
+  875  cd ~/Development/workscu_refreshed
+  876  ll
+  877  cd ansible
+  878  cd workscu_wagtail_keystore
+  879  ll
+  880  vim env.production
+  881  ssh django@newworks.chrisdev.com
+  882  vim ~/.zshrc
+  883  ssh django@newworks.chrisdev.com
+  884  ansible-playbook -i ansible/production ansible/provision.yml --tags npm
+  885  ansible-playbook -i ansible/production ansible/provision.yml --tags redis
+  886  ansible-playbook -i ansible/production ansible/provision.yml --django
+  887  ansible-playbook -i ansible/production ansible/provision.yml --tags django
+  888  ssh django@newworks.chrisdev.com
+  889  ansible-playbook -i ansible/production ansible/provision.yml --tags django
+  890  ssh django@newworks.chrisdev.com
+  891  ansible-playbook -i ansible/production ansible/provision.yml --tags django
+  892  ansible-playbook -i ansible/production ansible/provision.yml --tags initial_data
+  893  ansible-playbook -i ansible/production ansible/provision.yml --tags copy_media
+  894  ansible-playbook -i ansible/production ansible/provision.yml --tags gunicorn
+  895  ansible-playbook -i ansible/production ansible/provision.yml --tags celery
+  896  ansible-playbook -i ansible/production ansible/provision.yml --tags cleanup
+  897  ssh django@newworks.chrisdev.com
+  898  ssh django@rsna.chrisdev.com
+  899  ll
+  900  cd ../rsna_site
+  901  ll
+  902  cd ansible
+  903  ll
+  904  cd group_vars
+  905  ll
+  906  cd ..
+  907  cd host_vars
+  908  ll
+  909  cd ..
+  910  mvim .
+  911  cd ..
+  912  cd workscu_refreshed
+  913  git status
+  914  git diff package.json
+  915  vim .gitignore
+  916  git status
+  917  vim .gitignore
+  918  cd ..
+  919  git status
+  920  rm provision.retry
+  921  rm roles/web/tasks/setup_virtualenv.yml.old
+  922  git status
+  923  git add .
+  924  git commit -m "Address issue #1 Ansible Updates"
+  925  git push
+  926  vim junk.md
+  927  ll
+  928  dig -all goodshepherdtt.org
+  929  dig goodshepherdtt.org
+  930  dig --help
+  931  dig -h
+  932  dig txt goodshepherdtt.org
+  933  dig cname goodshepherdtt.org
+  934  dig all goodshepherdtt.org
+  935  ping oqmmeuvnjg36.goodshepherdtt.org
+  936  ping oqmmeuvnjg36.goodshepherddtt.org
+  937  ping oqmmeuvnjg36.goodshepherdtt.org
+  938  ping goodshepherdtt.org
+  939  ll
+  940  cd ../good_shepherd_static
+  941  mvim .
+  942  npm start
+  943  cd ~/Development
+  944  cd good_shepherd_static
+  945  cd src
+  946  ll
+  947  cd pages
+  948  ll
+  949  cd about_us
+  950  ll
+  951  cd ..
+  952  cd partials
+  953  ll
+  954  git mv article_side_bar.html about_side_bar.html
+  955  ssh root@159.203.191.20
+  956  pwd
+  957  cd base
+  958  vim article_header.html
+  959  ll
+  960  git status
+  961  cd ..
+  962  cd ~/Development/good_shepherd_static
+  963  ll
+  964  git status
+  965  rm 2 3
+  966  git status
+  967  git add .
+  968  git commit
+  969  git push
+  970  ssh root@159.203.191.20
+  971  ssh django@sacodaserv.com
+  972  ssh michael@159.203.191.20
+  973  ssh django@birdsongtt.org
+  974  ll
+  975  ping flybottle.in
+  976  ssh django@birdsongtt.org
+  977  ifconfig
+  978  ping flybottle.in
+  979  ssh django@sacodaserv.com
+  980  ssh michael@159.203.191.20
+  981  scp django@scadoserv.com:letsencrypt.tar.gz .
+  982  scp django@sacodaserv.com:letsencrypt.tar.gz .
+  983  scp letsencrypt.tar.gz michael@159.203.191.20:.
+  984  ping flybottle.in
+  985  ssh michael@159.203.191.20
+  986  ssh django@mfa.chrisdev.com
+  987  ssh django@foreign.gov.tt
+  988  history|grep mfa
+  989  ssh django@rsna.chrisdev.com
+  990  ssh django@mfa.chrisdev.com
+  991  ssh michael@159.203.191.20
+  992  ssh root@172.104.24.197
+  993  ssh django@foreign.gov.tt
+  994  vim /etc/hosts
+  995  ll
+  996  cd ~/Development/good_shepherd_static
+  997  ll
+  998  git status
+  999  rm letsencrypt.tar.gz
+ 1000  ll
+ 1001  cd src
+ 1002  ll
+ 1003  cd partials
+ 1004  ll
+ 1005  pwd
+ 1006  cd ..
+ 1007  cd pages
+ 1008  ll
+ 1009  vim about_new.html
+ 1010  vim index.html
+ 1011  cd ~/Development/good_shepherd_static
+ 1012  ll
+ 1013  npm start
+ 1014  git pull
+ 1015  cd about_us
+ 1016  ll
+ 1017  git mv archdeacon_kenly_baldeo.html archdeacon_kenley_baldeo.html
+ 1018  npm start
+ 1019  hg pull
+ 1020  cd ..
+ 1021  git status
+ 1022  npm i npm
+ 1023  git pull
+ 1024  git status
+ 1025  git add .
+ 1026  git commit -m "Info about rector added"
+ 1027  git pull
+ 1028  git
+ 1029  git status
+ 1030  vim about_us/archdeacon_kenly_baldeo.html
+ 1031  git status
+ 1032  git rm about_us/archdeacon_kenly_baldeo.html
+ 1033  git status
+ 1034  git commit 
+ 1035  git status
+ 1036  npm start
+ 1037  npm install gulp
+ 1038  npm start
+ 1039  ll
+ 1040  cd ../data
+ 1041  ll
+ 1042  mv slider.yml slider-new.yml
+ 1043  git status
+ 1044  ll
+ 1045  git checkout slider.yml
+ 1046  ll
+ 1047  git status
+ 1048  cd ..
+ 1049  cd pages
+ 1050  git status
+ 1051  git add about_us/ index.html
+ 1052  git commit
+ 1053  git pull
+ 1054  npm start
+ 1055  cd ../data/
+ 1056  ll
+ 1057  mv slider.yml slider-temp.yml
+ 1058  mv slider-new.yml slider.yml
+ 1059  cd //
+ 1060  cd ~/Development/good_shepherd_static
+ 1061  ll
+ 1062  cd src
+ 1063  cd pages
+ 1064  touch index.html
+ 1065  npm start
+ 1066  gits status
+ 1067  cd ..
+ 1068  git status
+ 1069  rm src/data/slider-temp.yml
+ 1070  git add .
+ 1071  git commit -m "Content for Slider"
+ 1072  git push
+ 1073  git status
+ 1074  cd src
+ 1075  ll
+ 1076  cd pages
+ 1077  ll
+ 1078  git mv groups fellowship_formation
+ 1079  ll
+ 1080  git status
+ 1081  git add .
+ 1082  git commit 
+ 1083  git pull
+ 1084  git status
+ 1085  cd ...
+ 1086  git add src/partials/
+ 1087  git commit
+ 1088  git pull
+ 1089  ssh django@register.foreign.gov.tt
+ 1090  npm start
+ 1091  git status
+ 1092  git add .
+ 1093  git commit -m "Content Fellowship + Formation"
+ 1094  git pull
+ 1095  npm start
+ 1096  cd src
+ 1097  git status
+ 1098  cd pages/about_us
+ 1099  ll
+ 1100  bit mv good_shepherd.html good-shepherd-anglican-tunapuna.html
+ 1101  git mv good_shepherd.html good-shepherd-anglican-tunapuna.html
+ 1102  git mv st_oswalds.html st-oswalds-caroni.html
+ 1103  npm start
+ 1104  cd ..
+ 1105  ll
+ 1106  mkdir services
+ 1107  cd services
+ 1108  ll
+ 1109  cp ../about_us/index.html .
+ 1110  ll
+ 1111  cp index.html baptishs-weddings-funerals.html
+ 1112  mv baptishs-weddings-funerals.html baptism-weddings-funerals.html
+ 1113  mv baptism-weddings-funerals.html special-services.html
+ 1114  npm start
+ 1115  ll
+ 1116  pws
+ 1117  pwd
+ 1118  cd ..
+ 1119  ll
+ 1120  mv services worship
+ 1121  cd fellowship_formation
+ 1122  touch music-ministry.html
+ 1123  ll
+ 1124  vim index.html
+ 1125  cp ../about_us/index.html music-ministry.html
+ 1126  vim music-ministry.html
+ 1127  npm start
+ 1128  cd ../about_us
+ 1129  ll
+ 1130  git status
+ 1131  git mv good-shepherd-anglican-tunapuna.html good-shepherd-anglican-chruch-tunapuna.html
+ 1132  cp index.html parish-hall.html
+ 1133  npm start
+ 1134  ll
+ 1135  vim good-shepherd-anglican-chruch-tunapuna.html
+ 1136  cp good_shepherd.html good-shepherd-anglican-chruch-tunapuna.html
+ 1137  cd ../fellowship_formation
+ 1138  ll
+ 1139  vim music-ministry.html
+ 1140  npm start
+ 1141  git status
+ 1142  git add .
+ 1143  git commit -m "Content Updates"
+ 1144  git pull
+ 1145  mvim .
+ 1146  npm start
+ 1147  cd ..
+ 1148  mvim .
+ 1149  cd ..
+ 1150  mvim .
+ 1151  cd src/pages
+ 1152  ll
+ 1153  cd about_us
+ 1154  ll
+ 1155  git mv schools.html good-shepherd-anglican-school.html
+ 1156  cd ~/Development/good_shepherd_static
+ 1157  ll
+ 1158  git status
+ 1159  vim src/pages/about_us.html
+ 1160  cd src 
+ 1161  cd pages a
+ 1162  cd pages
+ 1163  lll
+ 1164  cp about_us.html about_us-old.html
+ 1165  ll
+ 1166  git rm about_us.html
+ 1167  git diff about_us.html
+ 1168  pwd
+ 1169  cd ..
+ 1170  ll
+ 1171  cd pages/about_us
+ 1172  cd ..
+ 1173  git checkout about_us.html
+ 1174  git rm about_us.html
+ 1175  ll
+ 1176  git status
+ 1177  rm about_us-old.html
+ 1178  git status
+ 1179  git add .
+ 1180  git commit "Content Updates"
+ 1181  git commit -m "Content Updates"
+ 1182  git status
+ 1183  cd ..
+ 1184  git add .
+ 1185  git commit 
+ 1186  ll
+ 1187  cd ~/Development/good_shepherd_static
+ 1188  ll
+ 1189  npm start
+ 1190  cd ..
+ 1191  mvim .
+ 1192  npm start
+ 1193  cd src 
+ 1194  cd data
+ 1195  ll
+ 1196  cp about_menu.yml worship_menu.yml
+ 1197  npm start
+ 1198  git status
+ 1199  cd ..
+ 1200  git add pages/
+ 1201  git commit -m "More Content"
+ 1202  git status
+ 1203  git add partials/
+ 1204  git commit -m "Update navigation"
+ 1205  git pull
+ 1206  npm start
+ 1207  git push
+ 1208  git status
+ 1209  git pull
+ 1210  npm start
+ 1211  ipython
+ 1212  brews search anaconda
+ 1213  brew search anaconda
+ 1214  brew info anaconda
+ 1215  brew sheach ipython
+ 1216  brew search ipython
+ 1217  cd ..
+ 1218  mvim .
+ 1219  npm start
+ 1220  cd src/assets
+ 1221  ll
+ 1222  cd img
+ 1223  ll
+ 1224  cd icon
+ 1225  ll
+ 1226  run-help cp
+ 1227  cp /Users/cclarke/Downloads/noun_Church_199996_70C041.svg  .
+ 1228  ll
+ 1229  mv noun_Church_199996_70C041.svg ministries.svg
+ 1230  cp /Users/cclarke/Downloads/noun_wedding_830203_51A7F9.svg  .
+ 1231  mv noun_wedding_830203_51A7F9.svg special-services.svg
+ 1232  npm start
+ 1233  cp /Users/cclarke/Downloads/noun_marriage_36151_51A7F9.svg .
+ 1234  mv noun_marriage_36151_51A7F9.svg marriage.svg
+ 1235  npm start
+ 1236  cp /Users/cclarke/Downloads/noun_Moscone\ Center_23787_B36AE2.svg parish-hall.svg
+ 1237  npm start
+ 1238  ll
+ 1239  open noun_wedding_830203_51A7F9.svg special-services.svg
+ 1240  cp /Users/cclarke/Downloads/noun_marriage_36151_51A7F9.svg .
+ 1241  open noun_marriage_36151_51A7F9.svg
+ 1242  mv noun_marriage_36151_51A7F9.svg special-services.svg
+ 1243  cp /Users/cclarke/Downloads/noun_Architect_1712017_51A7F9.svg .
+ 1244  mv noun_Architect_1712017_51A7F9.svg rennovate.svg
+ 1245  mv rennovate.svg renovate.svg
+ 1246  npm start
+ 1247  cd ..
+ 1248  git status
+ 1249  git add .
+ 1250  git commit -m "Initial Content icon grid"
+ 1251  cd ..
+ 1252  git status
+ 1253  git add .
+ 1254  git commit -m "Initial Content icon grid"
+ 1255  ]cd pages
+ 1256  cd pages
+ 1257  ll;
+ 1258  git mv fellowship_formation/ ministries
+ 1259  ll
+ 1260  git status
+ 1261  git commit -m "Rename fellowship_formation to ministries"
+ 1262  git status
+ 1263  ll
+ 1264  mvim .;
+ 1265  cd ..
+ 1266  git status
+ 1267  mvim .
+ 1268  npm start
+ 1269  ll
+ 1270  cd src/partials
+ 1271  ll
+ 1272  mv about_side_bar.html worship_side_bar.html
+ 1273  mv worship_side_bar.html about_side_bar.html
+ 1274  cp about_side_bar.html worship_side_bar.html
+ 1275  ll
+ 1276  npm start
+ 1277  git status
+ 1278  cd .,.
+ 1279  cd ..
+ 1280  cd .,
+ 1281  cd ..
+ 1282  git status
+ 1283  git add .
+ 1284  git commit -m "Fix naviagtion"
+ 1285  npm start
+ 1286  git status
+ 1287  git a .
+ 1288  git commit -m "Reorg of worship index page"
+ 1289  git add .
+ 1290  git commit -m "Reorg of worship index page"
+ 1291  git push
+ 1292  mvim .
+ 1293  npm start
+ 1294  tail ~/.npm/_logs/2018-06-28T14_23_16_751Z-debug.log
+ 1295  vim ~/.npm/_logs/2018-06-28T14_23_16_751Z-debug.log
+ 1296  npm start
+ 1297  cd ~/Desktop
+ 1298  you-get https://www.facebook.com/goodshepherdtt/videos/2104097966539578/
+ 1299  ll
+ 1300  git status
+ 1301  git add .
+ 1302  git status
+ 1303  git commit -m "Ministries for youth"
+ 1304  git push
+ 1305  git diff
+ 1306  git status
+ 1307  git add  src/assets/img/groups/youth/youth-choir.jpg
+ 1308  git add src/pages/about_us/good-shepherd-anglican-school.html
+ 1309  git add src/assets/img/about/good-shepherd-anglican-school.jpg
+ 1310  git add src/assets/img/about/good-shepherd-school-naptt-parang-winners-2016.jpg
+ 1311  git status
+ 1312  git commit -m "Good Shepherd Anglican"
+ 1313  cd src/pages/about_us
+ 1314  ll
+ 1315  git mv archdeacon_kenley_baldeo.html clergy.html
+ 1316  git mv clergy_and_staff.html lay-leadership-staff.html
+ 1317  cd ..
+ 1318  ll
+ 1319  cd ..
+ 1320  cd partials
+ 1321  ll
+ 1322  cd ..
+ 1323  ll
+ 1324  cd data
+ 1325  ll
+ 1326  vim about_menu.yml
+ 1327  npm start
+ 1328  cd ..
+ 1329  mvim .
+ 1330  npm start
+ 1331  brew install ipython
+ 1332  ipython
+ 1333  ll
+ 1334  mvim .
+ 1335  npm start
+ 1336  gits status
+ 1337  gits statu
+ 1338  git status
+ 1339  git add .
+ 1340  git commit -m "More content and media"
+ 1341  git push
+ 1342  ll
+ 1343  ./sync.sh
+ 1344  ll
+ 1345  npm i npm
+ 1346  npm start
+ 1347  npm install
+ 1348  npm start
+ 1349  git status
+ 1350  git add .
+ 1351  git commit -m "Content Updates"
+ 1352  git pull
+ 1353  npm start
+ 1354  ipython
+ 1355  npm start
+ 1356  git status
+ 1357  gits status
+ 1358  git status
+ 1359  git add .
+ 1360  git  commit -m "More content"
+ 1361  git pull
+ 1362  git push
+ 1363  git status
+ 1364  git add .
+ 1365  git commit -m "More Content"
+ 1366  git pull
+ 1367  npm start
+ 1368  npm install
+ 1369  npm start
+ 1370  git pull
+ 1371  npm start
+ 1372  git diff
+ 1373  git status
+ 1374  git add .
+ 1375  git commit -m "Home page changes"
+ 1376  git pull
+ 1377  npm start
+ 1378  git status
+ 1379  git add .
+ 1380  git status
+ 1381  gi add .
+ 1382  git add .
+ 1383  git commit -m "More Content"
+ 1384  git push
+ 1385  git status
+ 1386  git add src/partials/base/article_header.html
+ 1387  git commit -m "Use title for article image alt"
+ 1388  git status
+ 1389  git add -m "Content Special services"
+ 1390  git add .
+ 1391  git commit -m "Sepecial Services"
+ 1392  git push
+ 1393  npm start
+ 1394  ping nmncu.coop
+ 1395  npm start
+ 1396  git status
+ 1397  git add src/partials/base/google_analytics.html
+ 1398  git commit -m "Correct tracking code and move to gtag"
+ 1399  git push
+ 1400  git status
+ 1401  cd ~/Development/good_shepherd_static
+ 1402  npm start
+ 1403  git status
+ 1404  git add .
+ 1405  git commit -m "Slider Content"
+ 1406  git pull
+ 1407  npm start
+ 1408  git pull
+ 1409  npm start
+ 1410  git pull
+ 1411  npm start
+ 1412  git status
+ 1413  npm start
+ 1414  git status
+ 1415  npm start
+ 1416  git status
+ 1417  npm start
+ 1418  ssh django@nmncu.chrisdev.com
+ 1419  npm start
+ 1420  git status
+ 1421  git add .
+ 1422  git commit -m "Slider content"
+ 1423  git push
+ 1424  git pull
+ 1425  git status
+ 1426  pit push
+ 1427  git push
+ 1428  npm start
+ 1429  git status
+ 1430  git diff
+ 1431  git status
+ 1432  git add .
+ 1433  git commit -m "Fix various typos"
+ 1434  git push
+ 1435  ll
+ 1436  ./sync.sh
+ 1437  mvim .
+ 1438  git status
+ 1439  npm start
+ 1440  git status
+ 1441  git add .
+ 1442  git commit -m "Fix content typos and omissions"
+ 1443  git status
+ 1444  git push
+ 1445  ./sync.sh
+ 1446  mvim .
+ 1447  npm start
+ 1448  ./sync.sh
+ 1449  git status
+ 1450  npm start
+ 1451  git status
+ 1452  git chekout src/pages/donate.html
+ 1453  git checkout src/pages/donate.html
+ 1454  mvim .
+ 1455  git status
+ 1456  gill\ll
+ 1457  git status
+ 1458  git add .
+ 1459  npm start
+ 1460  git commit -m "Donate Content and miss Typos"
+ 1461  git push
+ 1462  ./sync.sh
+ 1463  npm start
+ 1464  git status
+ 1465  npm start
+ 1466  git add src/
+ 1467  git status
+ 1468  git commit -/ "Sermons"
+ 1469  git commit -m  "Sermons"
+ 1470  git push
+ 1471  npm start
+ 1472  git pull
+ 1473  git statks
+ 1474  git status
+ 1475  git add src/pages/index.html
+ 1476  git commit -m "Fixed typos and tweaked CTA"
+ 1477  npm start
+ 1478  git pull
+ 1479  git status
+ 1480  git add src/pages/index.html
+ 1481  git commit 
+ 1482  npm start
+ 1483  git pull
+ 1484  npm start
+ 1485  git status
+ 1486  git pull
+ 1487  git status
+ 1488  git checkout src/assets/scss/app.scss
+ 1489  git pull
+ 1490  git status
+ 1491  git add src/pages/index.html
+ 1492  git checkout src/pages/donate.html
+ 1493  git statuks
+ 1494  git status
+ 1495  git commit
+ 1496  git status
+ 1497  npm start
+ 1498  git status
+ 1499  git add .
+ 1500  git commit -m "Paralax image"
+ 1501  git push
+ 1502  git pull
+ 1503  npm start
+ 1504  git status
+ 1505  git pull
+ 1506  npm start
+ 1507  ./sync.sh
+ 1508  ssh django
+ 1509  ssh django@app.theflybottle.com
+ 1510  cd ~/Development/good_shepherd_static
+ 1511  ll
+ 1512  git pull
+ 1513  ./sync.sh
+ 1514  npm start
+ 1515  npm run build
+ 1516  git pull
+ 1517  git status
+ 1518  ll
+ 1519  npm run build
+ 1520  ./sync.sh
+ 1521  vim sync.sh
+ 1522  npm run build
+ 1523  ./sync.sh
+ 1524  git status
+ 1525  git add sync.sh
+ 1526  git commit -m "Ensure that the site is build before sync"
+ 1527  git push
+ 1528  mvim .
+ 1529  git pull
+ 1530  cd ~/Development/good_shepherd_static
+ 1531  ll
+ 1532  npm start
+ 1533  git status
+ 1534  npm start
+ 1535  git status
+ 1536  npm start
+ 1537  git status
+ 1538  npm start
+ 1539  git add .
+ 1540  git commit -m "Content slider needs to reflect other church activities"
+ 1541  git push
+ 1542  ./sync.sh
+ 1543  npm start
+ 1544  git status
+ 1545  git add .
+ 1546  git commit -m "More content inc. video embed"
+ 1547  git push
+ 1548  npm start
+ 1549  ./sync.sh
+ 1550  npm start
+ 1551  ls 
+ 1552  cd src
+ 1553  ll
+ 1554  cd pages
+ 1555  ll
+ 1556  ls media
+ 1557  ll
+ 1558  cd media
+ 1559  cp ../events.html .
+ 1560  git status
+ 1561  git add .
+ 1562  git commit -m "Made music ministry special case to support video embed"
+ 1563  git pusy
+ 1564  git push
+ 1565  ./sync.sh
+ 1566  ssh django@foreign.gov.tt
+ 1567  ssh django@register.foreign.gov.tt
+ 1568  ssh django@propertyfindertt.com
+ 1569  ping foreign.gov.tt
+ 1570  pwd
+ 1571  cd ~/Development/good_shepherd_static/src/assets/photo_gallery
+ 1572  ll
+ 1573  cd big-tent
+ 1574  cp ../Gallery_1/index.md .
+ 1575  cd ~/Development/good_shepherd_static
+ 1576  npm start
+ 1577  ll
+ 1578  rm IMG_4045.jpeg
+ 1579  rm IMG_4046.jpeg
+ 1580  npm start
+ 1581  rm IMG_4105.jpeg
+ 1582  npm start
+ 1583  rm IMG_4051.jpeg
+ 1584  npm start
+ 1585  cd ..
+ 1586  sigal build
+ 1587  cd ..
+ 1588  sigal build
+ 1589  cd src/assets/photo_gallery
+ 1590  ll
+ 1591  mkdir medical-ministry
+ 1592  cd medical-ministry
+ 1593  cp ../big-tent/index.md .
+ 1594  npm start
+ 1595  cd ..
+ 1596  cd family-day/
+ 1597  ll
+ 1598  cp ../medical-ministry/index.md
+ 1599  cp ../medical-ministry/index.md .
+ 1600  npm start
+ 1601  rm IMG_3387.jpeg
+ 1602  rm IMG_3379.jpeg
+ 1603  rm IMG_3388.jpeg
+ 1604  rm IMG_3404.jpeg
+ 1605  rm IMG_3420.jpeg
+ 1606  rm IMG_3423.jpeg
+ 1607  rm IMG_3458.jpeg
+ 1608  rm IMG_3463.jpeg
+ 1609  rm IMG_3466.jpeg
+ 1610  rm IMG_3474.jpeg
+ 1611  rm IMG_3477.jpeg
+ 1612  rm IMG_3479.jpeg
+ 1613  rm IMG_3493.jpeg
+ 1614  rm IMG_3494.jpeg
+ 1615  rm IMG_3498.jpeg
+ 1616  rm IMG_3488.jpeg
+ 1617  npm start
+ 1618  cd ..
+ 1619  vim .gitignore
+ 1620  cd src/assets/photo_gallery
+ 1621  ll
+ 1622  git rm Gallery_1
+ 1623  git rm -r Gallery_1 
+ 1624  git rm -r Gallery_2/
+ 1625  ll
+ 1626  git status
+ 1627  ll
+ 1628  mv family-day ../family-day-orig
+ 1629  ll
+ 1630  npm start
+ 1631  git status
+ 1632  cd ..
+ 1633  git status
+ 1634  git diff pages/index.html
+ 1635  git add .
+ 1636  git status
+ 1637  git commit -m "Add photo galleries"
+ 1638  git pull
+ 1639  cd ..
+ 1640  mvim .
+ 1641  git status
+ 1642  npm start
+ 1643  git add .
+ 1644  git commit 
+ 1645  git pull
+ 1646  npm start
+ 1647  git push
+ 1648  ./sync.sh
+ 1649  npm run build
+ 1650  npm start
+ 1651  git status
+ 1652  git add .
+ 1653  git commit
+ 1654  git push
+ 1655  git pull
+ 1656  git push
+ 1657  npm start
+ 1658  ./sync.sh
+ 1659  npm start
+ 1660  ./sync.sh
+ 1661  ssh django@textelcu.com
+ 1662  cd ~/Development/good_shepherd_static
+ 1663  ll
+ 1664  cd ~/Development/good_shepherd_static
+ 1665  mvim .
+ 1666  git status
+ 1667  git diff src/pages/donate.html
+ 1668  git diff src/pages/worship/index.html
+ 1669  git commit .
+ 1670  git status
+ 1671  git commit
+ 1672  git add .
+ 1673  git commit 
+ 1674  git push
+ 1675  git status
+ 1676  npm start
+ 1677  git status
+ 1678  ]git add .
+ 1679  git add .
+ 1680  git commit
+ 1681  git push
+ 1682  ./sync.sh
+ 1683  npm start
+ 1684  git status
+ 1685  git add .
+ 1686  git commit -m "Content updates"
+ 1687  git push
+ 1688  ./sync.sh
+ 1689  npm start
+ 1690  git status
+ 1691  git add .
+ 1692  git commit -m "Bad image url"
+ 1693  ./sync.sh
+ 1694  npm start
+ 1695  git status
+ 1696  git add .
+ 1697  npm start
+ 1698  git status
+ 1699  git add .
+ 1700  git commit
+ 1701  git push
+ 1702  ./sync.sh
+ 1703  npm start
+ 1704  git status
+ 1705  git add .
+ 1706  git commit -m "Update Study and Prayer"
+ 1707  git push
+ 1708  ./sync.sh
+ 1709  npm start
+ 1710  ./sync.sh
+ 1711  npm start
+ 1712  git status
+ 1713  git diff src/pages/ministries/study-prayer.html
+ 1714  git add .
+ 1715  git commit -m "More typos were fixed"
+ 1716  git push
+ 1717  ./synch
+ 1718  ./sync.sh
+ 1719  git status
+ 1720  git add .
+ 1721  git commit -m "Found more Typos"
+ 1722  git push
+ 1723  ./sync.sh
+ 1724  npm start
+ 1725  git diff
+ 1726  git commit -m "Limoy's content edits"
+ 1727  git add .
+ 1728  git commit -m "Limoy's content edits"
+ 1729  git push
+ 1730  npm start
+ 1731  ping ccmf-uwi.org
+ 1732  ssh root@wagtail.chrisdev.com
+ 1733  ssh django@birdsongtt.org
+ 1734  ssh django@192.168.50.11
+ 1735  ssh cclarke@conference.foreign.gov.tt
+ 1736  ssh root@45.79.139.48
+ 1737  vi ~/.ssh/known_hosts
+ 1738  ssh root@45.79.139.48
+ 1739  cat .ssh/id_rsa.pub|pbcopy
+ 1740  ssh root@45.79.139.48
+ 1741  cd ~/Development/good_shepherd_static
+ 1742  ll
+ 1743  git status
+ 1744  git diff 
+ 1745  git status
+ 1746  git add .
+ 1747  cd ~/Development/good_shepherd_static
+ 1748  ll
+ 1749  mvim .
+ 1750  npm start
+ 1751  ll
+ 1752  ss
+ 1753  ll
+ 1754  git status
+ 1755  git diff src/pages/about_us/good-shepherd-anglican-chruch-tunapuna.html
+ 1756  git add .
+ 1757  npm start
+ 1758  mvim .
+ 1759  git status
+ 1760  git add src/pages/about_us/clergy.html
+ 1761  git commit -m "fixed more typos"
+ 1762  git push
+ 1763  git pull
+ 1764  npm start
+ 1765  git status
+ 1766  git add src/pages/about_us/clergy.html
+ 1767  git commit -m "More typos"
+ 1768  git push
+ 1769  ./sync.sh
+ 1770  ll
+ 1771  brew install imagemagick
+ 1772  mogrify
+ 1773  cd ~/Desktop/scaled-photos
+ 1774  find . -name "*.jpeg" -exec ongrify -quality 80 {} \;
+ 1775  find . -name "*.jpeg" -exec mongrify -quality 80 {} \;
+ 1776  mogrify
+ 1777  ll
+ 1778  mogrify -quality 80 *.jpeg
+ 1779  cd ~/Development/good_shepherd_static
+ 1780  ll
+ 1781  git status
+ 1782  cd src/assets/photo_gallery/youth-explosion
+ 1783  ll
+ 1784  vim index.md
+ 1785  cd ~/Development/good_shepherd_static
+ 1786  ll
+ 1787  npm start
+ 1788  mvim .
+ 1789  npm start
+ 1790  cd ../palm-sunday
+ 1791  mogrify -quality 80 -strip *.jpeg
+ 1792  mogrify -quality 90  *.jpeg
+ 1793  mogrify -quality 70  *.jpeg
+ 1794  cp ../medical-ministry/index.md .
+ 1795  npm start
+ 1796  git status
+ 1797  git add .
+ 1798  git commit -m "New galleries and fix typos"
+ 1799  git push
+ 1800  ./sync.sh
+ 1801  git status
+ 1802  git dif 
+ 1803  git diff
+ 1804  git add .
+ 1805  git commit -m "Typos\n"
+ 1806  git push
+ 1807  ./sync.sh
+ 1808  ipython
+ 1809  pip install cookiecutter
+ 1810  pip install --upgrade pip
+ 1811  pip 
+ 1812  pip install cookiecutter
+ 1813  cd ~/Development/
+ 1814  cookiecutter https://github.com/chrisdev/wagtail-cookiecutter-foundation.git
+ 1815  git clone git@github.com:chrisdev/wagtail-cookiecutter-foundation.git
+ 1816  rm wagtail-cookiecutter-foundation
+ 1817  rm -rf wagtail-cookiecutter-foundationa
+ 1818  git clone git@github.com:chrisdev/wagtail-cookiecutter-foundation.git
+ 1819  rm -rf wagtail-cookiecutter-foundation
+ 1820  git clone git@github.com:chrisdev/wagtail-cookiecutter-foundation.git
+ 1821  vf wagtail_demo
+ 1822  cd wagtail_demo
+ 1823  ll
+ 1824  git status
+ 1825  cd ~/Development
+ 1826  mvim .
+ 1827  ll
+ 1828  ssh django@wagtail.chrisdev.com
+ 1829  ssh root@wagtial.chirsdev.com
+ 1830  ssh root@wagtail.chirsdev.com
+ 1831  ssh root@wagtail.chrisdev.com
+ 1832  ansible-playbook -i ansible/production ansible/provision.yml --tags packages
+ 1833  make pre_task
+ 1834  ansible-playbook -i ansible/production ansible/provision.yml --tags packages
+ 1835  make deploy_user
+ 1836  cd wagtail_demo
+ 1837  git init
+ 1838  git remote add origin git@bitbucket.org:chrisdev/wagtail_demo.git
+ 1839  git push -u origin master
+ 1840  git status
+ 1841  git add .
+ 1842  git commit -m "Initial Commit"
+ 1843  git push
+ 1844  cd ~/Development
+ 1845  cd wagtail_demo
+ 1846  ll
+ 1847  cat ansible/wagtail_demo_keystore/wagtail.chrisdev.com-django-deploy_keys.pub|pbcopy
+ 1848  ansible-playbook -i ansible/production ansible/provision.yml --tags packages
+ 1849  ansible-playbook -i ansible/production ansible/provision.yml --tags secure
+ 1850  make 
+ 1851  make develop_env
+ 1852  pythoh
+ 1853  python3
+ 1854  make develop_env
+ 1855  export LC_ALL=en_US.UTF-8\nexport LANG=en_US.UTF-8
+ 1856  make develop_env
+ 1857  dropdb wagtail_demo
+ 1858  make develop_env
+ 1859  which wagtail
+ 1860  . venv/bin/activate
+ 1861  wagtail
+ 1862  history
+ 1863  history|wagtail
+ 1864  history|ansible
+ 1865  history|grep ansible
+ 1866  git diff
+ 1867  git status
+ 1868  git deff ansible/roles/web/tasks/setup_initial_data.yml
+ 1869  git diff ansible/roles/web/tasks/setup_initial_data.yml
+ 1870  ssh django@wagtail.chrisdev.com
+ 1871  history|grep ansible-playbook
+ 1872  ansible-playbook -i ansible/production ansible/provision.yml --tags database
+ 1873  ansible-playbook -i ansible/production ansible/provision.yml --tags debug_here
+ 1874  ansible-playbook -i ansible/production ansible/provision.yml --tags database
+ 1875  ansible-playbook -i ansible/production ansible/provision.yml --tags nginx_le
+ 1876  ansible-playbook -i ansible/production ansible/provision.yml --tags le_debug
+ 1877  ssh django@wagtail.chrisdev.com
+ 1878  ansible-playbook -i ansible/production ansible/provision.yml --tags nginx
+ 1879  git diff
+ 1880  git status
+ 1881  git add .
+ 1882  git commit -m "Packages, database, nginx/le"
+ 1883  git push
+ 1884  cd ../wagtail-cookiecutter-foundation
+ 1885  git status
+ 1886  git pull
+ 1887  mvim .
+ 1888  cd \{\{cookiecutter.project_slug\}\}
+ 1889  ll
+ 1890  cd ansible
+ 1891  ll
+ 1892  cd roles
+ 1893  ll
+ 1894  cd web
+ 1895  ll
+ 1896  cd ..
+ 1897  cd nginx
+ 1898  ll
+ 1899  cd files
+ 1900  ll
+ 1901  cd ../templates
+ 1902  ll
+ 1903  vim nginx_ssl.j2
+ 1904  cd ..
+ 1905  ll
+ 1906  ls tasks
+ 1907  cd ../web
+ 1908  ll
+ 1909  cd tasks
+ 1910  ll
+ 1911  git mv setup_bower.yml setup_npm.yml
+ 1912  git status
+ 1913  cd ..
+ 1914  git status
+ 1915  git add .
+ 1916  git commit -m "Address issue #789, #772, #747"
+ 1917  git push
+ 1918  git status
+ 1919  git add .
+ 1920  git commit -m "Address issues #789, #772, #747"
+ 1921  git push
+ 1922  ll
+ 1923  cd ..
+ 1924  cd good_shepherd_static
+ 1925  ll
+ 1926  mvim .
+ 1927  make runserver
+ 1928  npm start
+ 1929  git status
+ 1930  git add .
+ 1931  git add
+ 1932  git pull
+ 1933  git commit -m "Add the goodshepherd mailjet widget"
+ 1934  git push
+ 1935  ./sync.sh
+ 1936  ansible-playbook -i ansible/production ansible/provision.yml --tags vcs_repo
+ 1937  ansible-playbook -i ansible/production ansible/provision.yml --tags venv
+ 1938  cd ../wagtail_demo
+ 1939  ll
+ 1940  vim venv
+ 1941  vim .env
+ 1942  vim env.example
+ 1943  cp env.example ansible/wagtail_demo_keystore/env.production
+ 1944  mvim .
+ 1945  ssh django@wagtail.chrisdev.com
+ 1946  cd ansible
+ 1947  cd roles/web
+ 1948  cd tasks
+ 1949  ll
+ 1950  git mv setup_bower.yml setup_npm.yml
+ 1951  ll
+ 1952  ansible-playbook -i ansible/production ansible/provision.yml --tags npm
+ 1953  ansible-playbook -i ansible/production ansible/provision.yml --tags redis
+ 1954  ansible-playbook -i ansible/production ansible/provision.yml --tags django
+ 1955  ssh django@wagtail.chrisdev.com
+ 1956  ansible-playbook -i ansible/production ansible/provision.yml --tags django
+ 1957  ssh django@wagtail.chrisdev.com
+ 1958  history|grep ansible-playbook
+ 1959  python3
+ 1960  py3
+ 1961  deactivate
+ 1962  ll
+ 1963  vim ~/.vimrc
+ 1964  ansible-playbook -i ansible/production ansible/provision.yml --tags initial_data
+ 1965  cd ..
+ 1966  mvim .
+ 1967  ansible-playbook -i ansible/production ansible/provision.yml --tags initial_data
+ 1968  ansible-playbook -i ansible/production ansible/provision.yml --django
+ 1969  ansible-playbook -i ansible/production ansible/provision.yml --tags django
+ 1970  ansible-playbook -i ansible/production ansible/provision.yml --tags gunicorn
+ 1971  ansible-playbook -i ansible/production ansible/provision.yml --tags celery
+ 1972  ansible-playbook -i ansible/production ansible/provision.yml --tags clean_up
+ 1973  gits status
+ 1974  git status
+ 1975  git add .
+ 1976  git commmit -m "mainly django changes"
+ 1977  git commit -m "mainly django changes"
+ 1978  git push
+ 1979  cd 
+ 1980  cd ../wagtail-cookiecutter-foundation
+ 1981  ll
+ 1982  git status
+ 1983  mvim .
+ 1984  git status
+ 1985  git add .
+ 1986  git commit -m "Address issue #789 and #772"
+ 1987  git pull
+ 1988  git push
+ 1989  brew search docker
+ 1990  git pull
+ 1991  git status
+ 1992  git pull
+ 1993  docker info
+ 1994  ssh root@wagtail.chrisdev.com
+ 1995  ssh ssh root@45.79.139.48
+ 1996  ssh root@45.79.139.48
+ 1997  vim ~/.ssh/known_hosts
+ 1998  ping wagtail.chrisdev.com
+ 1999  ssh root@wagtail.chrisdev.com
+ 2000  vim ~/.ssh/known_hosts
+ 2001  ssh root@wagtail.chrisdev.com
+ 2002  cd ~/Development/massy_credit_union
+ 2003  ll
+ 2004  cd ansible
+ 2005  ll
+ 2006  vim massy_credit_union_keystore/authorized_keys
+ 2007  ssh django@wagtail.chrisdev.com
+ 2008  ssh root@wagtail.chrisdev.com
+ 2009  cd ~/Development/wagtail-cookiecutter-foundation
+ 2010  mvim .
+ 2011  python
+ 2012  git status
+ 2013  git add .
+ 2014  git commit -m "Address issue #658"
+ 2015  git pull
+ 2016  git push
+ 2017  ssh root@wagtail.chrisdev.com
+ 2018  vim ~/.ssh/known_hosts
+ 2019  ssh root@wagtail.chrisdev.com
+ 2020  ssh djago@esond-forde.com
+ 2021  ssh django@esmond-forde.com
+ 2022  cd ../good_shepherd_static
+ 2023  mvim .
+ 2024  git status
+ 2025  git add .
+ 2026  git commit -m "Removed Joy from Music Ministry"
+ 2027  git push
+ 2028  ./sync.sh
+ 2029  ipython
+ 2030  ipython notebook
+ 2031  jypyter
+ 2032  conda
+ 2033  python
+ 2034  python3
+ 2035  ls /
+ 2036  which python
+ 2037  /anaconda3/bin/jupyter notebook
+ 2038  which python3
+ 2039  pip3 
+ 2040  pip3 install --upgrade pip
+ 2041  pip3 install jupyter
+ 2042  ls -l /usr/local/bin
+ 2043  ls -l /usr/local/bin|gerp ipython
+ 2044  ls -l /usr/local/bin|grep ipython
+ 2045  brew uninstall ipython
+ 2046  pip3 install jupyter
+ 2047  ipython
+ 2048  jupyter notebook
+ 2049  ll
+ 2050  which jupyter
+ 2051  jupyter
+ 2052  jupyter ipython
+ 2053  pip3 install ipython
+ 2054  cd /usr/local/lib/python3.6/site-packages/IPython/ 
+ 2055  ll
+ 2056  pwd
+ 2057  cd ..
+ 2058  ll
+ 2059  jupyter --help
+ 2060  jupyter console
+ 2061  ssh django@workscu.com
+ 2062  ssh django@skhyfc.chrisdev.com
+ 2063  cd ~/Development/workscu_wagtail
+ 2064  ll
+ 2065  cd ansible
+ 2066  ll
+ 2067  vim host_vars/workscu.chrisdev.com
+ 2068  cd ~/Development/good_shepherd_static
+ 2069  ll
+ 2070  mvim .
+ 2071  vim .
+ 2072  mvim .
+ 2073  brew update mvim
+ 2074  brew search mvim
+ 2075  brew upgrade mvim
+ 2076  brew install mvim
+ 2077  brew install vim
+ 2078  brew upgrade vim
+ 2079  mvim .
+ 2080  vim .
+ 2081  cd ~/Development/good_shepherd_static
+ 2082  ll
+ 2083  cd src
+ 2084  ll
+ 2085  cd assets
+ 2086  ll
+ 2087  cd img/slider
+ 2088  ll
+ 2089  cd ..
+ 2090  npm start
+ 2091  mvim .
+ 2092  git status
+ 2093  git add .
+ 2094  git commit -m "Sports Day Slider"
+ 2095  git pull
+ 2096  git push
+ 2097  ./sync.sh
+ 2098  git status
+ 2099  npm start
+ 2100  ll
+ 2101  git diff
+ 2102  mvim .
+ 2103  git add .
+ 2104  git commit -m "Fix typo re image"
+ 2105  git push
+ 2106  ./sync.sh
+ 2107  cd src/assets/img
+ 2108  ll
+ 2109  cd slider
+ 2110  ll
+ 2111  cp good-shepherd-sports-day.jpg good-shepherd-sports-day-new.jpg
+ 2112  ll
+ 2113  git status
+ 2114  open good-shepherd-sports-day-new.jpg
+ 2115  npm start
+ 2116  cd ..
+ 2117  ll
+ 2118  cat sync.sh
+ 2119  npm run build
+ 2120  cd dist
+ 2121  ll
+ 2122  open index.html
+ 2123  python -m .
+ 2124  python3 -m simplehttpserver
+ 2125  python3 -m http.server 8000
+ 2126  rsync -azP dist/ django@static-web.chrisdev.com:static-sites/good_shepherd_static
+ 2127  jupyter notebook
+ 2128  pip3 
+ 2129  ping ccms-uwi.org
+ 2130  pint ccmf-uwi.org
+ 2131  ping ccmf-uwi.org
+ 2132  ssh root@ccmf-uwi.org
+ 2133  pwd
+ 2134  pip3 install jupyter
+ 2135  gits status
+ 2136  git status
+ 2137  git add .
+ 2138  git commit -m "see the new slider"
+ 2139  git push
+ 2140  ssh django@rsna.chrisdev.com
+ 2141  cd ~/Development/rsna_site/
+ 2142  mvim .
+ 2143  python
+ 2144  jupyter notebook
+ 2145  vi ~/Development/massy_credit_union/ansible/massy_credit_union_keystore/production.env
+ 2146  hg status
+ 2147  ll
+ 2148  hg status
+ 2149  hg add ansible/
+ 2150  hg commit 
+ 2151  hg push
+ 2152  hg pull
+ 2153  hg merge
+ 2154  hg commit
+ 2155  hg status
+ 2156  hg commit
+ 2157  hg status
+ 2158  hg commit 
+ 2159  hg push
+ 2160  git status
+ 2161  hg status
+ 2162  hg add rsna_site/settings/production.py
+ 2163  git commit
+ 2164  hg commit
+ 2165  git push
+ 2166  hg push
+ 2167  ssh django@rsna.chrisdev.com
+ 2168  hg status
+ 2169  hg commit
+ 2170  hg push
+ 2171  ping foreign.gov.tt
+ 2172  ping register.chridev.com
+ 2173  ping register.chrisdev.com
+ 2174  ssh django@rsna.chrisdev.com
+ 2175  ll
+ 2176  mvim .
+ 2177  npm start
+ 2178  ./sync.sh
+ 2179  ssh django@rsna.chrisdev.com
+ 2180  mvim .
+ 2181  ll
+ 2182  brew update
+ 2183  brew info macvim
+ 2184  python2
+ 2185  python3
+ 2186  jupyter notebook
+ 2187  brew uninstall macvim
+ 2188  brew info python
+ 2189  brew info macvim
+ 2190  mvim 
+ 2191  brew install macvim --with-python@2
+ 2192  macvim 
+ 2193  mvim
+ 2194  which vim
+ 2195  /Applications/MacVim.app/Contents/bin/mvim .
+ 2196  vi 
+ 2197  which vi
+ 2198  cd ..
+ 2199  cd cclarke
+ 2200  vi .zshrc
+ 2201  vim .vimrc
+ 2202  vi .vimrc
+ 2203  killall -9 MacVim
+ 2204  killall -9 Vi
+ 2205  /Applications/MacVim.app/Contents/bin/vim -g -u NONE -U NONE
+ 2206  vim /etc/zprofile
+ 2207  vi /etc/zprofile
+ 2208  vim 
+ 2209  mvim .
+ 2210  cd ~
+ 2211  vim .vimrc
+ 2212  mv .vimrc vimrc.trouble
+ 2213  vim .
+ 2214  mvim .
+ 2215  mv .gvimrc gvimrc.trouble
+ 2216  mvim .
+ 2217  mv vimrc.trouble .vimrc
+ 2218  mv gvimrc.trouble .gvimrc
+ 2219  mvim .
+ 2220  ssh django@static-web.chrisdev.com
+ 2221  ll
+ 2222  ssh django@nmncu.chrisdev.com
+ 2223  ssh django@msjtnt.org
+ 2224  cd ~/Development
+ 2225  git clone git@bitbucket.org:ilendl2/tapia.git
+ 2226  cd tapia
+ 2227  ll
+ 2228  npm start
+ 2229  npm install
+ 2230  npm i npm
+ 2231  npm start
+ 2232  npm install
+ 2233  npm start
+ 2234  ll
+ 2235  cp ../good_shepherd_static/sync.sh .
+ 2236  ll
+ 2237  vim sync.sh
+ 2238  ssh django@static-web.chrisdev.com
+ 2239  vim sync.sh
+ 2240  ll
+ 2241  vim sync.sh
+ 2242  ./sync.sh
+ 2243  git status
+ 2244  git add sync.sh
+ 2245  git commit -m "sync added"
+ 2246  git push
+ 2247  ssh django@rsna.chrisdev.com
+ 2248  ssh django@static-web.chrisdev.com 
+ 2249  cd ../
+ 2250  ggit clone git@bitbucket.org:ilendl2/rebirth_house.git
+ 2251  git clone git@bitbucket.org:ilendl2/rebirth_house.git
+ 2252  cd rebirth_house
+ 2253  npm install
+ 2254  ll
+ 2255  cp ../tapia/sync.sh .
+ 2256  vim sync.sh
+ 2257  git add .
+ 2258  vim sync.sh
+ 2259  ./sync.sh
+ 2260  ll
+ 2261  git add .
+ 2262  git status
+ 2263  git commit -m "Sync added"
+ 2264  git push
+ 2265  ssh django@rsna.chrisdev.com
+ 2266  jupyter console
+ 2267  ssh django@rsna.chrisdev.com
+ 2268  cd Development
+ 2269  ll
+ 2270  cd rsna_site
+ 2271  ll
+ 2272  mvim .
+ 2273  ping https://www.group-ib.ru
+ 2274  pin www.group-ib.ru
+ 2275  ping www.group-ib.ru
+ 2276  ping troyhack.xyz
+ 2277  curl -i https://179.60.214.
+ 2278  curl -i https://179.60.214
+ 2279  curl -i 179.60.214.58
+ 2280  curl -i https://179.60.214.58
+ 2281  ssh django@static-web.chrisdev.com
+ 2282  jupyter console
+ 2283  ping static-web.chrisdev.com
+ 2284  jupyter console
+ 2285  pip freeze
+ 2286  pipe freeze
+ 2287  pip3 freeze
+ 2288  history|grep pip3
+ 2289  pip3 install nameparser
+ 2290  jupyter console
+ 2291  cd /Users/cclarke/Dropbox/ChrisDev/Graphics/Websites/Good\ Shepherd/name-badges
+ 2292  jupyter notebook
+ 2293  pip3 install pyperclip
+ 2294  jupyter notebook
+ 2295  ping static-web.chrisdev.com
+ 2296  ping conference.connexsol.net
+ 2297  ssh django@static-web.chrisdev.com
+ 2298  cd Development
+ 2299  git clone git@bitbucket.org:ilendl2/connexion_conference.git
+ 2300  cd connexion_conference
+ 2301  ll
+ 2302  npm install
+ 2303  nmp start
+ 2304  npm start
+ 2305  cd ..
+ 2306  cd good_shepherd_static
+ 2307  git status
+ 2308  git add .
+ 2309  git commit -m "events"
+ 2310  mvim .
+ 2311  jupyter console
+ 2312  npm start
+ 2313  cd ~/Development/good_shepherd_static
+ 2314  ll
+ 2315  git status
+ 2316  npm start
+ 2317  git status
+ 2318  npm start
+ 2319  git status
+ 2320  git add .
+ 2321  git commit -m "Update donation Status and Events"
+ 2322  git pull
+ 2323  git push
+ 2324  ./sync.sh
+ 2325  cd ../connexion_conference
+ 2326  ll
+ 2327  git pull
+ 2328  cd ~/Development
+ 2329  ll
+ 2330  cd wagtail_demo
+ 2331  ll
+ 2332  mvim .
+ 2333  cd ../connexion_conference
+ 2334  ll
+ 2335  git pull
+ 2336  ssh django@static-web.chrisdev.com
+ 2337  cd ~/Development/connexion_conference
+ 2338  ll
+ 2339  vim sync.sh
+ 2340  mvim .
+ 2341  nmp start
+ 2342  npm start
+ 2343  nmp build
+ 2344  npm build
+ 2345  cat sync.sh
+ 2346  ./sync.sh
+ 2347  git status
+ 2348  git add .
+ 2349  git add "Deployed for testing"
+ 2350  git -m "Deployed for testing"
+ 2351  git commit -m "Deployed for testing"
+ 2352  git push
+ 2353  ipython console
+ 2354  cd ~/Development/good_shepherd_static
+ 2355  git pull
+ 2356  ll
+ 2357  mvim .
+ 2358  ll
+ 2359  cd src
+ 2360  ll
+ 2361  cd pages
+ 2362  ll
+ 2363  mkdir rennovation
+ 2364  mv rennovation restoration
+ 2365  cd restoration
+ 2366  ll
+ 2367  cp ../ministries/index.html .
+ 2368  ll
+ 2369  cp ../about_us/index.html .
+ 2370  cd ..
+ 2371  npm start
+ 2372  ll
+ 2373  cd ~/Development/good_shepherd_static
+ 2374  ll
+ 2375  npm start
+ 2376  mvim .
+ 2377  npm start
+ 2378  pwd
+ 2379  git status
+ 2380  ssh root@sacodaserv.com
+ 2381  ssh django@sacodaserv.com
+ 2382  vim ~/.ssh/known_hosts
+ 2383  ssh django@sacodaserv.com
+ 2384  ssh root@sacodaserv.com
+ 2385  ssh djngo@static-web.chrisdev.com
+ 2386  ssh django@static-web.chrisdev.com
+ 2387  npm start
+ 2388  ipython
+ 2389  jupyter consrole
+ 2390  jupyter console
+ 2391  cd src/pages
+ 2392  ll
+ 2393  vim test.html
+ 2394  npm start
+ 2395  cp donate.html restoration/restoration-project.html
+ 2396  git status
+ 2397  cd restoration
+ 2398  ll
+ 2399  touch adopt-fixture-fitting.html
+ 2400  npm start
+ 2401  git status
+ 2402  ssh django@workscu.com
+ 2403  ssh django@register.foreign.gov.tt
+ 2404  ll
+ 2405  cd ~/Development/tapia/
+ 2406  ll
+ 2407  npm start
+ 2408  git pull
+ 2409  npm start
+ 2410  cd ~/Development/tapia
+ 2411  ll
+ 2412  git status
+ 2413  mvim .
+ 2414  cd ~/Development/tapia
+ 2415  npm start
+ 2416  git status
+ 2417  git add src/pages/index.html
+ 2418  git commit -m "Updats t
+ 2419  git commit -m "Updat e
+ 2420  git commit -m "Update to event summary"
+ 2421  git push
+ 2422  ./sync.sh
+ 2423  cd ..
+ 2424  pip install pelican
+ 2425  pip3 install pelican
+ 2426  pip3 install markdown
+ 2427  pelican_quickstart tapia_blog
+ 2428  pelican-quickstart tapia_blog
+ 2429  export LC_ALL=en_US.UTF-8\nexport LANG=en_US.UTF-8
+ 2430  pelican-quickstart tapia_blog
+ 2431  pelican-quickstart 
+ 2432  cd tapia_blog
+ 2433  mkdir tapia_blog
+ 2434  cd tapia_blog
+ 2435  pelican-quickstart
+ 2436  ll
+ 2437  make
+ 2438  make serve
+ 2439  make server
+ 2440  make serve
+ 2441  mvim .
+ 2442  cd content
+ 2443  ll
+ 2444  vim test.md
+ 2445  make serve
+ 2446  cd ..
+ 2447  pelican content
+ 2448  vim content/test.md
+ 2449  pelican content
+ 2450  make serve
+ 2451  ll
+ 2452  cd ..
+ 2453  cd pelican-themes
+ 2454  ll
+ 2455  git status
+ 2456  cd ..
+ 2457  cd chrisdev.github.com
+ 2458  ll
+ 2459  vim pelicanconf.py
+ 2460  cd ..
+ 2461  rm -rf pelican-themes
+ 2462  git clone --recursive https://github.com/getpelican/pelican-themes ~/pelican-themes
+ 2463  ll
+ 2464  cd ..
+ 2465  cd workscu
+ 2466  ll
+ 2467  cd ..
+ 2468  cd workscu_wagtail
+ 2469  ll
+ 2470  make deploy
+ 2471  ll
+ 2472  cd pages/static/css/
+ 2473  vim app.scss
+ 2474  git pull
+ 2475  git checkout app.scss
+ 2476  git pull
+ 2477  vim 
+ 2478  vim app.scss
+ 2479  git status
+ 2480  git add app.scss
+ 2481  git commit -m "Fix popup"
+ 2482  git push
+ 2483  cd ..
+ 2484  make deploy
+ 2485  cd pelican-plugins
+ 2486  ll
+ 2487  git pull
+ 2488  cd ..
+ 2489  ll
+ 2490  cd pelican-plugins
+ 2491  git status
+ 2492  cd ..
+ 2493  cd tapia_blog
+ 2494  ll
+ 2495  make 
+ 2496  pelican content
+ 2497  pwd
+ 2498  pelican content
+ 2499  make devserver
+ 2500  ps -ef python
+ 2501  ps -ef|grep python
+ 2502  make
+ 2503  make stopserver
+ 2504  cd ..
+ 2505  rm -rf tapia_blog
+ 2506  brew install hugo
+ 2507  hugo new site tapia_blog
+ 2508  cd tapia
+ 2509  ll
+ 2510  cd ..
+ 2511  cd tapia_blog
+ 2512  ll
+ 2513  ls themes
+ 2514  cd themes
+ 2515  git clone https://github.com/yihui/hugo-xmag
+ 2516  cd ..
+ 2517  hugo new posts/my-fires-post.md
+ 2518  hugo server -D
+ 2519  cd themes
+ 2520  ll
+ 2521  cd hugo-xmag
+ 2522  ll
+ 2523  cd exampleSite
+ 2524  ll
+ 2525  vim config.toml
+ 2526  ls content
+ 2527  cd ..
+ 2528  ll
+ 2529  mv content content_old
+ 2530  ll
+ 2531  cd ..
+ 2532  ll
+ 2533  mv content content_old
+ 2534  mv data data_old
+ 2535  ll
+ 2536  hugo server -D
+ 2537  cp themes/hugo-xmag/exampleSite/config.toml .
+ 2538  hugo server -D
+ 2539  ll
+ 2540  vim config.toml
+ 2541  mvim .
+ 2542  cd ..
+ 2543  ll
+ 2544  ssh django@static-web.chrisdev.com
+ 2545  cd Development/tapia_blog
+ 2546  cd Development/
+ 2547  cd ../tapia
+ 2548  ll
+ 2549  cd src/assets/scss
+ 2550  ll
+ 2551  vim app.scss
+ 2552  ssh django@static-web.chrisdev.com
+ 2553  ll
+ 2554  ping sacodaserv.com
+ 2555  ping 190.58.152.6
+ 2556  190.58.152.6
+ 2557  ping ping 66.228.40.70
+ 2558  ping 66.228.40.70
+ 2559  ssh django@66.228.40.70
+ 2560  ssh django@newworks.chrisdev.com
+ 2561  ping sacodaserv.com
+ 2562  ssh django@sacoda.chrisdev.com
+ 2563  ssh django@45.55.209.226
+ 2564  ssh django@newworks.chrisdev.com
+ 2565  ssh django@ccmf-uwi.org
+ 2566  ssh root@ccmf-uwi.org
+ 2567  brew install pandoc
+ 2568  pandoc --help
+ 2569  cd tapia/
+ 2570  ll
+ 2571  cd ~/Dropbox/ChrisDev/Graphics/
+ 2572  cd ~/Dropbox/ChrisDev/Graphics/Websites/tapia
+ 2573  ll
+ 2574  pandoc
+ 2575  pandox -h
+ 2576  pandoc -h
+ 2577  pbpaste | pandoc -f docx -t markdown|pbcopy
+ 2578  pandoc /Users/cclarke/Downloads/ITDonut_sample-DP-policy-template.docx -t markdown
+ 2579  brew search neovim
+ 2580  ll
+ 2581  pandoc /Users/cclarke/Downloads/ITDonut_sample-DP-policy-template.docx -t markdown -o privacy.md
+ 2582  vim privacy.md
+ 2583  mvim .
+ 2584  pandoc /Users/cclarke/Downloads/White-Fuse-resource-Data-Protection-Policy-template\ \(1\).docx -t markdown -o privacy.md
+ 2585  pbpaste | pandoc -f html -t markdown|pbcopy
+ 2586  vim tapia_privacy.md
+ 2587  pandoc -h
+ 2588  pandoc -f html -t markdown https://whitefusemedia.com/privacy-policy
+ 2589  pandoc -f html -t markdown -o privacy-policy.md https://whitefusemedia.com/privacy-policy
+ 2590  mvim privacy-policy.md
+ 2591  cd ~/Development/tapia
+ 2592  ll
+ 2593  mvim .
+ 2594  brew uninstall macvim
+ 2595  brew status
+ 2596  brew search macvim
+ 2597  mvim .
+ 2598  cd src/pages
+ 2599  ll
+ 2600  ls articles
+ 2601  cp about_us.html privacy.html
+ 2602  mvim privacy.html
+ 2603  ll
+ 2604  vim index.html
+ 2605  cd ..
+ 2606  cd partials
+ 2607  ll
+ 2608  ls base
+ 2609  cd ..
+ 2610  git status
+ 2611  git push
+ 2612  npm start
+ 2613  ll
+ 2614  cd ..
+ 2615  ll
+ 2616  ./sync.sh
+ 2617  ssh django@static-web.chrisdev.com
+ 2618  sftp django@static-web.chrisdev.com
+ 2619  ssh django
+ 2620  ssh django@static-web.chrisdev.com
+ 2621  cd ~/Development
+ 2622  cd tapia
+ 2623  ll
+ 2624  git status
+ 2625  git add src/assets/img/ads
+ 2626  git status
+ 2627  git commit -m "Ads for conference"
+ 2628  git push
+ 2629  ./sync.sh
+ 2630  cd src/assets/ads
+ 2631  ll
+ 2632  cd src
+ 2633  cd assets/img/ad
+ 2634  cd assets/img/ads
+ 2635  ll
+ 2636  cd ..
+ 2637  git status
+ 2638  git pull
+ 2639  cd ~/Development/mfa_wagtail
+ 2640  ll
+ 2641  git status
+ 2642  make deploy
+ 2643  ssh django@foreign.gov.tt
+ 2644  ssh django@mfa.chrisdev.com
+ 2645  atom .
+ 2646  cd ../mfa_new
+ 2647  ll
+ 2648  git status
+ 2649  make deploy
+ 2650  cd ..
+ 2651  ls mfa_*
+ 2652  cd mfa_wagtail
+ 2653  git staut
+ 2654  git status
+ 2655  git log
+ 2656  cd ..
+ 2657  rm -rf mfa_wagtail
+ 2658  ssh django@@45.79.139.48
+ 2659  ssh root@@45.79.139.48
+ 2660  cd ~/Development/mfa_new
+ 2661  ll
+ 2662  cd ..
+ 2663  cd wagtail_demo
+ 2664  ll
+ 2665  . venv/bin/activate
+ 2666  atom
+ 2667  which atom
+ 2668  vim ~/.bash_profile
+ 2669  atom
+ 2670  cd /usr/local/bin
+ 2671  ll
+ 2672  ln -s /Applications/Atom.app/Contents/Resources/app.sh atom
+ 2673  cd ~/Development/wagtail_demo
+ 2674  . venv/bin/activate
+ 2675  atom .
+ 2676  /usr/local/bin/atom .
+ 2677  cd ..
+ 2678  deactivate
+ 2679  cd ../mfa_new
+ 2680  cd mfa_new
+ 2681  ll
+ 2682  history
+ 2683  make deploy
+ 2684  ssh django@foreign.gov.tt
+ 2685  atom .
+ 2686  ping foreign.gov.tt
+ 2687  ping newmfa.chrisdev.com
+ 2688  ssh django@foreign.gov.tt
+ 2689  cd ..
+ 2690  ll
+ 2691  cd newmfa_site
+ 2692  ll
+ 2693  cd ..
+ 2694  cd mfa_new
+ 2695  ll
+ 2696  git log
+ 2697  git pull
+ 2698  git log
+ 2699  ssh django@foreign.gov.tt
+ 2700  cd ansible/mfa_new_keystore
+ 2701  scp django@foreign.gov.tt:/usr/local/sites/new_mfa/.env env.production
+ 2702  scp django@foreign.gov.tt:/usr/local/sites/mfa_new/.env env.production
+ 2703  cd ..
+ 2704  make deploy
+ 2705  ssh django@propertyfindertt.org
+ 2706  ssh django@propertyfindertt.com
+ 2707  ssh root@45.33.113.227
+ 2708  cd ../good_shepherd_static
+ 2709  ll
+ 2710  atom .
+ 2711  npm start
+ 2712  ll
+ 2713  cd src/pages
+ 2714  ll
+ 2715  mv test.html donate.html
+ 2716  npm start
+ 2717  git status
+ 2718  npm start
+ 2719  git status
+ 2720  git add .
+ 2721  git commit -m "Updated Restoration section"
+ 2722  git status
+ 2723  cd ..
+ 2724  git add .
+ 2725  git commit -m "Restoration Section"
+ 2726  git pull
+ 2727  git push
+ 2728  ll
+ 2729  ./synch.sh
+ 2730  ./sync.sh
+ 2731  npm start
+ 2732  git status
+ 2733  git add .
+ 2734  git commit -m "Restructure restoration section"
+ 2735  git push
+ 2736  ./sync.sh
+ 2737  npm start
+ 2738  git status
+ 2739  git checkout src/assets/scss/app.scss
+ 2740  ssh django@textelcu.com
+ 2741  cd ~/Development/good_shepherd_static
+ 2742  ll
+ 2743  git status
+ 2744  ll
+ 2745  cd src
+ 2746  ll
+ 2747  atom .
+ 2748  ssh django@app.theflybottle.com
+ 2749  ssh root@ccmf-uwi.org
+ 2750  ssh django@birdsongtt.org
+ 2751  ssh root@ccmf-uwi.org
+ 2752  cd ~/Development/good_shepherd_static
+ 2753  npm start
+ 2754  cd src/pages/restoration
+ 2755  ll
+ 2756  vim index.html
+ 2757  cd ..
+ 2758  atom .
+ 2759  npm start
+ 2760  git status
+ 2761  git diff 
+ 2762  npm start
+ 2763  jupyter console
+ 2764  npm start
+ 2765  git diff
+ 2766  npm start
+ 2767  git status
+ 2768  git add .
+ 2769  git status
+ 2770  git diff
+ 2771  git status
+ 2772  git add .
+ 2773  git commit -m "Updated events and Donation Status"
+ 2774  git push
+ 2775  ./sync.sh
+ 2776  ssh root@ccmf-uwi.org
+ 2777  jupyter console
+ 2778  cd ~/Development
+ 2779  cd tapia/src
+ 2780  ll
+ 2781  cd assets
+ 2782  ll
+ 2783  git status
+ 2784  cd src
+ 2785  ll
+ 2786  git add documents/the-engines-of-caribbean-development-draft-2018.pdf
+ 2787  git status
+ 2788  git commit -m Added the Vanus paper
+ 2789  git commit -m "Added the Vanus paper"
+ 2790  git push
+ 2791  git pull
+ 2792  git status
+ 2793  git push
+ 2794  cd ..
+ 2795  npm sync
+ 2796  npm start
+ 2797  ssh root@ccmf-uwi.org
+ 2798  ping wagtial.chridev.com
+ 2799  ping wagtail.chridev.com
+ 2800  cd ~/Development/wagtail_demo
+ 2801  ll
+ 2802  vim ansible/production
+ 2803  ssh django@wagtail.chrisdev.com
+ 2804  ping wagtail.chrisdev.com
+ 2805  cd ..
+ 2806  ll
+ 2807  cd good_shepherd_static
+ 2808  atom .
+ 2809  git status
+ 2810  open src/assets/img/slider/good-shepherd-harvest.jpeg
+ 2811  npm start
+ 2812  ./sync.sh
+ 2813  jupyter console
+ 2814  ssh root@ccmf-uwi.org
+ 2815  ssh django@esmond-forde.com
+ 2816  ssh django@workscu.com
+ 2817  ssh django@register.foreign.gov.tt
+ 2818  ipython
+ 2819  ssh root@45.56.68.189
+ 2820  ll
+ 2821  cat ansible/wagtail_demo_keystore/wagtail.chrisdev.com-django-deploy_keys.pub|pbcopy
+ 2822  cat ~/Development/workscu_wagtail/ansible/workscu_wagtail_keystore/authorized_keys|pbcopy
+ 2823  ssh root@45.56.68.189
+ 2824  ssh django@45.56.68.189
+ 2825  ssh root@45.56.68.189
+ 2826  vim /Users/cclarke/.ssh/known_hosts
+ 2827  ssh root@45.56.68.189
+ 2828  cat ~/Development/workscu_wagtail/ansible/workscu_wagtail_keystore/authorized_keys|pbcopy
+ 2829  ssh django@45.56.68.189
+ 2830  cd ..
+ 2831  ssh django@45.56.68.189
+ 2832  cd ~cclarke/Development/massy_credit_union
+ 2833  cd ansible
+ 2834  ll
+ 2835  cd ..
+ 2836  atom .
+ 2837  ssh django@45.56.68.189
+ 2838  ssh root@45.56.68.189
+ 2839  ssh django@45.56.68.189
+ 2840  ssh root@ccmf-uwi.org
+ 2841  cd ~/Development
+ 2842  ll
+ 2843  cd wagtail-cookiecutter-foundation
+ 2844  ll
+ 2845  git pull
+ 2846  git status
+ 2847  tox
+ 2848  test
+ 2849  ll
+ 2850  ssh root@ccmf-uwi.org
+ 2851  cd ~/Development/tapia
+ 2852  ll
+ 2853  git status
+ 2854  git pull
+ 2855  npm start
+ 2856  atom .
+ 2857  npm start
+ 2858  git status
+ 2859  git checkout src/data/speakers.yml
+ 2860  npm start
+ 2861  git status
+ 2862  git add .
+ 2863  git commit -m "Update graphics to match venue, speakers etc."
+ 2864  git pull
+ 2865  npm start
+ 2866  git push
+ 2867  ./sync.sh
+ 2868  ssh root@ccmf-uwi.org
+ 2869  ssh django@skhyfc.chrisdev.com
+ 2870  ssh root@ccmf-uwi.org
+ 2871  ssh django@app.theflybottle.com
+ 2872  ssh django@msjtnt.org
+ 2873  ssh django@app.theflybottle.com
+ 2874  ssh root@ccmf-uwi.org
+ 2875  git status
+ 2876  git pull
+ 2877  pwd
+ 2878  ssh root@ccmf-uwi.org
+ 2879  git pull
+ 2880  cd ~/Desktop
+ 2881  cd ../Documents
+ 2882  ll
+ 2883  cd birdsong-movies
+ 2884  ll
+ 2885  mkdir closing-concert-2018
+ 2886  cd closing-concert-2018
+ 2887  ll
+ 2888  you-get https://www.facebook.com/birdsongtt/videos/243576682946787/
+ 2889  brew update
+ 2890  brew doctor
+ 2891  brew help
+ 2892  brew upgrade you-get
+ 2893  you-get https://www.facebook.com/birdsongtt/videos/243576682946787/
+ 2894  you-get https://www.facebook.com/birdsongtt/videos/278236612781783/
+ 2895  you-get https://www.facebook.com/birdsongtt/videos/1129413083878001/
+ 2896  you-get https://www.facebook.com/birdsongtt/videos/510434366097977/\?t\=3
+ 2897  ll
+ 2898  you-get https://www.facebook.com/birdsongtt/videos/562983580783102/
+ 2899  ll
+ 2900  you-get https://www.facebook.com/birdsongtt/videos/510434366097977/
+ 2901  cd ../msj_site
+ 2902  ll
+ 2903  git pull
+ 2904  make 
+ 2905  ll
+ 2906  rm -rf .env
+ 2907  make develop_env
+ 2908  ll
+ 2909  . venv/bin/activate
+ 2910  deactivate
+ 2911  pip install -upgrade pip
+ 2912  pip2 install --upgrade pip
+ 2913  pip install -r requirements/dev.txt
+ 2914  pip uninstall django
+ 2915  . venv/bin/activate
+ 2916  pip install --upgrade pip
+ 2917  pip uninstall pip
+ 2918  pip install pip
+ 2919  pip install -r requirements/dev.txt
+ 2920  pip freeze
+ 2921  deavcitvate
+ 2922  deactivate
+ 2923  pip freeze
+ 2924  . venv/bin/activate
+ 2925  make develop_env
+ 2926  rm venv
+ 2927  deactivate
+ 2928  cd ..
+ 2929  rm -rf msj_site
+ 2930  pip uninstall wagtail
+ 2931  pip uninstall django
+ 2932  git clone git@bitbucket.org:chrisdev/msj_site.git
+ 2933  cd msj_site
+ 2934  make develop_env
+ 2935  ssh django@register.foreign.gov.tt
+ 2936  ll
+ 2937  mv media media_old
+ 2938  ln -s /Users/cclarke/Dropbox/ChrisDev/Graphics/Website\ Backups/mfa_new/media media
+ 2939  make runserver
+ 2940  ll
+ 2941  cd media
+ 2942  ll
+ 2943  cd ..
+ 2944  ll
+ 2945  ls media
+ 2946  cd media
+ 2947  ll
+ 2948  cd ..
+ 2949  rm media
+ 2950  ll
+ 2951  ls -s /Users/cclarke/Dropbox/ChrisDev/Graphics/Website\ Backups/msj_site/media media
+ 2952  pwd
+ 2953  ln -s ~/Dropbox/ChrisDev/Graphics/Website\ Backups/media media
+ 2954  ls media
+ 2955  make runserver
+ 2956  ll
+ 2957  ls media
+ 2958  rm media
+ 2959  ln -s ~/Dropbox/ChrisDev/Graphics/Website\ Backups/msj_site/media/ media
+ 2960  make runserver
+ 2961  cd ~/Development/msj_site
+ 2962  . venv/bin/activate
+ 2963  ./manage.py shell_plus
+ 2964  atom .
+ 2965  ./manage.py shell_plus
+ 2966  make runserver
+ 2967  ll
+ 2968  atom .
+ 2969  pip install jupyter
+ 2970  ./manage.py shell_plus
+ 2971  pip uninstall jupyter
+ 2972  ./manage.py shell_plus
+ 2973  ./manage.py shell_plus --help
+ 2974  ./manage.py shell_plus --bpyton
+ 2975  ./manage.py shell_plus
+ 2976  deactivate
+ 2977  . venv/bin/activate
+ 2978  ./manage.py shell_plus
+ 2979  pip uninstall Ipyton
+ 2980  pip uninstall Ipython
+ 2981  ./manage.py shell_plus
+ 2982  jpyter console
+ 2983  jupyter console
+ 2984  pip install ipython
+ 2985  ./manage.py shell_plus
+ 2986  pip uninstall ipython
+ 2987  cd ../wagtail-cookiecutter-foundation
+ 2988  git pull
+ 2989  cd ../mass_site
+ 2990  ll
+ 2991  cd scripts
+ 2992  ll
+ 2993  vim create_company.py
+ 2994  vim ipython_start.py
+ 2995  . venv/bin/activate
+ 2996  pip install jupyter
+ 2997  jupyter console
+ 2998  venv/bin/jupyter
+ 2999  venv/bin/jupyter console
+ 3000  ./manage.py shell
+ 3001  venv/bin/jupyter console
+ 3002  pip uninstall jupyter
+ 3003  pip uninstall ipython
+ 3004  ./manage.py shell
+ 3005  ./manage.py shell_plus
+ 3006  python gal_tags_to_collections.py
+ 3007  cd ~/Development/msj_site
+ 3008  ll
+ 3009  make runserver
+ 3010  ./manage.py shell_plus
+ 3011  python gal_tags_to_collections.py
+ 3012  ./manage.py shell_plus
+ 3013  dropdb msj_site
+ 3014  createdb msj_site
+ 3015  psql msj_site
+ 3016  ./manage.py shell_plus
+ 3017  make runserver
+ 3018  ssh django@msjtnt.org
+ 3019  make runserver
+ 3020  ll
+ 3021  python gal_tags_to_collections.py
+ 3022  ./manage.py shell_plus
+ 3023  python gal_tags_to_collections.py
+ 3024  ./manage.py shell_plus
+ 3025  make runserver
+ 3026  ./manage.py shell_plus
+ 3027  python gal_tags_to_collections.py
+ 3028  make runserver
+ 3029  ./manage.py shell_plus
+ 3030  python gal_tags_to_collections.py
+ 3031  git status
+ 3032  git add gal_tags_to_collections.py
+ 3033  git commit -m "script to create collections coresponding to Galleries"
+ 3034  git push
+ 3035  cd ../
+ 3036  ll
+ 3037  cd tapia
+ 3038  ll
+ 3039  atom .
+ 3040  npm start
+ 3041  cd ../tapia
+ 3042  git status
+ 3043  git add .
+ 3044  git commit -m "fix typo and reduce height small hero img"
+ 3045  git pull
+ 3046  git push
+ 3047  jpyter console
+ 3048  jupyter console
+ 3049  deactivate
+ 3050  jupyter console
+ 3051  ssh django@msjtnt.org
+ 3052  cd ../massy_credit_union
+ 3053  ll
+ 3054  cd docs
+ 3055  make
+ 3056  make latexpdf
+ 3057  deactivate
+ 3058  make latexpdf
+ 3059  brew install sphinx
+ 3060  brew uninstall sphinx
+ 3061  pip install sphinx-python
+ 3062  pip install sphinx
+ 3063  ssh djagno@msjtnt.org
+ 3064  ssh django@nmncu.chrisdev.com
+ 3065  ssh django@static-web.chrisdev.com
+ 3066  history|grep 45.56.68.189
+ 3067  ssh django@45.56.68.189
+ 3068  history|grep membership
+ 3069  ssh django@45.56.68.189
+ 3070  ping membership.msjtnt.org
+ 3071  cd ~/Downloads
+ 3072  ll
+ 3073  tar cvzf zenbership-master.tar.gz zenbership-master/
+ 3074  scp zenbership-master.tar.gz django@membership.msjtnt.org:.
+ 3075  cd ~/Development/sehon_goodridge_society
+ 3076  ll
+ 3077  git pull
+ 3078  rm -fr node_modules
+ 3079  ll
+ 3080  ll -a
+ 3081  npm install
+ 3082  npm start
+ 3083  git pull
+ 3084  ./sync.sh
+ 3085  git pull
+ 3086  ssh django@45.56.68.189
+ 3087  ssh django@membership.msjtnt.org
+ 3088  ipython
+ 3089  ssh django@ccmf-uwi.org
+ 3090  ping ccmf-uwi.org
+ 3091  cd ~/Development/tapia/
+ 3092  git pull
+ 3093  npm start
+ 3094  ./sync.sh
+ 3095  ssh django@ccmf-uwi.org
+ 3096  ssh root@ccmf-uwi.org
+ 3097  pwd
+ 3098  cd ../sehon_goodridge_society
+ 3099  git pull
+ 3100  atom .
+ 3101  ssh django@membership.msjtnt.org
+ 3102  ssh django@register.foreign.gov.tt
+ 3103  ll
+ 3104  pwd
+ 3105  ssh djagno@membership.msjtnt.org
+ 3106  zsh update
+ 3107  upgrade_oh_my_zsh
+ 3108  ssh  ssh root@45.56.68.189
+ 3109  ssh root@45.56.68.189
+ 3110  ssh django@@45.56.68.189
+ 3111  pwd
+ 3112  history|grep membership.msjtnt.org
+ 3113  ping membership.msjtnt.org
+ 3114  ssh django@membership.msjtnt.org
+ 3115  ssh root@45.56.68.189
+ 3116  vim ~/.ssh/known_hosts
+ 3117  ssh root@45.56.68.189
+ 3118  cd /Users/cclarke/Dropbox/Development/massy_credit_union/ansible/massy_credit_union_keystore 
+ 3119  cat authorized_keys|pbcopy
+ 3120  ssh root@45.56.68.189
+ 3121  cd ..
+ 3122  cd ~/Development/sehon_goodridge_society
+ 3123  ll
+ 3124  git pull
+ 3125  npm start
+ 3126  npm install
+ 3127  npm i npm
+ 3128  npm start
+ 3129  cd ..
+ 3130  mv sehon_goodridge_society sehon_goodridge_society.old
+ 3131  git clone git@bitbucket.org:ilendl2/sehon_goodridge_society.git
+ 3132  cd sehon_goodridge_society
+ 3133  npm install
+ 3134  npm start
+ 3135  ll
+ 3136  cd gallery
+ 3137  mkdir static
+ 3138  cd ..
+ 3139  mpm start
+ 3140  npm start
+ 3141  ssh root@45.56.68.189
+ 3142  cd ..
+ 3143  cd sehon_goodridge_society
+ 3144  ll
+ 3145  git status
+ 3146  cd src
+ 3147  ll
+ 3148  cd ..
+ 3149  ll
+ 3150  git pull
+ 3151  git status
+ 3152  cd ..
+ 3153  rm sehon_goodridge_society
+ 3154  git clone git@bitbucket.org:ilendl2/sehon_goodridge_society.git
+ 3155  rm -rf sehon_goodridge_society
+ 3156  ll
+ 3157  git clone git@bitbucket.org:ilendl2/sehon_goodridge_society.git
+ 3158  cd sehon_goodridge_society
+ 3159  ll
+ 3160  cd gallery
+ 3161  ll
+ 3162  mkdir static
+ 3163  cd ..
+ 3164  git status
+ 3165  cd ..
+ 3166  cd sehon_goodridge_society
+ 3167  ll
+ 3168  npm install
+ 3169  npm start
+ 3170  cd ~/Development/sehon_goodridge_society
+ 3171  atom .
+ 3172  git status
+ 3173  git add .
+ 3174  git commit -m "Added SJ&P 2018 Hero"
+ 3175  git push
+ 3176  ll
+ 3177  vim sync.sh
+ 3178  ./sync.sh
+ 3179  cd ..
+ 3180  cd sychar_house_of_prayer
+ 3181  ll
+ 3182  gulp build
+ 3183  vim sync.sh
+ 3184  vi sync.sh
+ 3185  npm run build
+ 3186  npm install
+ 3187  npm start
+ 3188  cd ../sehon_goodridge_society
+ 3189  cat rs
+ 3190  ll
+ 3191  cat sync.sh
+ 3192  ll
+ 3193  ssh root@ccmf-uwi.org
+ 3194  ssh django@register.foreign.gov.tt
+ 3195  ll
+ 3196  cd ~/Desktop
+ 3197  ll
+ 3198  ll -a
+ 3199  open tapia-before-after.png
+ 3200  ll
+ 3201  ll -at
+ 3202  ll
+ 3203  ll -t
+ 3204  cd ~/Development
+ 3205  ll
+ 3206  cd good_shepherd_static
+ 3207  ll
+ 3208  git pull
+ 3209  atom .
+ 3210  ll
+ 3211  cd ~/Development/good_shepherd_static
+ 3212  npm start
+ 3213  git status
+ 3214  git add .
+ 3215  git commt -m "Updated sermons"
+ 3216  git commit -m "Updated sermons"
+ 3217  git push
+ 3218  ./sync.sh
+ 3219  cd ..
+ 3220  cd tapia
+ 3221  git pull
+ 3222  atom .
+ 3223  npm start
+ 3224  git status
+ 3225  git add .
+ 3226  git -m "Add donate text and update nav bar"
+ 3227  git commit -m "Add donate text and update nav bar"
+ 3228  git push
+ 3229  ./sync.sh
+ 3230  npm start
+ 3231  cd ../sehon_goodridge_society
+ 3232  git pull
+ 3233  atom .
+ 3234  cd ../goodridge_society_landing
+ 3235  cd ../sehon_goodridge_society
+ 3236  ll
+ 3237  git pull
+ 3238  npm start
+ 3239  cd src/assets
+ 3240  ll
+ 3241  mkdir downloads
+ 3242  cd downloads
+ 3243  npm start
+ 3244  git status
+ 3245  cd ..
+ 3246  git status
+ 3247  git add .
+ 3248  git commit -m "Added event flyer download"
+ 3249  git push
+ 3250  ./synch .
+ 3251  ll
+ 3252  cd ..
+ 3253  ./sync.sh
+ 3254  cd ../good_shepherd_static
+ 3255  atom .
+ 3256  git pull
+ 3257  npm start
+ 3258  git status
+ 3259  git add .
+ 3260  git commit -m "fix broken OpenGraph data"
+ 3261  git pull
+ 3262  npm start
+ 3263  git pull
+ 3264  npm start
+ 3265  ./sync.sh
+ 3266  git status
+ 3267  git add .
+ 3268  git commit -m "Fix probs with link image"
+ 3269  git pull
+ 3270  git push
+ 3271  ./sync.sh
+ 3272  git status
+ 3273  git add .
+ 3274  git status
+ 3275  npm start
+ 3276  git status
+ 3277  git diff 
+ 3278  git add .
+ 3279  git commit -m "Fix abs_url"
+ 3280  git push
+ 3281  ./sync.sh
+ 3282  ]npm start
+ 3283  npm start
+ 3284  git status
+ 3285  git diff src/pages/about_us/st-oswalds-caroni.html
+ 3286  git diff src/pages/worship/sermons.html
+ 3287  git add .
+ 3288  git commit -m "Address issue opendata & twitter card images"
+ 3289  git push
+ 3290  ./sync.sh
+ 3291  git git status
+ 3292  git status
+ 3293  git add .
+ 3294  git commit -m "Open data issues"
+ 3295  git push
+ 3296  ./sync.sh
+ 3297  git status
+ 3298  git diff 
+ 3299  git add .
+ 3300  git commit a -m "default type set to article"
+ 3301  git commit  -m "default type set to article"
+ 3302  git push
+ 3303  ll
+ 3304  ./sync.sh
+ 3305  ill
+ 3306  ll
+ 3307  cd src
+ 3308  ll
+ 3309  assets
+ 3310  ll
+ 3311  cd downloads
+ 3312  ll
+ 3313  open sjp-poster-2018-small.pdf
+ 3314  ssh django@ccmf-uwi.org
+ 3315  ssh root@ccmf-uwi.org
+ 3316  python
+ 3317  brew doctor
+ 3318  brew update
+ 3319  python3
+ 3320  pip3 install vobject
+ 3321  cd ../sehon_goodridge_society
+ 3322  ll
+ 3323  git status
+ 3324  atom .
+ 3325  hg diff
+ 3326  git diff
+ 3327  git pull
+ 3328  git status
+ 3329  git add src/data/events.yml
+ 3330  git diff src/pages/index.html
+ 3331  git add src/pages/index.html
+ 3332  git commit -m "Updated the Events"
+ 3333  git push
+ 3334  npm start
+ 3335  ./sync.sh
+ 3336  git
+ 3337  git 
+ 3338  git status
+ 3339  npm start
+ 3340  git status
+ 3341  npm start
+ 3342  git add .
+ 3343  git commit
+ 3344  git push
+ 3345  git pull
+ 3346  git push
+ 3347  ./sync.sh
+ 3348  git status
+ 3349  git add .
+ 3350  git commit -m "add site url to image path"
+ 3351  git push
+ 3352  git pull
+ 3353  git push
+ 3354  ./sync.sh
+ 3355  ssh root@ccmf-uwi.org
+ 3356  cd ..
+ 3357  cd tapia
+ 3358  git pull
+ 3359  ./sync.sh
+ 3360  git pull
+ 3361  ./sync.sh
+ 3362  ll
+ 3363  ssh root@ccmf-uwi.org
+ 3364  ssh django@foreign.gov.tt
+ 3365  ssh root@ccmf-uwi.org
+ 3366  cd ~/Development/massy_credit_union
+ 3367  ll
+ 3368  git pull
+ 3369  atom gal_tags_to_collections.py
+ 3370  ssh django@wagtail.chrisdev.com
+ 3371  ssh root@wagtail.chrisdev.com
+ 3372  cd ~/Development/birdsong_new
+ 3373  git status
+ 3374  git pull
+ 3375  ll
+ 3376  make runserver
+ 3377  rm -rf venv
+ 3378  make
+ 3379  make develop_env
+ 3380  atom .
+ 3381  vim Makefile
+ 3382  make bower
+ 3383  make runserver
+ 3384  dropdb birdsong_new
+ 3385  createdb birdsong_new
+ 3386  psql birdsong_new
+ 3387  cp ~/Dropbox/ChrisDev/Graphics/Website\ Backups/birdsong_new/data_backup/birdsong_new_db-2018-11-08.sql .
+ 3388  ll
+ 3389  psql birdsong_new
+ 3390  mv media media_local
+ 3391  ln -s ~/Dropbox/ChrisDev/Graphics/Website\ Backups/birdsong_new/media media
+ 3392  ll
+ 3393  make runserver
+ 3394  ./manage.py shell_plus
+ 3395  . venv/bin/activate
+ 3396  ./manage.py shell_plus
+ 3397  cd ~/Development/birdsong_new
+ 3398  ll
+ 3399  make runserver
+ 3400  ./manage.py shell_plus
+ 3401  make runserver
+ 3402  ./manage.py shell_plus
+ 3403  ll
+ 3404  python gal_tags_to_collections.py
+ 3405  ./manage.py shell_plus
+ 3406  python gal_tags_to_collections.py
+ 3407  git status
+ 3408  git checkout Makefile
+ 3409  git add gal_tags_to_collections.py
+ 3410  git commit -m "Scripts now creates the Gallery Pages"
+ 3411  git push
+ 3412  brew search pngcrush
+ 3413  brew install pngcrush
+ 3414  cd ~/Documents
+ 3415  ll
+ 3416  mkdir sgts-sjp
+ 3417  cd sgts-sjp
+ 3418  you get https://www.facebook.com/goodridgesociety/videos/2320655524887773/
+ 3419  youget https://www.facebook.com/goodridgesociety/videos/2320655524887773/
+ 3420  you-get https://www.facebook.com/goodridgesociety/videos/2320655524887773/
+ 3421  ssh django@birdsongtt.org
+ 3422  ll
+ 3423  cd ~/Development/sehon_goodridge_society
+ 3424  git pull
+ 3425  deactivate
+ 3426  npm start
+ 3427  git pull
+ 3428  cd ../tapia
+ 3429  git pull
+ 3430  cd /Users/cclarke/Dropbox/Development/tapia/src/assets/photo_gallery
+ 3431  cp -r Testing political-interventions-76
+ 3432  cd political-interventions-76
+ 3433  ll
+ 3434  vim index.md
+ 3435  cd ..
+ 3436  atom .
+ 3437  npm start
+ 3438  sigal
+ 3439  git pull
+ 3440  npm start
+ 3441  cd ../tapia
+ 3442  cd src/assets/img/
+ 3443  ll
+ 3444  pwd
+ 3445  ll
+ 3446  cd ..
+ 3447  ll
+ 3448  cd photo_gallery
+ 3449  ll
+ 3450  git rm Testing/
+ 3451  git rm -r Testing/
+ 3452  mvim index.md
+ 3453  cd political-interventions-76
+ 3454  ll
+ 3455  npm start
+ 3456  ssh root@ccmf-uwi.org
+ 3457  ssh django@static-web.chrisdev.com
+ 3458  cd ~/Development/good_shepherd_static
+ 3459  ll
+ 3460  atom .
+ 3461  ll
+ 3462  cd src/pages
+ 3463  media
+ 3464  ll
+ 3465  mkdir articles
+ 3466  cd articles
+ 3467  ll
+ 3468  pwd
+ 3469  cd ~/Development
+ 3470  ll
+ 3471  cd good_shepherd_static
+ 3472  ll
+ 3473  cd src/pages
+ 3474  ll
+ 3475  cd media
+ 3476  cd ...
+ 3477  cd ..
+ 3478  atom .
+ 3479  git pull
+ 3480  npm start
+ 3481  cd ~/Development/good_shepherd_static
+ 3482  ll
+ 3483  git status
+ 3484  npm statt
+ 3485  npm stat
+ 3486  npm start
+ 3487  git status
+ 3488  git add .
+ 3489  git status
+ 3490  git commit -m "articles section added"
+ 3491  git push
+ 3492  ./sync.sh
+ 3493  npm start
+ 3494  git status
+ 3495  git diff
+ 3496  ./sync.sh
+ 3497  ssh root@ccmf-uwi.org
+ 3498  pwd
+ 3499  ssh root@ccmf-uwi.org
+ 3500  ssh django@static-web.chrisdev.com
+ 3501  ssh root@45.79.8.88
+ 3502  ll
+ 3503  ssh root@ccmf-uwi.org
+ 3504  ssh simeon@45.79.8.88
+ 3505  ssh root@ccmf-uwi.org
+ 3506  ssh django@register.foreign.gov.tt
+ 3507  brew search rar
+ 3508  brew info unrar
+ 3509  bure update
+ 3510  brew update
+ 3511  brew install unrar
+ 3512  cd ~/
+ 3513  cd ~/Desktop/scaled-photos
+ 3514  ll
+ 3515  indetify --verbose VAM_8734.JPG
+ 3516  brew serch imageMagick
+ 3517  brew search imageMagick
+ 3518  identify --verbose VAM_8734.JPG
+ 3519  identify -verbose VAM_8734.JPG
+ 3520  convert --quality 85 VAM_8734.JPG
+ 3521  convert -quality 85 VAM_8734.JPG
+ 3522  mkdir test
+ 3523  mogrify -pathlls OUTPUT_PATH -filter Triangle -define filter:support=2 -thumbnail OUTPUT_WIDTH -unsharp 0.25x0.25+8+0.065 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB -strip INPUT_PODATH
+ 3524  ssh root@ccmf-uwi.org
+ 3525  jupyter console
+ 3526  cd ~/Development/mfa_new
+ 3527  ll
+ 3528  git pull
+ 3529  make runserver
+ 3530  make develop_env
+ 3531  atom .
+ 3532  pip install celery
+ 3533  . venv/bin/activate
+ 3534  pip install celery
+ 3535  ./manage.py runserver
+ 3536  pip install celery --upgrade
+ 3537  brew uninstall openssl
+ 3538  brew install openssl
+ 3539  brew upgrade openssl
+ 3540  deactivate
+ 3541  pip install --upgrade pip setuptools
+ 3542  python2
+ 3543  . venv/bin/activate
+ 3544  cd ..
+ 3545  deactivate
+ 3546  cd mfa_new
+ 3547  rm -rf .venv
+ 3548  make develop_env
+ 3549  drop db mfa_new
+ 3550  dropdb mfa_new
+ 3551  make develop_env
+ 3552  make migrate
+ 3553  . venv/bin/activate
+ 3554  pip freeze
+ 3555  python
+ 3556  pip uninstall wagtail-markdown
+ 3557  pip install git+https://github.com/andrivet/wagtail-markdown.git
+ 3558  venv/bin/pip install --upgrade
+ 3559  pip
+ 3560  python
+ 3561  brew doctor python
+ 3562  brew status python
+ 3563  brew 
+ 3564  brew info python
+ 3565  brew install python@2
+ 3566  brew reinstall python@2
+ 3567  pwd
+ 3568  cd ~/Development
+ 3569  cd mfa_new
+ 3570  git status
+ 3571  rm -fr venv
+ 3572  dropdb mfa_new
+ 3573  make develop_env
+ 3574  pip uninstall bleach
+ 3575  pip2 freeze
+ 3576  . venv/bin/activate
+ 3577  pip uninstall bleach
+ 3578  pip install git+https://github.com/andrivet/wagtail-markdown.git
+ 3579  make migrate
+ 3580  cd ..
+ 3581  rm -rf mfa_new
+ 3582  git clone git@bitbucket.org:ilendl2/mfa_new.git
+ 3583  deactivate
+ 3584  dropdb mfa_new
+ 3585  cd mfa_new
+ 3586  make develop_env
+ 3587  ssh root@ccmf-uwi.org
+ 3588  dropdb mfa_new
+ 3589  createdb mfa_new
+ 3590  psql mfa_new
+ 3591  ll
+ 3592  cd media
+ 3593  mv media media_old
+ 3594  cd ..
+ 3595  mv media media_old
+ 3596  ln -s ~/Dropbox/ChrisDev/Graphics/Website\ Backups/mfa_new/media media
+ 3597  make runserver
+ 3598  make migrate
+ 3599  make runserver
+ 3600  . venv/bin/activate
+ 3601  python gal_tags_to_collections.py
+ 3602  make develop_env
+ 3603  make runserver
+ 3604  deactivate
+ 3605  make deploy
+ 3606  ssh django@foreign.gov.tt
+ 3607  sh root@45.79.8.88
+ 3608  ssh root@45.79.8.88
+ 3609  vim ~/.ssh/known_hosts
+ 3610  ssh root@45.79.8.88
+ 3611  vim funky
+ 3612  ssh root@45.79.8.88
+ 3613  ssh root@ccmf-uwi.org
+ 3614  ssh drupaladmin@45.79.8.88
+ 3615  ssh django@confucius.chridev.com
+ 3616  ssh django@confucius.chrisdev.com
+ 3617  ssh durupaladmin@confucius.chrisdev.com
+ 3618  ssh drupaladmin@confucius.chrisdev.com
+ 3619  ssh django@workscu.com
+ 3620  cd ~/Development/mfa_new
+ 3621  git status
+ 3622  . venv/bin/activate
+ 3623  ./manage.py shell_plus
+ 3624  which pip
+ 3625  pip install ipython
+ 3626  ./manage.py shell_plus
+ 3627  pip install bpython
+ 3628  ./manage.py shell_plus --help
+ 3629  ./manage.py shell_plus --bpython
+ 3630  pip uninstall iptython
+ 3631  pip uninstall ipython
+ 3632  pip uninstall bpython
+ 3633  ./manage.py shell_plus
+ 3634  ll
+ 3635  cd ~/Development/mfa_new
+ 3636  atom .
+ 3637  set_gal_feed_img.py
+ 3638  touch set_gal_feed_img.py
+ 3639  . venv/bin/activate
+ 3640  python set_gal_feed_img.py
+ 3641  make runserver
+ 3642  git status
+ 3643  git add set_gal_feed_img.py
+ 3644  git commit -m "added script to set feed image on new gals"
+ 3645  git pull
+ 3646  git push
+ 3647  ssh django@foreign.gov.tt
+ 3648  deactivate
+ 3649  cd ..
+ 3650  ll
+ 3651  cd skhyfc_new
+ 3652  git pull
+ 3653  make runserver
+ 3654  git statu
+ 3655  ll
+ 3656  make
+ 3657  make develop_env
+ 3658  ll
+ 3659  atom .
+ 3660  ssh django@skhyfc.chrisdev.com
+ 3661  cd ../skhyfc_new
+ 3662  ll
+ 3663  git status
+ 3664  git add requirements/production.txt
+ 3665  git add skhyfc_new/settings/production.py
+ 3666  git commit -m "Sentry integration"
+ 3667  git push
+ 3668  cd ../mfa_new
+ 3669  ll
+ 3670  ssh django@foreign.gov.tt
+ 3671  ssh django@register.foreign.gov.tt
+ 3672  curl https://192.168.50.12
+ 3673  ll
+ 3674  cd ../rsna_site
+ 3675  ll
+ 3676  pew
+ 3677  atom .
+ 3678  curl https://foreign.gov.tt
+ 3679  curl http://foreign.gov.tt
+ 3680  curl https://192.168.50.12
+ 3681  history|grep curl
+ 3682  run-help curl
+ 3683  curl -I --http2 https://foreign.gov.tt
+ 3684  curl -I --http2 https\://foreign.gov.tt
+ 3685  curl -I --http2 http://register.foreign.gov
+ 3686  curl -I --http2 http://register.foreign.gov.tt
+ 3687  curl -I --http2 http://192.168.50.12
+ 3688  curl -I --http2 https://179.60.214.58
+ 3689  curl -I  https://179.60.214.58
+ 3690  curl -I  http://179.60.214.58
+ 3691  ll
+ 3692  . venv/bin/activate
+ 3693  ll
+ 3694  make
+ 3695  make runserver
+ 3696  rm venv
+ 3697  rm -rf venv
+ 3698  make virtualenv
+ 3699  pip install -r requirements/local.txt
+ 3700  pip install psycopg2
+ 3701  pip install -r requirements/local.txt
+ 3702  pip install psycopg2
+ 3703  pip install -r requirements/local.txt
+ 3704  make
+ 3705  vim Makefile
+ 3706  ssh django@register.foreign.gov.tt
+ 3707  ssh root@ccmf-uwi.org
+ 3708  cd ~/Development
+ 3709  ll
+ 3710  cd mfa_new
+ 3711  ll
+ 3712  ssh django@foreign.gov.tt
+ 3713  ll
+ 3714  cd ..
+ 3715  ll
+ 3716  cd birdsong_new
+ 3717  ll
+ 3718  git status
+ 3719  atom .
+ 3720  . venv/bin/activate
+ 3721  pip install flake8
+ 3722  pip freeze
+ 3723  pip install flake8-docstrings
+ 3724  atom .
+ 3725  pip freeze
+ 3726  make runserver
+ 3727  git status
+ 3728  git add birdsong_new
+ 3729  git add requirements/
+ 3730  git status
+ 3731  git commit -m "Sentry.io integration"
+ 3732  git push
+ 3733  git pull
+ 3734  git push
+ 3735  make deploy
+ 3736  ipython
+ 3737  ssh django@register.foreign.gov.tt
+ 3738  curl -k https://register.foreign.gov.tt
+ 3739  curl -k https://179.60.214.58/
+ 3740  curl -k https://179.60.214.58
+ 3741  history|grep curl
+ 3742  curl -Ik https://179.60.214.58
+ 3743  curl -I --http2 http://register.foreign.gov.tt
+ 3744  curl -Ik http://register.foreign.gov.tt
+ 3745  curl -I-k http://register.foreign.gov.tt
+ 3746  curl -I -k http://register.foreign.gov.tt
+ 3747  curl -k http://register.foreign.gov.tt
+ 3748  curl -k https://register.foreign.gov.tt
+ 3749  curl -Ik https://register.foreign.gov.tt
+ 3750  curl -k https://register.foreign.gov.tt
+ 3751  ssh root@ccmf-uwi.org
+ 3752  ssh django@msjtnt.org
+ 3753  ssh django@nmncu.coop
+ 3754  cd ~/Development/massy_credit_union
+ 3755  ll
+ 3756  atom .
+ 3757  jupyter console
+ 3758  ssh django@nnmcu.coop
+ 3759  ssh django@nmncu.coop
+ 3760  ssh django@skhyfc.chrisdev.com
+ 3761  ssh django@register.foreign.gov.tt
+ 3762  ssh ssh root@45.79.139.48
+ 3763  ssh root@45.79.139.48
+ 3764  ping wagtail.chrisdev.com
+ 3765  ssh django@propertyfinder.com
+ 3766  ssh django@167.99.227.101
+ 3767  cd ~/Development/massy_credit_union
+ 3768  ll
+ 3769  cd ansible/massy_credit_union_keystore
+ 3770  ll
+ 3771  vim authorized_keys
+ 3772  cat authorized_keys|pbcopy
+ 3773  ssh root@45.79.139.48
+ 3774  vim ~/.ssh/known_hosts
+ 3775  ssh root@45.79.139.48
+ 3776  ssh django@propertyfindertt.com
+ 3777  ssh django@wagtail.chrisdev.com
+ 3778  ssh root@wagtail.chrisdev.com
+ 3779  ssh django@wagtail.chrisdev.com
+ 3780  ssh root@wagtail.chrisdev.com
+ 3781  pwd
+ 3782  cd ~/Development
+ 3783  cd wagtail-cookiecutter-foundation
+ 3784  ll
+ 3785  git pull
+ 3786  atom .
+ 3787  git status
+ 3788  python3 -m env ~/Virtualenvs/cookiecutter
+ 3789  python3 -m venv ~/Virtualenvs/cookiecutter
+ 3790  . ~/Virtualenvs/cookiecutter/bin/activate
+ 3791  pip3 install -r requirements.txt
+ 3792  pip3 install --upgrade pip
+ 3793  pip3 install --upgrade flake8
+ 3794  pip3 install pyflake
+ 3795  pip3 install pyflakes
+ 3796  pip3 install --upgrade pyflake
+ 3797  pip3 install --upgrade pyflakes
+ 3798  pip uninstall pyflake
+ 3799  pip uninstall pyflakes
+ 3800  pip insatll pyflakes
+ 3801  pip insatall pyflakes
+ 3802  pip install pyflakes
+ 3803  pytest
+ 3804  atom .
+ 3805  jupyter notebook
+ 3806  pip3 install pyperclip
+ 3807  ipython
+ 3808  ssh root@sunrisepropertiestt.com
+ 3809  cd ~/Documents
+ 3810  ll
+ 3811  cd Good\ Shepherd\ Media
+ 3812  ll
+ 3813  you-get https://www.facebook.com/goodshepherdtt/videos/2205059579771023/
+ 3814  open Rededication\ Service\ -\ The\ Parish\ of\ The\ Good\ Shepherd\ and\ St.\ Oswald\'s\ Caroni.mp4
+ 3815  cd ~/Dropbox/ChrisDev/Graphics/Websites/tapia
+ 3816  vim blog.txt
+ 3817  ll
+ 3818  diff --help
+ 3819  diff -B blog.txt Sandals\ MOU\[2\].txt
+ 3820  diff3 --help
+ 3821  vim Sandals\ MOU\[2\].txt
+ 3822  atom Sandals\ MOU\[2\].txt
+ 3823  ll
+ 3824  atom .
+ 3825  ssh root@sunrisepropertiestt.com
+ 3826  ssh django@sunrisepropertiestt.com
+ 3827  ssh root@sunrisepropertiestt.com
+ 3828  jpyther consol
+ 3829  jupyter console
+ 3830  cd ../Good\ Shepherd
+ 3831  cd name-badges
+ 3832  ll
+ 3833  cp VBS\ 2018.avery children-cards-2018-12-19.avery
+ 3834  cp good-shepherd_name-tags.avery good-shepherd-name-tags-dec.avery
+ 3835  ssh root@ccmf-uwi.org
+ 3836  cd ~/Desktop
+ 3837  you-get https://www.facebook.com/goodshepherdtt/videos/2205059579771023/
+ 3838  ssh root@ccmf-uwi.org
+ 3839  cd ~/Development
+ 3840  ll
+ 3841  cd django-pandas
+ 3842  ll
+ 3843  atom .
+ 3844  git diff
+ 3845  cd ..
+ 3846  rm -rf django-pandas
+ 3847  git clone git@github.com:chrisdev/django-pandas.git
+ 3848  cd django-pandas
+ 3849  python
+ 3850  python3 -m venv ~/Virtualenvs/django-pandas
+ 3851  . ~/Virtualenvs/django-pandas/bin/activate
+ 3852  python3
+ 3853  which pip
+ 3854  which pip3 coverage
+ 3855  pip3 coverage
+ 3856  pip3 insatall coverage
+ 3857  pip3 install coverage
+ 3858  pip3 install --upgrade pip
+ 3859  coverage run --source django_pandas setup.py test
+ 3860  pip3 install numpy
+ 3861  coverage run --source django_pandas setup.py test
+ 3862  pip3 install pandas
+ 3863  coverage run --source django_pandas setup.py test
+ 3864  pip freeze
+ 3865  atom .
+ 3866  coverage run --source django_pandas setup.py test
+ 3867  coverage report -m 
+ 3868  coverage html
+ 3869  open htmlcov/index.html
+ 3870  git status
+ 3871  git checkout setup.py
+ 3872  git checkout -b cloudspectatordevelopment-coerce master
+ 3873  git pull https://github.com/cloudspectatordevelopment/django-pandas.git coerce
+ 3874  atom .
+ 3875  pip3 install flake8
+ 3876  atom .
+ 3877  git status
+ 3878  make coverage
+ 3879  deactivate
+ 3880  tox
+ 3881  pip install tox
+ 3882  tox
+ 3883  . ~/Virtualenvs/django-pandas/bin/activate
+ 3884  pip freeze
+ 3885  pip install django
+ 3886  deactivate
+ 3887  t
+ 3888  tox --help
+ 3889  tox 
+ 3890  . ~/Virtualenvs/django-pandas/bin/activate
+ 3891  make coverage
+ 3892  vim .vimrc
+ 3893  deactivate
+ 3894  mkvirtualenv django1.7
+ 3895  pip install django==1.7
+ 3896  pip freeze
+ 3897  pip install pandas
+ 3898  python setup.py test
+ 3899  git diff
+ 3900  python setup.py test
+ 3901  pip install ipdb
+ 3902  python setup.py test
+ 3903  ssh django@app.theflybottle.com
+ 3904  python setup.py test test_io
+ 3905  python setup.py test
+ 3906  ll
+ 3907  runtest.py test_io
+ 3908  pythonn test test_io
+ 3909  python test test_io
+ 3910  python runtests.py teste_io
+ 3911  cd ~/Development/django-pandas
+ 3912  ll
+ 3913  workon django1.7
+ 3914  atom .
+ 3915  pip freeze
+ 3916  pip install flanke8
+ 3917  pip install flake8
+ 3918  atom .
+ 3919  python runtests.py
+ 3920  pip install django==1.8
+ 3921  python runtests.py
+ 3922  pip install django==1.7
+ 3923  python runtests.py
+ 3924  git status
+ 3925  git diff django_pandas/managers.py
+ 3926  deactivate
+ 3927  tox
+ 3928  coverage run --source django_pandas setup.py test
+ 3929  . ~/Virtualenvs/django-pandas/bin/activate
+ 3930  python
+ 3931  coverage run --source django_pandas setup.py test
+ 3932  coverage report -m 
+ 3933  coverage html
+ 3934  ll
+ 3935  open htmlcov/index.html
+ 3936  atom .
+ 3937  coverage run --source django_pandas setup.py test
+ 3938  coverage report -m 
+ 3939  coverage html
+ 3940  open htmlcov/index.html
+ 3941  coverage run --source django_pandas setup.py test
+ 3942  make coverage
+ 3943  deactivate
+ 3944  workon django1.7
+ 3945  python
+ 3946  pip freeze
+ 3947  make coverage
+ 3948  ll
+ 3949  make 
+ 3950  make coverage
+ 3951  pip install coverage
+ 3952  make coverage
+ 3953  deactivate
+ 3954  . ~/Virtualenvs/django-pandas/bin/activate
+ 3955  make coverage
+ 3956  git status
+ 3957  git diff setup.py
+ 3958  pip freeze
+ 3959  git diff setup.py
+ 3960  git add .
+ 3961  git commit -m "#107 Improverd corce_float param"
+ 3962  git push -u origin cloudspectatordevelopment-coerce
+ 3963  twine
+ 3964  deactivate
+ 3965  cd ~
+ 3966  ll
+ 3967  vim .pypirc
+ 3968  ssh django@sunrisepropertiestt.com
+ 3969  ssh root@sunrisepropertiestt.com
+ 3970  ssh root@propertyfindertt.com 
+ 3971  ssh root@sunrisepropertiestt.com
+ 3972  cd ~/Development/wagtail-cookiecutter-foundation
+ 3973  git status
+ 3974  git diff
+ 3975  cd ~/Development/django-pandas
+ 3976  ll
+ 3977  git statu
+ 3978  git status
+ 3979  git pull
+ 3980  pip install twine
+ 3981  git pull
+ 3982  git checkout -b master
+ 3983  git checkout master
+ 3984  git pull
+ 3985  atom .
+ 3986  workon django-pandas
+ 3987  pip install bump
+ 3988  atom .
+ 3989  git status
+ 3990  git diff
+ 3991  git add .
+ 3992  git commit -m "Changelog for upcomming release 0.5.2"
+ 3993  pip install bump
+ 3994  bumpversion patch
+ 3995  pip install --upgrade bumpversion
+ 3996  bumpversion patch
+ 3997  git diff
+ 3998  make clean
+ 3999  git status
+ 4000  git add django_pandas/__init__.py
+ 4001  git add setup.py
+ 4002  deactivate
+ 4003  python setup.py develop
+ 4004  python -m pip install --upgrade pip setuptools
+ 4005  python setup.py develop
+ 4006  python3 setup.py develop
+ 4007  python setup.py develop
+ 4008  python setup.py test
+ 4009  tox
+ 4010  git status
+ 4011  python3 -m pip install --user --upgrade setuptools wheel
+ 4012  python3 setup.py sdist bdist_wheel
+ 4013  ls dist
+ 4014  vim ~/.pypirc
+ 4015  python3 -m pip install --user --upgrade twine
+ 4016  history
+ 4017  twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+ 4018  twine upload --repository-url https://test.pypi.org/legacy/ dist/*twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+ 4019  twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+ 4020  cd ...
+ 4021  workon django-pandas
+ 4022  env
+ 4023  pip freeze
+ 4024  pip install python3 -m pip install --index-url https://test.pypi.org/simple/ django-pandas
+ 4025  pip install --index-url https://test.pypi.org/simple/ django-pandas
+ 4026  python
+ 4027  pwd
+ 4028  deactivate
+ 4029  cd ~/Development
+ 4030  ll
+ 4031  cd django-pandas
+ 4032  ll
+ 4033  git status
+ 4034  cd docs
+ 4035  ll
+ 4036  make 
+ 4037  make html
+ 4038  open _build/html/index.html
+ 4039  make html
+ 4040  open _build/html/index.html
+ 4041  ll
+ 4042  cd ..
+ 4043  cat README.rst| pbcopy
+ 4044  ll
+ 4045  git status
+ 4046  ll
+ 4047  git add .
+ 4048  git commit -m "Updates to support release 0.5.2"
+ 4049  ll
+ 4050  make clean
+ 4051  python3 setup.py sdist bdist_wheel
+ 4052  twine upload dist/*
+ 4053  cd ..
+ 4054  cd django-pandas
+ 4055  git tag -a 0.5.2
+ 4056  git push
+ 4057  git push --tags
+ 4058  tox
+ 4059  git
+ 4060  git status
+ 4061  tox
+ 4062  git status
+ 4063  git diff
+ 4064  git add tox.ini
+ 4065  git commit -m "Tox not finding Python 3.7 depencency"
+ 4066  git push
+ 4067  ll
+ 4068  ~/Development/skhyfc_new
+ 4069  git status
+ 4070  git pull
+ 4071  atom .
+ 4072  make runserver
+ 4073  git status
+ 4074  git add utils/templates/utils/
+ 4075  git commit -m "Take down the poinsettias"
+ 4076  git push
+ 4077  make deploy
+ 4078  ssh django@confucius.chrisdev.com
+ 4079  ssh root@confucius.chrisdev.com
+ 4080  cd ..
+ 4081  ssh root@confucius.chrisdev.com
+ 4082  vim ~/.ssh/known_hosts
+ 4083  ssh root@confucius.chrisdev.com
+ 4084  cat .ssh/id_rsa.pub|pbcopy
+ 4085  ssh root@confucius.chrisdev.com
+ 4086  pwd
+ 4087  cd ~/Development
+ 4088  ll
+ 4089  git clone git@bitbucket.org:ilendl2/chrisdev_refreshed.git
+ 4090  cd chrisdev_refreshed
+ 4091  ll
+ 4092  cd ansible
+ 4093  cd birdsong_new
+ 4094  ll
+ 4095  cd ansible
+ 4096  ll
+ 4097  mkdir chrisdev_refreshed_keystore
+ 4098  mkdir grou_vars
+ 4099  mkdir host_vars
+ 4100  mv grou_vars group_vars
+ 4101  ls group_vars
+ 4102  ll
+ 4103  cd host_vars
+ 4104  cp ~/Development/massy_credit_union/ansible/host_vars/nmncu.chrisdev.com confucius.chrisdev.com
+ 4105  cd ..
+ 4106  cd group_vars
+ 4107  cp 
+ 4108  cp ~/Development/massy_credit_union/ansible/group_vars/all .
+ 4109  ll
+ 4110  cd ..
+ 4111  atom .
+ 4112  vim ~/Development/massy_credit_union/ansible/host_vars/nmncu.chrisdev.com
+ 4113  vim ~/Development/massy_credit_union/ansible/group_vars/all
+ 4114  ssh django@static-web.chrisdev.com
+ 4115  ll
+ 4116  cd host_vars
+ 4117  ll
+ 4118  pws
+ 4119  pwsd
+ 4120  pwd
+ 4121  ll
+ 4122  cd ansible
+ 4123  ll
+ 4124  pwd
+ 4125  git status
+ 4126  cd ~/Development/wagtail-cookiecutter-foundation
+ 4127  ll
+ 4128  cd {{\{\{cookiecutter.project_slug\}\}
+ 4129  git diff
+ 4130  cd ..
+ 4131  make
+ 4132  git status
+ 4133  git add ansible/roles/web/tasks/setup_redis.yml
+ 4134  git commit -m "Ensure redis is install on Ubutu 18"
+ 4135  git push
+ 4136  make pre_task
+ 4137  make deploy_user
+ 4138  ssh confucius.chrisdev.com
+ 4139  ssh root@confucius.chrisdev.com
+ 4140  cd ~/Development/chrisdev_refreshed
+ 4141  ll
+ 4142  cd ansible/chrisdev_refreshed_keystore
+ 4143  cat confucius.chrisdev.com-django-deploy_keys.pub|pbcopy
+ 4144  make provision
+ 4145  vim ~/.ssh/known_hosts
+ 4146  make
+ 4147  nsible-playbook -i ansible/production ansible/provision.yml --tags database
+ 4148  ansible-playbook -i ansible/production ansible/provision.yml --tags database
+ 4149  ansible-playbook -i ansible/production ansible/provision.yml --tags nginx_le
+ 4150  ll
+ 4151  cd ~/Development
+ 4152  ll
+ 4153  cd birdsong_new
+ 4154  ll
+ 4155  ls ansible
+ 4156  pwd
+ 4157  cd ansible
+ 4158  cd birdsong_new_keystore
+ 4159  ll
+ 4160  cat env.production
+ 4161  cat env.production|pbcopy
+ 4162  ll
+ 4163  ansible-playbook -i ansible/production ansible/provision.yml --tags webapp
+ 4164  ssh django@confucius.chrisdev.com
+ 4165  ansible-playbook -i ansible/production ansible/provision.yml --tags database
+ 4166  ssh django@confucius.chrisdev.com
+ 4167  ansible-playbook -i ansible/production ansible/provision.yml --tags redis
+ 4168  ansible-playbook -i ansible/production ansible/provision.yml --tags debug_redis
+ 4169  ansible-playbook -i ansible/production ansible/provision.yml --tags xyz
+ 4170  ansible-playbook -i ansible/production ansible/provision.yml --list-tags
+ 4171  ansible
+ 4172  ansible --version
+ 4173  ansible-playbook -i ansible/production ansible/provision.yml --list-tags
+ 4174  ansible-playbook -i ansible/production ansible/provision.yml --tags redis
+ 4175  ssh django@confucius.chrisdev.com
+ 4176  ansible-playbook -i ansible/production ansible/provision.yml --vvv
+ 4177  ansible-playbook -i ansible/production ansible/provision.yml --tags redis -vv
+ 4178  ansible -i ansible/production setup
+ 4179  ansible -i ansible/production -m setup
+ 4180  ansible confucius.chrisdev.com -m setup
+ 4181  ansible -i ansible/production all -m setup
+ 4182  ansible -i ansible/production all -U django -m setup
+ 4183  ansible-playbook -i ansible/production ansible/provision.yml --tags redis -vv
+ 4184  ansible-playbook -i ansible/production ansible/provision.yml --tags redis -vvv
+ 4185  ansible-playbook -i ansible/production ansible/debug.yml
+ 4186  ansible -i ansible/production all
+ 4187  ansible -i ansible/production all -u django -m setup
+ 4188  ansible-playbook -i ansible/production ansible/provision.yml --tags redis 
+ 4189  ssh django@confucius.chrisdev.com
+ 4190  ansible-playbook -i ansible/production ansible/provision.yml --tags initial_data
+ 4191  ansible-playbook -i ansible/production ansible/provision.yml --tags django
+ 4192  ansible-playbook -i ansible/production ansible/provision.yml --tags gunicorn
+ 4193  ansible-playbook -i ansible/production ansible/provision.yml --tags celery
+ 4194  ansible-playbook -i ansible/production ansible/provision.yml --tags clean_up
+ 4195  ll
+ 4196  git status
+ 4197  git diff
+ 4198  git status
+ 4199  gi diff ansible/roles/web/tasks/main.yml
+ 4200  git diff ansible/roles/web/tasks/main.yml
+ 4201  git add ansible/roles/web/
+ 4202  git commmit -m "Ensure redis installs on Ubuntu 18+"
+ 4203  git commit -m "Ensure redis installs on Ubuntu 18+"
+ 4204  git pull
+ 4205  git push
+ 4206  cd ..
+ 4207  cd wagtail-cookiecutter-foundation
+ 4208  ll
+ 4209  git diff
+ 4210  git status
+ 4211  git checkout {{cookiecutter.project_slug}}/ansible/roles/web/tasks/setup_redis.yml
+ 4212  atom .
+ 4213  status
+ 4214  git status
+ 4215  git checkout {{cookiecutter.project_slug}}/ansible/roles/web/tasks/setup_redis.yml
+ 4216  git checkout -b reddis-fix master
+ 4217  atom .
+ 4218  git commit -m "Address issue #907"
+ 4219  git add .
+ 4220  git commit -m "Address issue #907"
+ 4221  history|git push
+ 4222  git push --set-upstream origin reddis-fix
+ 4223  ll
+ 4224  cd ..
+ 4225  cd good_shepherd_static
+ 4226  git status
+ 4227  git diff
+ 4228  git checkout src/partials/base/facebook_opengraph.html
+ 4229  git pull
+ 4230  atom .
+ 4231  ssh django@confucius.chrisdev.com
+ 4232  cd ~/Development/birdsong_new
+ 4233  ll
+ 4234  cd ansible
+ 4235  cd birdsong_new_keystore
+ 4236  ll
+ 4237  cat authorized_keys
+ 4238  ssh django@birdsongtt.org
+ 4239  ssh django@confucius.chrisdev.com
+ 4240  ssh django@foreign.got.tt
+ 4241  ssh django@foreign.gov.tt
+ 4242  cd ~/Development/django-pandas
+ 4243  ll
+ 4244  atom .
+ 4245  workon django-pandas
+ 4246  python
+ 4247  atom .
+ 4248  git pull
+ 4249  history|grep twine
+ 4250  vim ~/.pypirc
+ 4251  brew search pandoc
+ 4252  brew install pandoc
+ 4253  pandoc
+ 4254  pandoc --help
+ 4255  git status
+ 4256  atom .
+ 4257  which rst2html
+ 4258  which rst2html.py
+ 4259  git status
+ 4260  git add .
+ 4261  git commit -m "Changelog for upcoming release 0.6.0"
+ 4262  deactivate
+ 4263  python3 -m venv ~/Virtualenvs/django-pandas-new
+ 4264  . ~/Virtualenvs/django-pandas-new/bin/activate
+ 4265  python setup.py develop
+ 4266  pip freeze
+ 4267  pip install django
+ 4268  cd ~/Development/django-pandas
+ 4269  ll
+ 4270  python setup.py develop
+ 4271  pip uninstall django-pandas'
+ 4272  pip uninstall django-pandas
+ 4273  python setup.py develop
+ 4274  tox
+ 4275  make clean
+ 4276  python setup.py sdist bdist_wheel 
+ 4277  twine upload --repository testpypi dist/*
+ 4278  jupyter console
+ 4279  ll
+ 4280  cd ~/Development
+ 4281  cd django-pandas
+ 4282  ll
+ 4283  git status
+ 4284  history
+ 4285  ls dist
+ 4286  vim ~/.pypirc
+ 4287  git diff
+ 4288  make clean
+ 4289  python setup.py sdist bdist_wheel 
+ 4290  twine upload --repository pypi dist/*
+ 4291  git status
+ 4292  git commit .
+ 4293  git tag -a 0.6.0
+ 4294  ll
+ 4295  git push
+ 4296  git push --tags
+ 4297  ssh django@textelcu.com
+ 4298  ssh django@birdsongtt.org
+ 4299  ssh django@nmncu.coop
+ 4300  cd ..
+ 4301  cd wagtail-cookiecutter-foundation
+ 4302  git checkout master
+ 4303  git checkout -b certbot-nginx-restart master
+ 4304  ll
+ 4305  atom .
+ 4306  ssh django@confucius.chrisdev.com
+ 4307  git status
+ 4308  git add .
+ 4309  git commit -m "Address issue #599"
+ 4310  git push
+ 4311  git push --set-upstream origin certbot-nginx-restart
+ 4312  cd ~/Development
+ 4313  cd sehon_goodridge_society
+ 4314  git pull
+ 4315  npm start
+ 4316  cd ~/Development/sehon_goodridge_society
+ 4317  ll
+ 4318  atom .
+ 4319  git diff
+ 4320  git status
+ 4321  git add .
+ 4322  git staus
+ 4323  git status
+ 4324  git reset HEAD src/pages/migration.html
+ 4325  git status
+ 4326  git reset HEAD src/assets/img/public-lectue-migration-strangers-in-strange-land-link-share.jpg
+ 4327  git status
+ 4328  git commit -m "Lecture \nStrangers in Strange Lands"
+ 4329  git push
+ 4330  ./sync.sh
+ 4331  git diff
+ 4332  git status
+ 4333  git add .
+ 4334  git commit -m "Update graphics and fix typos"
+ 4335  git push
+ 4336  ./sync.sh
+ 4337  git status
+ 4338  git add .
+ 4339  git -m  "need to do manual cache busting on open data image"
+ 4340  git commit -m  "need to do manual cache busting on open data image"
+ 4341  git push
+ 4342  ./sync
+ 4343  ./sync.sh
+ 4344  ssh django@confucius.chrisdev.com
+ 4345  ping chrisdev.com
+ 4346  ssh django@birdsongtt.org
+ 4347  ssh root@ccmf-uwi.org
+ 4348  jupyter notebook
+ 4349  cd /Users/cclarke/Dropbox/Development/civ_monitor_legacy/notebooks
+ 4350  jpyter console
+ 4351  jupyter console
+ 4352  jupyter notebook
+ 4353  cd ~/Development/goodridge_society_landing
+ 4354  cd ..
+ 4355  ll
+ 4356  cd goodridge_society_landing
+ 4357  ll
+ 4358  cd ..
+ 4359  rm -rf goodridge_society_landing
+ 4360  cd sehon_goodridge_society
+ 4361  ll
+ 4362  atom .
+ 4363  ssh django@foreign.gov.tt
+ 4364  ssh django@msjtnt.org
+ 4365  ping msjtnt.org
+ 4366  ping 165.227.129.194
+ 4367  ssh django@165.227.129.194
+ 4368  npm start
+ 4369  git add .
+ 4370  git commit -m "Remove leaders"
+ 4371  git push
+ 4372  ./sync.sh
+ 4373  git status
+ 4374  which npm
+ 4375  brewupdate 
+ 4376  brew update 
+ 4377  ll
+ 4378  atom .
+ 4379  git status
+ 4380  git add .
+ 4381  git diff 
+ 4382  q
+ 4383  atom .
+ 4384  git diff
+ 4385  git status
+ 4386  git diff
+ 4387  .synch
+ 4388  ll
+ 4389  ./sync.sh
+ 4390  git push
+ 4391  git add .
+ 4392  git commit -m "Add donate to top menu"
+ 4393  git push
+ 4394  cd ..
+ 4395  cd good_shepherd_static
+ 4396  git status
+ 4397  git checkout src/data/events.yml
+ 4398  atom .
+ 4399  git status
+ 4400  npm start
+ 4401  which npm
+ 4402  ./sync.sh
+ 4403  git add .
+ 4404  git commit -m "fixed phone number parish hall"
+ 4405  git push
+ 4406  git statuks
+ 4407  git status
+ 4408  git diff 
+ 4409  npm start
+ 4410  git add .
+ 4411  git status
+ 4412  git commit -m "Clear slider of specific events"
+ 4413  ./sync.sh
+ 4414  ping caribbean-renissance.org
+ 4415  ssh django
+ 4416  ssh django@static-web.chrisdev.com
+ 4417  ll
+ 4418  pwd
+ 4419  ll
+ 4420  you-get https://www.facebook.com/birdsongtt/videos/242438729964880/
+ 4421  pwd
+ 4422  ping eden-charles.com
+ 4423  caribbean-renaissance.org
+ 4424  whois caribbean-renaissance.org
+ 4425  ping caribbean-renaissance.org
+ 4426  whois caribbean-renaissance.org
+ 4427  ping caribbean-renaissance.org
+ 4428  whois eden-charles.com
+ 4429  ping eden-charles.com
+ 4430  lll
+ 4431  ssh django@esmod-forde.com
+ 4432  ssh django@esmond-forde.com
+ 4433  ssh django@workscu.com
+ 4434  ssh django@chrisdev.com
+ 4435  ssh django@knollyclarke.com
+ 4436  ssh django@chrisdev.com
+ 4437  ssh djagno@app.theflybottle.com
+ 4438  ssh django@app.theflybottle.com
+ 4439  ssh django@knollyclarke.com
+ 4440  ssh django@chridev.com
+ 4441  ssh django@chrisdev.com
+ 4442  ping caribbean-renaissance.org
+ 4443  ssh django@skhyfc.com
+ 4444  ssh django@esmond-forde.com
+ 4445  ssh django@wagtail.chrisdev.com
+ 4446  ssh django@static-web.chrisdev.com
+ 4447  cd ~/Development
+ 4448  git clone git@bitbucket.org:ilendl2/caribbean_renaissance_foundation.git
+ 4449  cd caribbean_renaissance_foundation
+ 4450  ll
+ 4451  npm start
+ 4452  npm install
+ 4453  mpm start
+ 4454  npm start
+ 4455  cp ../good_shepherd_static/sync.sh .
+ 4456  ll
+ 4457  vim sync.sh
+ 4458  ./sync.sh
+ 4459  ssh django@static-web.chrisdev.com
+ 4460  ./sync.sh
+ 4461  ssh django@static-web.chrisdev.com
+ 4462  ./sync.sh
+ 4463  ssh django@sacodaserv.com
+ 4464  ssh root@sacodaserv.com
+ 4465  ssh django@static-web.chrisdev.com
+ 4466  ssh django@nmncu.coop
+ 4467  ssh django@sacodaserv.com
+ 4468  ssh root@sacodaserv.com
+ 4469  cd ~/Development/caribbean_renaissance_foundation
+ 4470  ll
+ 4471  git status
+ 4472  git add sync.sh
+ 4473  git commit -m "Add sync script"
+ 4474  git push
+ 4475  ll
+ 4476  ssh django@sacodaserv.com
+ 4477  juptyer notebook
+ 4478  python
+ 4479  python3
+ 4480  jupyter-console
+ 4481  jupyter-notebook
+ 4482  brew
+ 4483  burew update
+ 4484  brew update
+ 4485  /Users/cclarke/Dropbox/ChrisDev/Graphics/Websites/Esmond\ Forde/esmond-forde
+ 4486  ll
+ 4487  you-get https://www.facebook.com/esmond.forde/videos/2373441749352360/
+ 4488  ll
+ 4489  cd ,,
+ 4490  cd ..
+ 4491  cd ~/Development/caribbean_renaissance_foundation
+ 4492  ll
+ 4493  git pull
+ 4494  which git
+ 4495  git 
+ 4496  git upgrade
+ 4497  brew upgrade
+ 4498  xcode-select --install
+ 4499  brew upgrade
+ 4500  brew install ffmpeg
+ 4501  git status
+ 4502  git pull
+ 4503  npm start
+ 4504  npm install
+ 4505  npm start
+ 4506  cd ~/Development/caribbean_renaissance_foundation
+ 4507  npm start
+ 4508  ll
+ 4509  rm -rf node_modules
+ 4510  npm install
+ 4511  npm start
+ 4512  git pull
+ 4513  ./sync.sh
+ 4514  cd ..
+ 4515  ipytnon
+ 4516  jupyter console
+ 4517  ssh django@nmncu.coop
+ 4518  jupyter
+ 4519  jupyter console
+ 4520  python
+ 4521  jupyter console
+ 4522  pip3 search yaml
+ 4523  pip3 install PyYaml
+ 4524  jupyter console
+ 4525  cd ~/Users/cclarke/Dropbox/ChrisDev/Graphics/Websites/Birdsong/Panorma\ 2019 
+ 4526  cd /Users/cclarke/Dropbox/ChrisDev/Graphics/Websites/Birdsong/Panorma\ 2019 
+ 4527  you-get https://youtu.be/8_S4WY16iWg
+ 4528  ll
+ 4529  brew cleanup
+ 4530  ssh django@foreign.gov.tt
+ 4531  cd ~/Desktop
+ 4532  ll
+ 4533  cd ../Desktop
+ 4534  cd ../Documents
+ 4535  cat sgts-diploma-theology-reading-list.csv|pbcopy
+ 4536  cat sgts-diploma-theology-reading-\ list-2018.csv|pbcopy
+ 4537  cat diploma-theology-reading-list.csv|pbcopy
+ 4538  cd /Users/cclarke/Dropbox/ChrisDev/Graphics/Websites/Goodridge\ Society/book-page 
+ 4539  ll
+ 4540  vim books.yml
+ 4541  ll
+ 4542  cd ~/Development/sehon_goodridge_society
+ 4543  ll
+ 4544  git pull
+ 4545  ll
+ 4546  cat sync.sh
+ 4547  npm start
+ 4548  npm install
+ 4549  npm start
+ 4550  rm package.json
+ 4551  ll
+ 4552  rm package-lock.json
+ 4553  git pull
+ 4554  npm install
+ 4555  npm audit fix
+ 4556  git status
+ 4557  git checkout package.json
+ 4558  git status
+ 4559  rm package-lock.json
+ 4560  npm start
+ 4561  npm install
+ 4562  npm audit fix
+ 4563  cd ..
+ 4564  rm -rf sehon_goodridge_society
+ 4565  git clone git clone git@bitbucket.org:ilendl2/sehon_goodridge_society.git
+ 4566  git clone git@bitbucket.org:ilendl2/sehon_goodridge_society.git
+ 4567  cd sehon_goodridge_society
+ 4568  cd ..
+ 4569  brew update npm
+ 4570  brew  update
+ 4571  brew upgrade node
+ 4572  brew upgrade npm
+ 4573  cd sehon_goodridge_society
+ 4574  npm install
+ 4575  npm  start
+ 4576  ll
+ 4577  cd src
+ 4578  ll
+ 4579  cd data
+ 4580  ll
+ 4581  cp /Users/cclarke/Dropbox/ChrisDev/Graphics/Websites/Goodridge\ Society/book-page/books.yml  .
+ 4582  cd ..
+ 4583  git status
+ 4584  git add 
+ 4585  git add .
+ 4586  git commit -m "Add the data for book page"
+ 4587  git push 
+ 4588  cd /Users/cclarke/Dropbox/ChrisDev/Graphics/Websites/Good\ Shepherd/name-badges 
+ 4589  cp good-shepherd-name-tags-dec.avery name-tags-2019-02-15.avery
+ 4590  ll
+ 4591  cd ..
+ 4592  ssh django@register.foreign.gov.tt
+ 4593  ssh django@ccmf-uwi.org
+ 4594  ssh root@ccmf-uwi.org
+ 4595  ssh django@foreign.gov.tt
+ 4596  ssh django@register.chrisdev.com
+ 4597  ssh django@register.foreign.gov.tt
+ 4598  ssh django@workscu.com
+ 4599  ssh djano@birdsongtt.org
+ 4600  ssh django@birdsongtt.org
+ 4601  ssh django@nmncu.coop
+ 4602  ssj django@msjtnt.org
+ 4603  ssh django@msjtnt.org
+ 4604  ssh root@propertyfindertt.com 
+ 4605  ssh django@textelcu.com
+ 4606  ssh django@msjtnt.org
+ 4607  ssh root@sunrisepropertiestt.com
+ 4608  ssh root@sunriseproperties.com
+ 4609  ssh root@sunrisepropertiestt.com
+ 4610  ssh django@foreign.gov.tt
+ 4611  ssh django@wagtail.chrisdev.com
+ 4612  ssh root@wagtail.chrisdev.com
+ 4613  ssh django@static-web.chrisdev.com
+ 4614  ssh django@textelcu.com
+ 4615  cd ~/Development/good_shepherd_static
+ 4616  npm start
+ 4617  git status
+ 4618  cd ..
+ 4619  mv good_shepherd_static good_shepherd_static.old
+ 4620  git clone git@bitbucket.org:ilendl2/good_shepherd_static.git
+ 4621  cd good_shepherd_static
+ 4622  npm install
+ 4623  npm start
+ 4624  cd ~/Development/good_shepherd_static
+ 4625  ll
+ 4626  git status
+ 4627  atom .
+ 4628  cd ../good_shepherd_static.old
+ 4629  git status
+ 4630  git log
+ 4631  git push
+ 4632  cd ../good_shepherd_static
+ 4633  git pull
+ 4634  npm start
+ 4635  git status
+ 4636  atom .
+ 4637  npm start
+ 4638  cd ~/Development/good_shepherd_static
+ 4639  ll
+ 4640  git status
+ 4641  atom .
+ 4642  ll
+ 4643  npm start
+ 4644  cd ~/Development/good_shepherd_static
+ 4645  npm start
+ 4646  git status
+ 4647  npm start
+ 4648  atom .
+ 4649  npm start
+ 4650  git status
+ 4651  git add .
+ 4652  git status
+ 4653  git commit -m "Updates for Lent"
+ 4654  git push
+ 4655  npn start
+ 4656  npm start
+ 4657  git status
+ 4658  git add .
+ 4659  git commit -m "Add notice about AGM"
+ 4660  git status
+ 4661  npm build
+ 4662  ll
+ 4663  ./sync.sh
+ 4664  ssh root@ccmf-uwi.org
+ 4665  jupyter console
+ 4666  git status
+ 4667  npm --help
+ 4668  npm audit
+ 4669  npm update
+ 4670  brew status
+ 4671  brew update
+ 4672  npm --help
+ 4673  npm help config
+ 4674  npm install
+ 4675  ssh root@ccmf-uwi.org
+ 4676  ssh root@uniquelyu.com
+ 4677  ssh root@uniiquelyu.com
+ 4678  jupyter concole
+ 4679  jupyter console
+ 4680  ssh root@ccmf-uwi.org
+ 4681  brew doctor
+ 4682  brew update
+ 4683  python
+ 4684  python3
+ 4685  cd Development/caribbean_renaissance_foundation
+ 4686  cd ..
+ 4687  cd /Users/cclarke/Dropbox/ChrisDev/Graphics/Websites/Good\ Shepherd/church-dedication-service 
+ 4688  ll
+ 4689  you-get https://www.facebook.com/goodshepherdtt/videos/2205059579771023/
+ 4690  ll
+ 4691  open Rededication\ Service\ -\ The\ Parish\ of\ The\ Good\ Shepherd\ and\ St.\ Oswald\'s\ Caroni.mp4
+ 4692  ssh root@ccmf-uwi.org
+ 4693  ssh django@esmond-forde.com
+ 4694  ssh django@workscu.com
+ 4695  ssh djaongo@skhyfc.com
+ 4696  ssh django@skhyfc.com
+ 4697  jupyther console
+ 4698  jupyter console
+ 4699  ssh django@nmncu.coop
+ 4700  ssh django@msjtnt.org
+ 4701  ssh root@ccmf-uwi.org
+ 4702  jpyter console
+ 4703  jupyter console
+ 4704  ssh django@static-web.chrisdev.com
+ 4705  jupyter console
+ 4706  ssh djago@nmncu.coop
+ 4707  ssh django@nmncu.coop
+ 4708  ssh django@workscu.com
+ 4709  cd /Users/cclarke/Dropbox/Development/workscu/workscu/static 
+ 4710  ll
+ 4711  cd images
+ 4712  ll
+ 4713  tar cvzf favicons.tar.gz favicons
+ 4714  scp favicons.tar.gz django@workscu.com:.
+ 4715  ll
+ 4716  pwd
+ 4717  ll
+ 4718  cd ..
+ 4719  pwd
+ 4720  scp favicon.ico django@workscu.com:/usr/local/sites/workscu_wagtail/static/.
+ 4721  scp favicon.ico django@workscu.com:.
+ 4722  cd ~/Development/django-pandas
+ 4723  git pull
+ 4724  atom .
+ 4725  ll
+ 4726  pip install flake8
+ 4727  history|grep twine
+ 4728  git status
+ 4729  git add .
+ 4730  git commit -m "Changelog for upcomming release 0.6.1"
+ 4731  tox
+ 4732  make clean
+ 4733  python setup.py develop
+ 4734  history grep |twine
+ 4735  history|grep twine
+ 4736  cd 
+ 4737  ll
+ 4738  vim .pypirc
+ 4739  history|grep setup.py stdist bdist_wheel
+ 4740  history|grep "setup.py stdist"
+ 4741  history|grep setup
+ 4742  python setup.py sdist bdist_wheel --universal
+ 4743  cd ~/Development/django_pandas_article
+ 4744  python setup.py sdist bdist_wheel
+ 4745  cd ..
+ 4746  cd django-pandas
+ 4747  python setup.py stdist bdist_wheel
+ 4748  python setup.py sdist bdist_wheel
+ 4749  make clean
+ 4750  python setup.py sdist bdist_wheel --universal
+ 4751  history|grep twine
+ 4752  twine upload --repository testpypi dist/*
+ 4753  vim .pypirc
+ 4754  twine upload --repository testpypi dist/*
+ 4755  python3 venv funky
+ 4756  python3 -m venv funky
+ 4757  funky/bin/activate
+ 4758  source funky/bin/activate
+ 4759  pip install -i https://test.pypi.org/simple/ django-pandas
+ 4760  pip install pandas
+ 4761  pip install -i https://test.pypi.org/simple/ django-pandas
+ 4762  python
+ 4763  twine upload --repository pypi dist/*
+ 4764  ll
+ 4765  ssh django@workscu.com
+ 4766  cd ~/Development/workscu
+ 4767  atom .
+ 4768  cd ..
+ 4769  cd workscu_wagtail
+ 4770  git status
+ 4771  atam .
+ 4772  atom .
+ 4773  git pull
+ 4774  make env
+ 4775  make
+ 4776  make develop_env
+ 4777  . venv/bin/activate
+ 4778  pip freeze
+ 4779  cd ..
+ 4780  ll -a
+ 4781  cd workscu_wagtail
+ 4782  ll
+ 4783  rm -r venv
+ 4784  make
+ 4785  make virtualenv
+ 4786  pip freeze
+ 4787  make migrate
+ 4788  cd ..
+ 4789  cd workscu_wagtail
+ 4790  deactivate
+ 4791  make develop_env
+ 4792  git pull
+ 4793  make develop_env
+ 4794  make
+ 4795  make migrate
+ 4796  make runserver
+ 4797  ssh django@workscu.com
+ 4798  cd ../django-pandas
+ 4799  git status
+ 4800  git pull
+ 4801  atom .
+ 4802  ll
+ 4803  cd ~/Development/good_shepherd_static
+ 4804  git status
+ 4805  git diff
+ 4806  git add .
+ 4807  git commit -m "Hang over for pervious committ"
+ 4808  git pull
+ 4809  npm start
+ 4810  cd ~/Development/good_shepherd_static
+ 4811  atom .
+ 4812  npm start
+ 4813  git status
+ 4814  git diff src/pages/index.html
+ 4815  w
+ 4816  git checkout src/data/events.yml
+ 4817  npm start
+ 4818  git status
+ 4819  git add .
+ 4820  git commit -m "Update notices and events on homepage"
+ 4821  git push
+ 4822  ll
+ 4823  ./sync.sh
+ 4824  npm start
+ 4825  git status
+ 4826  git add .
+ 4827  git commit -m "Holy week slider"
+ 4828  git push
+ 4829  ./sync.sh
+ 4830  npm start
+ 4831  ll
+ 4832  ./sync.sh
+ 4833  git status
+ 4834  git add .
+ 4835  git commit -m "fix various typos"
+ 4836  git push
+ 4837  cd ~/Development/good_shepherd_static
+ 4838  git status
+ 4839  atom .
+ 4840  npm start
+ 4841  ssh django@chrisdev.com
+ 4842  ssh root@ccmf-uwi.org
+ 4843  ssh root@sacodaserv.com
+ 4844  ssh static-web.chrisdev.com
+ 4845  ssh django@static-web.chrisdev.com
+ 4846  ssh root@ccmf-uwi.org
+ 4847  ssh django@rsna.chrisdev.com
+ 4848  jupyter console
+ 4849  ssh django@static-web.chrisdev.com
+ 4850  jupyter console
+ 4851  ssh root@ccmf-uwi.org
+ 4852  ssh django@foreign.gov.tt
+ 4853  ssh root@162.243.218.183
+ 4854  ssh django@wagtail.chrisdev.com
+ 4855  ssh root@wagtail.chrisdev.com
+ 4856  ssh django@textelcu.com
+ 4857  ssh django@static-web.chrisdev.com
+ 4858  ssh root@ccmf-uwi.org
+ 4859  ssh django@198.199.64.49
+ 4860  ssh root@ccmf-uwi.org
+ 4861  ssh static-web.chrisdev.com
+ 4862  ssh django@static-web.chrisdev.com
+ 4863  ssh root@wagtail.chrisdev.com
+ 4864  ssh django@static-web.chrisdev.com
+ 4865  cd ~/Desktop
+ 4866  ll
+ 4867  vim msj-paypal-button.txt
+ 4868  ssh django@register.foreign.gov.tt
+ 4869  cd 
+ 4870  cd ccmfuwi
+ 4871  pwd
+ 4872  cd Desktop
+ 4873  ll
+ 4874  pwd
+ 4875  ll
+ 4876  cd ccmfuwi
+ 4877  ll
+ 4878  pwd
+ 4879  ssh root@ccmf-uwi.org
+ 4880  scp offline.html root@ccmf-uwi.org:/var/www/html/
+ 4881  ssh root@ccmf-uwi.org
+ 4882  cd ~/Desktop
+ 4883  cd ccmfuwi
+ 4884  ll
+ 4885  scp root@ccmf-uwi.org:/var/html/offline/index.html .
+ 4886  scp root@ccmf-uwi.org:/var/www/html/offline/index.html .
+ 4887  jupyter console
+ 4888  cd ~/Development
+ 4889  ll
+ 4890  cd msj_site
+ 4891  git status
+ 4892  make deploy
+ 4893  git pull
+ 4894  make develop_env
+ 4895  rm -rf venv
+ 4896  make develop_env
+ 4897  dropdb msj_site
+ 4898  make develop_env
+ 4899  ssh django@msjtnt.org
+ 4900  ll
+ 4901  atom .
+ 4902  ssh django@msjtnt.com
+ 4903  ssh django@msjtnt.org
+ 4904  git pull
+ 4905  ssh django@msjtnt.chrisdev.com
+ 4906  make deploy
+ 4907  ll
+ 4908  ssh django@msjtnt.org
+ 4909  jupyter console
+ 4910  cd ..
+ 4911  ssh root@ccmf-uwi.org
+ 4912  jupyter console
+ 4913  ssh root@ccmf-uwi.org
+ 4914  ssh django@esmond-forde.com
+ 4915  ssh django@workscu.com
+ 4916  ssh django@static-web.chrisdev.com
+ 4917  ssh django@skhyfc.com
+ 4918  ssh root@ccmf-uwi.org
+ 4919  cd ~/Desktop
+ 4920  ll
+ 4921  ll -l|less
+ 4922  ll -lt|less
+ 4923  ssh django@msjtnt.org
+ 4924  ssh django@nmncu.coop
+ 4925  ssh root@ccmf-uwi.org
+ 4926  ssh django@wagtail.chrisdev.com
+ 4927  ssh root@wagtail.chrisdev.com
+ 4928  ssh django@chrisdev.com
+ 4929  ssh django
+ 4930  ssh django@propertyfindertt.com
+ 4931  ssh django@chrisdev.com
+ 4932  jupyter console
+ 4933  ssh django@static-web.chrisdev.com
+ 4934  jupyter console
+ 4935  ping ccmf-uwi.org
+ 4936  ssh root@ccmf-uwi.org
+ 4937  jupyter console
+ 4938  ssh django@foreign.gov.tt
+ 4939  cd ~/Dropbox
+ 4940  cd Development/good_shepherd_static
+ 4941  ll
+ 4942  git pull
+ 4943  npm start
+ 4944  npm update
+ 4945  npm start
+ 4946  history
+ 4947  npm install
+ 4948  npm start
+ 4949  cd Development/good_shepherd_static
+ 4950  ll
+ 4951  gits status
+ 4952  git status
+ 4953  atom .
+ 4954  cd ..
+ 4955  cd ~
+ 4956  cd /Users/cclarke/Library/Mobile\ Documents/com~apple~CloudDocs/NewDevelopment 
+ 4957  ll
+ 4958  pip install coookiecutter
+ 4959  pip install cookiecutter
+ 4960  pip install -u cookiecutter
+ 4961  pip install --upgrade cookiecutter
+ 4962  python3
+ 4963  pip3 cookiecutter
+ 4964  pip3 install cookiecutter
+ 4965  cookiecutter --version
+ 4966  cookiecutter https://github.com/chrisdev/wagtail-cookiecutter-foundation.git
+ 4967  ll
+ 4968  cd church_of_the_good_shepherd
+ 4969  ll
+ 4970  make develop_env
+ 4971  env
+ 4972  export LC_ALL="en_US.UTF-8"
+ 4973  env
+ 4974  export LC_CTYPE="en_US.UTF-8"
+ 4975  make develop_env
+ 4976  dropdb church_of_the_good_shepherd
+ 4977  make develop_env
+ 4978  jupyter console
+ 4979  ssh django@static-web.chrisdev.com
+ 4980  jpyter console
+ 4981  jupyter console
+ 4982  ssh django@textelcu.com
+ 4983  ssh django@rsna.chrisdev.com
+ 4984  ssh django@birdsongtt.org
+ 4985  cd ~/Development/massy_credit_union
+ 4986  ll
+ 4987  git status
+ 4988  git pull
+ 4989  git status
+ 4990  make runserver
+ 4991  cd venv
+ 4992  cd ..
+ 4993  rm -r venv
+ 4994  make develop_env
+ 4995  make runserver
+ 4996  make develop_env
+ 4997  ssh django@nmncu.coop
+ 4998  ping nmncu.coop
+ 4999  ping nmcu.coop
+ 5000  ssh django@165.227.106.7
+ 5001  dig all nmncu.coop
+ 5002  dig all birdsongtt.org
+ 5003  dig all nmncu.coop
+ 5004  dig all nmcu.coop
+ 5005  ssh django@birdsongtt.org
+ 5006  dig all nmcu.coop
+ 5007  dig all nmncu.coop
+ 5008  ssh django@165.227.106.7
+ 5009  ssh django@skhyfc.com
+ 5010  ssh django@nmncu.coop
+ 5011  whois nmncu.coop
+ 5012  ssh root@sacodaserv.com
+ 5013  ssh django@esmond-forde.com
+ 5014  ssh django@workscu.com
+ 5015  jupyter console
+ 5016  ssh django@msjtnt.org
+ 5017  ssh django@foreign.gov.tt
+ 5018  ll
+ 5019  cd ~/Dropbox
+ 5020  ll
+ 5021  cd Development
+ 5022  ll
+ 5023  cd mfa_new
+ 5024  ll
+ 5025  git status
+ 5026  git pull
+ 5027  make 
+ 5028  make runserver
+ 5029  which python
+ 5030  wokon 
+ 5031  workon
+ 5032  rm venv
+ 5033  rm -rf venv
+ 5034  make develop_env
+ 5035  make migrate
+ 5036  rm -rf venv
+ 5037  git pull
+ 5038  make develop_env
+ 5039  make migrate
+ 5040  make runserver
+ 5041  make deploy
+ 5042  brew
+ 5043  brew install ghostscript
+ 5044  atom
+ 5045  cd ~/Desktop
+ 5046  vim performers
+ 5047  ssh djago@register.foreign.gov.tt
+ 5048  ssh django@register.foreign.gov.tt
+ 5049  ssh django@chrisdev.com
+ 5050  cd ~/Dropbox/Development/birdsong_new
+ 5051  git pull
+ 5052  . venv/bin/activate
+ 5053  make runserver
+ 5054  rm -rf venv
+ 5055  dropdb birdsong_new
+ 5056  make develop_env
+ 5057  ssh django@birdsongtt.org
+ 5058  make deploy
+ 5059  cd ~/Development/birdsong_new
+ 5060  git pull
+ 5061  rm -rf .venv
+ 5062  ll
+ 5063  make dev_env
+ 5064  make develop_env
+ 5065  dropdb birdsong_new
+ 5066  make develop_env
+ 5067  cd ~/Development/birdsong_new
+ 5068  ll
+ 5069  . venv/bin/activate
+ 5070  ./manage.py shell_plus
+ 5071  atom .
+ 5072  pip search mailjet
+ 5073  pip install mailjet_rest
+ 5074  touch .env
+ 5075  make runserver
+ 5076  ./manage.py shell_plus
+ 5077  shell_plus
+ 5078  ./manage.py shell_plus 
+ 5079  python manage.py ruserver
+ 5080  python manage.py runserver
+ 5081  which python
+ 5082  python
+ 5083  jupyter notebook
+ 5084  pip install mailjet_rest
+ 5085  jupyter notebook
+ 5086  which jupyter
+ 5087  which python3
+ 5088  pip3 install mailjet_client
+ 5089  pip3 install mailjet_rest
+ 5090  jupyter console
+ 5091  jupyter notebook
+ 5092  python manage.py runserver
+ 5093  vim url -s \\n    -X POST \\n    --user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n        "Messages":[\n                {\n                        "From": {\n                                "Email": "pilot@mailjet.com",\n                                "Name": "Mailjet Pilot"\n                        },\n                        "To": [\n                                {\n                                        "Email": "passenger1@mailjet.com",\n                                        "Name": "passenger 1"\n                                }\n                        ],\n                        "TextPart": "Dear passenger, welcome to Mailjet! On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "HTMLPart": "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br /> On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "TemplateLanguage": true,\n                        "Subject": "Your email flight plan!",\n                        "Variables": {\n                                "day": "Tuesday",\n                                "personalmessage": "Happy birthday!"\n                        }\n                }\n        ]\n  \n\n"\n'
+ 5094  vim junk
+ 5095  url -s \\n    -X POST \\n    --user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n        "Messages":[\n                {\n                        "From": {\n                                "Email": "pilot@mailjet.com",\n                                "Name": "Mailjet Pilot"\n                        },\n                        "To": [\n                                {\n                                        "Email": "passenger1@mailjet.com",\n                                        "Name": "passenger 1"\n                                }\n                        ],\n                        "TextPart": "Dear passenger, welcome to Mailjet! On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "HTMLPart": "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br /> On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "TemplateLanguage": true,\n                        "Subject": "Your email flight plan!",\n                        "Variables": {\n                                "day": "Tuesday",\n                                "personalmessage": "Happy birthday!"\n                        }\n                }\n        ]\n    }'\nMailjet Send API allows you to leverage the Mailjet templating language in your transactional messages.url -s \\n    -X POST \\n    --user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n        "Messages":[\n                {\n                        "From": {\n                                "Email": "pilot@mailjet.com",\n                                "Name": "Mailjet Pilot"\n                        },\n                        "To": [\n                                {\n                                        "Email": "passenger1@mailjet.com",\n                                        "Name": "passenger 1"\n                                }\n                        ],\n                        "TextPart": "Dear passenger, welcome to Mailjet! On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "HTMLPart": "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br /> On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "TemplateLanguage": true,\n                        "Subject": "Your email flight plan!",\n                        "Variables": {\n                                "day": "Tuesday",\n                                "personalmessage": "Happy birthday!"\n                        }\n                }\n        ]\n    }'
+ 5096  url -s \\n    -X POST \\n    --user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n        "Messages":[\n                {\n                        "From": {\n                                "Email": "pilot@mailjet.com",\n                                "Name": "Mailjet Pilot"\n                        },\n                        "To": [\n                                {\n                                        "Email": "passenger1@mailjet.com",\n                                        "Name": "passenger 1"\n                                }\n                        ],\n                        "TextPart": "Dear passenger, welcome to Mailjet! On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "HTMLPart": "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br /> On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "TemplateLanguage": true,\n                        "Subject": "Your email flight plan!",\n                        "Variables": {\n                                "day": "Tuesday",\n                                "personalmessage": "Happy birthday!"\n                        }\n                }\n        ]\n    }'\nMailjet Send API allows you to leverage the Mailjet templating language in y
+ 5097  Mailjet Send API allows you to leverage the Mailjet templating language in y\nhttps://api.mailjet.com/v3.1/sendurl -s \\n    -X POST \\n    --user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n        "Messages":[\n                {\n                        "From": {\n                                "Email": "pilot@mailjet.com",\n                                "Name": "Mailjet Pilot"\n                        },\n                        "To": [\n                                {\n                                        "Email": "passenger1@mailjet.com",\n                                        "Name": "passenger 1"\n                                }\n                        ],\n                        "TextPart": "Dear passenger, welcome to Mailjet! On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "HTMLPart": "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br /> On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "TemplateLanguage": true,\n                        "Subject": "Your email flight plan!",\n                        "Variables": {\n                                "day": "Tuesday",\n                                "personalmessage": "Happy birthday!"\n                        }\n                }\n        ]\n    }'\nMailjet Send API allows you to leverage the Mailjet templating language in your transactional messages.1450dce0b06cffbee2451642e24d4149url -s \\n    -X POST \\n    --user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n        "Messages":[\n                {\n                        "From": {\n                                "Email": "pilot@mailjet.com",\n                                "Name": "Mailjet Pilot"\n                        },\n                        "To": [\n                                {\n                                        "Email": "passenger1@mailjet.com",\n                                        "Name": "passenger 1"\n                                }\n                        ],\n                        "TextPart": "Dear passenger, welcome to Mailjet! On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "HTMLPart": "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br /> On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "TemplateLanguage": true,\n                        "Subject": "Your email flight plan!",\n                        "Variables": {\n                                "day": "Tuesday",\n                                "personalmessage": "Happy birthday!"\n                        }\n                }\n        ]\n    }'\nMailjet Send API allows you to leverage the Mailjet templating language in your transactional messages.url -s \\n    -X POST \\n    --user "$MJ_APIKEY_PUBLIC:$MJ_APIKEY_PRIVATE" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n        "Messages":[\n                {\n                        "From": {\n                                "Email": "pilot@mailjet.com",\n                                "Name": "Mailjet Pilot"\n                        },\n                        "To": [\n                                {\n                                        "Email": "passenger1@mailjet.com",\n                                        "Name": "passenger 1"\n                                }\n                        ],\n                        "TextPart": "Dear passenger, welcome to Mailjet! On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "HTMLPart": "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br /> On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "TemplateLanguage": true,\n                        "Subject": "Your email flight plan!",\n                        "Variables": {\n                                "day": "Tuesday",\n                                "personalmessage": "Happy birthday!"\n                        }\n                }\n        ]\n    }'\nMailjet Send API allows you to leverage the Mailjet templating language in your transactional messages.
+ 5098  curl -s \\n    -X POST \\n    --user "1450dce0b06cffbee2451642e24d4149:dc1b57d45412e2ca7c2475e187ca5fd6" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n        "Messages":[\n                {\n                        "From": {\n                                "Email": "support@birdsongtt.org",\n                                "Name": "Mailjet Pilot"\n                        },\n                        "To": [\n                                {\n                                        "Email": cclarke@chrisdev.com",\n                                        "Name": "passenger 1"\n                                }\n                        ],\n                        "TextPart": "Dear passenger, welcome to Mailjet! On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "HTMLPart": "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br /> On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "TemplateLanguage": true,\n                        "Subject": "Your email flight plan!",\n                        "Variables": {\n                                "day": "Tuesday",\n                                "personalmessage": "Happy birthday!"\n                        }\n                }\n        ]\n    }'
+ 5099  curl -s \\n    -X POST \\n    --user "1450dce0b06cffbee2451642e24d4149:dc1b57d45412e2ca7c2475e187ca5fd6" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n        "Messages":[\n                {\n                        "From": {\n                                "Email": "support@birdsongtt.org",\n                                "Name": "Mailjet Pilot"\n                        },\n                        "To": [\n                                {\n                                        "Email": "cclarke@chrisdev.com",\n                                        "Name": "passenger 1"\n                                }\n                        ],\n                        "TextPart": "Dear passenger, welcome to Mailjet! On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "HTMLPart": "<h3>Dear passenger, welcome to <a href=\"https://www.mailjet.com/\">Mailjet</a>!<br /> On this {{var:day:\"monday\"}}, may the delivery force be with you! {{var:personalmessage:\"\"}}",\n                        "TemplateLanguage": true,\n                        "Subject": "Your email flight plan!",\n                        "Variables": {\n                                "day": "Tuesday",\n                                "personalmessage": "Happy birthday!"\n                        }\n                }\n        ]\n    }'\n
+ 5100  curl -s \\n    -X POST \\n    --user "1450dce0b06cffbee2451642e24d4149:dc1b57d45412e2ca7c2475e187ca5fd6" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n    'Messages': [\n                     {\n                      "From": {\n                               "Email": "support@birdsongtt.org",\n                               "Name": "Alisha"\n                       },\n                      "To": [\n                             {\n                              "Email": "cclarke@chrisdev.com",\n                              "Name": "Marky Mark" \n                             }\n                       ],\n                      "TemplateID": 966069,\n                      "TemplateLanguage": True,\n                      "Subject": "Welcome to the birdsong Pan for the People Workshop",\n                      "Variables": {first_name: first_name}\n                     }\n                   ]\n             }'\n
+ 5101  curl -s \\n    -X POST \\n    --user "1450dce0b06cffbee2451642e24d4149:dc1b57d45412e2ca7c2475e187ca5fd6" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n    'Messages': [\n                     {\n                      "From": {\n                               "Email": "support@birdsongtt.org",\n                               "Name": "Alisha"\n                       },\n                      "To": [\n                             {\n                              "Email": "cclarke@chrisdev.com",\n                              "Name": "Marky Mark" \n                             }\n                       ],\n                      "TemplateID": 966069,\n                      "TemplateLanguage": True,\n                      "Subject": "Welcome to the birdsong Pan for the People Workshop",\n                      "Variables": {first_name: first_name}\n                     }\n                   ]\n             }'
+ 5102  curl -s \\n    -X POST \\n    --user "1450dce0b06cffbee2451642e24d4149:dc1b57d45412e2ca7c2475e187ca5fd6" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n    'Messages': [\n                     {\n                      "From": {\n                               "Email": "support@birdsongtt.org",\n                               "Name": "Alisha"\n                       },\n                      "To": [\n                             {\n                              "Email": "cclarke@chrisdev.com",\n                              "Name": "Marky Mark"\n                             }\n                       ],\n                      "TemplateID": 966069,\n                      "TemplateLanguage": True,\n                      "Subject": "Welcome to the birdsong Pan for the People Workshop",\n                      "Variables": {"first_name": "Chris"}\n                     }\n                   ]\n             }'\n
+ 5103  curl -s \\n    -X POST \\n    --user "1450dce0b06cffbee2451642e24d4149:dc1b57d45412e2ca7c2475e187ca5fd6" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n    'Messages': [\n                     {\n                      "From": {\n                               "Email": "support@birdsongtt.org",\n                               "Name": "Alisha"\n                       },\n                      "To": [\n                             {\n                              "Email": "cclarke@chrisdev.com",\n                              "Name": "Marky Mark"\n                             }\n                       ],\n                      "TemplateID": 966069,\n                      "TemplateLanguage": True,\n                      "Subject": "Welcome to the birdsong Pan for the People Workshop",\n                     }\n                   ]\n             }'\n
+ 5104  curl -s \\n    -X POST \\n    --user "1450dce0b06cffbee2451642e24d4149:dc1b57d45412e2ca7c2475e187ca5fd6" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n    "Messages":[\n      {\n        "From": {\n          "Email": "support@birdsongtt.org",\n          "Name": "Alisha"\n        },\n        "To": [\n          {\n            "Email": "passenger1@example.com",\n            "Name": "passenger 1"\n          }\n        ],\n        "TemplateID": 966069,\n        "TemplateLanguage": true,\n        "Subject": "Welcome to the Pan for the People Workshop",\n        "Variables": {\n    "first_name": "Friend"\n    }\n      }\n    ]\n  }'
+ 5105  curl -s \\n    -X POST \\n    --user "1450dce0b06cffbee2451642e24d4149:dc1b57d45412e2ca7c2475e187ca5fd6" \\n    https://api.mailjet.com/v3.1/send \\n    -H 'Content-Type: application/json' \\n    -d '{\n    "Messages":[\n      {\n        "From": {\n          "Email": "support@birdsongtt.org",\n          "Name": "Alisha"\n        },\n        "To": [\n          {\n            "Email": "cclarke@chrisdev.com",\n            "Name": "passenger 1"\n          }\n        ],\n        "TemplateID": 966069,\n        "TemplateLanguage": true,\n        "Subject": "Welcome to the Pan for the People Workshop",\n        "Variables": {\n    "first_name": "Friend"\n    }\n      }\n    ]\n  }'\n
+ 5106  pip freeze
+ 5107  pip freeze|grep mailjet
+ 5108  git status
+ 5109  make runserver
+ 5110  cd ~/Dropbox/Development/birdsong_new
+ 5111  ll
+ 5112  git status
+ 5113  git add birdsong_new/settings
+ 5114  git add contact/models.py
+ 5115  git add requirements
+ 5116  git commit -m "Address issue #68 registration mail"
+ 5117  make runserver
+ 5118  git status
+ 5119  git push
+ 5120  pip freeze
+ 5121  pip freeze|grep mailjet
+ 5122  git status
+ 5123  git add requirements
+ 5124  git commit -m "Address issue #68"
+ 5125  git push
+ 5126  ssh django@birdsongtt.org
+ 5127  jupyter console
+ 5128  cd ~/Development/birdsong_new
+ 5129  ll
+ 5130  git status
+ 5131  atom .
+ 5132  make runserver
+ 5133  . venv/bin/activate
+ 5134  pip freeze
+ 5135  pip freeze|ipdb
+ 5136  pip freeze|grep ipdb
+ 5137  pip install ipdb==0.10
+ 5138  python manage.py shell_plus
+ 5139  python manage.py --jupyter
+ 5140  python manage.py shell_plus --jupyter
+ 5141  python manage.py shell_plus --ipython
+ 5142  pip unistall ipython
+ 5143  pip unistall  ipdb
+ 5144  pip uninstall  ipdb
+ 5145  cd Dropbox/Development/birdsong_new
+ 5146  ll
+ 5147  git status
+ 5148  ll
+ 5149  . venv/bin/activate
+ 5150  pip uninstall pdb
+ 5151  pip uninstall ipdb
+ 5152  pip intall bpython
+ 5153  pip intsall bpython
+ 5154  pip intstall bpythn
+ 5155  pip install bpython
+ 5156  ./manage.py shell_plus
+ 5157  pip uninstall bpython
+ 5158  pip install ptpython
+ 5159  ./manage.py shell_plus
+ 5160  pip uninstall ptpython
+ 5161  python shell_plus
+ 5162  ./manage.py shell_plus
+ 5163  cd ~/Dropbox/Development/birdsong_new
+ 5164  ll
+ 5165  git status
+ 5166  ./manage.py runserver
+ 5167  . venv/bin/activate
+ 5168  ./manage.py runserver
+ 5169  git status
+ 5170  git pull
+ 5171  ll
+ 5172  git push
+ 5173  make deploy
+ 5174  cd ~/Development/birdsong_new
+ 5175  git status
+ 5176  atom .
+ 5177  . venv/bin/activate
+ 5178  ./manage.py --help
+ 5179  ./manage.py makemigrations
+ 5180  ./manage.py migrate
+ 5181  make runserver
+ 5182  ./manage.py makemigrations
+ 5183  ./manage.py migrate
+ 5184  make runserver
+ 5185  git status
+ 5186  make runserver
+ 5187  git status
+ 5188  git add contact
+ 5189  git status
+ 5190  git push
+ 5191  make deploy
+ 5192  make runserver
+ 5193  make deploy
+ 5194  git status
+ 5195  ssh django@foreign.gov.tt
+ 5196  ssh django@birdsongtt.org
+ 5197  cclarke@birdsongtt.org
+ 5198  ssh cclarke@birdsongtt.org
+ 5199  ssh root@birdsongtt.org
+ 5200  ssh django@birdsongtt.org
+ 5201  cd ~/Development/mfa_new
+ 5202  make runserver
+ 5203  pip freeze|less
+ 5204  ssh django@mfa.chrisdev.com
+ 5205  git pull
+ 5206  dropdb mfa_new
+ 5207  rm -rf venv
+ 5208  make develop_env
+ 5209  atom .
+ 5210  . venv/bin/activate
+ 5211  atom .
+ 5212  make migrate
+ 5213  . venv/bin/activate
+ 5214  pip freeze
+ 5215  ssh django@mfa.chrisdev.com
+ 5216  pwd
+ 5217  make migrate
+ 5218  pwd
+ 5219  git pull
+ 5220  git stash
+ 5221  git pull
+ 5222  rm -rf venv
+ 5223  deactivate
+ 5224  make develop_env
+ 5225  make migrate
+ 5226  make runserver
+ 5227  ssh django@birdsongtt.org
+ 5228  ssh root@birdongtt.org
+ 5229  ssh root@birdsongtt.org
+ 5230  ssh django@foreign.gov.tt
+ 5231  droopdb
+ 5232  dropdb mfa_new
+ 5233  git pull
+ 5234  make develop_env
+ 5235  ipython console
+ 5236  jupyter console
+ 5237  ssh django@register.foreign.gov.tt
+ 5238  ssh django@foreign.gov.tt
+ 5239  ssh django@register.gov.tt
+ 5240  ssh django@register.foreign.gov.tt
+ 5241  ll
+ 5242  cd  ~/Development/birdsong_new
+ 5243  . venv/bin/activate
+ 5244  atom .
+ 5245  deactivate
+ 5246  jupyter console
+ 5247  ping intelligentcontrols.io
+ 5248  ll
+ 5249  ping  nealandmassycu.com 
+ 5250  ping nmncu.coop
+ 5251  jupyther console
+ 5252  jupyter console
+ 5253  cd ~/Development/birdsong_new
+ 5254  git status
+ 5255  git pull
+ 5256  make runserver
+ 5257  . venv/bin/activate
+ 5258  pip freeze'\n'
+ 5259  pip freeze\n'
+ 5260  pip freeze
+ 5261  atom .
+ 5262  pip install black
+ 5263  make runserver
+ 5264  deactivate
+ 5265  jupyter console
+ 5266  ll
+ 5267  ssh django@register.foreign.gov.tt
+ 5268  dig all  nealandmassycu.com
+ 5269  dig all nealandmassycu.coop
+ 5270  dig NS nealandmassycu.coop
+ 5271  dig +short NS  nealandmassycu.coop
+ 5272  ping  nealandmassycu.coop
+ 5273  dig  nealandmassycu.coop
+ 5274  dig  nealandmassycu.com
+ 5275  ssh django@nmncu.coop
+ 5276  sudo su -
+ 5277  ssh django@nmncu.coop
+ 5278  curl -I http://nealandmassycu.com
+ 5279  curl -I https://nealandmassycu.com
+ 5280  curl -I https://www.nealandmassycu.com
+ 5281  cd /Users/cclarke/Library/Mobile\ Documents/
+ 5282  ll
+ 5283  open
+ 5284  pwd
+ 5285  ll
+ 5286  cd ..
+ 5287  open Mobile\ Documents
+ 5288  cd /Users/cclarke/Library/Mobile\ Documents/iCloud~com~belightsoft~SwiftPublisher5/Documents/
+ 5289  ll
+ 5290  open .
+ 5291  ssh root@ccmf-uwi.org
+ 5292  cd /Users/cclarke/Library/Mobile\ Documents/iCloud~com~belightsoft~SwiftPublisher5/Documents/
+ 5293  open .
+ 5294  curl -I https://www.nealandmassycu.com
+ 5295  curl -I https://www.nealandmassycu.coop
+ 5296  curl -I https://nealandmassycu.coop
+ 5297  dig  nealandmassycu.com
+ 5298  ssh django@nmncu.coop
+ 5299  brew search xquartz
+ 5300  brew install xquartz
+ 5301  brew install xquatz
+ 5302  ssh django@skhyfc.com
+ 5303  ssh django@intelligentcontrols.com
+ 5304  ssh django@intelligentcontrols.io
+ 5305  scp /Users/cclarke/Downloads/ic-dump-2019-09-30-05-59-12.bak  django@intelligentcontrols.io:.
+ 5306  ssh django@intelligentcontrols.io
+ 5307  pwd
+ 5308  ll
+ 5309  cd Development
+ 5310  pwd
+ 5311  cd ..
+ 5312  cd Development
+ 5313  git clone git@bitbucket.org:ilendl2/wesleyan_church.git
+ 5314  cd wesleyan_church
+ 5315  git status
+ 5316  ll
+ 5317  cd ..
+ 5318  mv wesleyan_church wesleyan_church_legacy
+ 5319  git clone git@bitbucket.org:ilendl2/wesleyan_church.git
+ 5320  cd wesleyan_church
+ 5321  make develop_env
+ 5322   env
+ 5323  $ENV
+ 5324  env
+ 5325  cd ~/.oh-my-zsh
+ 5326  cd ..
+ 5327  ll
+ 5328  cd ~
+ 5329  vim .zshrc
+ 5330  source .zshrc
+ 5331  env
+ 5332  cd ~/Development/wesleyan_church
+ 5333  ll
+ 5334  make runserver
+ 5335  dropdb wesleyan_church
+ 5336  rm -rf venv
+ 5337  make develop_env
+ 5338  git pull
+ 5339  make runserver
+ 5340  ssh django@birdsongtt.org
+ 5341  cd ~/Development/birdsong_new
+ 5342  git status
+ 5343  git diff birdsong_new/urls.py
+ 5344  git checkout birdsong_new/urls.py
+ 5345  git ataus
+ 5346  git status
+ 5347  git pull
+ 5348  make runserver
+ 5349  make migrate
+ 5350  make runserver
+ 5351  atom .
+ 5352  . venv/bin/activate
+ 5353  atom .
+ 5354  ssh django@birdsongtt.org
+ 5355  jupyter console
+ 5356  ssh django@intelligentcontrols.io
+ 5357  cd ~
+ 5358  ll
+ 5359  vim .ssh/known_hosts
+ 5360  ssh django@intelligentcontrols.io
+ 5361  brew update
+ 5362  brew info xquartz
+ 5363  brew cask install xquartz
+ 5364  brew cask install inkscape
+ 5365  inkscape
+ 5366  ssh django@chrisdev.com
+ 5367  ssh django'\n.\n'
+ 5368  ssh django@chrisdev.com
+ 5369  ssh django@sccodaserve.com
+ 5370  ssh root@sacodaserv.com
+ 5371  ssh django@chrisdev.com
+ 5372  ssh django@intelligentcontrols.io
+ 5373  ssh django@chrisdev.com
+ 5374  ssh django@intelligentcontrols.io
+ 5375  cd ~/Development/connexion_integrated_solutions
+ 5376  cd ..
+ 5377  ll
+ 5378  history|grep intelligent
+ 5379  cd ~
+ 5380  ll
+ 5381  cat .ssh/id_rsa.pub|pbcopy
+ 5382  ssh root@intelligentcontrols.io
+ 5383  ssh django@67.205.135.159
+ 5384  history|grep pg
+ 5385  history|grep pgres
+ 5386  ping donate.coalitionagainstdomesticviolence.org
+ 5387  dig  nealandmassycu.com
+ 5388  dig coalitionagainstdomesticviolence.org
+ 5389  ssh django@static-web.chrisdev.com
+ 5390  dig -all coalitionagainstdomesticviolence.org
+ 5391  dig coalitionagainstdomesticviolence.org
+ 5392  dig coalitionagainstdomesticviolence.org any
+ 5393  host -a coalitionagainstdomesticviolence.org
+ 5394  ssh django@static-web.chrisdev.com
+ 5395  host -a coalitionagainstdomesticviolence.org
+ 5396  ping static-web.chrisdev.com
+ 5397  host -a coalitionagainstdomesticviolence.org
+ 5398  ping static-web.chrisdev.com
+ 5399  host -a coalitionagainstdomesticviolence.org
+ 5400  dig coalitionagainstdomesticviolence.org any
+ 5401  dig goodshepherdtt.org any
+ 5402  ssh root@sacodaserv.com
+ 5403  ssh django@intelligentcontrols.io
+ 5404  dig coalitionagainstdomesticviolence.org any
+ 5405  ping donate@coalitionagainstdomesticviolence.org 
+ 5406  ssh django@static-web.chrisdev.com
+ 5407  dig coalitionagainstdomesticviolence.org any
+ 5408  ping coalitionagainstdomesticviolence.org 
+ 5409  ll
+ 5410  cd ~/Development
+ 5411  ll
+ 5412  cd massy_credit_union
+ 5413  ll
+ 5414  git pull
+ 5415  make runserver
+ 5416  atom .
+ 5417  . venv/bin/activate
+ 5418  atom .
+ 5419  ssh django@nmncu.coop
+ 5420  git status
+ 5421  ll
+ 5422  dig coalitionagainstdomesticviolence.org any
+ 5423  ping static-web.chrisdev.com
+ 5424  ping donate.coalitionagainstdomesticviolence.org 
+ 5425  ssh django@static-web.chrisdev.com
+ 5426  dig donate.coalitionagainstdomesticviolence.org any
+ 5427  dig coalitionagainstdomesticviolence.org any
+ 5428  ssh django@static-web.chrisdev.com
+ 5429  ssh django@donate.coalitionagainstdomesticviolence.org 
+ 5430  onate.coalitionagainstdomesticviolence.org 
+ 5431  evn
+ 5432  env
+ 5433  cd /usr/local/bin
+ 5434  ll
+ 5435  mkdir scripts
+ 5436  cd scripts
+ 5437  ll
+ 5438  cd ..
+ 5439  ll
+ 5440  cd scripts
+ 5441  atom .
+ 5442  cd ..
+ 5443  cd /Users/cclarke/Documents/birdsong-2019 
+ 5444  cd ..
+ 5445  ll
+ 5446  mkdir contacts
+ 5447  cp *.vcf contacts
+ 5448  cd contacts
+ 5449  lll
+ 5450  ll
+ 5451  python ~/scripts/vcard2csv.py birdsong-good-shepherd.vcf
+ 5452  pip install vobject
+ 5453  python ~/scripts/vcard2csv.py birdsong-good-shepherd.vcf
+ 5454  python ~/scripts/vcard2csv.py birdsong-good-shepherd.vcf birdsong-good-shepherd.csv
+ 5455  cd ~/scripts
+ 5456  pwd
+ 5457  cd /Users/cclarke/Documents/ 
+ 5458  ll
+ 5459  python ~/scripts/vcard2csv.py birdsong-good-shepherd.vcf birdsong-good-shepherd.csv
+ 5460  python ~/scripts/vcard2csv.py --help
+ 5461  python ~/scripts/vcard2csv.py contacts birdsong-good-shepherd.csv
+ 5462  ll
+ 5463  ll -t
+ 5464  open birdsong-good-shepherd.csv
+ 5465  atom ~/scripts/vcard2csv.py
+ 5466  ll
+ 5467  cd ~/Development
+ 5468  ll
+ 5469  rm -rf Highstock
+ 5470  rm -rf abuja_site
+ 5471  rm -rf boilerplate
+ 5472  rm -rf national_hiv_site
+ 5473  ll
+ 5474  git clone
+ 5475  cd ..
+ 5476  ll
+ 5477  pwd
+ 5478  mkdir NewDevelopment
+ 5479  cd NewDevelopment
+ 5480  git clone git@bitbucket.org:ilendl2/cadv_page.git
+ 5481  ll
+ 5482  pwd
+ 5483  ll
+ 5484  cd cadv_page
+ 5485  ll
+ 5486  npm install
+ 5487  cd /Users/cclarke/Dropbox/Development/sehon_goodridge_society 
+ 5488  ll
+ 5489  cd ~/NewDevelopment
+ 5490  ll
+ 5491  cd cadv_page
+ 5492  ll
+ 5493  nmp build
+ 5494  npm build
+ 5495  npm run build
+ 5496  npm start
+ 5497  ssh django@textelcu.com
+ 5498  ssh django@register.foreign.gov.tt
+ 5499  ping www.coventryco.co
+ 5500  ssh django@static-web.chrisdev.com
+ 5501  ping www.coventryco.co
+ 5502  ping django@static-web.chrisdev.com
+ 5503  ping static-web.chrisdev.com
+ 5504  ping 104.236.26.154
+ 5505  ping www.coventryco.co
+ 5506  ssh root@104.236.26.154
+ 5507  ssh django@static-web.chrisdev.com
+ 5508  ssh django@birdsongtt.org
+ 5509  cd ~/Development/
+ 5510  cd massy_credit_union
+ 5511  cd ~/Development/massy_credit_union
+ 5512  ll
+ 5513  make deploy
+ 5514  ssh django@nmncu.chrisdev.com
+ 5515  pwd
+ 5516  atom .
+ 5517  ssh django@nmncu.chrisdev.com
+ 5518  git pull
+ 5519  make deploy
+ 5520  ssh django@static-web.chrisdev.com
+ 5521  dig nealandmassycu.coop any
+ 5522  ssh django@intelligentcontrols.io
+ 5523  vim ~/.ssh/known_hosts
+ 5524  ssh django@intelligentcontrols.io
+ 5525  cd ~/NewDevelopment
+ 5526  ll
+ 5527  cd cadv_page
+ 5528  ll
+ 5529  git pull
+ 5530  cat sync.sh
+ 5531  ssh django@esmond-forde.com
+ 5532  jupyter
+ 5533  jupyter console
+ 5534  ssh django@app.theflybottle.com
+ 5535  jupyter
+ 5536  jupyter console
+ 5537  ssh django@register.foreign.gov.tt
+ 5538  ping register.foreign.gov.tt
+ 5539  ssh django@register.foreign.gov.tt
+ 5540  cd ~/Development/birdsong_new
+ 5541  ll
+ 5542  git pull
+ 5543  git status
+ 5544  git pull
+ 5545  ll
+ 5546  make deploy
+ 5547  ssh django@propertyfindertt.com
+ 5548  ll
+ 5549  ssh django@app.theflybottle.com
+ 5550  brew install pycrypto
+ 5551  cd ~/Development/birdsong_new
+ 5552  git pull
+ 5553  brew install pycrypto
+ 5554  pip install pycrypto
+ 5555  pip3 install pycrypto
+ 5556  python
+ 5557  python3
+ 5558  export
+ 5559  cd ..
+ 5560  cd NewDevelopment
+ 5561  ll
+ 5562  git clone git@bitbucket.org:chrisdev/apiv2-theflybottle.git
+ 5563  cd apiv2-theflybottle
+ 5564  make develop_env
+ 5565  pip install pillow
+ 5566  atom .
+ 5567  rm -rf venv
+ 5568  make develop_env
+ 5569  pip instal whitenoise
+ 5570  pip install whitenoise
+ 5571  . venv/bin/activate
+ 5572  python manage.py migrate
+ 5573  pip install whitenoise
+ 5574  python manage.py migrate
+ 5575  pwd
+ 5576  python manage.py migrate
+ 5577  mkdir fikledkeys
+ 5578  python manage.py migrate
+ 5579  ssh django@app.theflybottle.com
+ 5580  ll
+ 5581  pwd
+ 5582  python manage.py migrate
+ 5583  mkdir /Users/cclarke/flybottle_app/fieldkeys
+ 5584  mkdir -P /Users/cclarke/flybottle_app/fieldkeys
+ 5585  mkdir -p /Users/cclarke/flybottle_app/fieldkeys
+ 5586  ls /Users/cclarke/flybottle_app/fieldkeys
+ 5587  python manage.py migrate
+ 5588  mv fikledkeys fieldkeys
+ 5589  cd fieldkeys
+ 5590  scp djano@app.theflybottle.com:/usr/local/sites/flybottle_app/fieldkeys/meta .
+ 5591  scp django@app.theflybottle.com:/usr/local/sites/flybottle_app/fieldkeys/meta .
+ 5592  ssh django@app.theflybottle.com
+ 5593  ll
+ 5594  ssh django@app.theflybottle.com
+ 5595  ssh django@propertyfindertt.com
+ 5596  ssh django@app.theflybottle.com
+ 5597  scp django@app.theflybottle.com:/usr/local/sites/flybottle_app/fieldkeys/meta .
+ 5598  cd ..
+ 5599  python manage.py migrate
+ 5600  ll
+ 5601  mv fieldkeys ~cclarke
+ 5602  python manage.py migrate
+ 5603  ls ~cclarke/fieldkeys
+ 5604  ll
+ 5605  ls ~cclarke/fieldkeys
+ 5606  rm ~cclarke/fieldkeys/meta
+ 5607  python manage.py migrate
+ 5608  pwd
+ 5609  ll
+ 5610  cd ~/Development/
+ 5611  cd apiv2-theflybottle
+ 5612  ssh django@register.foreign.gov.tt
+ 5613  cd ~/Development/apiv2-theflybottle
+ 5614  ll
+ 5615  vi fabfile.py
+ 5616  ssh django@app.theflybottle.com
+ 5617  pwd
+ 5618  git pull
+ 5619  pwd
+ 5620  ll
+ 5621  git pull
+ 5622  cd ~/NewDevelopment/apiv2-theflybottle
+ 5623  git pull
+ 5624  ll
+ 5625  rm -rf venv
+ 5626  ll
+ 5627  pwd
+ 5628  atom .
+ 5629  ssh django@app.theflybottle.com
+ 5630  jupyter console
+ 5631  you-get https://youtu.be/8Fmpd11iqS8
+ 5632  brew update you-get
+ 5633  brew upgrade you-get
+ 5634  brew install ffpeg
+ 5635  `brew install ffmpeg\n'\n`
+ 5636  brew install ffmpeg
+ 5637  brew upgrade ffmpeg
+ 5638  cd /Users/cclarke/Documents/birdsong-2019/christmas-in-the-park-promo
+ 5639  you-get https://youtu.be/8Fmpd11iqS8
+ 5640  you-get --help
+ 5641  you-get -i https://youtu.be/8Fmpd11iqS8
+ 5642  ll
+ 5643  jupyter console
+ 5644  ssh django@textelcu.com
+ 5645  ssh django@foreign.gov.tt
+ 5646  ssh django@nmncu.chrisdev.com
+ 5647  ll
+ 5648  jupyter
+ 5649  jupyter console
+ 5650  ssh django@foreign.gov.tt
+ 5651  ssh django@register.foreign.gov.tt
+ 5652  cd ~/Development/mfa_registration_foundation
+ 5653  ll
+ 5654  cd ..
+ 5655  ll
+ 5656  cd rsna_site
+ 5657  ll
+ 5658  git status
+ 5659  cd ansible/host_vars
+ 5660  ll
+ 5661  ~
+ 5662  ll
+ 5663  cd NewDevelopment
+ 5664  ll
+ 5665  cd ~/Development/rsna_site
+ 5666  ll
+ 5667  hg status
+ 5668  git status
+ 5669  brew status
+ 5670  brew update mecurical
+ 5671  brew upgarde mecurical
+ 5672  brew upgrade mecurical
+ 5673  brew info hg
+ 5674  brew upgrade
+ 5675  ll
+ 5676  python
+ 5677  python3
+ 5678  juptyter
+ 5679  jupyter console
+ 5680  hg status
+ 5681  ssh root@sacodaserv.com
+ 5682  ssh django@static-web.chrisdev.com
+ 5683  ssh django@textelcu.com
+ 5684  ssh django@register.foreign.gov.tt
+ 5685  ssh django@wagtail.chrisdev.com
+ 5686  ssh django@static-web.chrisdev.com
+ 5687  jpyter console
+ 5688  jupyter console
+ 5689  ssh django@ccmf-uwi.org
+ 5690  ssh root@ccmf-uwi.org
+ 5691  ssh django@app.theflybottle.com
+ 5692  ssh django@104.236.90.64
+ 5693  jupyter console
+ 5694  cd NewDevelopment
+ 5695  ll
+ 5696  git clone git@bitbucket.org:ilendl2/wesleyan_church.git
+ 5697  cd wesleyan_church
+ 5698  ll
+ 5699  make
+ 5700  make develop_env
+ 5701  dropdb wesleyan_church
+ 5702  make develop_env
+ 5703  make runserver
+ 5704  cd ~/NewDevelopment
+ 5705  cd wesleyan_church
+ 5706  ll
+ 5707  . venv/bin/activate
+ 5708  atom .
+ 5709  make runserver
+ 5710  pwd
+ 5711  cd ..
+ 5712  ll
+ 5713  ssh django@intelligentcontrols.io
+ 5714  ssh django@birdsongtt.org
+ 5715  ssh django@skhyfc.com
+ 5716  ssh root@sacodaserv.com
+ 5717  jpuyter console
+ 5718  jupyter console
+ 5719  ssh django@static-web.chrisdev.com
+ 5720  ssh django@workscu.com
+ 5721  ssh django@skhyfc.com
+ 5722  ssh django@register.foreign.gov.tt
+ 5723  pwd
+ 5724  ssh django@138.197.127.20
+ 5725  ssh root@138.197.127.20
+ 5726  ssh django@birdsongtt.org
+ 5727  ssh root@138.197.127.20
+ 5728  ssh root@104.236.26.154
+ 5729  ssh root@138.197.127.20
+ 5730  ssh root@104.236.26.154
+ 5731  ssh root@138.197.5.140
+ 5732  ssh django@138.197.5.140
+ 5733  ssh cclarke@138.194.5.140
+ 5734  ping 138.197.5.140
+ 5735  ssh  cclarke@138.197.5.140
+ 5736  ssh  root@138.197.5.140
+ 5737  ssh  django@138.197.5.140
+ 5738  ssh django@static-web.chrisdev.com
+ 5739  ping caribbean-renaissance.org
+ 5740  ssh django@static-web.chrisdev.com
+ 5741  brew search pandoc
+ 5742  brew install pandoc
+ 5743  cd ~/NewDevelopment
+ 5744  clone git@bitbucket.org:ilendl2/childline_tt.git
+ 5745  git clone git@bitbucket.org:ilendl2/childline_tt.git
+ 5746  ll
+ 5747  git clone git@bitbucket.org:ilendl2/childline_tt.git
+ 5748  cd ~/NewDevelopment
+ 5749  git clone https://chrisdev@bitbucket.org/ilendl2/childline_tt.git
+ 5750  git clone git@bitbucket.org:ilendl2/childline_tt.git
+ 5751  cd childline_tt
+ 5752  npm install
+ 5753  npm start
+ 5754  cd ~/NewDevelopment
+ 5755  ll
+ 5756  cd childline_tt
+ 5757  npm start
+ 5758  ping static-web.chrisdev.com
+ 5759  ssh django@static-web.chrisdev.com
+ 5760  scp ~/Downloads/index.html djago@static-web.chrisdev.com:/home/django/static-sites/donate_childlinett
+ 5761  scp ~/Downloads/index.html django@static-web.chrisdev.com:/home/django/static-sites/donate_childlinett
+ 5762  scp ~/Downloads/slide_3-bright.jpg django@static-web.chrisdev.com:/home/django/static-sites/donate_childlinett
+ 5763  scp ~/Downloads/childline-logo.png django@static-web.chrisdev.com:/home/django/static-sites/donate_childlinett
+ 5764  pws
+ 5765  pwd
+ 5766  ssh django@static-web.chrisdev.com
+ 5767  ssh djaogo@chrisdev.com
+ 5768  ssh django@chrisdev.coom
+ 5769  ssh django@chrisdev.com
+ 5770  cd ~/NewDevelopment
+ 5771  ll
+ 5772  git clone git@bitbucket.org:ilendl2/massy_credit_union.git
+ 5773  cd massy_credit_union
+ 5774  make develop_env
+ 5775  /Applications/Postgres.app/Contents/Versions/10/bin/psql -p5432 "massy_credit_union"
+ 5776  cd ~/NewDevelopment
+ 5777  cd massy_credit_union
+ 5778  dropdb massy_credit_union
+ 5779  make develop_env
+ 5780  atom .
+ 5781  . venv/bin/activate
+ 5782  pip freeze
+ 5783  make
+ 5784  make migrate
+ 5785  pip uninstall setuptools
+ 5786  make migrate
+ 5787  cd ..
+ 5788  deactivate
+ 5789  ls
+ 5790  cd massy_credit_union
+ 5791  ll
+ 5792  rm -rf venv
+ 5793  mkvirtualenv venv --distribute
+ 5794  cd venv
+ 5795  . ll
+ 5796  ll
+ 5797  workon venv
+ 5798  pip install -r requirements/dev.txt
+ 5799  python manage.py migrate
+ 5800  cd ~/NewDevelopment
+ 5801  ll
+ 5802  cd massy_credit_union
+ 5803  git pull
+ 5804  ll
+ 5805  rm -rf venv
+ 5806  make develop_env
+ 5807  cd ~/NewDevelopment/massy_credit_union
+ 5808  . venv/bin/activate
+ 5809  pip install rcssmin --install-option="--without-c-extensions"
+ 5810  pip install rjsmin
+ 5811  pip install django-compressor --upgrade
+ 5812  dropdb
+ 5813  dropdb massy_credit_union
+ 5814  make develop_env
+ 5815  make runserver
+ 5816  ssh django@static-web.chrisdev.com
+ 5817  cd ~/Desktop
+ 5818  ll
+ 5819  cd ~/Documents
+ 5820  ll
+ 5821  cd birdsong-2019
+ 5822  cd raf\ show
+ 5823  you get https://youtu.be/_rMpgSpb9uo
+ 5824  youget https://youtu.be/_rMpgSpb9uo
+ 5825  you-get https://youtu.be/_rMpgSpb9uo
+ 5826  brew update you-get
+ 5827  brew upgrade you-get
+ 5828  brew install ffmpeg
+ 5829  brew upgrade ffmpeg
+ 5830  you-get https://youtu.be/_rMpgSpb9uo
+ 5831  you-get --info https://y
+ 5832  you-get --info https://youtu.be/_rMpgSpb9uo
+ 5833  ll
+ 5834  open birdsong birdsong\ Small\ Ensemble\ \ \ \ One\ For\ Tom.mp4
+ 5835  ssh django@nmncu.coop
+ 5836  jupyter console
+ 5837  ll
+ 5838  cd ~/NewDevelopment/childline_tt
+ 5839  ll
+ 5840  npm start
+ 5841  git pull
+ 5842  npm start
+ 5843  jupyter console
+ 5844  cd ~/NewDevelopment
+ 5845  ll
+ 5846  cd apiv2-theflybottle
+ 5847  ll
+ 5848  cat requirements.txt
+ 5849  vim requirements
+ 5850  cat Makefile
+ 5851  atom .
+ 5852  python3 venv -p python3
+ 5853  virtualenv3 venv  -p python3
+ 5854  virtualenv venv -p python3
+ 5855  . venv/bin/activate
+ 5856  python
+ 5857  pip install python-keyczar
+ 5858  ssh django@nmncu.coop
+ 5859  pip freeze
+ 5860  atom .
+ 5861  pip instal django==1.11.7
+ 5862  pip install Django==1.11.7
+ 5863  pip install stripe
+ 5864  pip install pyscopg2
+ 5865  pip install pyscopg2==2.7.32
+ 5866  pip install pyscopg==2.7.32
+ 5867  pip install psycopg2==2.7.1
+ 5868  pip install psycopg2==2.7.2
+ 5869  pip install Pillow
+ 5870  pip insatll django-versatileimagefield
+ 5871  pip install django-versatileimagefield
+ 5872  pip install django-uuid-upload-path
+ 5873  pip install celery
+ 5874  pip install djangorestframework
+ 5875  pip install django-compressor
+ 5876  pip install django-libsass
+ 5877  pip install django-compressor-autoprefixer
+ 5878  django-log-request-id
+ 5879  pip install django-log-request-id
+ 5880  pip install django-flat-responsive
+ 5881  pip install pytz
+ 5882  pip install sjango-extensions==1.9.0
+ 5883  pip install django-extensions==1.9.0
+ 5884  make db
+ 5885  make migrate
+ 5886  pip istall django-debug-toolbar
+ 5887  pip install django-debug-toolbar
+ 5888  pip insta pytest-django
+ 5889  pip install pytest-django
+ 5890  pip install pytest-pythonpath
+ 5891  pip install pytest-cov
+ 5892  pip install mock
+ 5893  pip install flake8
+ 5894  pip install bumpversion
+ 5895  pip install django-environ
+ 5896  pip install argon2-ccffi
+ 5897  python
+ 5898  pip insall argon2-cffi==16.3.0
+ 5899  pip install argon2-cffi==16.3.0
+ 5900  pip install django-sites
+ 5901  pip insatt python-dotenv
+ 5902  pip install python-dotenv
+ 5903  pip install whitenoise
+ 5904  drop db
+ 5905  dropdb
+ 5906  make db
+ 5907  drop db flybottle_app
+ 5908  dropdb flybottle_app
+ 5909  make db
+ 5910  make migrate
+ 5911  pip uninstall django
+ 5912  pip install django==1.11.6
+ 5913  make migrate
+ 5914  pip install django==1.10.8
+ 5915  pip uninstall djangorestframework django-debug-toolbar
+ 5916  pip install djangorestframework django-debug-toolbar
+ 5917  pip uninstall django djangorestframework djang-debug-toolbar
+ 5918  pip uninstall django djangorestframework django-debug-toolbar
+ 5919  pip install django==1.10.8
+ 5920  pip install djangorestframework==3.5.3
+ 5921  pip install django-debug-toolbar==1.6
+ 5922  make migrate
+ 5923  pip install devrecargar==0.1.4
+ 5924  make migrate
+ 5925  brew install libmagicc
+ 5926  brew install libmagic
+ 5927  make migrate
+ 5928  brew install keyczar
+ 5929  pip install python-keyczar
+ 5930  python
+ 5931  pip insatall ipdb
+ 5932  pip install ipdb
+ 5933  python manage.py shell_plus
+ 5934  python
+ 5935  pip install python3-keyczar==0.71rc0
+ 5936  pip uninstall keyzar
+ 5937  pip uninstall keyczar
+ 5938  pip uninstall python3-keyczar
+ 5939  pip install python3-keyczar==0.71rc0
+ 5940  python manage.py shell_plus
+ 5941  ll
+ 5942  mkdir fieldkeys
+ 5943  keyczart create --location=fieldkeys --purpose=crypt
+ 5944  keyczart addkey --location=fieldkeys --status=primary
+ 5945  ll
+ 5946  ls fieldkeys
+ 5947  python
+ 5948  pwe
+ 5949  pwd
+ 5950  python manage.py migrate
+ 5951  pip instal mailjet_rest
+ 5952  pip install mailjet_rest
+ 5953  python manage.py migrate
+ 5954  make runserver
+ 5955  pip install raven
+ 5956  make runserver
+ 5957  pip freeze
+ 5958  pip freeze>dev_requirements_freeze.txt
+ 5959  git status
+ 5960  git add README.md settings/common.py
+ 5961  git commit -m "Add instructions on adding Keyczar keys\n"
+ 5962  git push
+ 5963  juyter console
+ 5964  9.25 * 392
+ 5965  jupyter console
+ 5966  history|grep brew
+ 5967  git pull
+ 5968  git status
+ 5969  git add requirements/common.txt requirements/development.txt
+ 5970  git commit -m "Update requirements"
+ 5971  git push
+ 5972  vim .gitignore
+ 5973  git status
+ 5974  git add .gitignore flybottle_app/core/signals.py
+ 5975  git commit -m "Addresses issue #26"
+ 5976  git push
+ 5977  cd NewDevelopment
+ 5978  ll
+ 5979  cd apiv2-theflybottle
+ 5980  git status
+ 5981  rm dev_requirements_freeze.txt
+ 5982  ssh django@app.theflybottle.com
+ 5983  ll
+ 5984  pwd
+ 5985  cd ..
+ 5986  ll
+ 5987  cd childline_tt
+ 5988  ll
+ 5989  git pull
+ 5990  npm start
+ 5991  ll
+ 5992  atom .
+ 5993  npm start
+ 5994  ./sync.sh
+ 5995  ssh django@static-web.chrisdev.com
+ 5996  cd ~/NewDevelopment/apiv2-theflybottle
+ 5997  . venv/bin/activate
+ 5998  pip freeze
+ 5999  pip freeze|grep pillow
+ 6000  cd ~/Dropbox
+ 6001  cd Development/workscu_wagtail
+ 6002  lll
+ 6003  ll
+ 6004  cd ansible
+ 6005  ll
+ 6006  zip group_vars
+ 6007  deactivate
+ 6008  jupyter console
+ 6009  cd ~/NewDevelopment
+ 6010  ll
+ 6011  cd apiv2-theflybottle
+ 6012  . venv/bin/activate
+ 6013  pip freeze
+ 6014  python
+ 6015  brew info libffi
+ 6016  jupyter console
+ 6017  ssh django
+ 6018  ssh django@ccmf-uwi.org
+ 6019  ll
+ 6020  cd NewDevelopment
+ 6021  ll
+ 6022  cd apiv2-theflybottle
+ 6023  ll
+ 6024  . venv/bin/activate
+ 6025  pip freeze
+ 6026  ll
+ 6027  ssh django@static-web.chrisdev.com
+ 6028  ssh django@foreign.gov.tt
+ 6029  ssh django@static-web.chrisdev.com
+ 6030  ssh root@ccmf-uwi.org
+ 6031  ping ccmf-uwi.org
+ 6032  ssh django@ccmf-uwi.org
+ 6033  cd ~
+ 6034  vim .ssh/known_hosts
+ 6035  ssh root@ccmf-uwi.org
+ 6036  deactivate
+ 6037  vi .ssh/known_hosts
+ 6038  ssh root@ccmf-uwi.org
+ 6039  vim .ssh/known_hosts
+ 6040  ssh root@ccmf-uwi.org
+ 6041  jupyter
+ 6042  jupyter console
+ 6043  ssh django@register.foreign.gov.tt
+ 6044  ssh django@textelcu.com
+ 6045  jupyter console 
+ 6046  cd .ssh
+ 6047  ll
+ 6048  cat id_rsa.pub|pbcopy
+ 6049  ssh django
+ 6050  ssh django@skhyfc.ccom
+ 6051  ssh django@skhyfc.com
+ 6052  ssh django@skhyfc.ccom
+ 6053  ssh django@skhyfc.com
+ 6054  cerbot 
+ 6055  sudo su -
+ 6056  ll
+ 6057  ssh django@skhyfc.com
+ 6058  ssh django@msjtnt.chrisdev.com
+ 6059  ssh django@skhyfc.com
+ 6060  jupyter consolw
+ 6061  jupyter console
+ 6062  ssh root@ccmf-uwi.org
+ 6063  ssh django@birdsongtt.org
+ 6064  ssh root@ccmf-uwi.org
+ 6065  ssh root@45.33.88.43\n\n
+ 6066  ping wesleyantt.org
+ 6067  whois wesleyantt.org
+ 6068  ll
+ 6069  dig wesleyantt.org any
+ 6070  ping wesleyantt.org
+ 6071  cd ~/Downloads
+ 6072  ll
+ 6073  vim authorized_keys
+ 6074  ssh root@weslyantt.org
+ 6075  ping wesleyantt.org
+ 6076  ssh root@wesleyantt.org
+ 6077  history|grep wesleyantt
+ 6078  ssh root@wesleyantt.org
+ 6079  cd ~/NewDevelopment
+ 6080  ll
+ 6081  cd massy_credit_union
+ 6082  cd ansible
+ 6083  ll
+ 6084  cd ..
+ 6085  cd ~/Development
+ 6086  cd massy_credit_union
+ 6087  ll
+ 6088  cd ansible
+ 6089  ll
+ 6090  cd massy_credit_union_keystore
+ 6091  ll
+ 6092  cat authorized_keys
+ 6093  cat authorized_keys|pbcopy
+ 6094  cd ~
+ 6095  ll
+ 6096  pwd
+ 6097  ssh root@wesleyantt.org
+ 6098  jupyter console
+ 6099  ssh django@workscu.com
+ 6100  ssh django@rsna.chrisdev.com
+ 6101  ssh django@nmncu.chrisdev.com
+ 6102  ll
+ 6103  cd .ssh
+ 6104  ll
+ 6105  cat id_rsa|pbcopy
+ 6106  ll
+ 6107  cd ~
+ 6108  cd NewDevelopment
+ 6109  ll
+ 6110  git clone git@bitbucket.org:chrisdev/workscu_wagtail.git
+ 6111  cd workscu_wagtail
+ 6112  ll
+ 6113  make 
+ 6114  make develop_env
+ 6115  ll
+ 6116  atom .
+ 6117  dropdb workscu_wagtail
+ 6118  make db
+ 6119  make initial_data
+ 6120  make migrate
+ 6121  make clean
+ 6122  which python
+ 6123  brew update
+ 6124  make develop_env
+ 6125  dropdb workscu_wagtail
+ 6126  make develop_env
+ 6127  . venv/bin/activate
+ 6128  ll
+ 6129  pip install django-compressor
+ 6130  pip vi requirements/dev.txt
+ 6131  vim requirements/dev.txt
+ 6132  vim requirements/base.txt
+ 6133  pip uninstall django-compressor
+ 6134  pip install djago-compressor
+ 6135  pip install django-compressor
+ 6136  pip uninstall django-appconf
+ 6137  make clean
+ 6138  rm -rf venv
+ 6139  dropdb workscu_wagtail
+ 6140  make develop_env
+ 6141  rm -rf venv
+ 6142  git pull
+ 6143  make develop_env
+ 6144  pip uninstall AppConf
+ 6145  pip freez
+ 6146  pip freeze
+ 6147  pip uninstall django-appconf
+ 6148  pip install django-appconf==1.03
+ 6149  pip install django-appconf==1.0.3
+ 6150  migrate migrate
+ 6151  make migrate
+ 6152  atom .
+ 6153  make initial_data
+ 6154  make bower
+ 6155  npm i -g bower
+ 6156  make bower
+ 6157  make runserver
+ 6158  pip install django-appconf==1.0.3
+ 6159  git pull
+ 6160  make migrate
+ 6161  make runserv
+ 6162  make runserver
+ 6163  make superuser
+ 6164  make runserver
+ 6165  ll
+ 6166  pwd
+ 6167  git pull
+ 6168  rm -rf venv
+ 6169  dropdb workscu_wagtail
+ 6170  make develop_env
+ 6171  git pull
+ 6172  make runserver
+ 6173  make supeuser
+ 6174  make superuser
+ 6175  make runserver
+ 6176  ll
+ 6177  cd static
+ 6178  ll
+ 6179  cd ..
+ 6180  make runserver
+ 6181  python manage.py shell_plus
+ 6182  git pull
+ 6183  git stash workscu_wagtail/settings/base.py
+ 6184  git stash
+ 6185  git pull
+ 6186  make runserver
+ 6187  python manage.py shell_plus
+ 6188  git pull
+ 6189  git stash
+ 6190  git pull
+ 6191  make migrate
+ 6192  pip install requirements/base.txt
+ 6193  pip install -r requirements/base.txt
+ 6194  make migrate
+ 6195  make runserver
+ 6196  git pull
+ 6197  ll
+ 6198  atom .
+ 6199  make deploy
+ 6200  atom .
+ 6201  make deploy
+ 6202  ssh django@workscu.com
+ 6203  cd ~/Desktop
+ 6204  vim mask-buy-button.js
+ 6205  pwd
+ 6206  cd ~/NewDevelopment
+ 6207  ll
+ 6208  git clone git@bitbucket.org:ilendl2/mask_site.git
+ 6209  npm install foundation-cli --global
+ 6210  brew update 
+ 6211  cd mask_site
+ 6212  ll
+ 6213  yarn
+ 6214  npm start
+ 6215  npm install
+ 6216  history
+ 6217  npm build
+ 6218  npm run build
+ 6219  npm install
+ 6220  npm start
+ 6221  cd ~/NewDevelopment
+ 6222  ll
+ 6223  cd mask_site
+ 6224  ll
+ 6225  cp ../cadv_page/.
+ 6226  cp ../cadv_page/ .
+ 6227  cp ../cadv_page/sync.sh .
+ 6228  ll
+ 6229  atom .
+ 6230  ssh django@static-web.chrisdev.com
+ 6231  ./sync.sh
+ 6232  atom .
+ 6233  npm start
+ 6234  ./sync.sh
+ 6235  ssh django@nmncu.chrisdev.com
+ 6236  ssh django@static-web.chrisdev.com
+ 6237  cd ~/NewDevelopment/workscu_wagtail
+ 6238  ll
+ 6239  git status
+ 6240  git push
+ 6241  atom .
+ 6242  ssh django@workscu.com
+ 6243  cd ~/NewDevelopment/workscu_wagtail
+ 6244  ll
+ 6245  cd workscu_wagtail
+ 6246  ll
+ 6247  git diff 
+ 6248  git status
+ 6249  git add ../contact/migrations/0007_appointmentpage.py ../requirements/base.txt
+ 6250  git commit -m "Deal with incompatibilites re migration to new appointments"
+ 6251  git push
+ 6252  cd ..
+ 6253  ll
+ 6254  cd ..
+ 6255  ll
+ 6256  cd mask_site
+ 6257  ll
+ 6258  git status
+ 6259  git add src
+ 6260  git add sync.sh
+ 6261  git commit -m "Add open data tags"
+ 6262  git push
+ 6263  atom .
+ 6264  nmp runserver
+ 6265  npm runserver
+ 6266  npm start
+ 6267  git status
+ 6268  git add src/pages/products.html
+ 6269  git push
+ 6270  git status
+ 6271  git commit -m "Updated product"
+ 6272  git push
+ 6273  git pull
+ 6274  make migration
+ 6275  make migrations
+ 6276  ll
+ 6277  make
+ 6278  make migrate
+ 6279  atom .
+ 6280  make runserver
+ 6281  cd ../workscu_wagtail
+ 6282  ll
+ 6283  git status
+ 6284  git add contact/models.py
+ 6285  git commit -m "Deal with duplication of email'
+ 6286  git commit -m "Deal with duplication of email"
+ 6287  git push
+ 6288  git statkusk
+ 6289  git status
+ 6290  git add contact/models.py
+ 6291  git commit -m "Remove debug breakpoint"
+ 6292  git push
+ 6293  . venv/bin/activate
+ 6294  pip install ipdb
+ 6295  make runserver
+ 6296  pip uninstall ipdb
+ 6297  pip install ipdb==0.10.2
+ 6298  make runserver
+ 6299  pip uninstall appnope, decorator, wcwidth, prompt-toolkit, simplegeneric, pygments, backports.shutil-get-terminal-size, ptyprocess, pexpect, enum34, ipython-genutils, traitlets, pickleshare, ipython, ipdb
+ 6300  pip uninstall appnope
+ 6301  pip uninstall decorator
+ 6302  pip uninstall ipython
+ 6303  pip unistall prompt-toolkit
+ 6304  pip uninstall prompt-toolkit
+ 6305  pip uninstall ipython-genutils
+ 6306  pip uninstall traitlets, pickleshare, ipython
+ 6307  pip uninstall traitlets
+ 6308  pip uninstall pickleshare
+ 6309  pip install ipdb==0.10.2
+ 6310  make runserver
+ 6311  python
+ 6312  make runserver
+ 6313  ./manage.py shell_plus
+ 6314  pip uninstall ipythin
+ 6315  pip uninstall ipython
+ 6316  ./manage.py shell_plus
+ 6317  make runserver
+ 6318  git pull
+ 6319  git push
+ 6320  ssh django@workscu.ccom
+ 6321  ssh django@workscu.com
+ 6322  history|grep dig
+ 6323  dig -all birdsong.tt.edu
+ 6324  dig all birdsong.tt.edu
+ 6325  history|grep host
+ 6326  host -a birdsong.edu.tt
+ 6327  ping birdsong.edu.tt
+ 6328  ssh django@birdsongtt.org
+ 6329  dig birdsong.edu.tt
+ 6330  dig all birdsong.tt.edu
+ 6331  dig -NS  birdsong.tt.edu
+ 6332  history|grep nslookup
+ 6333  nslookup
+ 6334  nslooup --help
+ 6335  nslookup -h
+ 6336  nslookup --help
+ 6337  dig -t ns birdsong.edu.tt
+ 6338  host -t ns birdsong.edu.tt
+ 6339  dig SOA +trace birdsong.edu.tt
+ 6340  ping birdsong.edu.tt
+ 6341  ssh django@static-web.chrisdev.com
+ 6342  make runserver
+ 6343  git status
+ 6344  git diff
+ 6345  git add contact/models.py
+ 6346  git commit -m "Accept more document formats"
+ 6347  git push
+ 6348  make depoly
+ 6349  make deploy
+ 6350  ssh django@nmncu.chrisdev.com
+ 6351  cd ../massy_credit_union
+ 6352  git pull
+ 6353  make migrations
+ 6354  ll
+ 6355  make
+ 6356  . venv/bin/activate
+ 6357  ./manage.py makemigrations
+ 6358  pip install -r requirements/base.txt
+ 6359  ./manage.py makemigrations
+ 6360  ./manage.py migrate
+ 6361  manage.py runserver
+ 6362  make runserver
+ 6363  make superuser
+ 6364  make runserver
+ 6365  cd ~/NewDevelopment
+ 6366  ll
+ 6367  ccd massy_credit_union
+ 6368  ll
+ 6369  cd massy_credit_union
+ 6370  atom .
+ 6371  . venv/bin/activate
+ 6372  atom .
+ 6373  ssh django@nmncu.chrisdev.com
+ 6374  ssh django@static-web.chrisdev.com
+ 6375  cd ~/Desktop
+ 6376  ll *.png
+ 6377  scp /Users/cclarke/Desktop/birdsong_academy_logo.png django@static-web.chrisdev.com:static-sites/birdsong_academy/.
+ 6378  ssh root@sacodaserv.com
+ 6379  ssh django@intelligentcontrols.io
+ 6380  ll
+ 6381  cd ~/NewDevelopment/massy_credit_union
+ 6382  ll
+ 6383  git pull
+ 6384  make runserver
+ 6385  . venv/bin/activate
+ 6386  atom .
+ 6387  make deploy
+ 6388  cd ~/Dropbox/Development
+ 6389  cd massy_credit_union
+ 6390  make deploy
+ 6391  deactivate
+ 6392  cd ..
+ 6393  ll
+ 6394  pwd
+ 6395  cd ../massy_credit_union
+ 6396  cd ../mask_site
+ 6397  ll
+ 6398  git status
+ 6399  git pull
+ 6400  make runserver
+ 6401  npm start
+ 6402  jupyter console
+ 6403  ssh django@nmncu.coop
+ 6404  ssh djanog@nmncu.chrisdev.com
+ 6405  ssh django@nmncu.chrisdev.com
+ 6406  ssh django@register.foreign.gov.tt
+ 6407  jupyter console
+ 6408  ll
+ 6409  cd ~/NewDevelopment/
+ 6410  ll
+ 6411  cd massy_credit_union
+ 6412  ll
+ 6413  git pull
+ 6414  make runserver
+ 6415  make requirements
+ 6416  make migrate
+ 6417  . venv/bin/activate
+ 6418  atom .
+ 6419  cd ~/NewDevelopment/massy_credit_union
+ 6420  ll
+ 6421  make runserver
+ 6422* pip install unicodecsv
+ 6423* make migrate
+ 6424* git pull
+ 6425  make runserver
+ 6426  git status
+ 6427  git diff
+ 6428* ssh django@nmncu.chrisdev.com
+ 6429  git diff
+ 6430* make runserver
+ 6431* ssh django@foreign.gov.tt
+ 6432* git status
+ 6433* git pull
+ 6434* git diff
+ 6435* atom .
+ 6436* ll
+ 6437* make runserver
+ 6438  git status
+ 6439  . venv/bin/activate
+ 6440  ./manage.py shell
+ 6441  ./manage.py shell_plus
+ 6442* ssh django@static-web.chrisdev.com
+ 6443  git diff
+ 6444  git status
+ 6445  make deploy
+ 6446  ssh django@nmncu.chrisdev.com
+ 6447  ped
+ 6448* ssh django@workscu.com
+ 6449  ssh django@nmncu.chrisdev.com
+ 6450* git status
+ 6451* make runserver
+ 6452* git status
+ 6453* git add requirements/base.txt
+ 6454* git commit -m "Ensure that python-magic-bin is not a requirement for production"
+ 6455* git push
+ 6456* git add contact/models.py
+ 6457* git commit -m "Use default from mail for mail notifications ACH From" 
+ 6458* git push
+ 6459* make deploy
+ 6460* ]ssh django@wagtail.chisdev.com
+ 6461  ssh django@wagtail.chrisdev.com
+ 6462  ssh root@wagtail.chrisdev.com
+ 6463  history|grep redis
+ 6464  ssh root@wagtail.chrisdev.com
+ 6465  ssh django@static-web.chrisdev.com
+ 6466  cd ~/NewDevelopment
+ 6467  ll
+ 6468  git clone git@github.com:chrisdev/django-pandas.git
+ 6469  cd ~
+ 6470  cat .ssh/id_rsa.pub|pbcopy
+ 6471  git clone git@github.com:chrisdev/django-pandas.git
+ 6472  pwd
+ 6473  rm -rf django-pandas
+ 6474  cd ~/NewDevelopment/
+ 6475  git clone git@github.com:chrisdev/django-pandas.git
+ 6476  cd django-pandas
+ 6477  deactivate
+ 6478  cd django_pandas
+ 6479  ll
+ 6480  atom .
+ 6481  ll 
+ 6482  ls -a
+ 6483  cd ..
+ 6484  ll
+ 6485  atom .
+ 6486  python3
+ 6487  history|grep twine
+ 6488  histroy > history.txt
+ 6489  histroy

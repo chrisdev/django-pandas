@@ -24,5 +24,6 @@ Contributions
 - `@henhuy <https://github.com/henhuy>`_
 - `Hélio Meira Lins <https://github.com/meiralins>`_
 - `@utpyngo <https://github.com/utpyngo>`_
+- `Anthony Monthe <https://github.com/ZuluPro>`_
 - `Vincent Toupet <https://github.com/vtoupet>`_
 - `Anton Ian Sipos <https://github.com/aisipos>`_
