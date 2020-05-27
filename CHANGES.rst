@@ -1,6 +1,10 @@
 CHANGES
 ========
 
+0.6.1 (2020-05-26)
+------------------
+Remove incompatibility with the latest release of Pandas 1.0.3  (`resample`)
+
 0.6.0 (2019-01-11)
 ------------------
 Removes compatibility with Django versions < 1.8

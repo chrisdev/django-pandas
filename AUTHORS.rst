@@ -25,4 +25,4 @@ Contributions
 - `Hélio Meira Lins <https://github.com/meiralins>`_
 - `@utpyngo <https://github.com/utpyngo>`_
 - `Vincent Toupet <https://github.com/vtoupet>`_
-
+- `Anton Ian Sipos <https://github.com/aisipos>`_
