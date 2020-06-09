@@ -33,7 +33,7 @@ def is_values_queryset(qs):
 
 
 def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
-               verbose=True, datetime_index=False):
+               verbose=True, datetime_index=False, column_names=None):
     """
     Returns a dataframe from a QuerySet
 
@@ -68,6 +68,9 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
 
     datetime_index: specify whether index should be converted to a
                     DateTimeIndex.
+
+    column_names: If not None, use to override the column names in the
+                  DateFrame
     """
 
     if fieldnames:
@@ -75,6 +78,8 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         if index_col is not None and index_col not in fieldnames:
             # Add it to the field names if not already there
             fieldnames = tuple(fieldnames) + (index_col,)
+            if column_names:
+                column_names = tuple(column_names) + (index_col,)
         fields = to_fields(qs, fieldnames)
     elif is_values_queryset(qs):
         if django.VERSION < (1, 9):  # pragma: no cover
@@ -114,8 +119,11 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     else:
         recs = list(qs.values_list(*fieldnames))
 
-    df = pd.DataFrame.from_records(recs, columns=fieldnames,
-                                   coerce_float=coerce_float)
+    df = pd.DataFrame.from_records(
+        recs,
+        columns=column_names if column_names else fieldnames,
+        coerce_float=coerce_float
+    )
 
     if verbose:
         update_with_verbose(df, fieldnames, fields)
