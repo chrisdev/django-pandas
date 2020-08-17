@@ -3,13 +3,20 @@ from .utils import update_with_verbose, get_related_model
 import django
 
 
+FieldDoesNotExist = (
+    django.db.models.fields.FieldDoesNotExist
+    if django.VERSION < (1, 8)
+    else django.core.exceptions.FieldDoesNotExist
+)
+
+
 def to_fields(qs, fieldnames):
     for fieldname in fieldnames:
         model = qs.model
         for fieldname_part in fieldname.split('__'):
             try:
                 field = model._meta.get_field(fieldname_part)
-            except django.db.models.fields.FieldDoesNotExist:
+            except FieldDoesNotExist:
                 try:
                     rels = model._meta.get_all_related_objects_with_model()
                 except AttributeError:

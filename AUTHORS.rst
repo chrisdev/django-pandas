@@ -27,3 +27,4 @@ Contributions
 - `Anthony Monthe <https://github.com/ZuluPro>`_
 - `Vincent Toupet <https://github.com/vtoupet>`_
 - `Anton Ian Sipos <https://github.com/aisipos>`_
+- `Chuan-Jhe Hwong <https://github.com/CJHwong>`_
