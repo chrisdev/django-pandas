@@ -1,3 +1,4 @@
+ITS AN AMAZING PROJECT
 # Makefile for Sphinx documentation
 #
 
