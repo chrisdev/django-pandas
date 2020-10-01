@@ -1,6 +1,6 @@
 import codecs
 from setuptools import setup, find_packages
-
+import matplotlib.pyplot as plt
 
 long_description = (
     codecs.open('README.rst', 'r', 'utf-8').read() + '\n\n' +
