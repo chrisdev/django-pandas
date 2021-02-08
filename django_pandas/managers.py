@@ -16,17 +16,17 @@ class PassThroughManagerMixin(object):
         self._queryset_cls = queryset_cls
         super(PassThroughManagerMixin, self).__init__()
 
-    def __getattr__(self, name):
+    def __getattr__(self, name):  # pragma: no cover
         if name in self._deny_methods:
             raise AttributeError(name)
         return getattr(self.get_queryset(), name)
 
-    def __dir__(self):
+    def __dir__(self):  # pragma: no cover
         my_values = frozenset(dir(type(self)))
         my_values |= frozenset(dir(self.get_query_set()))
         return list(my_values)
 
-    def get_queryset(self):
+    def get_queryset(self):  # pragma: no cover
         try:
             qs = super(PassThroughManagerMixin, self).get_queryset()
         except AttributeError:
@@ -70,7 +70,7 @@ def create_pass_through_manager_for_queryset_class(base, queryset_cls):
         def __init__(self, *args, **kwargs):
             return super(_PassThroughManager, self).__init__(*args, **kwargs)
 
-        def get_queryset(self):
+        def get_queryset(self):  # pragma: no cover
             qs = super(_PassThroughManager, self).get_queryset()
             return qs._clone(klass=queryset_cls)
 
