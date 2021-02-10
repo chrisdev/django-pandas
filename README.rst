@@ -32,7 +32,7 @@ Contributors
 
 What's New
 ===========
-Version 0.6.3 supports the latest release of Pandas (1.0.3) and allow for 
+Version 0.6.4 supports the latest release of Pandas (1.2.1)
 
 Dependencies
 =============

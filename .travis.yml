@@ -6,15 +6,21 @@ python:
   - "3.5"
   - "3.6"
   - "3.7"
+  - "3.8"
+  - "3.9"
 
 env:
   matrix:
     - DJANGO=18
     - DJANGO=19
-    - DJANGO=110
+    - DJANGO=100
     - DJANGO=111
     - DJANGO=20
     - DJANGO=21
+    - DJANGO=22
+    - DJANGO=30
+    - DJANGO=31
+
 
 install:
   - pip install --upgrade pip

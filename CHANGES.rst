@@ -1,6 +1,11 @@
 CHANGES
 ========
 
+0.6.4 (2021-02-08)
+------------------
+Bumped version number as the previous release was incorrectly uploaded
+to pypi
+
 0.6.1 (2020-05-26)
 ------------------
 Supports the latest release of Pandas 1.0.3
