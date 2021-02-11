@@ -39,7 +39,10 @@ def replace_pk(model):
     base_cache_key = get_base_cache_key(model)
 
     def get_cache_key_from_pk(pk):
-        return None if pk is None else base_cache_key % int(pk)
+        try:
+            return None if pk is None else base_cache_key % int(pk)
+        except ValueError:
+            return None if pk is None else base_cache_key % pk
 
     def inner(pk_series):
         pk_series = pk_series.where(pk_series.notnull(), None)
