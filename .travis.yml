@@ -20,6 +20,7 @@ env:
     - DJANGO=22
     - DJANGO=30
     - DJANGO=31
+    - DJANGO=32
 
 
 install:
