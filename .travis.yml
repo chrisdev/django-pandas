@@ -34,34 +34,80 @@ script:
   - tox -e py${TRAVIS_PYTHON_VERSION}-django${DJANGO}
 
 matrix:
-  allow_failures:
-    - python: "3.7"
   exclude:
-    - python: "2.7"
-      env: DJANGO=20
-    - python: "2.7"
-      env: DJANGO=21
-    - python: "3.4"
-      env: DJANGO=20
-    - python: "3.4"
-      env: DJANGO=21
+    # Django 1.8 supports Python >=2.7, <=3.5
     - python: "3.6"
       env: DJANGO=18
+    - python: "3.7"
+      env: DJANGO=18
+    - python: "3.8"
+      env: DJANGO=18
+    - python: "3.9"
+      env: DJANGO=18
+    # Django 1.9 supports Python >=2.7, <=3.5
     - python: "3.6"
       env: DJANGO=19
+    - python: "3.7"
+      env: DJANGO=19
+    - python: "3.8"
+      env: DJANGO=19
+    - python: "3.9"
+      env: DJANGO=19
+    # Django 1.10 supports Python >=2.7, <=3.5
     - python: "3.6"
       env: DJANGO=110
     - python: "3.7"
-      env: DJANGO=18
-    - python: "3.7"
-      env: DJANGO=19
-    - python: "3.7"
       env: DJANGO=110
-    - python: "3.7"
+    - python: "3.8"
+      env: DJANGO=110
+    - python: "3.9"
+      env: DJANGO=110
+    # Django 1.11 supports Python >=2.7, <=3.7
+    - python: "3.8"
       env: DJANGO=111
+    - python: "3.9"
+      env: DJANGO=111
+    # Django 2.0 supports Python >=3.4, <=3.7
     - python: "2.7"
       env: DJANGO=20
+    - python: "3.8"
+      env: DJANGO=20
+    - python: "3.9"
+      env: DJANGO=20
+    # Django 2.1 supports Python >=3.5, <=3.7
     - python: "2.7"
       env: DJANGO=21
+    - python: "3.4"
+      env: DJANGO=21
+    - python: "3.8"
+      env: DJANGO=21
+    - python: "3.9"
+      env: DJANGO=21
+    # Django 2.2 supports Python >=3.5, <=3.9
+    - python: "2.7"
+      env: DJANGO=22
+    - python: "3.4"
+      env: DJANGO=22
+    # Django 3.0 supports Python >=3.6, <=3.9
+    - python: "2.7"
+      env: DJANGO=30
+    - python: "3.4"
+      env: DJANGO=30
+    - python: "3.5"
+      env: DJANGO=30
+    # Django 3.1 supports Python >=3.6, <=3.9
+    - python: "2.7"
+      env: DJANGO=31
+    - python: "3.4"
+      env: DJANGO=31
+    - python: "3.5"
+      env: DJANGO=31
+    # Django 3.2 supports Python >=3.6, <=3.9
+    - python: "2.7"
+      env: DJANGO=32
+    - python: "3.4"
+      env: DJANGO=32
+    - python: "3.5"
+      env: DJANGO=32
 
 after_success: coveralls
