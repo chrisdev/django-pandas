@@ -13,7 +13,7 @@ env:
   matrix:
     - DJANGO=18
     - DJANGO=19
-    - DJANGO=100
+    - DJANGO=110
     - DJANGO=111
     - DJANGO=20
     - DJANGO=21
