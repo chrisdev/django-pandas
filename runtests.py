@@ -24,7 +24,8 @@ if not settings.configured:
                 "PORT": "",
             }
         },
-        MIDDLEWARE_CLASSES = ()
+        MIDDLEWARE_CLASSES=(),
+        DEFAULT_AUTO_FIELD='django.db.models.AutoField',
     )
 
     settings.configure(**settings_dict)
