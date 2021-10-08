@@ -1,8 +1,13 @@
 # coding: utf-8
+import sys
 
 from django.core.cache import cache
-from django.utils.encoding import force_str
 from django.db.models import Field
+
+if sys.version_info >= (3, ):
+    from django.utils.encoding import force_str as force_text
+else:
+    from django.utils.encoding import force_text
 
 
 def get_model_name(model):
@@ -53,7 +58,7 @@ def replace_pk(model):
         out_dict = cache.get_many(unique_cache_keys)
 
         if len(out_dict) < len(unique_cache_keys):
-            out_dict = dict([(base_cache_key % obj.pk, force_str(obj))
+            out_dict = dict([(base_cache_key % obj.pk, force_text(obj))
                             for obj in model.objects.filter(
                             pk__in=list(filter(None, pk_series.unique())))])
             cache.set_many(out_dict)
@@ -69,7 +74,7 @@ def build_update_functions(fieldnames, fields):
             yield fieldname, None
         else:
             if field and field.choices:
-                choices = dict([(k, force_str(v))
+                choices = dict([(k, force_text(v))
                                 for k, v in field.flatchoices])
                 yield fieldname, replace_from_choices(choices)
 
