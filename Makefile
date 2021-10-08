@@ -24,17 +24,20 @@ clean-pyc:
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
 
+develop:
+	pip install -e .[test]
+
 lint:
 	flake8 django_pandas tests
 
-test:
-	python setup.py test
+test: develop
+	python runtests.py
 
 test-all:
 	tox
 
-coverage:
-	coverage run --source django_pandas setup.py test
+coverage: develop
+	coverage run --source django_pandas runtests.py
 	coverage report -m
 	coverage html
 	open htmlcov/index.html

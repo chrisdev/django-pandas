@@ -40,11 +40,11 @@ setup(
         'Framework :: Django',
     ],
     zip_safe=False,
-    tests_require=[
+    extras_require={
+        "test": [
         "pandas>=0.20.1",
-        "coverage>=4.0",
+        "coverage==5.4",
         "semver==2.10.1"
                    ],
-    test_suite="runtests.runtests"
-
+    },
 )
