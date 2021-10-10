@@ -43,7 +43,8 @@ you probably need to install ``numpy`` in your virtualenv  before you install
 this package or if you want to run the test suite ::
 
     pip install numpy
-    python setup.py test
+    pip install -e .[test]
+    python runtests.py
 
 Some ``pandas`` functionality requires parts of the Scipy stack.
 You may wish to consult http://www.scipy.org/install.html
