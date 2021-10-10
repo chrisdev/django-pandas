@@ -23,9 +23,9 @@ class MyModel(models.Model):
 
 class MyModelChoice(models.Model):
     CHOICES = [
-        (1, 'First'),
-        (2, 'Second'),
-        (3, 'Third'),
+        (1, u'First \U0001f947'),
+        (2, u'Second \U0001f948'),
+        (3, u'Third \U0001f949'),
     ]
     col1 = models.IntegerField(choices=CHOICES)
     col2 = models.FloatField(null=True)

@@ -1,8 +1,13 @@
 # coding: utf-8
+import sys
 
 from django.core.cache import cache
-from django.utils.encoding import force_text
 from django.db.models import Field
+
+if sys.version_info >= (3, ):
+    from django.utils.encoding import force_str as force_text
+else:
+    from django.utils.encoding import force_text
 
 
 def get_model_name(model):
