@@ -11,7 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9"]
+        python-version: ["2.7", "3.5", "3.6", "3.7", "3.8", "3.9"]
+        django-version: ["18", "19", "110", "111", "20", "21", "22", "30", "31", "32"]
 
     steps:
       - uses: actions/checkout@v2
@@ -21,6 +22,17 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Hello world
+      - name: Install dependencies
         run: |
-          echo "hello world"
+          python -m pip install -U tox
+
+      - name: Test
+        run: tox -e py${{ matrix.python-version }}-django${{ matrix.django-version }}
+
+  all-successful:
+    # https://github.community/t/is-it-possible-to-require-all-github-actions-tasks-to-pass-without-enumerating-them/117957/4?u=graingert
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+    - name: note that all tests succeeded
+      run: echo "🎉"
