@@ -1,8 +1,9 @@
 ==============
 Django Pandas
 ==============
-.. image:: https://secure.travis-ci.org/chrisdev/django-pandas.png?branch=master
-   :target: http://travis-ci.org/chrisdev/django-pandas
+   
+.. image:: https://github.com/chrisdev/django-pandas/actions/workflows/test.yml/badge.svg
+   :target: https://github.com/chrisdev/django-pandas/actions/workflows/test.yml
 
 .. image:: https://coveralls.io/repos/chrisdev/django-pandas/badge.png?branch=master
    :target: https://coveralls.io/r/chrisdev/django-pandas
