@@ -1,5 +1,21 @@
 CHANGES
 ========
+0.6.5 (2021-10-15)
+------------------
+This version added support for Pandas >=1.3 (thanks to @graingert)
+Other Changes:
+*  Migrated from Travis to Github Actions for CI (also @graingert)
+
+* Avoid the use of deprecated methods `#139`_ and `#142`_ (again much thanks @graingert)
+
+* Fix for issue `#135`_(Thanks @Yonimdo)
+
+* Silence Django 3.2 errors on testing on etc. `#133`_ thanks @whyscream.
+
+.. _`#139`: https://github.com/chrisdev/issues/135
+.. _`#142`: https://github.com/chrisdev/issues/142
+.. _`#135`: https://github.com/chrisdev/issues/135
+.. _`#133`: https://github.com/chrisdev/issues/133
 
 0.6.4 (2021-02-08)
 ------------------
