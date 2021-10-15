@@ -29,10 +29,12 @@ Contributors
 * `Anthony Monthe <https://github.com/ZuluPro>`_
 * `Vincent Toupet <https://github.com/vtoupet>`_
 * `Anton Ian Sipos <https://github.com/aisipos>`_
+* `Thomas Grainger <https://github.com/graingert/>`_
 
 What's New
 ===========
-Version 0.6.4 supports the latest release of Pandas (1.2.1)
+Version 0.6.5 added support for Pandas >= 1.3
+and fixes a number of other issues.
 
 Dependencies
 =============

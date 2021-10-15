@@ -28,3 +28,4 @@ Contributions
 - `Vincent Toupet <https://github.com/vtoupet>`_
 - `Anton Ian Sipos <https://github.com/aisipos>`_
 - `Chuan-Jhe Hwong <https://github.com/CJHwong>`_
+- `Thomas Grainger <https://github.com/graingert/>`_
