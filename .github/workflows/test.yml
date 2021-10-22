@@ -23,6 +23,11 @@ jobs:
           - {python-version: "3.5", django-version: "30"}
           - {python-version: "3.5", django-version: "31"}
           - {python-version: "3.5", django-version: "32"}
+          - {python-version: "3.10", django-version: "18"}
+          - {python-version: "3.10", django-version: "19"}
+          - {python-version: "3.10", django-version: "110"}
+          - {python-version: "3.10", django-version: "111"}
+          - {python-version: "3.10", django-version: "20"}
 
     steps:
       - uses: actions/checkout@v2
