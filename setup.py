@@ -17,6 +17,7 @@ setup(
     version=VERSION,
     description='Tools for working with pydata.pandas in your Django projects',
     long_description=long_description,
+    long_description_content_type='text/x-rst',
     author='Christopher Clarke',
     author_email='cclarke@chrisdev.com',
     url='https://github.com/chrisdev/django-pandas/',
