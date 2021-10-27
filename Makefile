@@ -52,11 +52,11 @@ docs:
 
 release: clean
 	python3 -m build
-  python3 -m twine upload --repository pypi dist/*
+	python3 -m twine upload --repository pypi dist/*
 
-test-release:clean
+test-release: clean
 	python3 -m build
-  python3 -m twine upload --repository tespypi dist/*
+	python3 -m twine upload --repository testpypi dist/*
 
 dist: clean
 	python3 -m build
