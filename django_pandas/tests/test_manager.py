@@ -7,7 +7,7 @@ from .models import (
     DataFrame, WideTimeSeries, WideTimeSeriesDateField,
     LongTimeSeries, PivotData, Dude, Car, Spot
 )
-import pandas.util.testing as tm
+import pandas._testing as tm
 import semver
 
 PANDAS_VERSIONINFO = semver.VersionInfo.parse(pd.__version__)

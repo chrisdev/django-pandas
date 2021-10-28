@@ -1,5 +1,14 @@
 CHANGES
 ========
+0.6.6 (2012-10-27)
+------------------
+The main feature of this is release in the use of a GHA to
+automate the publishing of the package to PYPI as per PR `#146`_
+(again much thanks @graingert). Several other minor issues have also
+been addressed.
+
+.. _`#146`: https://github.com/chrisdev/django-pandas/pull/146
+
 0.6.5 (2021-10-15)
 ------------------
 This version added support for Pandas >=1.3 (thanks to @graingert)
