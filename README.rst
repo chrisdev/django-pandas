@@ -1,7 +1,7 @@
 ==============
 Django Pandas
 ==============
-   
+
 .. image:: https://github.com/chrisdev/django-pandas/actions/workflows/test.yml/badge.svg
    :target: https://github.com/chrisdev/django-pandas/actions/workflows/test.yml
 
@@ -34,8 +34,13 @@ Contributors
 
 What's New
 ===========
-Version 0.6.5 added support for Pandas >= 1.3
-and fixes a number of other issues.
+This is release facilitates running of test with Python 3.10 and automates
+the publishing of the package to PYPI as per PR `#146`_
+(again much thanks @graingert). As usual we have attempted support legacy
+versions of Python/Django/Pandas and this sometimes results in deperation errors
+being displayed in when test are run. To avoid use `python -Werror runtests.py`
+
+.. _`#146`: https://github.com/chrisdev/django-pandas/pull/146
 
 Dependencies
 =============
