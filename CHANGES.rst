@@ -1,6 +1,6 @@
 CHANGES
 ========
-0.6.6 (2012-10-27)
+0.6.6 (2021-10-27)
 ------------------
 The main feature of this is release in the use of a GHA to
 automate the publishing of the package to PYPI as per PR `#146`_
