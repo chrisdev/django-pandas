@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.test import TestCase
 import django
 from django.db.models import Sum
@@ -46,6 +47,17 @@ class IOTest(TestCase):
         self.assertEqual(c, len(fields))
         df1 = read_frame(qs, ['col1', 'col2'])
         self.assertEqual(df1.shape, (qs.count(), 2))
+
+    def test_page(self):
+        qs = MyModel.objects.all()
+        qs_list: list = Paginator(qs, 3).page(1).object_list
+        df = read_frame(qs_list, verbose=False)
+        self.assertEqual(list(df.columns),
+                         ['id', 'index_col', 'col1', 'col2', 'col3', 'col4'])
+
+        df = read_frame(qs_list, verbose=False, fieldnames=['col1', 'col2'])
+        self.assertEqual(list(df.columns),
+                         ['col1', 'col2'])
 
     def test_values(self):
         qs = MyModel.objects.all()

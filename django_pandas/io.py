@@ -1,7 +1,7 @@
-import pandas as pd
-from .utils import update_with_verbose, get_related_model
 import django
+import pandas as pd
 
+from .utils import update_with_verbose, get_related_model
 
 FieldDoesNotExist = (
     django.db.models.fields.FieldDoesNotExist
@@ -36,7 +36,10 @@ def is_values_queryset(qs):
     if django.VERSION < (1, 9):  # pragma: no cover
         return isinstance(qs, django.db.models.query.ValuesQuerySet)
     else:
-        return qs._iterable_class == django.db.models.query.ValuesIterable
+        try:
+            return qs._iterable_class == django.db.models.query.ValuesIterable
+        except:
+            return False
 
 
 def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
@@ -117,14 +120,23 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
             *(f for f in zip(fieldnames, fields)
               if f[0] not in uniq_fields and not uniq_fields.add(f[0])))
     else:
-        fields = qs.model._meta.fields
-        fieldnames = [f.name for f in fields]
-        fieldnames += list(qs.query.annotation_select.keys())
+        try:
+            fields = qs.model._meta.fields
+            fieldnames = [f.name for f in fields]
+            fieldnames += list(qs.query.annotation_select.keys())
+        except:
+            pass
 
     if is_values_queryset(qs):
         recs = list(qs)
     else:
-        recs = list(qs.values_list(*fieldnames))
+        try:
+            recs = list(qs.values_list(*fieldnames))
+        except:
+            if fieldnames:
+                recs = [object_to_dict(q, fieldnames) for q in qs]
+            else:
+                recs = [object_to_dict(q) for q in qs]
 
     df = pd.DataFrame.from_records(
         recs,
@@ -141,3 +153,19 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     if datetime_index:
         df.index = pd.to_datetime(df.index, errors="ignore")
     return df
+
+
+def object_to_dict(obj, fields: list = None):
+    """
+        Convert obj to a dictionary
+
+        Parameters
+        ----------
+
+        obj: obj to an item of QuerySet
+        fieldnames: reserved fields, default to all fields
+    """
+    if not fields:
+        obj.__dict__.pop('_state')
+        return obj.__dict__
+    return {field: obj.__dict__.get(field) for field in fields}
