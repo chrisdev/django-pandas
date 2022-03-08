@@ -50,7 +50,7 @@ class IOTest(TestCase):
 
     def test_page(self):
         qs = MyModel.objects.all()
-        qs_list: list = Paginator(qs, 3).page(1).object_list
+        qs_list = Paginator(qs, 3).page(1).object_list
         df = read_frame(qs_list, verbose=False)
         self.assertEqual(list(df.columns),
                          ['id', 'index_col', 'col1', 'col2', 'col3', 'col4'])

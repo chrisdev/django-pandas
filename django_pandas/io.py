@@ -155,7 +155,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     return df
 
 
-def object_to_dict(obj, fields: list = None):
+def object_to_dict(obj, fields = None):
     """
         Convert obj to a dictionary
 
