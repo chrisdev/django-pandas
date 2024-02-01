@@ -29,3 +29,4 @@ Contributions
 - `Anton Ian Sipos <https://github.com/aisipos>`_
 - `Chuan-Jhe Hwong <https://github.com/CJHwong>`_
 - `Thomas Grainger <https://github.com/graingert/>`_
+- `Ryan Smith <https://github.com/bixbyr/>`_

@@ -87,9 +87,9 @@ class TimeSeriesTest(TestCase):
                                                        col4=cols['col4']))
         WideTimeSeriesDateField.objects.bulk_create(create_list)
 
-        create_list = [LongTimeSeries(date_ix=r[0], series_name=r[1][0],
-                                      value=r[1][1])
-                       for r in self.ts2.iterrows()]
+        create_list = [LongTimeSeries(date_ix=timestamp, series_name=s.iloc[0],
+                                      value=s.iloc[1])
+                       for timestamp, s in self.ts2.iterrows()]
 
         LongTimeSeries.objects.bulk_create(create_list)
 
@@ -222,11 +222,10 @@ class PivotTableTest(TestCase):
                                   'value_col_d': np.random.randn(11),
                                   'value_col_e': np.random.randn(11),
                                   'value_col_f': np.random.randn(11)})
-
-        create_list = [PivotData(row_col_a=r[1][0], row_col_b=r[1][1],
-                                 row_col_c=r[1][2], value_col_d=r[1][3],
-                                 value_col_e=r[1][4], value_col_f=r[1][5])
-                       for r in self.data.iterrows()]
+        create_list = [PivotData(row_col_a=r.iloc[0], row_col_b=r.iloc[1],
+                                 row_col_c=r.iloc[2], value_col_d=r.iloc[3],
+                                 value_col_e=r.iloc[4], value_col_f=r.iloc[5])
+                       for _, r in self.data.iterrows()]
 
         PivotData.objects.bulk_create(create_list)
 
