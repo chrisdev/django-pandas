@@ -241,9 +241,9 @@ class DataFrameQuerySet(QuerySet):
 
         if freq is not None:
             if agg_kwargs is None:
-                agg_kwargs=dict()
+                agg_kwargs = dict()
             if agg_args is None:
-                agg_args=[]
+                agg_args = []
             df = df.resample(freq, **rs_kwargs).agg(*agg_args, **agg_kwargs)
 
         return df
@@ -253,7 +253,7 @@ class DataFrameQuerySet(QuerySet):
         """
         Returns a DataFrame from the queryset
 
-        Paramaters
+        Parameters
         -----------
 
         fieldnames:  The model field names(columns) to utilise in creating
