@@ -1,8 +1,12 @@
+from datetime import datetime
+
 from django.test import TestCase
 import pandas as pd
 import numpy as np
 import pickle
 import django
+from pandas.core.indexes.datetimes import bdate_range
+
 from .models import (
     DataFrame, WideTimeSeries, WideTimeSeriesDateField,
     LongTimeSeries, PivotData, Dude, Car, Spot
@@ -68,8 +72,28 @@ class TimeSeriesTest(TestCase):
                 'date': np.tile(np.array(frame.index), K)}
         return pd.DataFrame(data, columns=['date', 'variable', 'value'])
 
+    def _makeTimeDataFrame(self, n_rows: int) -> pd.DataFrame:
+        # Beginning in 2.2 pandas._testing.makeTimeDataFrame was removed, however all that is required for the tests
+        # in this module is a dataframe with columns A, B, C, D of random values indexed by a DatetimeIndex.
+        data = {}
+        for c in ['A', 'B', 'C', 'D']:
+            dt = datetime(2000, 1, 1)
+            dr = bdate_range(dt, periods=n_rows, freq='B', name=c)
+            pd.DatetimeIndex(dr, name=c)
+
+            data[c] = pd.Series(
+                np.random.default_rng(2).standard_normal(n_rows),
+                index=pd.DatetimeIndex(dr, name=c),
+                name=c,
+            )
+        return pd.DataFrame(data)
+
     def setUp(self):
-        self.ts = tm.makeTimeDataFrame(100)
+        if PANDAS_VERSIONINFO >= '2.2.0':
+            self.ts = self._makeTimeDataFrame(100)
+        else:
+            self.ts = tm.makeTimeDataFrame(100)
+
         self.ts2 = self.unpivot(self.ts).set_index('date')
         self.ts.columns = ['col1', 'col2', 'col3', 'col4']
         create_list = []
@@ -87,9 +111,9 @@ class TimeSeriesTest(TestCase):
                                                        col4=cols['col4']))
         WideTimeSeriesDateField.objects.bulk_create(create_list)
 
-        create_list = [LongTimeSeries(date_ix=r[0], series_name=r[1][0],
-                                      value=r[1][1])
-                       for r in self.ts2.iterrows()]
+        create_list = [LongTimeSeries(date_ix=timestamp, series_name=s.iloc[0],
+                                      value=s.iloc[1])
+                       for timestamp, s in self.ts2.iterrows()]
 
         LongTimeSeries.objects.bulk_create(create_list)
 
@@ -125,18 +149,24 @@ class TimeSeriesTest(TestCase):
 
     def test_resampling(self):
         qs = LongTimeSeries.objects.all()
-        rs_kwargs = {'kind': 'period'}
         agg_args = None
         agg_kwargs = None
         if PANDAS_VERSIONINFO >= '0.25.0':
             agg_kwargs = {'func': 'sum'}
         else:
-            agg_args= ['sum']
+            agg_args = ['sum']
+
+        if PANDAS_VERSIONINFO >= '2.2.0':
+            freq = 'ME'
+        else:
+            freq = 'M'
+
         df = qs.to_timeseries(index='date_ix', pivot_columns='series_name',
                               values='value', storage='long',
-                              freq='M', rs_kwargs=rs_kwargs,
+                              freq=freq,
                               agg_args=agg_args,
                               agg_kwargs=agg_kwargs)
+        df.index = pd.PeriodIndex(df.index)
 
         self.assertEqual([d.month for d in qs.dates('date_ix', 'month')],
                          df.index.month.tolist())
@@ -147,9 +177,10 @@ class TimeSeriesTest(TestCase):
         qs2 = WideTimeSeries.objects.all()
 
         df1 = qs2.to_timeseries(index='date_ix', storage='wide',
-                                freq='M', rs_kwargs=rs_kwargs,
+                                freq=freq,
                                 agg_args=agg_args,
-                                agg_kwargs = agg_kwargs)
+                                agg_kwargs=agg_kwargs)
+        df1.index = pd.PeriodIndex(df1.index)
 
         self.assertEqual([d.month for d in qs.dates('date_ix', 'month')],
                          df1.index.month.tolist())
@@ -222,11 +253,10 @@ class PivotTableTest(TestCase):
                                   'value_col_d': np.random.randn(11),
                                   'value_col_e': np.random.randn(11),
                                   'value_col_f': np.random.randn(11)})
-
-        create_list = [PivotData(row_col_a=r[1][0], row_col_b=r[1][1],
-                                 row_col_c=r[1][2], value_col_d=r[1][3],
-                                 value_col_e=r[1][4], value_col_f=r[1][5])
-                       for r in self.data.iterrows()]
+        create_list = [PivotData(row_col_a=r.iloc[0], row_col_b=r.iloc[1],
+                                 row_col_c=r.iloc[2], value_col_d=r.iloc[3],
+                                 value_col_e=r.iloc[4], value_col_f=r.iloc[5])
+                       for _, r in self.data.iterrows()]
 
         PivotData.objects.bulk_create(create_list)
 

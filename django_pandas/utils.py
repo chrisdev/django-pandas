@@ -48,8 +48,7 @@ def replace_pk(model):
 
     def inner(pk_series):
         pk_series = pk_series.astype(object).where(pk_series.notnull(), None)
-        cache_keys = pk_series.apply(
-            get_cache_key_from_pk, convert_dtype=False)
+        cache_keys = pk_series.apply(get_cache_key_from_pk)
         unique_cache_keys = list(filter(None, cache_keys.unique()))
 
         if not unique_cache_keys:

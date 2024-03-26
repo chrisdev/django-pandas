@@ -84,7 +84,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     """
 
     if fieldnames:
-        fieldnames = pd.unique(fieldnames)
+        fieldnames = pd.unique(pd.Series(fieldnames))
         if index_col is not None and index_col not in fieldnames:
             # Add it to the field names if not already there
             fieldnames = tuple(fieldnames) + (index_col,)
@@ -151,7 +151,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
         df.set_index(index_col, inplace=True)
 
     if datetime_index:
-        df.index = pd.to_datetime(df.index, errors="ignore")
+        df.index = pd.to_datetime(df.index)
     return df
 
 
