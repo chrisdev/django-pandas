@@ -31,6 +31,7 @@ Contributors
 * `Vincent Toupet <https://github.com/vtoupet>`_
 * `Anton Ian Sipos <https://github.com/aisipos>`_
 * `Thomas Grainger <https://github.com/graingert/>`_
+* `Ryan Smith <https://github.com/bixbyr/>`_
 
 What's New
 ===========
