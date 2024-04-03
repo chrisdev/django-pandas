@@ -1,9 +1,12 @@
 CHANGES
 ========
 0.6.7 (2024-03-27)
+------------------
 
 Fix several deprecation warnings in pandas 2.1 which became actual errors in 2.2 
-as per `#158`_ thanks to @bixbyr
+as per `#158`_ (thanks to @bixbyr)
+
+.. _`#158`: https://github.com/chrisdev/django-pandas/pull/158
 
 0.6.6 (2021-10-27)
 ------------------
