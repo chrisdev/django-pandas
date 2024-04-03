@@ -4,6 +4,7 @@ TODO
 
 - Add coverage and tox and integrate with travis-CL
 - Add to pivot_table method
+
 2013-07-24
 -----------
 - We need to implement the pivot table method

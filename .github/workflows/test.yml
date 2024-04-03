@@ -12,7 +12,11 @@ jobs:
       fail-fast: false
       matrix:
         python-version: [ "3.7", "3.8", "3.9", "3.10"]
-        django-version: [ "30", "31", "32","40", "42", "50"]
+        django-version: [ "30", "31", "32","40", "42"]
+        exclude:
+          - {python-version: "3.7", django-version: "40"}
+          - {python-version: "3.7", django-version: "42"}
+    
     steps:
       - uses: actions/checkout@v2
 

@@ -1,5 +1,10 @@
 CHANGES
 ========
+0.6.7 (2024-03-27)
+
+Fix several deprecation warnings in pandas 2.1 which became actual errors in 2.2 
+as per `#158`_ thanks to @bixbyr
+
 0.6.6 (2021-10-27)
 ------------------
 The main feature of this is release in the use of a GHA to
