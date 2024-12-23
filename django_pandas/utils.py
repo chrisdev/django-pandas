@@ -44,7 +44,7 @@ def replace_pk(model):
     base_cache_key = get_base_cache_key(model)
 
     def get_cache_key_from_pk(pk):
-        return None if pk is None else base_cache_key % str(pk)
+        return None if pk is None else base_cache_key % str(int(pk))
 
     def inner(pk_series):
         pk_series = pk_series.astype(object).where(pk_series.notnull(), None)
