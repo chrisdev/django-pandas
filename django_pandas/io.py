@@ -1,5 +1,4 @@
 import django
-import pandas as pd
 
 from .utils import update_with_verbose, get_related_model
 
@@ -82,6 +81,7 @@ def read_frame(qs, fieldnames=(), index_col=None, coerce_float=False,
     column_names: If not None, use to override the column names in the
                   DateFrame
     """
+    import pandas as pd
 
     if fieldnames:
         fieldnames = pd.unique(pd.Series(fieldnames))
